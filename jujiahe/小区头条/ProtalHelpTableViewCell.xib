@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="128" id="KGk-i7-Jjw" customClass="ProtalHelpTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="127.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="桂东电力网点1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vh8-UU-S2G">
+                        <rect key="frame" x="15" y="15" width="290" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="9Us-mB-aNW"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.65490196079999996" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系电话：400-800-0001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRG-jg-4hr">
+                        <rect key="frame" x="15" y="44" width="290" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="M2s-1F-LYq"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系人：张三" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPf-X4-Lqy">
+                        <rect key="frame" x="15" y="65" width="290" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="pOu-ad-73V"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址：桂东市桂东大道新城" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drz-cY-Uvt">
+                        <rect key="frame" x="15" y="94" width="290" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="ufb-Tn-toh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.37647058820000001" green="0.37647058820000001" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHm-qO-eVI">
+                        <rect key="frame" x="15" y="127" width="290" height="1"/>
+                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="A1y-cU-QMo"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Vh8-UU-S2G" secondAttribute="trailing" constant="15" id="78Q-Xd-zHg"/>
+                    <constraint firstItem="BRG-jg-4hr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="A6u-eI-i4u"/>
+                    <constraint firstItem="jPf-X4-Lqy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Al6-ZU-zEb"/>
+                    <constraint firstAttribute="trailing" secondItem="jPf-X4-Lqy" secondAttribute="trailing" constant="15" id="Bd1-R2-xrh"/>
+                    <constraint firstItem="drz-cY-Uvt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="DVA-tw-NMW"/>
+                    <constraint firstItem="Vh8-UU-S2G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ELi-nq-kvX"/>
+                    <constraint firstItem="Vh8-UU-S2G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="MPl-QX-bXi"/>
+                    <constraint firstItem="BRG-jg-4hr" firstAttribute="top" secondItem="Vh8-UU-S2G" secondAttribute="bottom" constant="8" id="MxL-ns-Yb9"/>
+                    <constraint firstItem="drz-cY-Uvt" firstAttribute="top" secondItem="jPf-X4-Lqy" secondAttribute="bottom" constant="8" id="VDQ-SE-OrY"/>
+                    <constraint firstAttribute="bottom" secondItem="JHm-qO-eVI" secondAttribute="bottom" id="X3v-ui-u4H"/>
+                    <constraint firstAttribute="trailing" secondItem="drz-cY-Uvt" secondAttribute="trailing" constant="15" id="luO-10-NEo"/>
+                    <constraint firstItem="JHm-qO-eVI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="owM-PJ-X1Y"/>
+                    <constraint firstAttribute="trailing" secondItem="BRG-jg-4hr" secondAttribute="trailing" constant="15" id="rAE-0Z-Mrd"/>
+                    <constraint firstItem="jPf-X4-Lqy" firstAttribute="top" secondItem="BRG-jg-4hr" secondAttribute="bottom" id="wp2-Kx-3gq"/>
+                    <constraint firstAttribute="trailing" secondItem="JHm-qO-eVI" secondAttribute="trailing" constant="15" id="yBd-gz-eV4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="adressName" destination="drz-cY-Uvt" id="lmr-PU-rNC"/>
+                <outlet property="contactName" destination="jPf-X4-Lqy" id="qb7-hE-65k"/>
+                <outlet property="name" destination="Vh8-UU-S2G" id="2aR-6p-e6d"/>
+                <outlet property="phone" destination="BRG-jg-4hr" id="TMV-qR-z4C"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="94"/>
+        </tableViewCell>
+    </objects>
+</document>

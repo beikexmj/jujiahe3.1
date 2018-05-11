@@ -1,0 +1,6 @@
+framework module PandaReaderLib {
+  umbrella header "PandaReaderLib.h"
+
+  export *
+  module * { export * }
+}
