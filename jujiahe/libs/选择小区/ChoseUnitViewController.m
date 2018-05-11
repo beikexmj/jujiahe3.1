@@ -11,11 +11,11 @@
 #import "ChoseUnitDataModel.h"
 #import "LocationUnitDataModel.h"
 #import "AppDelegate.h"
-//#import "BaseTabbarVC.h"
+#import "BaseTabbarVC.h"
 #import "NearByUnitCell.h"
 #import <CoreLocation/CoreLocation.h>
 #import "JFCityViewController.h"
-//#import "HomePageVC.h"
+#import "HomePageVC.h"
 @interface ChoseUnitViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,JFCityViewControllerDelegate>
 {
     UITableView *subTableView;
@@ -301,20 +301,20 @@
         storage.nickname = @"";
         storage.sex = @"-1";
     }
-//    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    BaseTabbarVC *tabBarController = [BaseTabbarVC Shareinstance];
-//    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:tabBarController];
-//    nav.fd_fullscreenPopGestureRecognizer.enabled = true;
-//    nav.fd_prefersNavigationBarHidden = true;
-//    nav.fd_interactivePopDisabled = true;
-//    nav.fd_viewControllerBasedNavigationBarAppearanceEnabled = false;
-//    [nav setNavigationBarHidden:YES animated:YES];
-//    tabBarController.selectedIndex = 0;
-//    delegate.window.rootViewController = nav;
-//    HomePageVC *page = (HomePageVC *)tabBarController.viewControllers[0];
-//    if (page) {
-//        [page fetchData2];
-//    }
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    BaseTabbarVC *tabBarController = [BaseTabbarVC Shareinstance];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:tabBarController];
+    nav.fd_fullscreenPopGestureRecognizer.enabled = true;
+    nav.fd_prefersNavigationBarHidden = true;
+    nav.fd_interactivePopDisabled = true;
+    nav.fd_viewControllerBasedNavigationBarAppearanceEnabled = false;
+    [nav setNavigationBarHidden:YES animated:YES];
+    tabBarController.selectedIndex = 0;
+    delegate.window.rootViewController = nav;
+    HomePageVC *page = (HomePageVC *)tabBarController.viewControllers[0];
+    if (page) {
+        [page fetchData2];
+    }
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
@@ -478,20 +478,20 @@
         storage.nickname = @"";
         storage.sex = @"-1";
     }
-//    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    BaseTabbarVC *tabBarController = [BaseTabbarVC Shareinstance];
-//    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:tabBarController];
-//    nav.fd_fullscreenPopGestureRecognizer.enabled = true;
-//    nav.fd_prefersNavigationBarHidden = true;
-//    nav.fd_interactivePopDisabled = true;
-//    nav.fd_viewControllerBasedNavigationBarAppearanceEnabled = false;
-//    [nav setNavigationBarHidden:YES animated:YES];
-//    tabBarController.selectedIndex = 0;
-//    delegate.window.rootViewController = nav;
-//    HomePageVC *page = (HomePageVC *)tabBarController.viewControllers[0];
-//    if (page) {
-//        [page fetchData2];
-//    }
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    BaseTabbarVC *tabBarController = [BaseTabbarVC Shareinstance];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:tabBarController];
+    nav.fd_fullscreenPopGestureRecognizer.enabled = true;
+    nav.fd_prefersNavigationBarHidden = true;
+    nav.fd_interactivePopDisabled = true;
+    nav.fd_viewControllerBasedNavigationBarAppearanceEnabled = false;
+    [nav setNavigationBarHidden:YES animated:YES];
+    tabBarController.selectedIndex = 0;
+    delegate.window.rootViewController = nav;
+    HomePageVC *page = (HomePageVC *)tabBarController.viewControllers[0];
+    if (page) {
+        [page fetchData2];
+    }
 }
 - (void)cityName:(NSString *)name {
     NSString *title = [NSString stringWithFormat:@" %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"]];

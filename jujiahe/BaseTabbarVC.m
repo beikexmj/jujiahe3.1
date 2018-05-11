@@ -7,14 +7,15 @@
 //
 
 #import "BaseTabbarVC.h"
-//#import "CommunityVC.h"
-//#import "LifeVC.h"
-//#import "HomePageVC.h"
-//#import "MyPageVC.h"
+#import "CommunityVC.h"
+#import "HappenVC.h"
+#import "HomePageVC.h"
+#import "MyPageVC.h"
+#import "PropertyServiceVC.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
 #import "AppDelegate.h"
 #import "CMUUIDManager.h"
-#import "UIView+XLExtension.h"
+#import "UIView+Additions.h"
 @interface BaseTabbarVC ()<UITabBarDelegate>
 {
     NSString *choseUnitPropertyId;
@@ -48,10 +49,11 @@ BaseTabbarVC *manager = nil;
 
     
     // Do any additional setup after loading the view.
-//    HomePageVC *vc1 = [[HomePageVC alloc] init];
-//    CommunityVC *vc2 = [[CommunityVC alloc] init];
-//    LifeVC *vc3 = [[LifeVC alloc] init];
-//    MyPageVC *vc4 = [[MyPageVC alloc] init];
+    HomePageVC *vc1 = [[HomePageVC alloc] init];
+    PropertyServiceVC *vc2 = [[PropertyServiceVC alloc] init];
+    CommunityVC *vc3 = [[CommunityVC alloc] init];
+    HappenVC *vc4 = [[HappenVC alloc] init];
+    MyPageVC *vc5 = [[MyPageVC alloc] init];
     
     NSDictionary *dict1 = @{
                             CYLTabBarItemTitle : @"首页",
@@ -59,29 +61,35 @@ BaseTabbarVC *manager = nil;
                             CYLTabBarItemSelectedImage : @"nav_bar_home2",
                             };
     NSDictionary *dict2 = @{
-                            CYLTabBarItemTitle : @"社区",
+                            CYLTabBarItemTitle : @"物业",
                             CYLTabBarItemImage : @"nav_bar_community1",
                             CYLTabBarItemSelectedImage : @"nav_bar_community2",
                             };
     NSDictionary *dict3 = @{
-                            CYLTabBarItemTitle : @"生活",
+                            CYLTabBarItemTitle : @"社区",
+                            CYLTabBarItemImage : @"nav_bar_community1",
+                            CYLTabBarItemSelectedImage : @"nav_bar_community2",
+                            };
+    NSDictionary *dict4 = @{
+                            CYLTabBarItemTitle : @"发生",
                             CYLTabBarItemImage : @"nav_bar_life1",
                             CYLTabBarItemSelectedImage : @"nav_bar_life2",
                             };
-    NSDictionary *dict4 = @{
+    NSDictionary *dict5 = @{
                             CYLTabBarItemTitle : @"我的",
                             CYLTabBarItemImage : @"nav_bar_my1",
                             CYLTabBarItemSelectedImage : @"nav_bar_my2",
                             };
-    NSArray *tabBarItemsAttributes = @[ dict1, dict2 , dict3,dict4];
+    NSArray *tabBarItemsAttributes = @[ dict1, dict2 , dict3,dict4,dict5];
     self.tabBarItemsAttributes = tabBarItemsAttributes;
     
-//    [self setViewControllers:@[
-//                                           vc1,
-//                                           vc2,
-//                                           vc3,
-//                                           vc4
-//                                           ]];
+    [self setViewControllers:@[
+                                           vc1,
+                                           vc2,
+                                           vc3,
+                                           vc4,
+                                           vc5
+                                           ]];
     self.tabBar.tintColor = RGBA(0x31B3EF, 1);
 //    self.tabBar.delegate = self;
     // 普通状态下的文字属性

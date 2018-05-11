@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "FirstStepVerificationOfIdentityVC.h"
 #import "HouseManagerVC.h"
-#import "AllServiceVC.h"
+#import "PropertyServiceVC.h"
 #import "AreaHeadlineVC.h"
 #import "SatisfactionSurveyVC.h"
 //#import <PandaReaderLib/PandaReaderLib.h>

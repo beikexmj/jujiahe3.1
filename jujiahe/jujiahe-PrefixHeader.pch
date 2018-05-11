@@ -38,7 +38,7 @@
 
 
 #define KEY @"1234567812345678"
-#define BASE_URL  @"https://jujiahe.copticomm.com/app" //外网测试
+#define BASE_URL  @"https://jujiahe.copticomm.com/appt" //外网测试
 #define BASE_URL2  @"https://jujiahe.copticomm.com" //外网测试
 //#define BASE_H5_URL  @"https://jujiahe.copticomm.com/jujiaheDocument/H5/post/test/index.html" //外网测试
 #define BASE_SHARE @"https://jujiahe.copticomm.com/jujiaheDocument/jujiaheuser/dailyShare/test/index.html"//外网测试

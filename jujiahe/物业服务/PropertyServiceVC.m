@@ -6,26 +6,24 @@
 //  Copyright © 2018年 世纪之光. All rights reserved.
 //
 
-#import "AllServiceVC.h"
+#import "PropertyServiceVC.h"
 #import "AllServiceDataModel.h"
 #import "JSBadgeView.h"
 #import <SDWebImage/UIButton+WebCache.h>
 #import "ServiceVC.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
-@interface AllServiceVC ()
+@interface PropertyServiceVC ()
 @property (nonatomic,strong)UIScrollView *myScrollView;
 @property (nonatomic,strong) NSArray <AllServiceArr*> *myArr;
 @end
 
-@implementation AllServiceVC
+@implementation PropertyServiceVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isShowNav = YES;
-    _backButton.hidden = NO;
-    //    self.leftImgName = @"icon_back_gray";
-    self.titleLabel.text = @"全部";
+    self.titleLabel.text = @"物业服务";
     self.navView.backgroundColor = RGBA(0xeeeeee, 1);
     [self.view addSubview:self.myScrollView];
     [self rebuildView];
