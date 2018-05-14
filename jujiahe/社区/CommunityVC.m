@@ -7,8 +7,9 @@
 //
 
 #import "CommunityVC.h"
-
-@interface CommunityVC ()
+#import "CommunityCell.h"
+@interface CommunityVC ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic,strong)UITableView *myTableView;
 
 @end
 
@@ -16,9 +17,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.isShowNav = YES;
     self.titleLabel.text = @"社区";
-
+    [self.view addSubview:self.myTableView];
+    
     // Do any additional setup after loading the view.
+}
+- (UITableView *)myTableView{
+    if (!_myTableView) {
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREENWIDTH, SCREENHEIGHT-TABBARHEIGHT-NAVHEIGHT)style:UITableViewStyleGrouped];
+        _myTableView.backgroundView = nil;
+        _myTableView.backgroundColor = [UIColor clearColor];
+        _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _myTableView.delegate = self;
+        _myTableView.dataSource = self;
+    }
+    return _myTableView;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cell = @"CommunityCell";
+    CommunityCell *myCell = [tableView dequeueReusableCellWithIdentifier:cell];
+    if (!myCell) {
+        myCell = [[[NSBundle mainBundle] loadNibNamed:cell owner:self options:nil] lastObject];
+    }
+    myCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return myCell;
+    
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 8;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 180;
 }
 
 - (void)didReceiveMemoryWarning {

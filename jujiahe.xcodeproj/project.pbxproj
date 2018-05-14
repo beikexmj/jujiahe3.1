@@ -401,6 +401,10 @@
 		7C476EBF20A592DF005ECE03 /* XMJButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476EBE20A592DF005ECE03 /* XMJButton.m */; };
 		7C476EC420A59454005ECE03 /* HappenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476EC320A59454005ECE03 /* HappenVC.m */; };
 		7C476EC720A5946E005ECE03 /* CommunityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476EC620A5946E005ECE03 /* CommunityVC.m */; };
+		7C5AD33620A9A32900158D38 /* CommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5AD33420A9A32900158D38 /* CommunityCell.m */; };
+		7C5AD33720A9A32900158D38 /* CommunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C5AD33520A9A32900158D38 /* CommunityCell.xib */; };
+		7C5AD33D20A9B0C200158D38 /* HappenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5AD33B20A9B0C200158D38 /* HappenCell.m */; };
+		7C5AD33E20A9B0C200158D38 /* HappenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C5AD33C20A9B0C200158D38 /* HappenCell.xib */; };
 		7C6CA6C020A3D71A0073DD3F /* SatisfactionSurveyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6CA6BF20A3D71A0073DD3F /* SatisfactionSurveyVC.m */; };
 		7C6CA6C420A3EB320073DD3F /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6CA6C320A3EB320073DD3F /* AXRatingView.m */; };
 		7C6CA6CA20A42AD20073DD3F /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6CA6C920A42AD20073DD3F /* libxml2.2.tbd */; };
@@ -1247,6 +1251,12 @@
 		7C476EC320A59454005ECE03 /* HappenVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappenVC.m; sourceTree = "<group>"; };
 		7C476EC520A5946E005ECE03 /* CommunityVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunityVC.h; sourceTree = "<group>"; };
 		7C476EC620A5946E005ECE03 /* CommunityVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommunityVC.m; sourceTree = "<group>"; };
+		7C5AD33320A9A32900158D38 /* CommunityCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunityCell.h; sourceTree = "<group>"; };
+		7C5AD33420A9A32900158D38 /* CommunityCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommunityCell.m; sourceTree = "<group>"; };
+		7C5AD33520A9A32900158D38 /* CommunityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityCell.xib; sourceTree = "<group>"; };
+		7C5AD33A20A9B0C200158D38 /* HappenCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HappenCell.h; sourceTree = "<group>"; };
+		7C5AD33B20A9B0C200158D38 /* HappenCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappenCell.m; sourceTree = "<group>"; };
+		7C5AD33C20A9B0C200158D38 /* HappenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HappenCell.xib; sourceTree = "<group>"; };
 		7C6CA6BE20A3D71A0073DD3F /* SatisfactionSurveyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SatisfactionSurveyVC.h; sourceTree = "<group>"; };
 		7C6CA6BF20A3D71A0073DD3F /* SatisfactionSurveyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SatisfactionSurveyVC.m; sourceTree = "<group>"; };
 		7C6CA6C220A3EB320073DD3F /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
@@ -3473,6 +3483,8 @@
 		7C476EC020A5941B005ECE03 /* 社区 */ = {
 			isa = PBXGroup;
 			children = (
+				7C5AD33220A9A2DB00158D38 /* model */,
+				7C5AD33120A9A2DB00158D38 /* view */,
 				7C476EC520A5946E005ECE03 /* CommunityVC.h */,
 				7C476EC620A5946E005ECE03 /* CommunityVC.m */,
 			);
@@ -3482,10 +3494,46 @@
 		7C476EC120A5941C005ECE03 /* 发生 */ = {
 			isa = PBXGroup;
 			children = (
+				7C5AD33820A9B09800158D38 /* model */,
+				7C5AD33920A9B09800158D38 /* view */,
 				7C476EC220A59454005ECE03 /* HappenVC.h */,
 				7C476EC320A59454005ECE03 /* HappenVC.m */,
 			);
 			path = "发生";
+			sourceTree = "<group>";
+		};
+		7C5AD33120A9A2DB00158D38 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7C5AD33320A9A32900158D38 /* CommunityCell.h */,
+				7C5AD33420A9A32900158D38 /* CommunityCell.m */,
+				7C5AD33520A9A32900158D38 /* CommunityCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		7C5AD33220A9A2DB00158D38 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		7C5AD33820A9B09800158D38 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		7C5AD33920A9B09800158D38 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7C5AD33A20A9B0C200158D38 /* HappenCell.h */,
+				7C5AD33B20A9B0C200158D38 /* HappenCell.m */,
+				7C5AD33C20A9B0C200158D38 /* HappenCell.xib */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		7C6CA6BA20A3D6A70073DD3F /* 满意度调查 */ = {
@@ -3719,6 +3767,7 @@
 				7C476DB420A58966005ECE03 /* MyMessageCell.xib in Resources */,
 				7C3CFC6220A1B5880084FF2A /* PropertyPaymentHomeCell.xib in Resources */,
 				7C6CA6E120A43BBA0073DD3F /* ServiceMemberCell.xib in Resources */,
+				7C5AD33720A9A32900158D38 /* CommunityCell.xib in Resources */,
 				7C476DAB20A58966005ECE03 /* HomePageCell.xib in Resources */,
 				7C3CFC6B20A1BC390084FF2A /* MyHouseInfoVC.xib in Resources */,
 				7C3CFC2520A172720084FF2A /* ACMediaFrame.bundle in Resources */,
@@ -3746,6 +3795,7 @@
 				7C476E5320A58DD5005ECE03 /* PersonalInformationTableViewCell2.xib in Resources */,
 				7C110B60209FF5690012040E /* RegestViewController.xib in Resources */,
 				7C476E6020A58DD5005ECE03 /* DeliveryAddressCell.xib in Resources */,
+				7C5AD33E20A9B0C200158D38 /* HappenCell.xib in Resources */,
 				7C476E8820A58DD5005ECE03 /* TicketCenterViewController.xib in Resources */,
 				7C476E5520A58DD5005ECE03 /* PersonalInformationViewController.xib in Resources */,
 				7C3CFCB220A1C9BF0084FF2A /* FSActionSheet_cancel@3x.png in Resources */,
@@ -4116,6 +4166,7 @@
 				7C6CA6C020A3D71A0073DD3F /* SatisfactionSurveyVC.m in Sources */,
 				7C110D2B20A034A10012040E /* JKEventHandler+Demo.m in Sources */,
 				7C110A96209FF0C00012040E /* JFCityTableViewCell.m in Sources */,
+				7C5AD33620A9A32900158D38 /* CommunityCell.m in Sources */,
 				7C110D1220A030770012040E /* RSADataVerifier.m in Sources */,
 				7C3CFC8A20A1C7A60084FF2A /* ServiceComentVC.m in Sources */,
 				7C110965209FECFB0012040E /* NSStream+SKPSMTPExtensions.m in Sources */,
@@ -4242,6 +4293,7 @@
 				7C476DB120A58966005ECE03 /* SystemMessageDataModel.m in Sources */,
 				7C110AD2209FF17A0012040E /* GTMBase64.m in Sources */,
 				7C76A6EB20A2A1D90029E310 /* ProtalHomePageHelpDataModel.m in Sources */,
+				7C5AD33D20A9B0C200158D38 /* HappenCell.m in Sources */,
 				7C110A80209FF0C00012040E /* YYTextAttribute.m in Sources */,
 				7C3CFC2E20A172720084FF2A /* NSString+ACMediaExt.m in Sources */,
 				7C476DAE20A58966005ECE03 /* CallPropertyDataModel.m in Sources */,

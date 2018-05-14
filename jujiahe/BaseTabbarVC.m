@@ -57,28 +57,28 @@ BaseTabbarVC *manager = nil;
     
     NSDictionary *dict1 = @{
                             CYLTabBarItemTitle : @"首页",
-                            CYLTabBarItemImage : @"nav_bar_home1",
-                            CYLTabBarItemSelectedImage : @"nav_bar_home2",
+                            CYLTabBarItemImage : @"nav_home2",
+                            CYLTabBarItemSelectedImage : @"nav_home1",
                             };
     NSDictionary *dict2 = @{
                             CYLTabBarItemTitle : @"物业",
-                            CYLTabBarItemImage : @"nav_bar_community1",
-                            CYLTabBarItemSelectedImage : @"nav_bar_community2",
+                            CYLTabBarItemImage : @"nav_property2",
+                            CYLTabBarItemSelectedImage : @"nav_property1",
                             };
     NSDictionary *dict3 = @{
                             CYLTabBarItemTitle : @"社区",
-                            CYLTabBarItemImage : @"nav_bar_community1",
-                            CYLTabBarItemSelectedImage : @"nav_bar_community2",
+                            CYLTabBarItemImage : @"nav_com2",
+                            CYLTabBarItemSelectedImage : @"nav_com1",
                             };
     NSDictionary *dict4 = @{
                             CYLTabBarItemTitle : @"发生",
-                            CYLTabBarItemImage : @"nav_bar_life1",
-                            CYLTabBarItemSelectedImage : @"nav_bar_life2",
+                            CYLTabBarItemImage : @"nav_happen2",
+                            CYLTabBarItemSelectedImage : @"nav_happen1",
                             };
     NSDictionary *dict5 = @{
                             CYLTabBarItemTitle : @"我的",
-                            CYLTabBarItemImage : @"nav_bar_my1",
-                            CYLTabBarItemSelectedImage : @"nav_bar_my2",
+                            CYLTabBarItemImage : @"nav_my2",
+                            CYLTabBarItemSelectedImage : @"nav_my1",
                             };
     NSArray *tabBarItemsAttributes = @[ dict1, dict2 , dict3,dict4,dict5];
     self.tabBarItemsAttributes = tabBarItemsAttributes;

@@ -20,18 +20,10 @@
 #import "PropertyServiceVC.h"
 #import "ServiceVC.h"
 #import "CallPropertyVC.h"
-#import <ShareSDK/ShareSDK.h>
-#import <ShareSDKExtension/SSEShareHelper.h>
-#import <ShareSDKUI/ShareSDK+SSUI.h>
-#import <ShareSDKUI/SSUIShareActionSheetStyle.h>
-#import <ShareSDKUI/SSUIShareActionSheetCustomItem.h>
-#import <ShareSDK/ShareSDK+Base.h>
-
-#import <ShareSDKExtension/ShareSDK+Extension.h>
 #import <MOBFoundation/MOBFoundation.h>
 #import "YYText.h"
 #import "NSString+URL.h"
-@interface HomePageVC ()<UITableViewDelegate,UITableViewDataSource,NewPagedFlowViewDelegate, NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,UITextViewDelegate>
+@interface HomePageVC ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
 {
     CGFloat ox;
     CGFloat oy;
@@ -45,7 +37,6 @@
 @property (nonatomic,strong)UIButton *meassgeBtn;
 @property (nonatomic,strong)UIButton *signBtn;
 @property (nonatomic,strong)UILabel *buildingNameLab;
-@property (nonatomic,strong)UIScrollView *myScollView;
 @property (nonatomic,strong)UITableView *myTableView;
 @property (weak, nonatomic) SDCycleScrollView *cycleScrollView;
 @property (nonatomic,strong) HomePageForm *homePageData;
@@ -66,17 +57,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setScrollView];
     [self setNav];
-//    for (int index = 0; index < 3; index++) {
-//        UIImage *image = [UIImage imageNamed:@"home_pic3"];
-//        [self.imageArray addObject:image];
-//    }
+    [self.view addSubview:self.myTableView];
     _activity_Dict = [NSMutableDictionary dictionary];
     _template_data = [NSMutableArray array];
     refreshflag = YES;
-    [self fetchData];
-
+//    [self fetchData];
+    [self rebuildHomeFace];
     // Do any additional setup after loading the view.
 }
 - (void)viewWillAppear:(BOOL)animated
@@ -88,430 +75,95 @@
 {
     [super viewWillDisappear:animated];
 }
-- (UILabel *)dailyWord{
-    if (!_dailyWord) {
-        CGFloat titleLabelH = 40;
-        CGFloat titleLabelX = 15;
-        CGFloat titleLabelW = SCREENWIDTH - titleLabelX*2;
-        CGFloat titleLabelY = SCREENHEIGHT - titleLabelH - 30;
-        _dailyWord = [[UILabel alloc]initWithFrame:CGRectMake(titleLabelX, titleLabelY, titleLabelW, titleLabelH)];
-        _dailyWord.numberOfLines = 0;
-        _dailyWord.font = [UIFont systemFontOfSize:14.0];
-        _dailyWord.textColor = [UIColor whiteColor];
-        //阴影颜色
-        _dailyWord.shadowColor = RGBA(0x000000, 0.3);
-        //阴影偏移  x，y为正表示向右下偏移
-        _dailyWord.shadowOffset = CGSizeMake(1, 1);
-    }
-    return _dailyWord;
-}
-- (UILabel *)day{
-    if (!_day) {
-        CGFloat titleLabelH = 60;
-        CGFloat titleLabelX = 15;
-        CGFloat titleLabelW = titleLabelH+5;
-        CGFloat titleLabelY = NAVHEIGHT + 20;
-        _day = [[UILabel alloc]initWithFrame:CGRectMake(titleLabelX, titleLabelY, titleLabelW, titleLabelH)];
-        _day.font = [UIFont systemFontOfSize:50.0];
-        _day.textColor = [UIColor whiteColor];
-        //阴影颜色
-        _day.shadowColor = RGBA(0x000000, 0.2);
-        //阴影偏移  x，y为正表示向右下偏移
-        _day.shadowOffset = CGSizeMake(1, 1);
-    }
-    return _day;
-}
-- (UILabel *)week{
-    if (!_week) {
-        CGFloat titleLabelH = 30;
-        CGFloat titleLabelX = 15 + 65;
-        CGFloat titleLabelW = 100;
-        CGFloat titleLabelY = NAVHEIGHT +20 +5;
-        _week = [[UILabel alloc]initWithFrame:CGRectMake(titleLabelX, titleLabelY, titleLabelW, titleLabelH)];
-        _week.font = [UIFont systemFontOfSize:15.0];
-        _week.textColor = [UIColor whiteColor];
-        //阴影颜色
-        _week.shadowColor = RGBA(0x000000, 0.3);
-        //阴影偏移  x，y为正表示向右下偏移
-        _week.shadowOffset = CGSizeMake(1, 1);
-    }
-    return _week;
-}
-- (UILabel *)month{
-    if (!_month) {
-        CGFloat titleLabelH = 25;
-        CGFloat titleLabelX = 15 + 65;
-        CGFloat titleLabelW = 100;
-        CGFloat titleLabelY = NAVHEIGHT + 20 + 25;
-        _month = [[UILabel alloc]initWithFrame:CGRectMake(titleLabelX, titleLabelY, titleLabelW, titleLabelH)];
-        _month.font = [UIFont systemFontOfSize:19.0];
-        _month.textColor = [UIColor whiteColor];
-        //阴影颜色
-        _month.shadowColor = RGBA(0x000000, 0.3);
-        //阴影偏移  x，y为正表示向右下偏移
-        _month.shadowOffset = CGSizeMake(1, 1);
-    }
-    return _month;
-}
-- (UIButton *)shareBtn{
-    if (!_shareBtn) {
-        CGFloat titleLabelH = 44;
-        CGFloat titleLabelX = SCREENWIDTH - 60;
-        CGFloat titleLabelW = 60;
-        CGFloat titleLabelY = NAVHEIGHT - 44;
-        _shareBtn = [[UIButton alloc]initWithFrame:CGRectMake(titleLabelX, titleLabelY, titleLabelW, titleLabelH)];
-        [_shareBtn setImage:[UIImage imageNamed:@"icon_share_white2"] forState:UIControlStateNormal];
-        [_shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _shareBtn;
-}
-- (UIButton *)backBtn{
-    if (!_backBtn) {
-        CGFloat titleLabelH = 44;
-        CGFloat titleLabelX = 0;
-        CGFloat titleLabelW = 60;
-        CGFloat titleLabelY = NAVHEIGHT - 44;
-        _backBtn = [[UIButton alloc]initWithFrame:CGRectMake(titleLabelX, titleLabelY, titleLabelW, titleLabelH)];
-        [_backBtn setImage:[UIImage imageNamed:@"icon_back_white2"] forState:UIControlStateNormal];
-        [_backBtn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _backBtn;
-}
-- (void)shareBtnClick{
-//    if([[StorageUserInfromation storageUserInformation].userId isEqualToString:@""]){
-//        UIAlertView *alert =[ [UIAlertView alloc]initWithTitle:@"未登录" message:@"确定跳回登陆界面？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-//        [alert show];
-//    }else{
-        [self showShareActionSheet:self.view];
-//    }
-}
-/**
- *  显示分享菜单
- *
- *  @param view 容器视图
- */
-- (void)showShareActionSheet:(UIView *)view
-{
-    /**
-     * 在简单分享中，只要设置共有分享参数即可分享到任意的社交平台
-     **/
-    
-    //1、创建分享参数（必要）
-    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-    //    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"];
-    //    NSString *path2 = [[NSBundle mainBundle] pathForResource:@"Icon" ofType:@"png"];
-    //    NSArray* imageArray = @[@"http://ww4.sinaimg.cn/bmiddle/005Q8xv4gw1evlkov50xuj30go0a6mz3.jpg",[UIImage imageNamed:@"shareImg.png"]];
 
-    NSString *url = [NSString stringWithFormat:@"%@?id=%@",BASE_SHARE,_homePageData.daily_word_data.ids];
-    url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    
-    XMJLog(@"%@",url);
-    [shareParams SSDKSetupShareParamsByText:_homePageData.daily_word_data.name
-                                     images:[UIImage imageNamed:@"登录logo"]
-                                        url:[NSURL URLWithString:url]
-                                      title:@"居家合"
-                                       type:SSDKContentTypeAuto];
-    
-    [ShareSDK showShareActionSheet:view
-                             items:@[
-                                     @(SSDKPlatformTypeQQ),
-                                     @(SSDKPlatformSubTypeQQFriend),
-                                     @(SSDKPlatformSubTypeWechatSession),
-                                     @(SSDKPlatformSubTypeWechatTimeline),
-                                     ]
-                       shareParams:shareParams
-               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-                   
-                   switch (state) {
-                           
-                       case SSDKResponseStateBegin:
-                       {
-                           break;
-                       }
-                       case SSDKResponseStateSuccess:
-                       {
-                           //Facebook Messenger、WhatsApp等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
-                           if (platformType == SSDKPlatformTypeFacebookMessenger)
-                           {
-                               break;
-                           }
-                           
-                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                                                                               message:nil
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"确定"
-                                                                     otherButtonTitles:nil];
-                           [alertView show];
-                           break;
-                       }
-                       case SSDKResponseStateFail:
-                       {
-                           if (platformType == SSDKPlatformTypeSMS && [error code] == 201)
-                           {
-                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                               message:@"失败原因可能是：1、短信应用没有设置帐号；2、设备不支持短信应用；3、短信应用在iOS 7以上才能发送带附件的短信。"
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil, nil];
-                               [alert show];
-                               break;
-                           }
-                           else if(platformType == SSDKPlatformTypeMail && [error code] == 201)
-                           {
-                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                               message:@"失败原因可能是：1、邮件应用没有设置帐号；2、设备不支持邮件应用；"
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil, nil];
-                               [alert show];
-                               break;
-                           }else if([error code] == 105)
-                           {
-                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                               message:@"没有有效的分享平台可以显示。原因可能是：分享平台需要安装qq或者微信客户端才能分享，而这台iOS设备没有安装这些平台的客户端。"
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil, nil];
-                               [alert show];
-                               break;
-                           }
-                           else
-                           {
-                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                               message:[NSString stringWithFormat:@"%@",error]
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil, nil];
-                               [alert show];
-                               break;
-                           }
-                           break;
-                       }
-                       case SSDKResponseStateCancel:
-                       {
-                           //                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-                           //                                                                               message:nil
-                           //                                                                              delegate:nil
-                           //                                                                     cancelButtonTitle:@"确定"
-                           //                                                                     otherButtonTitles:nil];
-                           //                           [alertView show];
-                           break;
-                       }
-                       default:
-                           break;
-                   }
-                   
-                   if (state != SSDKResponseStateBegin && state != SSDKResponseStateBeginUPLoad)
-                   {
-                   }
-               }];
-}
-- (void)backBtnClick{
-    [_myScollView setContentOffset:CGPointMake(0, SCREENHEIGHT-39) animated:YES];
-}
 - (void)fetchData{
-    if (!refreshflag) {
-        return;
-    }
-    refreshflag = NO;
-    [self messageUnreadBadge];
-    _buildingNameLab.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"choseUnitName"];
-    NSString *choseUnitPropertyId = [StorageUserInfromation storageUserInformation].choseUnitPropertyId;
-    if ((!choseUnitPropertyId)|[choseUnitPropertyId isEqualToString:@""]) {
-        choseUnitPropertyId = [[NSUserDefaults standardUserDefaults] objectForKey:@"choseUnitPropertyId"];
-        NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];
-        StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
-        storage.choseUnitPropertyId = choseUnitPropertyId;
-        [NSKeyedArchiver archiveRootObject:storage toFile:file];
-    }
-    NSDictionary *dict = @{@"timestamp":[StorageUserInfromation dateTimeInterval],@"device":@"1",@"userId":[StorageUserInfromation storageUserInformation].userId,@"propertyAreaId":choseUnitPropertyId,@"apiv":@"1.0"};
-    [ZTHttpTool postWithUrl:@"jujiahe/v1/home/index" param:dict success:^(id responseObj) {
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
-        HomePageDataModel *homePageData = [HomePageDataModel mj_objectWithKeyValues:str];
-        if (homePageData.rcode == 0) {
-            _homePageData = homePageData.form;
-            [self rebuildHomeFace];
-        }
-//        [MBProgressHUD hideHUD];
-//        [MBProgressHUD showSuccess:homePageData.msg];
-        
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-//        [MBProgressHUD hideHUD];
-        refreshflag = YES;
-        [MBProgressHUD showError:@"网络不给力，请检测您的网络设置"];
-    }];
-
+    
 }
 - (void)fetchData2{
-    if (!refreshflag) {
-        return;
-    }
-    refreshflag = NO;
-    [self messageUnreadBadge];
-     _buildingNameLab.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"choseUnitName"];
-    [MBProgressHUD showMessage:@""];
-    NSString * choseUnitPropertyId = [StorageUserInfromation storageUserInformation].choseUnitPropertyId;
-    if ((!choseUnitPropertyId)|[choseUnitPropertyId isEqualToString:@""]) {
-        choseUnitPropertyId = [[NSUserDefaults standardUserDefaults] objectForKey:@"choseUnitPropertyId"];
-        NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];
-        StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
-        storage.choseUnitPropertyId = choseUnitPropertyId;
-        [NSKeyedArchiver archiveRootObject:storage toFile:file];
-    }
-    NSDictionary *dict = @{@"timestamp":[StorageUserInfromation dateTimeInterval],@"device":@"1",@"userId":[StorageUserInfromation storageUserInformation].userId,@"propertyAreaId":choseUnitPropertyId,@"apiv":@"1.0"};
-    [ZTHttpTool postWithUrl:@"jujiahe/v1/home/index" param:dict success:^(id responseObj) {
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
-        HomePageDataModel *homePageData = [HomePageDataModel mj_objectWithKeyValues:str];
-        if (homePageData.rcode == 0) {
-            _homePageData = homePageData.form;
-            [self rebuildHomeFace];
-        }else{
-            [MBProgressHUD hideHUD];
-        }
-        //        [MBProgressHUD showSuccess:homePageData.msg];
-        
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-        [MBProgressHUD hideHUD];
-        refreshflag = YES;
-        [MBProgressHUD showError:@"网络不给力，请检测您的网络设置"];
-    }];
     
 }
 - (void)rebuildHomeFace{
-    picHight = 200;
+    NSArray *imageArr = @[@"home_btn_dongtai",@"home_btn_menjin",@"home_btn_dongtai",@"home_btn_menjin"];
+    NSInteger num = 4;
+    CGFloat btnWidth = (SCREENWIDTH - 40)/2.0;
+    CGFloat btnHeight =  btnWidth * (85.0/170);
+    if (num == 2) {
+        picHight = 30 + 15 + 30 + btnHeight;
+    }else{
+        picHight = 30 + 15 + 30 + btnHeight*2 + 10;
+    }
 
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, picHight)];
 
-//    UIImage *image = [UIImage imageNamed:@"banner_pic"];
-    NSMutableArray * myArr = [NSMutableArray array];
-    [myArr addObject:_homePageData.daily_word_data.icon];
-
-    for (Advertisement_dataArr *dict in  _homePageData.advertisement_data.data) {
-        [myArr addObject:dict.icon];
+    UIView *weatherView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH,30)];
+    weatherView.backgroundColor = RGBA(0x00a7ff, 1);
+    UILabel *temperature = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, 100, 30)];
+    temperature.textColor = RGBA(0xffffff, 1);
+    temperature.font = [UIFont systemFontOfSize:19.0];
+    temperature.text  = @"20°C";
+    CGRect frame  = temperature.frame;
+    frame.size.width = [temperature sizeThatFits:CGSizeMake(MAXFLOAT, 30)].width;
+    temperature.frame = frame;
+    [weatherView addSubview:temperature];
+    
+    UILabel *subTemperature = [[UILabel alloc]initWithFrame:CGRectMake(frame.size.width + frame.origin.x + 10, 0, 150, 30)];
+    subTemperature.textColor = RGBA(0xffffff, 1);
+    subTemperature.font = [UIFont systemFontOfSize:14.0];
+    subTemperature.text  = @"晴    15/20°C";
+    [weatherView addSubview:subTemperature];
+   
+    UILabel *airQuality = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH - 135, 0, 120, 30)];
+    airQuality.textColor = RGBA(0xffffff, 1);
+    airQuality.font = [UIFont systemFontOfSize:14.0];
+    airQuality.text  = @"空气质量：优";
+    airQuality.textAlignment = NSTextAlignmentRight;
+    [weatherView addSubview:airQuality];
+    
+    [headerView addSubview:weatherView];
+    NSInteger k = 0;
+    for (int i = 0; i<num/2; i++) {
+        for (int j=0; j<2; j++) {
+            UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(15 + (btnWidth+10)*j,  30 + 15 + i*(btnHeight + 10), btnWidth, btnHeight)];
+            k++;
+            btn.tag = k;
+            [btn setBackgroundImage:[UIImage imageNamed:imageArr[k-1]] forState:UIControlStateNormal];
+            [btn addTarget:self action:@selector(headerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+            [headerView addSubview:btn];
+        }
     }
-    _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREENWIDTH, picHight) imagesGroup:myArr advertisement_data:_homePageData.daily_word_data];
-    _cycleScrollView.delegate = self;
-    //         --- 模拟加载延迟
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        _cycleScrollView.imageURLStringsGroup = myArr;
-//    });
-    [headerView addSubview:_cycleScrollView];
-    [_cycleScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(headerView).insets(UIEdgeInsetsMake(0, 0, 0, 0));
-    }];
+    
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, picHight  - 15, 5, 15)];
+    lineView.backgroundColor  = RGBA(0x00a7ff, 1);
+    [headerView addSubview:lineView];
+    UILabel *markTitle = [[UILabel alloc]initWithFrame:CGRectMake(20, picHight - 15, 100, 15)];
+    markTitle.textColor = RGBA(0x00a7ff, 1);
+    markTitle.font = [UIFont systemFontOfSize:16.0];
+    markTitle.text = @"生活话题";
+    [headerView  addSubview:markTitle];
+
+    UILabel *moreClassification = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH - 130, picHight - 15, 100, 15)];
+    moreClassification.textColor = RGBA(0x606060, 1);
+    moreClassification.font = [UIFont systemFontOfSize:14.0];
+    moreClassification.text = @"更多分类";
+    moreClassification.textAlignment = NSTextAlignmentRight;
+    [headerView  addSubview:moreClassification];
+    
+    UIImageView *rightMarkImg = [[UIImageView alloc]initWithFrame:CGRectMake(SCREENWIDTH - 20, picHight - 15  + 2.5, 6, 10)];
+    rightMarkImg.image = [UIImage imageNamed:@"icon_more_gray"];
+    [headerView addSubview:rightMarkImg];
+    
+    UIButton *moreClassificationBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, picHight - 15, SCREENWIDTH, 15.0)];
+    [moreClassificationBtn addTarget:self action:@selector(moreClassificationbtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:moreClassificationBtn];
+    
     _myTableView.tableHeaderView = headerView;
     
-    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
-    UIImageView *topImageView = [[UIImageView alloc]init];
-    topView.contentMode = UIViewContentModeScaleAspectFill;
-//    topImageView.image = [UIImage imageNamed:@"banner_pic"];
-    [topImageView sd_setImageWithURL:[NSURL URLWithString:_homePageData.daily_word_data.background_image] placeholderImage:[UIImage imageNamed:@"icon_默认"] options:SDWebImageAllowInvalidSSLCertificates];
-    [topView addSubview:topImageView];
-    [topImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(topView).insets(UIEdgeInsetsMake(0, 0, 0, 0));
-    }];
-    [self.myScollView addSubview:topView];
-    
-    [topView addSubview:self.dailyWord];
-    [topView addSubview:self.day];
-    [topView addSubview:self.week];
-    [topView addSubview:self.month];
-    [topView addSubview:self.shareBtn];
-    [topView addSubview:self.backBtn];
-    self.dailyWord.text = _homePageData.daily_word_data.name;
-    CGFloat titleLabelX = 15;
-    CGFloat titleLabelW = SCREENWIDTH - titleLabelX*2;
-    CGSize size = [self.dailyWord sizeThatFits:CGSizeMake(titleLabelW, MAXFLOAT)];
-    CGFloat titleLabelY = SCREENHEIGHT - size.height - 30;
-    self.dailyWord.frame = CGRectMake(titleLabelX, titleLabelY, titleLabelW, size.height);
-    self.day.text = [StorageUserInfromation dayFromDateString:_homePageData.daily_word_data.time];
-    self.month.text = [StorageUserInfromation monthFromDateString:_homePageData.daily_word_data.time];
-    self.week.text = [StorageUserInfromation weekFromDateString:_homePageData.daily_word_data.time];
-    [self.myTableView reloadData];
-    [_template_data removeAllObjects];
-    [_template_data addObjectsFromArray:_homePageData.template_data];
-    [ZTHttpTool sendGroupPostRequest:^{
-        [self fetchTableListData:_homePageData.template_data];
-    } success:^{
-        [MBProgressHUD hideHUD];
-        refreshflag = YES;
-        _homePageData.template_data = _template_data;
-        [self.myTableView reloadData];
-        if ([self.myTableView numberOfRowsInSection:0]) {
-            [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
-        }
-    } failure:^(NSArray *errorArray) {
-        [MBProgressHUD hideHUD];
-        refreshflag = YES;
-        _homePageData.template_data = _template_data;
-        [self.myTableView reloadData];
-        if ([self.myTableView numberOfRowsInSection:0]) {
-            [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
-        }
-
-    }];
-//    [self fetchTableListData];
 }
-- (void)fetchTableListData:(NSMutableArray<Template_dataArr *> *)template_data{
-    [_activity_Dict removeAllObjects];
-    for (Template_dataArr *dict in template_data) {
-        NSString *url = @"jujiahe/v1/activity/queryIndexActivityList";
-        if ([dict.type isEqualToString:@"chat"]) {
-            url = @"social/v1/public/linli";
-        }
-          NSDictionary *dicts = @{@"timestamp":[StorageUserInfromation dateTimeInterval],@"device":@"1",@"userId":[StorageUserInfromation storageUserInformation].userId,@"appTemplateId":dict.ids,@"apiv":@"1.0"};
-        [ZTHttpTool postWithUrl:url param:dicts success:^(id responseObj) {
-            NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-            NSDictionary * onceDict = [DictToJson dictionaryWithJsonString:str];
-            NSLog(@"%@",onceDict);
-
-            if ([onceDict[@"rcode"] integerValue] == 0) {
-                if ([dict.type isEqualToString:@"roll"]) {
-                    Activity_form *form = [Activity_form mj_objectWithKeyValues:str];
-                    if (form.form.count) {
-                        _activity_from_roll = form;
-                    }else{
-                        [_template_data removeObject:dict];
-                    }
-                }else if ([dict.type isEqualToString:@"list"]){
-                    Activity_form *form = [Activity_form mj_objectWithKeyValues:str];
-                    _activity_from_list = form;
-                    if(form.form.count){
-                        NSDictionary *dict2 = @{dict.goodsTypeId:form};
-                        [_activity_Dict addEntriesFromDictionary:dict2];
-                    }else{
-                        [_template_data removeObject:dict];
-                        
-                    }
-                  
-                }else if ([dict.type isEqualToString:@"chat"]){
-                    
-                    NeighborhoodForm *form = [NeighborhoodForm mj_objectWithKeyValues:str];
-                    if (form.form.count) {
-                        _neighborhoodFormArr = form;
-                    }else{
-                        [_template_data removeObject:dict];
-
-                    }
-                }
-                for (int i = 0; i< _homePageData.template_data.count;i++) {
-                    if ([_homePageData.template_data[i] isEqual:dict]) {
-                        NSIndexPath *index = [NSIndexPath indexPathForRow:i+1 inSection:0];
-                        if (index.row < [self.myTableView numberOfRowsInSection:0]) {
-                            [self.myTableView reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
-                        }
-                    }
-                }
-            }
-
-        } failure:^(NSError *error) {
-            XMJLog(@"%@",error)
-        }];
-    }
+- (void)headerBtnClick:(UIButton *)btn{
+    
+}
+- (void)moreClassificationbtnClick:(UIButton *)btn{
+    
 }
 #pragma mark --懒加载
 - (NSMutableArray *)imageArray {
@@ -522,8 +174,9 @@
 }
 - (void)setNav{
     self.isShowNav = YES;
-//    self.navView.backgroundColor = RGBA(0xffffff, 1);
-    UIImage *locationBtnImg = [UIImage imageNamed:@"home_icon_house"];
+    self.navView.backgroundColor = RGBA(0x00a7ff, 1);
+    self.lineView.hidden = YES;
+    UIImage *locationBtnImg = [UIImage imageNamed:@"home_icon_house2"];
     width = locationBtnImg.size.width + 30;
     ox = 0;
     if (is_iPhone_X) {
@@ -545,7 +198,7 @@
     _buildingNameLab.text = [StorageUserInfromation storageUserInformation].choseUnitName;
     _buildingNameLab.textAlignment = NSTextAlignmentLeft;
     _buildingNameLab.font = [UIFont systemFontOfSize:15.0];
-    _buildingNameLab.textColor = RGBA(0x303030, 1);
+    _buildingNameLab.textColor = RGBA(0xffffff, 1);
     [self.navView addSubview:_buildingNameLab];
     
     UIImage *img = [UIImage imageNamed:@"home_icon_calendar"];
@@ -560,27 +213,27 @@
     }
     
     _signBtn.userInteractionEnabled = YES;
-    [self.navView addSubview:_signBtn];
+//    [self.navView addSubview:_signBtn];
     [_signBtn addTarget:self action:@selector(signBtnClick) forControlEvents:UIControlEventTouchUpInside];
     
     
     
-//    UIImage *meassgeBtnImg = [UIImage imageNamed:@"home_icon_massage"];
-//    width = meassgeBtnImg.size.width;
-//    ox -= width;
-//
-//    _meassgeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    _meassgeBtn.backgroundColor = [UIColor clearColor];
-//    _meassgeBtn.frame = CGRectMake(ox, oy, width, height);
-//    if (meassgeBtnImg) {
-//        [_meassgeBtn setImage:meassgeBtnImg forState:UIControlStateNormal];
-//    }
-//
-//    _meassgeBtn.userInteractionEnabled = YES;
-//    _badgeView = [[JSBadgeView alloc] initWithParentView:_meassgeBtn alignment:JSBadgeViewAlignmentTopLeft];
-//    [self messageUnreadBadge];
-//    [self.navView addSubview:_meassgeBtn];
-//    [_meassgeBtn addTarget:self action:@selector(meassgeBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    UIImage *meassgeBtnImg = [UIImage imageNamed:@"home_icon_massage"];
+    width = meassgeBtnImg.size.width + 30;
+    ox = SCREENWIDTH - width;
+
+    _meassgeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _meassgeBtn.backgroundColor = [UIColor clearColor];
+    _meassgeBtn.frame = CGRectMake(ox, oy, width, height);
+    if (meassgeBtnImg) {
+        [_meassgeBtn setImage:meassgeBtnImg forState:UIControlStateNormal];
+    }
+
+    _meassgeBtn.userInteractionEnabled = YES;
+    _badgeView = [[JSBadgeView alloc] initWithParentView:_meassgeBtn alignment:JSBadgeViewAlignmentTopLeft];
+    [self messageUnreadBadge];
+    [self.navView addSubview:_meassgeBtn];
+    [_meassgeBtn addTarget:self action:@selector(meassgeBtnClick) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)messageUnreadBadge{
     StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
@@ -666,45 +319,31 @@
         
     }
 }
-- (void)setScrollView{
-    _myScollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-TABBARHEIGHT)];
-    _myScollView.contentSize = CGSizeMake(SCREENWIDTH, (SCREENHEIGHT*2 - TABBARHEIGHT));
-    _myScollView.pagingEnabled = YES;
-    _myScollView.delegate = self;
-    _myScollView.contentOffset = CGPointMake(0, SCREENHEIGHT-39);
-    [self.view addSubview:_myScollView];
-    _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, SCREENHEIGHT-TABBARHEIGHT)style:UITableViewStyleGrouped];
-
-    _myTableView.backgroundView = nil;
-    _myTableView.backgroundColor = [UIColor clearColor];
-    _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _myTableView.delegate = self;
-    _myTableView.dataSource = self;
-    [_myScollView addSubview:_myTableView];
-    [_myTableView registerNib:[UINib nibWithNibName:@"HomePageCell" bundle:nil] forCellReuseIdentifier:@"HomePageCell"];
-//    UIImageView *img = [[UIImageView alloc]init];
-//    img.image = [UIImage imageNamed:@"banner_pic"];
-//    [headerView addSubview:img];
-//    [img mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(headerView).insets(UIEdgeInsetsMake(0, 0, 0, 0));
-//    }];
-    
+- (UITableView *)myTableView{
+    if (!_myTableView) {
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREENWIDTH, SCREENHEIGHT-TABBARHEIGHT-NAVHEIGHT)style:UITableViewStyleGrouped];
+        _myTableView.backgroundView = nil;
+        _myTableView.backgroundColor = [UIColor clearColor];
+        _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _myTableView.delegate = self;
+        _myTableView.dataSource = self;
+        [_myTableView registerNib:[UINib nibWithNibName:@"HomePageCell" bundle:nil] forCellReuseIdentifier:@"HomePageCell"];
+    }
+    return _myTableView;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView == self.myScollView) {
-        CGFloat f = scrollView.contentOffset.y;
-        XMJLog(@"%0.2f",f);
-        if (f<=TABBARHEIGHT) {
-            self.tabBarController.tabBar.hidden = YES;
-            self.navView.hidden = YES;
-            self.myScollView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
-        }else{
-            self.tabBarController.tabBar.hidden = NO;
-            self.navView.hidden = NO;
-            self.myScollView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-TABBARHEIGHT);
-        }
-    }
+//    if (scrollView == self.myTableView) {
+//        CGFloat f = scrollView.contentOffset.y;
+//        XMJLog(@"%0.2f",f);
+//        if (f<=TABBARHEIGHT) {
+//            self.tabBarController.tabBar.hidden = YES;
+//            self.navView.hidden = YES;
+//        }else{
+//            self.tabBarController.tabBar.hidden = NO;
+//            self.navView.hidden = NO;
+//        }
+//    }
     
 }
 #pragma mark -tableView代理
@@ -716,127 +355,73 @@
         mycell = [[[NSBundle mainBundle] loadNibNamed:cell owner:self options:nil] lastObject];
     }
     mycell.selectionStyle = UITableViewCellSelectionStyleNone;
-    mycell.propertyView.hidden = YES;
-    mycell.dailySurpriseView.hidden = YES;
-    mycell.flowView.hidden = YES;
-    mycell.neighborhoodInteractionView.hidden = YES;
-    mycell.alertView.hidden = YES;
-    mycell.alertViewHeight.constant = 0;
+    
+    mycell.subViewOne.hidden = YES;
+    mycell.subViewTwo.hidden = YES;
+    mycell.subViewThree.hidden = YES;
+    mycell.followBtnOneWidth.constant = 40;
+    mycell.followBtnTwoWidth.constant = 40;
+    mycell.followBtnThreeWidth.constant = 40;
+    mycell.followBtnOne.layer.borderColor = RGBA(0x9c9c9c, 1).CGColor;
+    mycell.followBtnTwo.layer.borderColor = RGBA(0x9c9c9c, 1).CGColor;
+    mycell.followBtnThree.layer.borderColor = RGBA(0x9c9c9c, 1).CGColor;
 
+    if (indexPath.row == 0) {
+        mycell.subViewOne.hidden = NO;
+        mycell.imageOne.image = [UIImage imageNamed:@"home_btn_dongtai"];
+        mycell.titleOne.text =@"母亲节送什么礼物？";
+        NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+        paraStyle.lineSpacing = 6; //设置行间距
+        paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:mycell.titleOne.text attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0f],NSForegroundColorAttributeName:RGBA(0x303030, 1),NSParagraphStyleAttributeName:paraStyle}];
+        mycell.titleOne.attributedText = attrStr;
+    }else if (indexPath.row == 1){
+        mycell.subViewTwo.hidden = NO;
+        mycell.imageTwo.image = [UIImage imageNamed:@"home_btn_dongtai"];
+        mycell.titleTwo.text = @"错过了孩子成长的伴侣，才是人生最大的遗憾！";
+        NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+        paraStyle.lineSpacing = 6; //设置行间距
+        paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:mycell.titleTwo.text attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0f],NSForegroundColorAttributeName:RGBA(0x303030, 1),NSParagraphStyleAttributeName:paraStyle}];
+        mycell.titleTwo.attributedText = attrStr;
+    }else if (indexPath.row == 2){
+        mycell.subViewThree.hidden = NO;
+        mycell.titleThree.text = @"暑假将至，十条优质暑期旅游线路，赶紧带孩子上来一次温馨的家庭旅行！";
+        NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+        paraStyle.lineSpacing = 6; //设置行间距
+        paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:mycell.titleThree.text attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0f],NSForegroundColorAttributeName:RGBA(0x303030, 1),NSParagraphStyleAttributeName:paraStyle}];
+        mycell.titleThree.attributedText = attrStr;
+        mycell.imageOneInViewThree.image = [UIImage imageNamed:@"home_btn_dongtai"];
+        mycell.imageTwoInViewThree.image = [UIImage imageNamed:@"home_btn_dongtai"];
+        mycell.imageThreeInViewThree.image = [UIImage imageNamed:@"home_btn_dongtai"];
+        mycell.followBtnThreeWidth.constant = 55;
+        [mycell.followBtnThree setTitle:@"已关注" forState:UIControlStateNormal];
+        [mycell.followBtnThree setTitleColor:RGBA(0x00a7ff, 1) forState:UIControlStateNormal];
+        mycell.followBtnThree.layer.borderColor = RGBA(0x00a7ff, 1).CGColor;
+    }
+    
     return mycell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSInteger i = 0;
-    if (_homePageData) {
-        i++;
-        i = i +_homePageData.template_data.count;
-    }
-//    if (_activity_from_list) {
-//        i++;
-//    }
-//    if (_activity_from_roll) {
-//        i++;
-//    }
-    return i;
+   
+    return 3;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        CGFloat f = 0;
-        if (_homePageData) {
-            if (_homePageData.menu_data) {
-                f = 115;
-            }
-            if (_homePageData.broadcast_data) {
-                f += 35;
-            }
-        }
-        return f;
-    }else{
-        if (_homePageData) {
-            if (_homePageData.template_data) {
-                NSString * str = _homePageData.template_data[indexPath.row-1].type;
-                if ([str isEqualToString:@"list"]) {
-                    return 210;
-                }else if ([str isEqualToString:@"roll"]){
-                    return 190;
-                }else if ([str isEqualToString:@"chat"]){
-                    return 255;
-                }else{
-                    return 0;
-                }
-            }else{
-                return 0;
-            }
-        }else{
-            return 0;
-        }
+        return 80 + (SCREENWIDTH - 30)*(220/700.0);
+    }else if (indexPath.row == 1){
+        return 105;
     }
-    
-    return 50;
-    
+    CGFloat contentHeight = [StorageUserInfromation getStringSizeWith2:[NSString stringWithFormat:@"%@",@"暑假将至，十条优质暑期旅游线路，赶紧带孩子上来一次温馨的家庭旅行！"] withStringFont:16.0 withWidthOrHeight:SCREENWIDTH-30 lineSpacing:8.0].height;
+    if (contentHeight>46) {
+        contentHeight = 46;
+    }
+    return 110 + (SCREENWIDTH - 40)/3.0 *(150/220.0) - 40 + contentHeight;
 }
 
 
-- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-    [MobClick event:@"sylb_c" label:[NSString stringWithFormat:@"%ld",index]];
 
-    if (index == 0) {
-      
-        return;
-    }
-    Advertisement_dataArr *onceDict = _homePageData.advertisement_data.data[index-1];
-    if ([onceDict.url isEqualToString:@""]|(!onceDict.url)|[onceDict.url isEqualToString:@"<null>"]) {
-        return;
-    }
-}
-
-#pragma mark NewPagedFlowView Datasource
-- (NSInteger)numberOfPagesInFlowView:(NewPagedFlowView *)flowView {
-    
-    return _activity_from_roll.form.count;
-}
-
-- (UIView *)flowView:(NewPagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
-    
-    PGIndexBannerSubiew *bannerView = (PGIndexBannerSubiew *)[flowView dequeueReusableCell];
-    if (!bannerView) {
-        bannerView = [[PGIndexBannerSubiew alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH-40, 170)];
-        bannerView.layer.cornerRadius = 4;
-        bannerView.layer.masksToBounds = YES;
-    }
-    
-    if (_activity_from_roll.form.count>0) {
-        //在这里下载网络图片
-        [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:_activity_from_roll.form[index].icon] placeholderImage:[UIImage imageNamed:@""]options:SDWebImageAllowInvalidSSLCertificates];
-    }
-   
-//    bannerView.mainImageView.image = self.imageArray[index];
-    
-    return bannerView;
-}
-
-- (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(NewPagedFlowView *)flowView {
-    
-    NSLog(@"TestViewController 滚动到了第%ld页",pageNumber);
-}
-#pragma mark NewPagedFlowView Delegate
-- (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
-    
-    NSLog(@"点击了第%ld张图",(long)subIndex + 1);
-    [MobClick event:@"adsy_c" label:[NSString stringWithFormat:@"%@",_activity_from_roll.form[subIndex].goodsId]];
-    
-    if ([_activity_from_roll.form[subIndex].file_type isEqualToString:@"interface"]) {
-        if ([_activity_from_roll.form[subIndex].type isEqualToString:@"88888"]) {
-            self.tabBarController.selectedIndex = 2;
-           
-            return;
-        }
-    }
-    if ([JGIsBlankString isBlankString:_activity_from_roll.form[subIndex].url]) {
-        return;
-    }
-   
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

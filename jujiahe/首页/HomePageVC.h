@@ -9,16 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HomePageVC : BaseViewController<UIScrollViewDelegate>
-@property (nonatomic, strong) UILabel *dailyWord;
-
-@property (nonatomic, strong) UILabel *day;
-
-@property (nonatomic, strong) UILabel *month;
-
-@property (nonatomic, strong) UILabel *week;
-
-@property (nonatomic, strong) UIButton *shareBtn;
-
-@property (nonatomic, strong) UIButton *backBtn;
 - (void)fetchData2;
 @end
