@@ -171,6 +171,7 @@
 }
 - (void)headerSwitchView:(CGFloat)y{
     UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, y, SCREENWIDTH, 40)];
+    myView.backgroundColor = RGBA(0xffffff, 1);
     [_headContentView addSubview:myView];
     CGFloat gap = (SCREENWIDTH - 55*2)/3.0;
     CGFloat btnWidth = (SCREENWIDTH - gap*2)/2.0;
@@ -208,9 +209,7 @@
 - (void)flexBtnClick{
     Flexflag = !Flexflag;
     [self contentViewConfig];
-    NSString *nextAddressStr = [NSString stringWithFormat:@"%p", _showingVC];
-    CGFloat offsetY = [_offsetYDict[nextAddressStr] floatValue];
-    [self tableViewDidEndDecelerating:_showingVC.tableView offsetY:offsetY];
+
     if (chossBtn) {
         [self btnChoseClick:chossBtn];
     }else{
@@ -244,7 +243,7 @@
     
     BaseTableViewController *newVC = self.childViewControllers[tag];
     if (!newVC.view.superview) {
-        [self.view addSubview:newVC.view];
+//        [self.view addSubview:newVC.view];
         newVC.view.frame = CGRectMake(0, NAVHEIGHT + headerViewHeight, SCREENWIDTH, SCREENHEIGHT - (NAVHEIGHT + headerViewHeight));
     }
     
@@ -253,9 +252,19 @@
     XMJLog(@"offsetY11111 ==== %.0f",offsetY);
     newVC.tableView.contentOffset = CGPointMake(0, offsetY);
     
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, contentViewHeight)];
+    headerView.backgroundColor = [UIColor whiteColor];
+    
+    newVC.tableView.tableHeaderView = headerView;
+    
+    if (newVC.tableView.contentSize.height < kScreenHeight + contentViewHeight - 50 ) {
+        newVC.tableView.contentInset = UIEdgeInsetsMake(0, 0, kScreenHeight + contentViewHeight - 50 - newVC.tableView.contentSize.height, 0);
+    }
+    
     [self.view insertSubview:newVC.view belowSubview:self.navView];
     if (offsetY <= contentViewHeight - 50) {
         [newVC.view addSubview:_headContentView];
+        
         CGRect rect = _headContentView.frame;
         rect.origin.y = 0;
         _headContentView.frame = rect;
@@ -293,7 +302,12 @@
         self.headContentView.frame = rect;
     } else {
         if (![_headContentView.superview isEqual:tableView]) {
-            [tableView insertSubview:_headContentView belowSubview:self.navView];
+            for (UIView *view in tableView.subviews) {
+                if ([view isKindOfClass:[UIImageView class]]) {
+                    [tableView insertSubview:_headContentView aboveSubview:view];
+                    break;
+                }
+            }
         }
         CGRect rect = self.headContentView.frame;
         rect.origin.y = 0;
@@ -331,9 +345,10 @@
         [self.offsetYDict enumerateKeysAndObjectsUsingBlock:^(NSString  *key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             if ([key isEqualToString:addressStr]) {
                 _offsetYDict[key] = @(offsetY);
-            } else if ([_offsetYDict[key] floatValue] <= contentViewHeight - 50) {
-                _offsetYDict[key] = @(contentViewHeight - 50);
             }
+//            else if ([_offsetYDict[key] floatValue] <= contentViewHeight - 50) {
+//                _offsetYDict[key] = @(contentViewHeight - 50);
+//            }
         }];
     } else {
         if (offsetY <= contentViewHeight - 50) {
