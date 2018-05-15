@@ -106,7 +106,7 @@
     
     [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
 
-    UICollectionView *myCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, sectionY, SCREENWIDTH, 150)collectionViewLayout:layout];
+    UICollectionView *myCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, sectionY, SCREENWIDTH, 120)collectionViewLayout:layout];
     [myCollectionView registerNib:[UINib nibWithNibName:@"HappenCell" bundle:nil] forCellWithReuseIdentifier:@"HappenCell"];
     myCollectionView.backgroundColor = [UIColor whiteColor];
     myCollectionView.delegate = self;
@@ -117,7 +117,7 @@
     sectionY += 120 +10;
     
     for (int i = 0; i<_myArr.count; i++) {
-        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, sectionY + 2.5, 3, 20)];
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, sectionY + 2.5, 5, 20)];
         lineView.backgroundColor = RGBA(0x00a7ff, 1);
         [myScrollView addSubview:lineView];
         
@@ -126,7 +126,7 @@
         typeName.textColor = RGBA(0x303030, 1);
         typeName.text = _myArr[i].name;
         [myScrollView addSubview:typeName];
-        CGFloat yy = sectionY + 65;
+        CGFloat yy = sectionY + 45;
         for (int j = 0; j<_myArr[i].data.count/3 +(_myArr[i].data.count%3 ==0?0:1); j++) {
             for (int k = 0; k<3; k++) {
                 if (j*3 + (k+1)>_myArr[i].data.count) {
@@ -161,6 +161,7 @@
 - (void)btnClick:(UIButton *)btn{
     
 }
+
 - (void)btnChoseClick:(UIButton *)btn{
     CGFloat gap = (SCREENWIDTH - 55*2)/3.0;
     CGFloat btnWidth = (SCREENWIDTH - gap*2)/2.0;

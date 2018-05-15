@@ -31,7 +31,7 @@
     self.titleLabel.text = @"物业服务";
     self.navView.backgroundColor = RGBA(0xeeeeee, 1);
     [self.view addSubview:self.myScrollView];
-    [self rebuildView];
+//    [self rebuildView];
     [self fetchData];
     // Do any additional setup after loading the view.
 }
@@ -139,7 +139,7 @@
     sectionY += 35 + 20;
     
     for (int i = 0; i<_myArr.count; i++) {
-        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, sectionY + 30, 3, 15)];
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, sectionY + 30, 5, 15)];
         lineView.backgroundColor = RGBA(0x00a7ff, 1);
         [self.myScrollView addSubview:lineView];
         
@@ -188,9 +188,19 @@
             }
             yy = yy + 110;
         }
-        sectionY = sectionY + (_myArr[i].data.count/4 +(_myArr[i].data.count%4 ==0?0:1))*110 + 90;
+        sectionY = sectionY + (_myArr[i].data.count/4 +(_myArr[i].data.count%4 ==0?0:1))*110 + 20;
     }
+    
+    UIButton *moreBtn = [[UIButton alloc]initWithFrame:CGRectMake(15, sectionY + 20, SCREENWIDTH - 30, (SCREENWIDTH - 30)*(180/700.0))];
+    [moreBtn setBackgroundImage:[UIImage imageNamed:@"组-1"] forState:UIControlStateNormal];
+    [moreBtn addTarget:self action:@selector(moreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    sectionY += (SCREENWIDTH - 30)*(180/700.0) + 20 + 60;
+    [self.myScrollView addSubview:moreBtn];
+    
     self.myScrollView.contentSize = CGSizeMake(SCREENWIDTH, sectionY);
+}
+- (void)moreBtnClick:(UIButton *)btn{
+    
 }
 - (void)btnClick:(UIButton *)btn{
     

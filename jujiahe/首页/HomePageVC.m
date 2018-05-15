@@ -333,17 +333,24 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    if (scrollView == self.myTableView) {
-//        CGFloat f = scrollView.contentOffset.y;
-//        XMJLog(@"%0.2f",f);
-//        if (f<=TABBARHEIGHT) {
-//            self.tabBarController.tabBar.hidden = YES;
-//            self.navView.hidden = YES;
-//        }else{
-//            self.tabBarController.tabBar.hidden = NO;
-//            self.navView.hidden = NO;
-//        }
-//    }
+    if (scrollView == self.myTableView) {
+        CGFloat f = scrollView.contentOffset.y;
+        XMJLog(@"%0.2f",f);
+        if (f>= 40) {
+            self.navView.backgroundColor = RGBA(0xffffff, 1);
+            [self.locationBtn setImage:[UIImage imageNamed:@"home_icon_house"] forState:UIControlStateNormal];
+            self.buildingNameLab.textColor = RGBA(0x303030, 1);
+            
+            [self.meassgeBtn setImage:[UIImage imageNamed:@"home_icon_massage"] forState:UIControlStateNormal];
+
+        }else{
+            self.navView.backgroundColor = RGBA(0x00a7ff, 1);
+            [self.locationBtn setImage:[UIImage imageNamed:@"home_icon_house2"] forState:UIControlStateNormal];
+            self.buildingNameLab.textColor = RGBA(0xffffff, 1);
+            [self.meassgeBtn setImage:[UIImage imageNamed:@"home_icon_massage"] forState:UIControlStateNormal];
+
+        }
+    }
     
 }
 #pragma mark -tableView代理

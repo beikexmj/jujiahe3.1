@@ -30,18 +30,25 @@
     JSBadgeView *_badgeView3;
     JSBadgeView *_badgeView4;
     UIView *meaasgeFlagView;
-
+    UILabel *indentity;
+    UILabel *roomAddress;
+    UILabel *allStateNum;
+    JSBadgeView *_badgeView;
 
 }
 @property (nonatomic,strong)UITableView *myTableView;
 @property (nonatomic,strong)UIImageView *headerBackguandImg;
 @property (nonatomic,strong)UIImageView *headerIcon;
-@property (nonatomic,strong)UIButton *nicknameBtn;
-@property (nonatomic,strong)UIButton *rePayBtn;
-@property (nonatomic,strong)UIButton *reTakeOverBtn;
-@property (nonatomic,strong)UIButton *customerServiceBtn;
-@property (nonatomic,strong)UIButton *allOrderBtn;
+@property (nonatomic,strong)UIImageView *sexIcon;
+
+@property (nonatomic,strong)UILabel *nicknameLabel;
+@property (nonatomic,strong)UIButton *reSee;
+@property (nonatomic,strong)UIButton *areadySee;
+@property (nonatomic,strong)UIButton *areadyComplateBtn;
+@property (nonatomic,strong)UIButton *allStateBtn;
 @property (nonatomic,strong)UIButton *QRBtn;
+@property (nonatomic,strong)UIButton *meassgeBtn;
+@property (nonatomic,strong)UIButton *setBtn;
 @end
 
 @implementation MyPageVC
@@ -57,25 +64,19 @@
     _badgeView2.badgeText = [storage.countShipping isEqualToString:@"0"]?@"":storage.countShipping;
     _badgeView3.badgeText = [storage.countShippingSend isEqualToString:@"0"]?@"":storage.countShippingSend;
     
-    meaasgeFlagView  = [[UIView alloc]initWithFrame:CGRectMake(31, 12, 7, 7)];
-    meaasgeFlagView.layer.cornerRadius = 7/2.0;
-    meaasgeFlagView.backgroundColor =RGBA(0xfe4b20, 1);
-    [self.rightButton addSubview:meaasgeFlagView];
     
     _headerIcon.image = [UIImage imageNamed:@"默认头像60x60"];
     [self reSetHeaderIcon];
     if ([StorageUserInfromation storageUserInformation].sex.integerValue == 0) {
-        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
+//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
     }else if ([StorageUserInfromation storageUserInformation].sex.integerValue == 1){
-        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
+//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
 
     }else{
-        [_nicknameBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+//        [_nicknameBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
 
     }
-    [_nicknameBtn setTitle:[NSString stringWithFormat:@" %@",[StorageUserInfromation storageUserInformation].nickname?[StorageUserInfromation storageUserInformation].nickname:@""
-                            ] forState:UIControlStateNormal];
-//    _badgeView4 = [[JSBadgeView alloc] initWithParentView:self.rightButton alignment:JSBadgeViewAlignmentCenterRight];
+
     NSInteger num = storage.socialUnread.integerValue + storage.systemUnread.integerValue;
     if (num) {
         meaasgeFlagView.hidden = NO;
@@ -89,7 +90,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(replaceHeaderImg) name:@"ReplaceHeaderImg" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(replaceSex) name:@"ReplaceSex" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(modifyNickname) name:@"ModifyNickname" object:nil];
-
+    _headerIcon.image = [UIImage imageNamed:@"per_head"];
+    _sexIcon.image = [UIImage imageNamed:@"my_icon_female"];
+    _nicknameLabel.text = @"我是大傻瓜";
     // Do any additional setup after loading the view.
 }
 - (void)freshInterface{
@@ -104,14 +107,14 @@
     }else{
         meaasgeFlagView.hidden = YES;
     }
-    [_nicknameBtn setTitle:[NSString stringWithFormat:@" %@",[StorageUserInfromation storageUserInformation].nickname] forState:UIControlStateNormal];
+//    [_nicknameBtn setTitle:[NSString stringWithFormat:@" %@",[StorageUserInfromation storageUserInformation].nickname] forState:UIControlStateNormal];
     if ([StorageUserInfromation storageUserInformation].sex.integerValue == 0) {
-        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
+//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
     }else if ([StorageUserInfromation storageUserInformation].sex.integerValue == 1){
-        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
+//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
         
     }else{
-        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
+//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
 
     }
     [self reSetHeaderIcon];
@@ -215,10 +218,10 @@
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if([[StorageUserInfromation storageUserInformation].userId isEqualToString:@""]){
-        UIAlertView *alert =[ [UIAlertView alloc]initWithTitle:@"未登录" message:@"确定跳回登录界面？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alert show];
-    }
+//    if([[StorageUserInfromation storageUserInformation].userId isEqualToString:@""]){
+//        UIAlertView *alert =[ [UIAlertView alloc]initWithTitle:@"未登录" message:@"确定跳回登录界面？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//        [alert show];
+//    }
 }
 - (void)fetchData{
     [self freshInterface];
@@ -234,14 +237,46 @@
     }
 }
 - (void)setNav{
-    [self.view addSubview:self.headerBackguandImg];
     self.isShowNav = YES;
-    self.navView.backgroundColor = [UIColor clearColor];
     self.lineView.hidden = YES;
-    self.rightImgName = @"my_icon_massage";
-    [self.view addSubview:self.headerIcon];
-    [self.view addSubview:self.nicknameBtn];
-//    [self.view addSubview:self.QRBtn];
+    UIImage *img = [UIImage imageNamed:@"my_icon_set"];
+    width = img.size.width + 30;
+    ox = SCREENWIDTH - width;
+    
+    _setBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _setBtn.backgroundColor = [UIColor clearColor];
+    _setBtn.frame = CGRectMake(ox, oy, width, height);
+    if (img) {
+        [_setBtn setImage:img forState:UIControlStateNormal];
+    }
+    
+    _setBtn.userInteractionEnabled = YES;
+    [self.navView addSubview:_setBtn];
+    [_setBtn addTarget:self action:@selector(setBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.navView addSubview:_setBtn];
+    
+
+    UIImage *meassgeBtnImg = [UIImage imageNamed:@"my_icon_set"];
+    width = meassgeBtnImg.size.width;
+    ox -= width;
+
+    _meassgeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _meassgeBtn.backgroundColor = [UIColor clearColor];
+    _meassgeBtn.frame = CGRectMake(ox, oy, width, height);
+    if (meassgeBtnImg) {
+        [_meassgeBtn setImage:meassgeBtnImg forState:UIControlStateNormal];
+    }
+
+    _meassgeBtn.userInteractionEnabled = YES;
+    _badgeView = [[JSBadgeView alloc] initWithParentView:_meassgeBtn alignment:JSBadgeViewAlignmentTopLeft];
+    [self.navView addSubview:_meassgeBtn];
+    [_meassgeBtn addTarget:self action:@selector(meassgeBtnClick) forControlEvents:UIControlEventTouchUpInside];
+}
+- (void)setBtnClick{
+    
+}
+- (void)meassgeBtnClick{
+    
 }
 - (void)rightButtonClick:(UIButton *)button{
     [MobClick event:@"pcxx_c"];
@@ -288,7 +323,7 @@
 }
 - (UITableView *)myTableView{
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT + 130 - 64, SCREENWIDTH, SCREENHEIGHT - 130 - TABBARHEIGHT) style:UITableViewStylePlain];
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREENWIDTH, SCREENHEIGHT - NAVHEIGHT - TABBARHEIGHT) style:UITableViewStylePlain];
         _myTableView.backgroundColor = [UIColor clearColor];
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
@@ -306,31 +341,113 @@
     [refresh endRefreshing];
 }
 - (void)addTableHeaderView{
-    UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 130)];
-    myView.backgroundColor = [UIColor clearColor];
     
-    UIImageView *backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 120)];
-    backImageView.image = [UIImage imageNamed:@"白色凹形背景"];
-    [myView addSubview:backImageView];
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 0)];
+    CGFloat Y = 0;
+    [headerView addSubview:self.headerIcon];
+    [headerView addSubview:self.sexIcon];
+    [headerView addSubview:self.nicknameLabel];
+    UIButton *infoDetailBtn = [[UIButton alloc]initWithFrame:CGRectMake(105, 15, SCREENWIDTH - 120, 75)];
+    [infoDetailBtn setImage:[UIImage imageNamed:@"icon_more2"] forState:UIControlStateNormal];
+    infoDetailBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [headerView addSubview:infoDetailBtn];
+    [infoDetailBtn addTarget:self action:@selector(infoDetailBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+
+    Y += 15 + 75 + 15;
     
-    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 120, SCREENWIDTH, 10)];
-    lineView.backgroundColor = RGBA(0xeeeeee, 1);
-    [myView addSubview:lineView];
+    UIView *midleView = [[UIView alloc]initWithFrame:CGRectMake(20, Y, SCREENWIDTH - 40, 75)];
+    midleView.backgroundColor = RGBA(0x00a7ff, 1);
+    midleView.layer.cornerRadius = 5;
     
-    UIView *lineView2 = [[UIView alloc]initWithFrame:CGRectMake(3*(SCREENWIDTH - 15)/4.0, 45, 1, 50)];
-    lineView2.backgroundColor = RGBA(0xeeeeee, 1);
-    [myView addSubview:lineView2];
+    UILabel *rightNowRoom = [[UILabel alloc]initWithFrame:CGRectMake(15, 15, 120, 15)];
+    rightNowRoom.textColor = RGBA(0xffffff, 1);
+    rightNowRoom.font = [UIFont systemFontOfSize:14.0];
+    rightNowRoom.text = @"当前房屋";
+    [midleView addSubview:rightNowRoom];
+    
+    indentity = [[UILabel alloc]initWithFrame:CGRectMake(15, 45, 40, 15)];
+    indentity.textColor = RGBA(0xffffff, 1);
+    indentity.font = [UIFont systemFontOfSize:16.0];
+    indentity.text = @"业主";
+    [midleView addSubview:indentity];
+    
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(55, 42.5, 1, 20)];
+    lineView.backgroundColor = RGBA(0xffffff, 1);
+    [midleView addSubview:lineView];
+    
+    roomAddress = [[UILabel alloc]initWithFrame:CGRectMake(65, 45, SCREENWIDTH - 135 - 40, 15)];
+    roomAddress.textColor = RGBA(0xffffff, 1);
+    roomAddress.font = [UIFont systemFontOfSize:16.0];
+    roomAddress.text = @"重庆复地新成就1期A栋201";
+    [midleView addSubview:roomAddress];
+    
+    UIButton *roomSwitchBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREENWIDTH - 40 - 50, 5, 50, 35)];
+    [roomSwitchBtn setImage:[UIImage imageNamed:@"my_icon_change"] forState:UIControlStateNormal];
+    [roomSwitchBtn addTarget:self action:@selector(roomSwitchBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [midleView addSubview:roomSwitchBtn];
+    [headerView addSubview:midleView];
+    
+    Y += 75 + 15;
+    
+    UIView *lineView2 = [[UIView alloc]initWithFrame:CGRectMake(0, Y, 5, 15)];
+    lineView2.backgroundColor  = RGBA(0x00a7ff, 1);
+    [headerView addSubview:lineView2];
+    UILabel *markTitle = [[UILabel alloc]initWithFrame:CGRectMake(20, Y, 150, 15)];
+    markTitle.textColor = RGBA(0x303030, 1);
+    markTitle.font = [UIFont systemFontOfSize:16.0];
+    markTitle.text = @"我的物业服务";
+    [headerView  addSubview:markTitle];
+    
+    Y += 15;
+    
+    UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, Y, SCREENWIDTH, 100)];
+    [headerView addSubview:myView];
+    UIView *lineView3 = [[UIView alloc]initWithFrame:CGRectMake(3*(SCREENWIDTH - 15)/4.0, 28, 1, 50)];
+    lineView3.backgroundColor = RGBA(0xeeeeee, 1);
+    [myView addSubview:lineView3];
 
-    [myView addSubview:self.rePayBtn];
-    [myView addSubview:self.reTakeOverBtn];
-    [myView addSubview:self.customerServiceBtn];
-    [myView addSubview:self.allOrderBtn];
+    [myView addSubview:self.reSee];
+    [myView addSubview:self.areadySee];
+    [myView addSubview:self.areadyComplateBtn];
+    [myView addSubview:self.allStateBtn];
+    
+    allStateNum = [[UILabel alloc]initWithFrame:CGRectMake(3*(SCREENWIDTH - 15)/4.0, 25, (SCREENWIDTH - 15)/4.0 +15, 30)];
+    allStateNum.textColor = RGBA(0x303030, 1);
+    allStateNum.font = [UIFont systemFontOfSize:17.0];
+    allStateNum.textAlignment = NSTextAlignmentCenter;
+    allStateNum.text = @"30项";
+    [myView addSubview:allStateNum];
+    
+    UILabel *allStateLabel = [[UILabel alloc]initWithFrame:CGRectMake(3*(SCREENWIDTH - 15)/4.0, 55, (SCREENWIDTH - 15)/4.0 +15, 30)];
+    allStateLabel.textColor = RGBA(0x606060, 1);
+    allStateLabel.font = [UIFont systemFontOfSize:13.0];
+    allStateLabel.textAlignment = NSTextAlignmentCenter;
+    allStateLabel.text = @"全部";
+    [myView addSubview:allStateLabel];
+    
+    _badgeView1 = [[JSBadgeView alloc] initWithParentView:_reSee alignment:JSBadgeViewAlignmentTopRight];
+    _badgeView2 = [[JSBadgeView alloc] initWithParentView:_areadySee alignment:JSBadgeViewAlignmentTopRight];
+    _badgeView3 = [[JSBadgeView alloc] initWithParentView:_areadyComplateBtn alignment:JSBadgeViewAlignmentTopRight];
 
-    _badgeView1 = [[JSBadgeView alloc] initWithParentView:_rePayBtn alignment:JSBadgeViewAlignmentTopRight];
-    _badgeView2 = [[JSBadgeView alloc] initWithParentView:_reTakeOverBtn alignment:JSBadgeViewAlignmentTopRight];
-    _badgeView3 = [[JSBadgeView alloc] initWithParentView:_customerServiceBtn alignment:JSBadgeViewAlignmentTopRight];
-
-    _myTableView.tableHeaderView = myView;
+    Y += 100;
+    
+    UIView *lineView4 = [[UIView alloc]initWithFrame:CGRectMake(0, Y, SCREENWIDTH, 10)];
+    lineView4.backgroundColor = RGBA(0xeaeef1, 1);
+    [headerView addSubview:lineView4];
+    
+    Y += 10;
+    
+    CGRect frame = headerView.frame;
+    frame.size.height = Y;
+    headerView.frame = frame;
+    
+    _myTableView.tableHeaderView = headerView;
+}
+- (void)infoDetailBtnClick:(UIButton*)btn{
+    
+}
+- (void)roomSwitchBtnClick:(UIButton *)btn{
+    
 }
 - (UIImageView *)headerBackguandImg{
     if (!_headerBackguandImg) {
@@ -341,8 +458,8 @@
 }
 - (UIImageView *)headerIcon{
     if (!_headerIcon) {
-        _headerIcon = [[UIImageView alloc]initWithFrame:CGRectMake(12, NAVHEIGHT, 60, 60)];
-        _headerIcon.layer.cornerRadius = 30;
+        _headerIcon = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 75, 75)];
+        _headerIcon.layer.cornerRadius = 37.5;
         _headerIcon.layer.masksToBounds = YES;
         _headerIcon.userInteractionEnabled = YES;
         _headerIcon.contentMode = UIViewContentModeScaleAspectFill;
@@ -351,70 +468,75 @@
     }
     return _headerIcon;
 }
-- (UIButton *)nicknameBtn{
-    if (!_nicknameBtn) {
-        _nicknameBtn = [[UIButton alloc]initWithFrame:CGRectMake(80, NAVHEIGHT + 30 - 15, SCREENWIDTH - 80, 30)];
-        [_nicknameBtn setTitleColor:RGBA(0xffffff, 1) forState:UIControlStateNormal];
-        [_nicknameBtn.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
-        _nicknameBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+- (UIImageView *)sexIcon{
+    if (!_sexIcon) {
+        _sexIcon = [[UIImageView alloc]initWithFrame:CGRectMake(90 - 20, 90 - 20, 20, 20)];
+        _sexIcon.layer.cornerRadius = 10;
+        _sexIcon.layer.borderColor = RGBA(0xffffff, 1).CGColor;
+        _sexIcon.layer.borderWidth = 2;
+        _sexIcon.layer.masksToBounds = YES;
+        _sexIcon.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    return _sexIcon;
+}
+- (UILabel *)nicknameLabel{
+    if (!_nicknameLabel) {
+        _nicknameLabel = [[UILabel alloc]initWithFrame:CGRectMake(105, 15 + 37.5 - 15, SCREENWIDTH - 120, 30)];
+        _nicknameLabel.textColor = RGBA(0x303030, 1);
+        [_nicknameLabel setFont:[UIFont systemFontOfSize:16.0]];
 
     }
-    return _nicknameBtn;
+    return _nicknameLabel;
 }
-- (UIButton *)rePayBtn{
-    if (!_rePayBtn) {
-        _rePayBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 20, (SCREENWIDTH - 15)/4.0, 100)];
-        [_rePayBtn setImage:[UIImage imageNamed:@"my_icon_待付款"] forState:UIControlStateNormal];
-        [_rePayBtn setTitle:@"待付款" forState:UIControlStateNormal];
-        [_rePayBtn setTitleColor:RGBA(0x606060, 1) forState:UIControlStateNormal];
-        [_rePayBtn.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
-        _rePayBtn.tag = 10;
-        [_rePayBtn verticalImageAndTitle:5.0];
-        [_rePayBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+- (UIButton *)reSee{
+    if (!_reSee) {
+        _reSee = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, (SCREENWIDTH - 15)/4.0, 100)];
+        [_reSee setImage:[UIImage imageNamed:@"my_icon_pro1"] forState:UIControlStateNormal];
+        [_reSee setTitle:@"待查看" forState:UIControlStateNormal];
+        [_reSee setTitleColor:RGBA(0x606060, 1) forState:UIControlStateNormal];
+        [_reSee.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
+        _reSee.tag = 10;
+        [_reSee verticalImageAndTitle:10.0];
+        [_reSee addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _rePayBtn;
+    return _reSee;
 }
-- (UIButton *)reTakeOverBtn{
-    if (!_reTakeOverBtn) {
-        _reTakeOverBtn = [[UIButton alloc]initWithFrame:CGRectMake((SCREENWIDTH - 15)/4.0, 20, (SCREENWIDTH - 15)/4.0, 100)];
-        [_reTakeOverBtn setImage:[UIImage imageNamed:@"my_icon_待收货"] forState:UIControlStateNormal];
-        [_reTakeOverBtn setTitle:@"待发货" forState:UIControlStateNormal];
-        [_reTakeOverBtn setTitleColor:RGBA(0x606060, 1) forState:UIControlStateNormal];
-        [_reTakeOverBtn.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
-        _reTakeOverBtn.tag = 20;
-        [_reTakeOverBtn verticalImageAndTitle:5.0];
-        [_reTakeOverBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+- (UIButton *)areadySee{
+    if (!_areadySee) {
+        _areadySee = [[UIButton alloc]initWithFrame:CGRectMake((SCREENWIDTH - 15)/4.0, 0, (SCREENWIDTH - 15)/4.0, 100)];
+        [_areadySee setImage:[UIImage imageNamed:@"my_icon_pro2"] forState:UIControlStateNormal];
+        [_areadySee setTitle:@"已查看" forState:UIControlStateNormal];
+        [_areadySee setTitleColor:RGBA(0x606060, 1) forState:UIControlStateNormal];
+        [_areadySee.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
+        _areadySee.tag = 20;
+        [_areadySee verticalImageAndTitle:10.0];
+        [_areadySee addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         
     }
-    return _reTakeOverBtn;
+    return _areadySee;
 }
-- (UIButton *)customerServiceBtn{
-    if (!_customerServiceBtn) {
-        _customerServiceBtn = [[UIButton alloc]initWithFrame:CGRectMake(2*(SCREENWIDTH - 15)/4.0, 20, (SCREENWIDTH - 15)/4.0, 100)];
-        [_customerServiceBtn setImage:[UIImage imageNamed:@"my_icon_已发货"] forState:UIControlStateNormal];
-        [_customerServiceBtn setTitle:@"已发货" forState:UIControlStateNormal];
-        [_customerServiceBtn setTitleColor:RGBA(0x606060, 1) forState:UIControlStateNormal];
-        [_customerServiceBtn.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
-        _customerServiceBtn.tag = 30;
-        [_customerServiceBtn verticalImageAndTitle:5.0];
-        [_customerServiceBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+- (UIButton *)areadyComplateBtn{
+    if (!_areadyComplateBtn) {
+        _areadyComplateBtn = [[UIButton alloc]initWithFrame:CGRectMake(2*(SCREENWIDTH - 15)/4.0, 0, (SCREENWIDTH - 15)/4.0, 100)];
+        [_areadyComplateBtn setImage:[UIImage imageNamed:@"my_icon_pro3"] forState:UIControlStateNormal];
+        [_areadyComplateBtn setTitle:@"已完成" forState:UIControlStateNormal];
+        [_areadyComplateBtn setTitleColor:RGBA(0x606060, 1) forState:UIControlStateNormal];
+        [_areadyComplateBtn.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
+        _areadyComplateBtn.tag = 30;
+        [_areadyComplateBtn verticalImageAndTitle:10.0];
+        [_areadyComplateBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         
     }
-    return _customerServiceBtn;
+    return _areadyComplateBtn;
 }
-- (UIButton *)allOrderBtn{
-    if (!_allOrderBtn) {
-        _allOrderBtn = [[UIButton alloc]initWithFrame:CGRectMake(3*(SCREENWIDTH - 15)/4.0, 20, (SCREENWIDTH - 15)/4.0 +15, 100)];
-        [_allOrderBtn setImage:[UIImage imageNamed:@"my_icon_all"] forState:UIControlStateNormal];
-        [_allOrderBtn setTitle:@"全部订单" forState:UIControlStateNormal];
-        [_allOrderBtn setTitleColor:RGBA(0x606060, 1) forState:UIControlStateNormal];
-        [_allOrderBtn.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
-        _allOrderBtn.tag = 40;
-        [_allOrderBtn verticalImageAndTitle:5.0];
-        [_allOrderBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+- (UIButton *)allStateBtn{
+    if (!_allStateBtn) {
+        _allStateBtn = [[UIButton alloc]initWithFrame:CGRectMake(3*(SCREENWIDTH - 15)/4.0, 0, (SCREENWIDTH - 15)/4.0 +15, 100)];
+        _allStateBtn.tag = 40;
+        [_allStateBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         
     }
-    return _allOrderBtn;
+    return _allStateBtn;
 }
 - (void)headerIconTapClick:(UIGestureRecognizer *)tap{
     [MobClick event:@"pczl_c"];
@@ -466,69 +588,54 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:identifierCell owner:self options:nil] lastObject];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.icon.image = [UIImage imageNamed:iconArr[indexPath.row]];
-    cell.name.text = nameArr[indexPath.row];
+    if (indexPath.section == 0) {
+        cell.icon.image = [UIImage imageNamed:@[@"my_icon_topic",@"my_icon_circle",@"my_icon_activity"][indexPath.row]] ;
+        cell.name.text = @[@"我的话题",@"我的圈子",@"我的活动"][indexPath.row];
+    }else if (indexPath.section == 1){
+        cell.icon.image =  [UIImage imageNamed:@[@"my_icon_data",@"my_icon_list"][indexPath.row]];
+        cell.name.text = @[@"我的资料",@"账单查询"][indexPath.row];
+    }else if (indexPath.section == 2){
+        cell.icon.image =  [UIImage imageNamed:@[@"my_icon_us",@"my_icon_opinion",@"my_icon_set2"][indexPath.row]];
+        cell.name.text = @[@"关于居家合",@"意见反馈",@"设置"][indexPath.row];
+    }else if (indexPath.section == 3){
+        cell.icon.image =  [UIImage imageNamed:@"my_icon_phone"];
+        cell.name.text = @"服务热线";
+    }
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (section == 0) {
+        return 3;
+    }else if (section == 1){
+        return 2;
+    }else if (section == 2){
+        return 3;
+    }
+    return 1;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    switch (indexPath.row) {
-        case 0:
-            {
-                [MobClick event:@"pcjf_c"];
-                
-            }
-            break;
-        case 1:
-        {
-                [MobClick event:@"pcqb_c"];
-                WallentVC *page = [[WallentVC alloc]init];
-                [self.navigationController pushViewController:page animated:YES];
-            }
-            break;
-//        case 2:
-//            {
-//                 [MobClick event:@"pcyq_c"];
-//                InvitedRegistrationViewController *page = [[InvitedRegistrationViewController alloc]init];
-//                [self.navigationController pushViewController:page animated:YES];
-//            }
-//            break;
-        case 2:
-            {
-                [MobClick event:@"pcft_c"];
-            }
-            break;
-        case 3:
-            {
-                [MobClick event:@"pcsz_c"];
-                SetVC *page = [[SetVC alloc]init];
-                [self.navigationController pushViewController:page animated:YES];
-            }
-            break;
-            
-        default:
-            break;
-    }
+  
 }
 - (void)replaceHeaderImg{
     [self reSetHeaderIcon];
 }
 - (void)modifyNickname{
-    [_nicknameBtn setTitle:[NSString stringWithFormat:@" %@",[StorageUserInfromation storageUserInformation].nickname?[StorageUserInfromation storageUserInformation].nickname:@""] forState:UIControlStateNormal];
+//    [_nicknameBtn setTitle:[NSString stringWithFormat:@" %@",[StorageUserInfromation storageUserInformation].nickname?[StorageUserInfromation storageUserInformation].nickname:@""] forState:UIControlStateNormal];
 }
 - (void)replaceSex{
     if ([StorageUserInfromation storageUserInformation].sex.integerValue == 0) {
-        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
+//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
     }else if ([StorageUserInfromation storageUserInformation].sex.integerValue == 1){
-        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
+//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
         
     }else{
-        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
+//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
         
     }
 }
