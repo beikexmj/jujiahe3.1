@@ -238,6 +238,7 @@
 }
 - (void)setNav{
     self.isShowNav = YES;
+    self.navView.backgroundColor = RGBA(0xffffff, 1);
     self.lineView.hidden = YES;
     UIImage *img = [UIImage imageNamed:@"my_icon_set"];
     width = img.size.width + 30;
@@ -324,7 +325,7 @@
 - (UITableView *)myTableView{
     if (!_myTableView) {
         _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREENWIDTH, SCREENHEIGHT - NAVHEIGHT - TABBARHEIGHT) style:UITableViewStylePlain];
-        _myTableView.backgroundColor = [UIColor clearColor];
+        _myTableView.backgroundColor = RGBA(0xffffff, 1);
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
         _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -343,6 +344,7 @@
 - (void)addTableHeaderView{
     
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 0)];
+    headerView.backgroundColor = RGBA(0xffffff, 1);
     CGFloat Y = 0;
     [headerView addSubview:self.headerIcon];
     [headerView addSubview:self.sexIcon];
@@ -576,10 +578,15 @@
 
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    CGFloat f = scrollView.contentOffset.y;
-    if (f <=0) {
-        _headerBackguandImg.frame = CGRectMake(0, 0, SCREENWIDTH, 150 - f);
+    if (scrollView == self.myTableView) {
+        CGFloat f = scrollView.contentOffset.y;
+        if (f >= 15) {
+            self.titleLabel.text = @"我的";
+        }else{
+            self.titleLabel.text = @"";
+        }
     }
+    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifierCell = @"MyPageCell";
@@ -622,6 +629,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
   
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 10;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 10)];
+    myView.backgroundColor = RGBA(0xeaeef1, 1);
+    return myView;
+}
 - (void)replaceHeaderImg{
     [self reSetHeaderIcon];
 }
@@ -639,6 +654,7 @@
         
     }
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

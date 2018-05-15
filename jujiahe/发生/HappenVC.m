@@ -117,12 +117,12 @@
     sectionY += 120 +10;
     
     for (int i = 0; i<_myArr.count; i++) {
-        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, sectionY + 2.5, 5, 20)];
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, sectionY + 5, 5, 15)];
         lineView.backgroundColor = RGBA(0x00a7ff, 1);
         [myScrollView addSubview:lineView];
         
-        UILabel *typeName = [[UILabel alloc]initWithFrame:CGRectMake(30, sectionY, 150, 25)];
-        typeName.font = [UIFont systemFontOfSize:15.0];
+        UILabel *typeName = [[UILabel alloc]initWithFrame:CGRectMake(20, sectionY, 150, 25)];
+        typeName.font = [UIFont systemFontOfSize:16.0];
         typeName.textColor = RGBA(0x303030, 1);
         typeName.text = _myArr[i].name;
         [myScrollView addSubview:typeName];

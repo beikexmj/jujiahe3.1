@@ -23,6 +23,7 @@
 #import <MOBFoundation/MOBFoundation.h>
 #import "YYText.h"
 #import "NSString+URL.h"
+#import "TopicVC.h"
 @interface HomePageVC ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
 {
     CGFloat ox;
@@ -428,7 +429,10 @@
 }
 
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TopicVC *page = [[TopicVC alloc]init];
+    [self.navigationController pushViewController:page animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

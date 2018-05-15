@@ -405,6 +405,12 @@
 		7C5AD33720A9A32900158D38 /* CommunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C5AD33520A9A32900158D38 /* CommunityCell.xib */; };
 		7C5AD33D20A9B0C200158D38 /* HappenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5AD33B20A9B0C200158D38 /* HappenCell.m */; };
 		7C5AD33E20A9B0C200158D38 /* HappenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C5AD33C20A9B0C200158D38 /* HappenCell.xib */; };
+		7C5DC69D20AAB6D100981E95 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5DC69820AAB6D000981E95 /* BaseTableViewController.m */; };
+		7C5DC69E20AAB6D100981E95 /* ColorUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5DC69A20AAB6D000981E95 /* ColorUtility.m */; };
+		7C5DC69F20AAB6D100981E95 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5DC69C20AAB6D000981E95 /* HMSegmentedControl.m */; };
+		7C5DC6A520AAB79000981E95 /* LeftTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5DC6A220AAB79000981E95 /* LeftTableViewController.m */; };
+		7C5DC6A620AAB79000981E95 /* RightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5DC6A420AAB79000981E95 /* RightTableViewController.m */; };
+		7C5DC6A920AAB80000981E95 /* TopicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5DC6A820AAB80000981E95 /* TopicVC.m */; };
 		7C6CA6C020A3D71A0073DD3F /* SatisfactionSurveyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6CA6BF20A3D71A0073DD3F /* SatisfactionSurveyVC.m */; };
 		7C6CA6C420A3EB320073DD3F /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6CA6C320A3EB320073DD3F /* AXRatingView.m */; };
 		7C6CA6CA20A42AD20073DD3F /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6CA6C920A42AD20073DD3F /* libxml2.2.tbd */; };
@@ -1257,6 +1263,18 @@
 		7C5AD33A20A9B0C200158D38 /* HappenCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HappenCell.h; sourceTree = "<group>"; };
 		7C5AD33B20A9B0C200158D38 /* HappenCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappenCell.m; sourceTree = "<group>"; };
 		7C5AD33C20A9B0C200158D38 /* HappenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HappenCell.xib; sourceTree = "<group>"; };
+		7C5DC69720AAB6D000981E95 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		7C5DC69820AAB6D000981E95 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		7C5DC69920AAB6D000981E95 /* ColorUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorUtility.h; sourceTree = "<group>"; };
+		7C5DC69A20AAB6D000981E95 /* ColorUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorUtility.m; sourceTree = "<group>"; };
+		7C5DC69B20AAB6D000981E95 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
+		7C5DC69C20AAB6D000981E95 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
+		7C5DC6A120AAB79000981E95 /* LeftTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableViewController.h; sourceTree = "<group>"; };
+		7C5DC6A220AAB79000981E95 /* LeftTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewController.m; sourceTree = "<group>"; };
+		7C5DC6A320AAB79000981E95 /* RightTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightTableViewController.h; sourceTree = "<group>"; };
+		7C5DC6A420AAB79000981E95 /* RightTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightTableViewController.m; sourceTree = "<group>"; };
+		7C5DC6A720AAB80000981E95 /* TopicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicVC.h; sourceTree = "<group>"; };
+		7C5DC6A820AAB80000981E95 /* TopicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicVC.m; sourceTree = "<group>"; };
 		7C6CA6BE20A3D71A0073DD3F /* SatisfactionSurveyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SatisfactionSurveyVC.h; sourceTree = "<group>"; };
 		7C6CA6BF20A3D71A0073DD3F /* SatisfactionSurveyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SatisfactionSurveyVC.m; sourceTree = "<group>"; };
 		7C6CA6C220A3EB320073DD3F /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
@@ -1478,6 +1496,7 @@
 		7C110926209FECEC0012040E /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				7C5DC69620AAB6D000981E95 /* HMSegmentedControl */,
 				7C476EBC20A592DF005ECE03 /* UIbutton扩展 */,
 				7C476EA520A59266005ECE03 /* SGQRCode */,
 				7C476E9E20A591D5005ECE03 /* HooDatePicker */,
@@ -2902,6 +2921,7 @@
 			children = (
 				7C476D8120A58966005ECE03 /* HomePageVC.h */,
 				7C476D8220A58966005ECE03 /* HomePageVC.m */,
+				7C5DC6A020AAB79000981E95 /* 话题 */,
 				7C476D8320A58966005ECE03 /* model */,
 				7C476D8620A58966005ECE03 /* view */,
 				7C476D8F20A58966005ECE03 /* 呼叫物管 */,
@@ -3536,6 +3556,32 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		7C5DC69620AAB6D000981E95 /* HMSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				7C5DC69720AAB6D000981E95 /* BaseTableViewController.h */,
+				7C5DC69820AAB6D000981E95 /* BaseTableViewController.m */,
+				7C5DC69920AAB6D000981E95 /* ColorUtility.h */,
+				7C5DC69A20AAB6D000981E95 /* ColorUtility.m */,
+				7C5DC69B20AAB6D000981E95 /* HMSegmentedControl.h */,
+				7C5DC69C20AAB6D000981E95 /* HMSegmentedControl.m */,
+			);
+			path = HMSegmentedControl;
+			sourceTree = "<group>";
+		};
+		7C5DC6A020AAB79000981E95 /* 话题 */ = {
+			isa = PBXGroup;
+			children = (
+				7C5DC6A120AAB79000981E95 /* LeftTableViewController.h */,
+				7C5DC6A220AAB79000981E95 /* LeftTableViewController.m */,
+				7C5DC6A320AAB79000981E95 /* RightTableViewController.h */,
+				7C5DC6A420AAB79000981E95 /* RightTableViewController.m */,
+				7C5DC6A720AAB80000981E95 /* TopicVC.h */,
+				7C5DC6A820AAB80000981E95 /* TopicVC.m */,
+			);
+			path = "话题";
+			sourceTree = "<group>";
+		};
 		7C6CA6BA20A3D6A70073DD3F /* 满意度调查 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4050,6 +4096,7 @@
 				7C476E8520A58DD5005ECE03 /* TicketCenterTableViewCell.m in Sources */,
 				7C476E5E20A58DD5005ECE03 /* DeliveryAddressDataModel.m in Sources */,
 				7C110A7B209FF0C00012040E /* YYTextLayout.m in Sources */,
+				7C5DC6A520AAB79000981E95 /* LeftTableViewController.m in Sources */,
 				7C110A82209FF0C00012040E /* YYTextRubyAnnotation.m in Sources */,
 				7C76A70020A2E2040029E310 /* YZDisplayViewController.m in Sources */,
 				7C1109A3209FEEC70012040E /* NSString+PinYin.m in Sources */,
@@ -4068,6 +4115,7 @@
 				7C476E8B20A58DD5005ECE03 /* IntegralDetailTableViewCell.m in Sources */,
 				7C110961209FECFB0012040E /* HStringData.m in Sources */,
 				7C1109A6209FEEC70012040E /* UIButton+Extension.m in Sources */,
+				7C5DC6A620AAB79000981E95 /* RightTableViewController.m in Sources */,
 				7C3CFCC820A1CA150084FF2A /* TAAbstractDotView.m in Sources */,
 				7C76A6EC20A2A1D90029E310 /* PortalHomePageDetailViewController.m in Sources */,
 				7C476EBB20A59267005ECE03 /* SGQRCodeScanningView.m in Sources */,
@@ -4202,6 +4250,7 @@
 				7C3CFCAF20A1C9BF0084FF2A /* FSActionSheetConfig.m in Sources */,
 				7C476EA420A591D5005ECE03 /* NSDate+HooDatePicker.m in Sources */,
 				7C3CFC2A20A172720084FF2A /* HJImageScrollView.m in Sources */,
+				7C5DC69E20AAB6D100981E95 /* ColorUtility.m in Sources */,
 				7C1109A2209FEEC70012040E /* NSObject+Extension.m in Sources */,
 				7C476EB920A59267005ECE03 /* SGQRCodeHelperTool.m in Sources */,
 				7C476E4F20A58DD5005ECE03 /* MyPageVC.m in Sources */,
@@ -4209,6 +4258,7 @@
 				7C476EB720A59267005ECE03 /* SGQRCodeAlbumManager.m in Sources */,
 				7C110A85209FF0C00012040E /* NSParagraphStyle+YYText.m in Sources */,
 				7C1109AE209FEEC70012040E /* UIScrollView+Pages.m in Sources */,
+				7C5DC69F20AAB6D100981E95 /* HMSegmentedControl.m in Sources */,
 				7C110AC1209FF0C00012040E /* NSObject+MJClass.m in Sources */,
 				7C110B0B209FF1F00012040E /* MJRefreshAutoFooter.m in Sources */,
 				7C110B10209FF1F00012040E /* MJRefreshAutoGifFooter.m in Sources */,
@@ -4218,6 +4268,7 @@
 				7C3CFC6A20A1BC390084FF2A /* MyHouseInfoVC.m in Sources */,
 				7C110B1C209FF1F00012040E /* UIScrollView+MJExtension.m in Sources */,
 				7C76A6F220A2A1D90029E310 /* ProtalHomePageTableViewCell.m in Sources */,
+				7C5DC6A920AAB80000981E95 /* TopicVC.m in Sources */,
 				7C110B12209FF1F00012040E /* MJRefreshAutoStateFooter.m in Sources */,
 				7C476E6F20A58DD5005ECE03 /* ModifyLoginPasswordFirstStepViewController.m in Sources */,
 				7C1109AC209FEEC70012040E /* UINavigationController+StackManager.m in Sources */,
@@ -4263,6 +4314,7 @@
 				7C3CFC8720A1C7A60084FF2A /* PublishServiceVC.m in Sources */,
 				7C110B3D209FF27A0012040E /* ChoseUnitDataModel.m in Sources */,
 				7C476E8020A58DD5005ECE03 /* BalanceDetailVC.m in Sources */,
+				7C5DC69D20AAB6D100981E95 /* BaseTableViewController.m in Sources */,
 				7C110AA5209FF0C00012040E /* IQTitleBarButtonItem.m in Sources */,
 				7C476E9720A58E9E005ECE03 /* AddressPickerView.m in Sources */,
 				7C110A7D209FF0C00012040E /* YYTextMagnifier.m in Sources */,
