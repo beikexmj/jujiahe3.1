@@ -11,8 +11,14 @@
 @implementation registDataModle
 
 @end
-@implementation Form
+@implementation Data
 
 @end
-
+@implementation UserResultModel
++ (NSDictionary *)replacedKeyFromPropertyName{
+    return @{
+             @"ids" : @"id"
+             };
+}
+@end
 

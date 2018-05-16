@@ -320,9 +320,8 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
         [weakSelf.tabelV reloadData];
     };
     _photoPickerV.ACMediaClickDeleteButton = ^(NSInteger index) {
-        [weakSelf.imageDataSource removeAllObjects];
-        _asset = nil;
-        [weakSelf.imageDataSource addObject:weakSelf.photoPickerV.addImage];
+        [weakSelf.imageDataSource removeObjectAtIndex:index-1];
+        //        [weakSelf.imageDataSource addObject:weakSelf.photoPickerV.addImage];
         [weakSelf.photoPickerV setSelectedImages:weakSelf.imageDataSource];
         [weakSelf addTargetForImage];
         [weakSelf.tabelV reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];

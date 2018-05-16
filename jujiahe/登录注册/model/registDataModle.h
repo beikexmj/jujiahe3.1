@@ -8,53 +8,45 @@
 
 #import <Foundation/Foundation.h>
 
-@class Form;
-@interface registDataModle : NSObject
+@class Data,UserResultModel;
+@interface registDataModle : RootDataModel
 
-@property (nonatomic, assign) NSInteger rcode;
-
-@property (nonatomic, copy) NSString *msg;
-
-@property (nonatomic, strong) Form *form;
+@property (nonatomic, strong) Data *data;
 
 @end
-@interface Form : NSObject
+@interface Data : NSObject
 
-@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *uToken;
+@property (nonatomic, strong) UserResultModel *userResultModel;
 
-@property (nonatomic, copy) NSString *email;
+@end
+@interface UserResultModel : NSObject
 
-@property (nonatomic, copy) NSString *nickname;
+@property (nonatomic, copy) NSString *address;
 
-@property (nonatomic, copy) NSString *userId;
-
-@property (nonatomic, copy) NSString *token;
-
-@property (nonatomic, copy) NSString *sessionId;
-
-@property (nonatomic, copy) NSString *accountBalance;
-
-@property (nonatomic, copy) NSString *point;
-
-@property (nonatomic, copy) NSString *sex;
-
-@property (nonatomic, copy) NSString *invitationCode;
-
-@property (nonatomic, copy) NSString *invitationLink;
-
-@property (nonatomic, copy) NSString *payPasswordSet;
+@property (nonatomic, copy) NSString *area;
 
 @property (nonatomic, copy) NSString *birthday;
 
-@property (nonatomic, copy) NSString *socialUnread;
+@property (nonatomic, copy) NSString *email;
 
-@property (nonatomic, copy) NSString *systemUnread;
+@property (nonatomic, copy) NSString *ids;
 
-@property (nonatomic, copy) NSString *countShippingSend;
+@property (nonatomic, copy) NSString *lastTime;
 
-@property (nonatomic, copy) NSString *countShipping;
+@property (nonatomic, copy) NSString *nickname;
 
-@property (nonatomic, copy) NSString *countPaying;
+@property (nonatomic, copy) NSString *phone;
+
+@property (nonatomic, copy) NSString *portrait;
+
+@property (nonatomic, copy) NSString *realname;
+
+@property (nonatomic, copy) NSString *sex;
+
+@property (nonatomic, copy) NSString *username;
+
+@property (nonatomic, copy) NSString *zipCode;
 
 
 @end

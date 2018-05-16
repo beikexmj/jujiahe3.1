@@ -27,9 +27,6 @@
     [super viewDidLoad];
     flag = YES;
     self.navHight.constant = NAVHEIGHT;
-//    [_codeBtn addTarget:self action:@selector(startTime) forControlEvents:UIControlEventTouchUpInside];
-//    self.phoneNumBackView.layer.cornerRadius = 5;
-//    self.passwordBackView.layer.cornerRadius = 5;
     self.submitBtn.layer.cornerRadius = 5;
     self.password.secureTextEntry = !self.password.secureTextEntry;
     
@@ -126,76 +123,21 @@
     [defaults setObject:self.phoneNum.text forKey:@"username"];
     [defaults setObject:self.password.text forKey:@"password"];
 //
-    NSDictionary *dict = @{@"timestamp":[StorageUserInfromation dateTimeInterval],@"username":self.phoneNum.text,@"password":self.password.text,@"device":@"1",@"smscode":self.code.text,@"inviteCode":self.inviteCode.text};
-    [ZTHttpTool postWithUrl:@"uaa/v1/register" param:dict success:^(id responseObj) {
-        NSLog(@"%@",[responseObj mj_JSONObject]);
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",str);
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
-        registDataModle *user = [registDataModle yy_modelWithJSON:str];
-//        StorageUserInfromation * storage = [StorageUserInfromation storageUserInformation];
-//        NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];
-
-        if (user.rcode == 0) {
-//            storage.email = user.form.email;
-//            storage.nickname = user.form.nickname;
-//            storage.token = user.form.token;
-//            storage.userId = user.form.userId;
-//            storage.username = user.form.username;
-//            storage.sessionId = user.form.sessionId;
-//            storage.accountBalance = [NSString stringWithFormat:@"%.2f",user.form.accountBalance.floatValue];
-//            storage.point = user.form.point;
-//            storage.sex = user.form.sex;
-//            storage.token = @"123456";
-//            storage.invitationCode = user.form.invitationCode;
-//            storage.invitationLink = user.form.invitationLink;
-//            [NSKeyedArchiver archiveRootObject:storage toFile:file];
-//            [self getToken];
+    NSDictionary *dict = @{@"phone":self.phoneNum.text,@"password":self.password.text,@"verifyCode":self.code.text,@"loginStatus":@"0"};
+    [XMJHttpTool postWithUrl:@"api/user/register" param:dict success:^(id responseObj) {
+      
+        registDataModle *user = [registDataModle yy_modelWithJSON:[responseObj mj_JSONObject]];
+        if (user.success) {
             [MBProgressHUD showSuccess:@"注册成功"];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
-            [MBProgressHUD showError:user.msg];
+            [MBProgressHUD showError:user.message];
         }
     } failure:^(NSError *error) {
-        NSLog(@"%@",error);
         [MBProgressHUD showError:@"网络不给力，请检测您的网络设置"];
 
     }];
 }
-#pragma mark 获取token
-- (void)getToken{
-    NSDictionary *dict = @{@"username":self.phoneNum.text,@"password":self.password.text,@"grant_type":@"password"};
-    [ZTHttpTool postWithUrl:@"uaa/oauth/token" param:dict success:^(id responseObj) {
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSDictionary *onceDict = [DictToJson dictionaryWithJsonString:str];
-        NSLog(@"%@",onceDict);
-        if ([onceDict[@"rcode"] integerValue] == 0) {
-            StorageUserInfromation *storge = [StorageUserInfromation storageUserInformation];
-            storge.access_token = onceDict[@"form"][@"access_token"];
-            storge.refresh_token = onceDict[@"form"][@"refresh_token"];
-            storge.expires_in = onceDict[@"form"][@"expires_in"];
-            storge.uuid = onceDict[@"form"][@"uuid"];
-            NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];
-            [NSKeyedArchiver archiveRootObject:storge toFile:file];
-            [self login];
-        }else{
-            [MBProgressHUD hideHUD];
-            [MBProgressHUD showError:onceDict[@"msg"]];
-        }
-        
-    } failure:^(NSError *error) {
-        //        NSLog(@"%ld,%@",error.code,[error.userInfo[@"NSLocalizedDescription"] containsObject:@"400"]);
-        [MBProgressHUD hideHUD];
-        NSString * str = error.userInfo[@"NSLocalizedDescription"];
-        
-        if ([str containsString:@"400"]) {
-            [MBProgressHUD showError:@"用户名或密码错误"];
-        }else{
-            [MBProgressHUD showError:@"网络不给力，请检测您的网络设置"];
-        }
-    }];
-}
-
 - (IBAction)sendCodeBtnClick:(id)sender {
     if ([JGIsBlankString isBlankString:self.phoneNum.text]) {
         [MBProgressHUD showError:@"请输入注册手机号"];
@@ -205,19 +147,14 @@
         [MBProgressHUD showError:@"请输入正确手机号"];
         return;
     }
-    NSDictionary *dict = @{@"timestamp":[StorageUserInfromation dateTimeInterval],@"username":self.phoneNum.text,@"device":@"1",@"aim":@"0"};
-    [ZTHttpTool postWithUrl:@"uaa/v1/getSmscode" param:dict success:^(id responseObj) {
-        NSLog(@"%@",[responseObj mj_JSONObject]);
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",str);
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
-        [MBProgressHUD showSuccess:[DictToJson dictionaryWithJsonString:str][@"msg"]];
-        if ([[DictToJson dictionaryWithJsonString:str][@"rcode"] integerValue] ==0) {
+    NSDictionary *dict = @{@"phone":self.phoneNum.text};
+    [XMJHttpTool postWithUrl:@"api/user/registerVerifyCode" param:dict success:^(id responseObj) {
+        NSDictionary * dictData = [responseObj mj_JSONObject];
+        [MBProgressHUD showSuccess:dictData[@"message"]];
+        if ([dictData[@"success"] boolValue] == YES) {
             [self startTime];
-//            self.code.text = [DictToJson dictionaryWithJsonString:str][@"form"][@"smscode"];
         }
     } failure:^(NSError *error) {
-        NSLog(@"%@",error);
         [MBProgressHUD showError:@"网络不给力，请检测您的网络设置"];
 
     }];

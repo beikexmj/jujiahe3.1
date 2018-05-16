@@ -60,18 +60,7 @@
     [_choseCity setTitle:title forState:UIControlStateNormal];
     
     [self fetchData];
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"locations"] && _comFromFlag) {
-        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"locations"];
-        CLLocation *location = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        [self fetchLocationCity:location];
-       
-    }
-    if (_comFromFlag) {
-        NSData *data2 = [[NSUserDefaults standardUserDefaults] objectForKey:@"cityLocations"];
-        CLLocation *location2 = [NSKeyedUnarchiver unarchiveObjectWithData:data2];
-        [self fetchNearByUnit:location2];
-    }
- 
+    
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
     rotationAnimation.duration = 1.0;
@@ -89,49 +78,9 @@
     [super viewWillDisappear:animated];
 }
 
-- (void)fetchLocationCity:(CLLocation *)location{
-    NSDictionary *dict = @{@"timestamp":[StorageUserInfromation dateTimeInterval],@"device":@"1",@"cityOid":[[NSUserDefaults standardUserDefaults] objectForKey:@"cityNumber"],@"apiv":@"1.0",@"latitude":[NSString stringWithFormat:@"%lf",location.coordinate.latitude] ,@"longitude":[NSString stringWithFormat:@"%lf",location.coordinate.longitude]};
-    [ZTHttpTool postWithUrl:@"property/v1/propertyArea/queryCurrentLocationList" param:dict success:^(id responseObj) {
-        NSLog(@"%@",[responseObj mj_JSONObject]);
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",str);
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
-        LocationUnitDataModel *unitData = [LocationUnitDataModel mj_objectWithKeyValues:str];
-        if (unitData.rcode == 0) {
-            _locationUnitData = unitData.form;
-            self.locationUnit.text = unitData.form.name;
-            self.locationView.hidden = NO;
-            self.locationViewHight.constant = 70;
-        }else{
-            self.locationUnit.text = unitData.msg;
-        }
 
-    } failure:^(NSError *error) {
-        XMJLog(@"%@",error);
-    }];
-}
-- (void)fetchNearByUnit:(CLLocation *)location{
-    NSDictionary *dict = @{@"timestamp":[StorageUserInfromation dateTimeInterval],@"device":@"1",@"cityOid":[[NSUserDefaults standardUserDefaults] objectForKey:@"cityNumber"],@"apiv":@"1.0",@"latitude":[NSString stringWithFormat:@"%lf",location.coordinate.latitude] ,@"longitude":[NSString stringWithFormat:@"%lf",location.coordinate.longitude]};
-    [ZTHttpTool postWithUrl:@"property/v1/propertyArea/queryLocationList" param:dict success:^(id responseObj) {
-        NSLog(@"%@",[responseObj mj_JSONObject]);
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",str);
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
-        ChoseUnitDataModel *choseUnitData = [ChoseUnitDataModel mj_objectWithKeyValues:str];
-        if (choseUnitData.rcode == 0) {
-            [_nearByLocationUnitArr removeAllObjects];
-            [_nearByLocationUnitArr addObjectsFromArray:choseUnitData.form];
-//            if (_nearByLocationUnitArr.count>0) {
-                [self buildTableHeaderView];
-//            }
-        }
-        
-    } failure:^(NSError *error) {
-        XMJLog(@"%@",error);
-
-    }];
-}
 - (void)buildTableHeaderView{
+    _nearByLocationUnitArr = _myArray;
     CGFloat height = 0;
     if (_nearByLocationUnitArr.count>0) {
         height = 40;
@@ -145,24 +94,30 @@
     
 }
 -(void)fetchData{
-    NSString *token  = [StorageUserInfromation storageUserInformation].token;
-    NSString *userId = [StorageUserInfromation storageUserInformation].userId;
-    NSDictionary *dict = @{@"timestamp":[StorageUserInfromation dateTimeInterval],@"token":token?token:@"",@"userId":userId?userId:@"",@"device":@"1",@"cityOid":[[NSUserDefaults standardUserDefaults] objectForKey:@"cityNumber"],@"apiv":@"1.0"};
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"cityLocations"];
+    CLLocation *location = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSDictionary *dict = @{@"cityOid":[[NSUserDefaults standardUserDefaults] objectForKey:@"cityNumber"],@"latitude":[NSString stringWithFormat:@"%lf",location.coordinate.latitude] ,@"longitude":[NSString stringWithFormat:@"%lf",location.coordinate.longitude]};
     
-    [ZTHttpTool postWithUrl:@"property/v1/propertyArea/queryAllArea" param:dict success:^(id responseObj) {
-        NSLog(@"%@",[responseObj mj_JSONObject]);
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
+    [XMJHttpTool postWithUrl:@"microdistrict/getNearbyDistrict" param:dict success:^(id responseObj) {
+        NSString * str = [responseObj mj_JSONObject];
+//        [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
+//        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
         ChoseUnitDataModel *choseUnitData = [ChoseUnitDataModel mj_objectWithKeyValues:str];
-        if (choseUnitData.rcode == 0) {
+        if (choseUnitData.code == 0) {
             [_myArray removeAllObjects];
             [_myArray addObjectsFromArray:choseUnitData.form];
             [self rebuildData:_myArray];
             if (_myArray.count ==0) {
                 self.myTableView.hidden = YES;
             }else{
+                [self buildTableHeaderView];
+                _locationUnitData = _myArray[0];
+                self.locationUnit.text = _locationUnitData.name;
+                self.locationView.hidden = NO;
+                self.locationViewHight.constant = 70;
                 self.myTableView.hidden = NO;
             }
+           
 //            [self.myTableView reloadData];
         }else{
             self.myTableView.hidden = YES;
@@ -439,12 +394,7 @@
 }
 
 - (IBAction)freshBtnClick:(id)sender {
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"locations"]) {
-        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"locations"];
-        CLLocation *location = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        [_freshBtn.imageView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
-        [self fetchLocationCity:location];
-    }
+    
 }
 
 - (IBAction)choseLoationUnitBtnClick:(id)sender {
@@ -497,13 +447,5 @@
     NSString *title = [NSString stringWithFormat:@" %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"]];
     [_choseCity setTitle:title forState:UIControlStateNormal];
     [self fetchData];
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"locations"] && _comFromFlag) {
-        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"locations"];
-        CLLocation *location = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        [self fetchLocationCity:location];
-        NSData *data2 = [[NSUserDefaults standardUserDefaults] objectForKey:@"cityLocations"];
-        CLLocation *location2 = [NSKeyedUnarchiver unarchiveObjectWithData:data2];
-        [self fetchNearByUnit:location2];
-    }
 }
 @end

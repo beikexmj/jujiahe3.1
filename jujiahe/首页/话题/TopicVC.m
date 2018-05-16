@@ -9,6 +9,7 @@
 #import "TopicVC.h"
 #import "LeftTableViewController.h"
 #import "RightTableViewController.h"
+#import "PublishViewController.h"
 @interface TopicVC ()<TableViewScrollingProtocol>
 {
     CGFloat headerViewHeight;
@@ -39,7 +40,20 @@
     [self contentViewConfig];
     [self addController];
     [self btnChoseClick:_mostNewBtn];
+    [self addBottomBtn];
+    
     // Do any additional setup after loading the view.
+}
+- (void)addBottomBtn{
+    UIButton * btn = [[UIButton alloc]initWithFrame:CGRectMake(40,SCREENHEIGHT - TABBARHEIGHT - 40, SCREENWIDTH - 80, 40)];
+    btn.backgroundColor = RGBA(0x00a7ff, 1);
+    btn.layer.cornerRadius = 20;
+    btn.layer.masksToBounds = YES;
+    [btn setTitle:@"发帖/回复话题" forState:UIControlStateNormal];
+    [btn setTitleColor:RGBA(0xffffff, 1) forState:UIControlStateNormal];
+    [btn.titleLabel setFont:[UIFont systemFontOfSize:17.0]];
+    [self.view addSubview:btn];
+    [btn addTarget:self action:@selector(publishBtnClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)setNav{
     self.isShowNav = YES;
@@ -48,12 +62,18 @@
     _backButton.hidden = NO;
     width = 40;
     ox = SCREENWIDTH - width - 15;
-    
+    if (is_iPhone_X) {
+        oy = 60.5;
+    }else {
+        oy = 36.5;
+    }
+    height = 15;
     _followBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _followBtn.backgroundColor = [UIColor clearColor];
     _followBtn.frame = CGRectMake(ox, oy, width, height);
     _followBtn.layer.cornerRadius = 5;
     _followBtn.layer.borderColor = RGBA(0x9c9c9c, 1).CGColor;
+    _followBtn.layer.borderWidth = 1;
     [_followBtn setTitle:@"关注" forState:UIControlStateNormal];
     [_followBtn.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
     [_followBtn setTitleColor:RGBA(0x9c9c9c, 1) forState:UIControlStateNormal];
@@ -256,10 +276,8 @@
     headerView.backgroundColor = [UIColor whiteColor];
     
     newVC.tableView.tableHeaderView = headerView;
-    
-    if (newVC.tableView.contentSize.height < kScreenHeight + contentViewHeight - 50 ) {
-        newVC.tableView.contentInset = UIEdgeInsetsMake(0, 0, kScreenHeight + contentViewHeight - 50 - newVC.tableView.contentSize.height, 0);
-    }
+    newVC.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+
     
     [self.view insertSubview:newVC.view belowSubview:self.navView];
     if (offsetY <= contentViewHeight - 50) {
@@ -365,6 +383,10 @@
 
 - (void)tableViewWillBeginDragging:(UITableView *)tableView offsetY:(CGFloat)offsetY {
     //    _headerView.canNotResponseTapTouchEvent = YES; 这四行被屏蔽内容，每行下面一行的效果一样
+}
+- (void)publishBtnClick:(UIButton *)btn{
+    PublishViewController *page = [[PublishViewController alloc]init];
+    [self.navigationController pushViewController:page animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

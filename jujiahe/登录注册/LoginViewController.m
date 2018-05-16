@@ -132,7 +132,7 @@
         return;
     }
     [MBProgressHUD showMessage:@"登录中..."];
-     [self getToken];
+     [self loading];
 
 }
 #pragma mark 获取token
@@ -172,35 +172,33 @@
 
 #pragma mark 登录
 - (void)loading{
-    NSDictionary *dict = @{@"timestamp":[StorageUserInfromation dateTimeInterval],@"username":self.userName.text,@"password":self.password.text,@"device":@"1"};
-    [ZTHttpTool postWithUrl:@"uaa/v1/user" param:dict success:^(id responseObj) {
+    NSDictionary *dict = @{@"phone":self.userName.text,@"password":self.password.text,@"loginType":@"0"};
+    [XMJHttpTool postWithUrl:@"api/user/login4App" param:dict success:^(id responseObj) {
         [MBProgressHUD hideHUD];
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
+        NSString * str = [responseObj mj_JSONObject];
         registDataModle *user = [registDataModle yy_modelWithJSON:str];
         StorageUserInfromation * storage = [StorageUserInfromation storageUserInformation];
         NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];
-        if (user.rcode == 0) {
-            storage.email = user.form.email;
-            storage.nickname = user.form.nickname;
+        if (user.success) {
+            storage.uToken = user.data.uToken;
+            storage.address = user.data.userResultModel.address;
             storage.token = @"";
-            storage.username = user.form.username;
-            storage.sessionId = user.form.sessionId;
-            storage.accountBalance =  [NSString stringWithFormat:@"%.2f",user.form.accountBalance.floatValue];
-            storage.point = user.form.point;
-            storage.sex = user.form.sex;
-            storage.birthday = user.form.birthday;
-            storage.invitationCode = user.form.invitationCode;
-            storage.invitationLink = user.form.invitationLink;
-            storage.payPasswordSet = user.form.payPasswordSet;
-            storage.socialUnread = user.form.socialUnread;
-            storage.systemUnread = user.form.systemUnread;
-            storage.countShippingSend = user.form.countShippingSend;
-            storage.countShipping = user.form.countShipping;
-            storage.countPaying = user.form.countPaying;
+            storage.area = user.data.userResultModel.area;
+            storage.birthday = user.data.userResultModel.birthday;
+//            storage.accountBalance =  [NSString stringWithFormat:@"%.2f",user.form.accountBalance.floatValue];
+            storage.email = user.data.userResultModel.email;
+            storage.ids = user.data.userResultModel.ids;
+            storage.lastTime = user.data.userResultModel.lastTime;
+            storage.nickname = user.data.userResultModel.nickname;
+            storage.phone = user.data.userResultModel.phone;
+            storage.portrait = user.data.userResultModel.portrait;
+            storage.realname = user.data.userResultModel.realname;
+            storage.sex = user.data.userResultModel.sex;
+            storage.username = user.data.userResultModel.username;
+            storage.zipCode = user.data.userResultModel.zipCode;
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            if ([storage.userId isEqualToString:user.form.userId] && (![JGIsBlankString isBlankString: storage.choseUnitPropertyId])) {
-                storage.userId = user.form.userId;
+            if ([storage.userId isEqualToString:user.data.userResultModel.ids] && (![JGIsBlankString isBlankString: storage.choseUnitPropertyId])) {
+                storage.userId = user.data.userResultModel.ids;
                 [NSKeyedArchiver archiveRootObject:storage toFile:file];
 
                 [defaults setObject:self.userName.text forKey:@"username"];
@@ -213,7 +211,7 @@
                 }
                 [self login];
             }else{
-                storage.userId = user.form.userId;
+                storage.userId = user.data.userResultModel.ids;
                 [NSKeyedArchiver archiveRootObject:storage toFile:file];
                 [defaults setObject:self.userName.text forKey:@"username"];
                 if (flag) {
@@ -229,14 +227,12 @@
             }
 //            [MBProgressHUD showSuccess:@"登录成功"];
         }else{
-            [MBProgressHUD showError:user.msg];
+            [MBProgressHUD showError:user.message];
 
         }
         
     } failure:^(NSError *error) {
-        NSLog(@"%@",error);
         [MBProgressHUD hideHUD];
-
         if (error.code == 400) {
             [MBProgressHUD showError:@"用户名或密码错误"];
         }else{

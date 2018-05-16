@@ -157,30 +157,30 @@
         registDataModle *user = [registDataModle mj_objectWithKeyValues:str];
         StorageUserInfromation * storage = [StorageUserInfromation storageUserInformation];
         NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];
-        if (user.rcode == 0) {
-            storage.email = user.form.email;
-            storage.nickname = user.form.nickname;
-            storage.token = @"123456";
-            storage.username = user.form.username;
-            storage.sessionId = user.form.sessionId;
-            storage.accountBalance =  [NSString stringWithFormat:@"%.2f",user.form.accountBalance.floatValue];
-            storage.point = user.form.point;
-            storage.sex = user.form.sex;
-            storage.invitationCode = user.form.invitationCode;
-            storage.invitationLink = user.form.invitationLink;
-            storage.payPasswordSet = user.form.payPasswordSet;
-            storage.socialUnread = user.form.socialUnread;
-            storage.systemUnread = user.form.systemUnread;
-            storage.countShippingSend = user.form.countShippingSend;
-            storage.countShipping = user.form.countShipping;
-            storage.countPaying = user.form.countPaying;
-            storage.userId = user.form.userId;
-            [NSKeyedArchiver archiveRootObject:storage toFile:file];
-            
-            _badgeView1.badgeText = [storage.countPaying isEqualToString:@"0"]?@"":storage.countPaying;
-            _badgeView2.badgeText = [storage.countShipping isEqualToString:@"0"]?@"":storage.countShipping;
-            _badgeView3.badgeText = [storage.countShippingSend isEqualToString:@"0"]?@"":storage.countShippingSend;
-        }
+//        if (user.rcode == 0) {
+//            storage.email = user.form.email;
+//            storage.nickname = user.form.nickname;
+//            storage.token = @"123456";
+//            storage.username = user.form.username;
+//            storage.sessionId = user.form.sessionId;
+//            storage.accountBalance =  [NSString stringWithFormat:@"%.2f",user.form.accountBalance.floatValue];
+//            storage.point = user.form.point;
+//            storage.sex = user.form.sex;
+//            storage.invitationCode = user.form.invitationCode;
+//            storage.invitationLink = user.form.invitationLink;
+//            storage.payPasswordSet = user.form.payPasswordSet;
+//            storage.socialUnread = user.form.socialUnread;
+//            storage.systemUnread = user.form.systemUnread;
+//            storage.countShippingSend = user.form.countShippingSend;
+//            storage.countShipping = user.form.countShipping;
+//            storage.countPaying = user.form.countPaying;
+//            storage.userId = user.form.userId;
+//            [NSKeyedArchiver archiveRootObject:storage toFile:file];
+//            
+//            _badgeView1.badgeText = [storage.countPaying isEqualToString:@"0"]?@"":storage.countPaying;
+//            _badgeView2.badgeText = [storage.countShipping isEqualToString:@"0"]?@"":storage.countShipping;
+//            _badgeView3.badgeText = [storage.countShippingSend isEqualToString:@"0"]?@"":storage.countShippingSend;
+//        }
         
     } failure:^(NSError *error) {
         NSLog(@"%@",error);

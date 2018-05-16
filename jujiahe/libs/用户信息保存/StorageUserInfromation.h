@@ -39,6 +39,22 @@
 @property (nonatomic,copy) NSString *cityNumber;
 @property (nonatomic,copy) NSString *currentCity;
 
+//3.1新增
+@property (nonatomic,copy) NSString *address;
+@property (nonatomic,copy) NSString *area;
+@property (nonatomic,copy) NSString *ids;
+@property (nonatomic,copy) NSString *lastTime;
+@property (nonatomic,copy) NSString *phone;
+@property (nonatomic,copy) NSString *portrait;
+@property (nonatomic,copy) NSString *realname;
+@property (nonatomic,copy) NSString *zipCode;
+
+
+//v3.1新增
+@property (nonatomic,copy) NSString *uToken;//用户识别uToken
+@property (nonatomic,copy) NSString *sid;//信号量
+
+
 + (StorageUserInfromation *)storageUserInformation;
 
 +(UIImage*)scaleToSize:(CGSize)size image:(UIImage *)image;

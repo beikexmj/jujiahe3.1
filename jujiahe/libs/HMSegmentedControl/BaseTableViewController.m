@@ -16,13 +16,13 @@
     
     self.tableView.showsHorizontalScrollIndicator  = NO;
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, headerImgHeight + switchBarHeight)];
-    headerView.backgroundColor = [UIColor whiteColor];
-    self.tableView.tableHeaderView = headerView;
-    
-    if (self.tableView.contentSize.height < kScreenHeight + headerImgHeight - topBarHeight ) {
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, kScreenHeight + headerImgHeight - topBarHeight - self.tableView.contentSize.height, 0);
-    }
+//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, headerImgHeight + switchBarHeight)];
+//    headerView.backgroundColor = [UIColor whiteColor];
+//    self.tableView.tableHeaderView = headerView;
+//    
+//    if (self.tableView.contentSize.height < kScreenHeight + headerImgHeight - topBarHeight ) {
+//        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, kScreenHeight + headerImgHeight - topBarHeight - self.tableView.contentSize.height, 0);
+//    }
 }
 
 - (void)dealloc {

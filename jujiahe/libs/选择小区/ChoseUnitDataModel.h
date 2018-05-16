@@ -11,7 +11,7 @@
 @class ChoseUnitDataList;
 @interface ChoseUnitDataModel : NSObject
 
-@property (nonatomic, assign) NSInteger rcode;
+@property (nonatomic, assign) NSInteger code;
 
 @property (nonatomic, copy) NSString *msg;
 

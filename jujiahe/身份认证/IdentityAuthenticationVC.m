@@ -14,6 +14,8 @@
 #import "PropertyServiceVC.h"
 #import "AreaHeadlineVC.h"
 #import "SatisfactionSurveyVC.h"
+#import "BaseTabbarVC.h"
+#import "HomePageVC.h"
 //#import <PandaReaderLib/PandaReaderLib.h>
 @interface IdentityAuthenticationVC ()
 
@@ -134,8 +136,8 @@
 //
 //    }];
     
-    SatisfactionSurveyVC *page = [[SatisfactionSurveyVC alloc]init];
-    [self.navigationController pushViewController:page animated:YES];
+//    SatisfactionSurveyVC *page = [[SatisfactionSurveyVC alloc]init];
+//    [self.navigationController pushViewController:page animated:YES];
 //    PDUser *pdUser = [[PDUser alloc]init];
 //    pdUser.thridUserId = [StorageUserInfromation storageUserInformation].userId;
 //    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"oathKey"]) {
@@ -146,5 +148,30 @@
 //        UIViewController *pdViewController = [PandaReaderLib homePageWithNavigationController:self.navigationController];
 //        [self.navigationController pushViewController:pdViewController animated:YES];
 //    }];
+    
+    
+    StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
+    if (!storage.userId) {
+        storage.userId = @"";
+        storage.token = @"";
+        storage.access_token = @"";
+        storage.nickname = @"";
+        storage.sex = @"-1";
+    }
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    BaseTabbarVC *tabBarController = [BaseTabbarVC Shareinstance];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:tabBarController];
+    nav.fd_fullscreenPopGestureRecognizer.enabled = true;
+    nav.fd_prefersNavigationBarHidden = true;
+    nav.fd_interactivePopDisabled = true;
+    nav.fd_viewControllerBasedNavigationBarAppearanceEnabled = false;
+    [nav setNavigationBarHidden:YES animated:YES];
+    tabBarController.selectedIndex = 0;
+    delegate.window.rootViewController = nav;
+    HomePageVC *page = (HomePageVC *)tabBarController.viewControllers[0];
+    if (page) {
+        [page fetchData2];
+    }
+    
 }
 @end

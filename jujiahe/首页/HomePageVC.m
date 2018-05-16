@@ -336,13 +336,13 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView == self.myTableView) {
         CGFloat f = scrollView.contentOffset.y;
-        XMJLog(@"%0.2f",f);
+//        XMJLog(@"%0.2f",f);
         if (f>= 40) {
             self.navView.backgroundColor = RGBA(0xffffff, 1);
             [self.locationBtn setImage:[UIImage imageNamed:@"home_icon_house"] forState:UIControlStateNormal];
             self.buildingNameLab.textColor = RGBA(0x303030, 1);
             
-            [self.meassgeBtn setImage:[UIImage imageNamed:@"home_icon_massage"] forState:UIControlStateNormal];
+            [self.meassgeBtn setImage:[UIImage imageNamed:@"home_icon_massage_black"] forState:UIControlStateNormal];
 
         }else{
             self.navView.backgroundColor = RGBA(0x00a7ff, 1);

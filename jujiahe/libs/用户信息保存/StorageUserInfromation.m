@@ -42,6 +42,15 @@
         self.countShippingSend = [aDecoder decodeObjectForKey:@"countShippingSend"];
         self.countShipping = [aDecoder decodeObjectForKey:@"countShipping"];
         self.countPaying = [aDecoder decodeObjectForKey:@"countPaying"];
+        self.uToken = [aDecoder decodeObjectForKey:@"uToken"];
+        self.address = [aDecoder decodeObjectForKey:@"address"];
+        self.area = [aDecoder decodeObjectForKey:@"area"];
+        self.ids = [aDecoder decodeObjectForKey:@"ids"];
+        self.lastTime = [aDecoder decodeObjectForKey:@"lastTime"];
+        self.phone = [aDecoder decodeObjectForKey:@"phone"];
+        self.portrait = [aDecoder decodeObjectForKey:@"portrait"];
+        self.realname = [aDecoder decodeObjectForKey:@"realname"];
+        self.zipCode = [aDecoder decodeObjectForKey:@"zipCode"];
 
     }
     return self;
@@ -75,6 +84,17 @@
     [aCoder encodeObject:self.countShippingSend forKey:@"countShippingSend"];
     [aCoder encodeObject:self.countShipping forKey:@"countShipping"];
     [aCoder encodeObject:self.countPaying forKey:@"countPaying"];
+    [aCoder encodeObject:self.sid forKey:@"sid"];
+    [aCoder encodeObject:self.uToken forKey:@"uToken"];
+    [aCoder encodeObject:self.address forKey:@"address"];
+    [aCoder encodeObject:self.area forKey:@"area"];
+    [aCoder encodeObject:self.ids forKey:@"ids"];
+    [aCoder encodeObject:self.lastTime forKey:@"lastTime"];
+    [aCoder encodeObject:self.phone forKey:@"phone"];
+    [aCoder encodeObject:self.portrait forKey:@"portrait"];
+    [aCoder encodeObject:self.realname forKey:@"realname"];
+    [aCoder encodeObject:self.zipCode forKey:@"zipCode"];
+
 
 }
 

@@ -21,6 +21,7 @@
 #import "JGIsBlankString.h"
 #import "MBProgressHUD+NJ.h"
 #import "ZTHttpTool.h"
+#import "XMJHttpTool.h"
 #import "JGEncrypt.h"
 #import "MJExtension.h"
 #import "DictToJson.h"
@@ -32,16 +33,19 @@
 #import "WaringAlertView.h"
 #import "MyAlterView.h"
 #import "ScaleButton.h"
+#import "RootDataModel.h"
 #define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 
 
 #define KEY @"1234567812345678"
+#define XMJBASE_URL  @"http://172.16.21.224:8202" //3.1测试
+
 #define BASE_URL  @"https://jujiahe.copticomm.com/appt" //外网测试
 #define BASE_URL2  @"https://jujiahe.copticomm.com" //外网测试
-//#define BASE_H5_URL  @"https://jujiahe.copticomm.com/jujiaheDocument/H5/post/test/index.html" //外网测试
-#define BASE_SHARE @"https://jujiahe.copticomm.com/jujiaheDocument/jujiaheuser/dailyShare/test/index.html"//外网测试
+////#define BASE_H5_URL  @"https://jujiahe.copticomm.com/jujiaheDocument/H5/post/test/index.html" //外网测试
+//#define BASE_SHARE @"https://jujiahe.copticomm.com/jujiaheDocument/jujiaheuser/dailyShare/test/index.html"//外网测试
 
 //#define BASE_URL  @"https://jujiahe.copticomm.com/app" //外网正式
 //#define BASE_URL2  @"https://jujiahe.copticomm.com" //外网正式

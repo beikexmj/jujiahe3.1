@@ -35,7 +35,7 @@
                             <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择小区" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqL-gJ-3Ls">
-                                    <rect key="frame" x="147.5" y="11.5" width="120" height="21"/>
+                                    <rect key="frame" x="147.66666666666666" y="11.666666666666668" width="119.99999999999997" height="21.000000000000004"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="KAh-55-cQ3"/>
                                         <constraint firstAttribute="width" constant="120" id="gya-dG-vdF"/>
@@ -152,7 +152,7 @@
                                 <action selector="choseLoationUnitBtnClick:" destination="-1" eventType="touchUpInside" id="Eoe-un-1IX"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YR2-hv-0ls">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YR2-hv-0ls">
                             <rect key="frame" x="360" y="26" width="46" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="46" id="X5h-VR-2eN"/>

@@ -437,6 +437,25 @@
 		7C76A70720A2E5250029E310 /* ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C76A70620A2E5250029E310 /* ChildViewController.m */; };
 		7C76A70C20A2E7360029E310 /* RequesCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C76A70A20A2E7360029E310 /* RequesCover.m */; };
 		7C76A70D20A2E7360029E310 /* RequesCover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C76A70B20A2E7360029E310 /* RequesCover.xib */; };
+		7CCF831A20ABBA8000D35383 /* TopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF831720ABBA7F00D35383 /* TopicCell.m */; };
+		7CCF831B20ABBA8000D35383 /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF831820ABBA7F00D35383 /* TopicCell.xib */; };
+		7CCF831E20ABBFE800D35383 /* CircleDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF831D20ABBFE800D35383 /* CircleDataModel.m */; };
+		7CCF832120ABCDC300D35383 /* XMJHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF832020ABCDC300D35383 /* XMJHttpTool.m */; };
+		7CCF832520ABD94400D35383 /* RootDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF832420ABD94400D35383 /* RootDataModel.m */; };
+		7CCF832B20ABF9EE00D35383 /* TopicDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF832A20ABF9EE00D35383 /* TopicDetailVC.m */; };
+		7CCF832E20AC08B000D35383 /* CommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF832D20AC08B000D35383 /* CommentTableViewController.m */; };
+		7CCF833120AC08BF00D35383 /* PraiseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF833020AC08BF00D35383 /* PraiseTableViewController.m */; };
+		7CCF833820AC0BAA00D35383 /* CircleCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF833320AC0BAA00D35383 /* CircleCommentTableViewCell.m */; };
+		7CCF833920AC0BAA00D35383 /* CircleCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF833420AC0BAA00D35383 /* CircleCommentTableViewCell.xib */; };
+		7CCF833A20AC0BAA00D35383 /* CircleLikeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF833520AC0BAA00D35383 /* CircleLikeTableViewCell.m */; };
+		7CCF833B20AC0BAA00D35383 /* CircleLikeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF833720AC0BAA00D35383 /* CircleLikeTableViewCell.xib */; };
+		7CCF834020AC0CCB00D35383 /* CircleCommentDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF833C20AC0CCB00D35383 /* CircleCommentDataModel.m */; };
+		7CCF834120AC0CCB00D35383 /* CircleLikeDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF833F20AC0CCB00D35383 /* CircleLikeDataModel.m */; };
+		7CCF834620AC184F00D35383 /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF834420AC184F00D35383 /* PublishViewController.m */; };
+		7CCF834720AC184F00D35383 /* PublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF834520AC184F00D35383 /* PublishViewController.xib */; };
+		7CCF834B20AC1D8A00D35383 /* TopicClassificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF834A20AC1D8A00D35383 /* TopicClassificationVC.m */; };
+		7CCF834F20AC320D00D35383 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF834C20AC320D00D35383 /* CommentViewController.xib */; };
+		7CCF835020AC320D00D35383 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF834E20AC320D00D35383 /* CommentViewController.m */; };
 		998EF8F8F6049014D50A4632 /* libPods-jujiaheUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9836249FD7DB973CA5A352A2 /* libPods-jujiaheUITests.a */; };
 		BCABEAD35A4C5C16C99ADFE5 /* libPods-jujiahe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D5DB62CE87FAC01E0BC698 /* libPods-jujiahe.a */; };
 		E9D731C983F4FFBC6A6FC2BC /* libPods-jujiaheTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B62B8ECC7D4E7FE607A18D /* libPods-jujiaheTests.a */; };
@@ -1319,6 +1338,39 @@
 		7C76A70920A2E7360029E310 /* RequesCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequesCover.h; sourceTree = "<group>"; };
 		7C76A70A20A2E7360029E310 /* RequesCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequesCover.m; sourceTree = "<group>"; };
 		7C76A70B20A2E7360029E310 /* RequesCover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequesCover.xib; sourceTree = "<group>"; };
+		7CCF831620ABBA7F00D35383 /* TopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCell.h; sourceTree = "<group>"; };
+		7CCF831720ABBA7F00D35383 /* TopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCell.m; sourceTree = "<group>"; };
+		7CCF831820ABBA7F00D35383 /* TopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
+		7CCF831C20ABBFE800D35383 /* CircleDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleDataModel.h; sourceTree = "<group>"; };
+		7CCF831D20ABBFE800D35383 /* CircleDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleDataModel.m; sourceTree = "<group>"; };
+		7CCF831F20ABCDC300D35383 /* XMJHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMJHttpTool.h; sourceTree = "<group>"; };
+		7CCF832020ABCDC300D35383 /* XMJHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMJHttpTool.m; sourceTree = "<group>"; };
+		7CCF832320ABD94400D35383 /* RootDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootDataModel.h; sourceTree = "<group>"; };
+		7CCF832420ABD94400D35383 /* RootDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootDataModel.m; sourceTree = "<group>"; };
+		7CCF832920ABF9EE00D35383 /* TopicDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicDetailVC.h; sourceTree = "<group>"; };
+		7CCF832A20ABF9EE00D35383 /* TopicDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicDetailVC.m; sourceTree = "<group>"; };
+		7CCF832C20AC08B000D35383 /* CommentTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentTableViewController.h; sourceTree = "<group>"; };
+		7CCF832D20AC08B000D35383 /* CommentTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewController.m; sourceTree = "<group>"; };
+		7CCF832F20AC08BF00D35383 /* PraiseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PraiseTableViewController.h; sourceTree = "<group>"; };
+		7CCF833020AC08BF00D35383 /* PraiseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PraiseTableViewController.m; sourceTree = "<group>"; };
+		7CCF833220AC0BAA00D35383 /* CircleCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleCommentTableViewCell.h; sourceTree = "<group>"; };
+		7CCF833320AC0BAA00D35383 /* CircleCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleCommentTableViewCell.m; sourceTree = "<group>"; };
+		7CCF833420AC0BAA00D35383 /* CircleCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleCommentTableViewCell.xib; sourceTree = "<group>"; };
+		7CCF833520AC0BAA00D35383 /* CircleLikeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLikeTableViewCell.m; sourceTree = "<group>"; };
+		7CCF833620AC0BAA00D35383 /* CircleLikeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleLikeTableViewCell.h; sourceTree = "<group>"; };
+		7CCF833720AC0BAA00D35383 /* CircleLikeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleLikeTableViewCell.xib; sourceTree = "<group>"; };
+		7CCF833C20AC0CCB00D35383 /* CircleCommentDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleCommentDataModel.m; sourceTree = "<group>"; };
+		7CCF833D20AC0CCB00D35383 /* CircleLikeDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleLikeDataModel.h; sourceTree = "<group>"; };
+		7CCF833E20AC0CCB00D35383 /* CircleCommentDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleCommentDataModel.h; sourceTree = "<group>"; };
+		7CCF833F20AC0CCB00D35383 /* CircleLikeDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLikeDataModel.m; sourceTree = "<group>"; };
+		7CCF834320AC184F00D35383 /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishViewController.h; sourceTree = "<group>"; };
+		7CCF834420AC184F00D35383 /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
+		7CCF834520AC184F00D35383 /* PublishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublishViewController.xib; sourceTree = "<group>"; };
+		7CCF834920AC1D8A00D35383 /* TopicClassificationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicClassificationVC.h; sourceTree = "<group>"; };
+		7CCF834A20AC1D8A00D35383 /* TopicClassificationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicClassificationVC.m; sourceTree = "<group>"; };
+		7CCF834C20AC320D00D35383 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
+		7CCF834D20AC320D00D35383 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		7CCF834E20AC320D00D35383 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		8663A526B869198D67E968F3 /* Pods-jujiaheTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jujiaheTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-jujiaheTests/Pods-jujiaheTests.release.xcconfig"; sourceTree = "<group>"; };
 		88D5DB62CE87FAC01E0BC698 /* libPods-jujiahe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jujiahe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9836249FD7DB973CA5A352A2 /* libPods-jujiaheUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jujiaheUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1496,6 +1548,7 @@
 		7C110926209FECEC0012040E /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				7CCF832220ABD92500D35383 /* 根model */,
 				7C5DC69620AAB6D000981E95 /* HMSegmentedControl */,
 				7C476EBC20A592DF005ECE03 /* UIbutton扩展 */,
 				7C476EA520A59266005ECE03 /* SGQRCode */,
@@ -2205,6 +2258,8 @@
 		7C110AC8209FF1030012040E /* net */ = {
 			isa = PBXGroup;
 			children = (
+				7CCF831F20ABCDC300D35383 /* XMJHttpTool.h */,
+				7CCF832020ABCDC300D35383 /* XMJHttpTool.m */,
 				7C110AC9209FF1030012040E /* ZTHttpTool.h */,
 				7C110ACA209FF1030012040E /* ZTHttpTool.m */,
 			);
@@ -3572,6 +3627,11 @@
 		7C5DC6A020AAB79000981E95 /* 话题 */ = {
 			isa = PBXGroup;
 			children = (
+				7CCF834820AC1D4000D35383 /* 话题分类 */,
+				7CCF834220AC184F00D35383 /* 发布 */,
+				7CCF832620ABF7B400D35383 /* 话题详情 */,
+				7CCF831920ABBA8000D35383 /* model */,
+				7CCF831520ABBA7F00D35383 /* view */,
 				7C5DC6A120AAB79000981E95 /* LeftTableViewController.h */,
 				7C5DC6A220AAB79000981E95 /* LeftTableViewController.m */,
 				7C5DC6A320AAB79000981E95 /* RightTableViewController.h */,
@@ -3665,6 +3725,95 @@
 				7C76A70B20A2E7360029E310 /* RequesCover.xib */,
 			);
 			path = "蒙版";
+			sourceTree = "<group>";
+		};
+		7CCF831520ABBA7F00D35383 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7CCF831620ABBA7F00D35383 /* TopicCell.h */,
+				7CCF831720ABBA7F00D35383 /* TopicCell.m */,
+				7CCF831820ABBA7F00D35383 /* TopicCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		7CCF831920ABBA8000D35383 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				7CCF831C20ABBFE800D35383 /* CircleDataModel.h */,
+				7CCF831D20ABBFE800D35383 /* CircleDataModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		7CCF832220ABD92500D35383 /* 根model */ = {
+			isa = PBXGroup;
+			children = (
+				7CCF832320ABD94400D35383 /* RootDataModel.h */,
+				7CCF832420ABD94400D35383 /* RootDataModel.m */,
+			);
+			path = "根model";
+			sourceTree = "<group>";
+		};
+		7CCF832620ABF7B400D35383 /* 话题详情 */ = {
+			isa = PBXGroup;
+			children = (
+				7CCF832720ABF7CE00D35383 /* model */,
+				7CCF832820ABF7CE00D35383 /* view */,
+				7CCF832920ABF9EE00D35383 /* TopicDetailVC.h */,
+				7CCF832A20ABF9EE00D35383 /* TopicDetailVC.m */,
+				7CCF832C20AC08B000D35383 /* CommentTableViewController.h */,
+				7CCF832D20AC08B000D35383 /* CommentTableViewController.m */,
+				7CCF832F20AC08BF00D35383 /* PraiseTableViewController.h */,
+				7CCF833020AC08BF00D35383 /* PraiseTableViewController.m */,
+				7CCF834D20AC320D00D35383 /* CommentViewController.h */,
+				7CCF834E20AC320D00D35383 /* CommentViewController.m */,
+				7CCF834C20AC320D00D35383 /* CommentViewController.xib */,
+			);
+			path = "话题详情";
+			sourceTree = "<group>";
+		};
+		7CCF832720ABF7CE00D35383 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				7CCF833E20AC0CCB00D35383 /* CircleCommentDataModel.h */,
+				7CCF833C20AC0CCB00D35383 /* CircleCommentDataModel.m */,
+				7CCF833D20AC0CCB00D35383 /* CircleLikeDataModel.h */,
+				7CCF833F20AC0CCB00D35383 /* CircleLikeDataModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		7CCF832820ABF7CE00D35383 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7CCF833220AC0BAA00D35383 /* CircleCommentTableViewCell.h */,
+				7CCF833320AC0BAA00D35383 /* CircleCommentTableViewCell.m */,
+				7CCF833420AC0BAA00D35383 /* CircleCommentTableViewCell.xib */,
+				7CCF833620AC0BAA00D35383 /* CircleLikeTableViewCell.h */,
+				7CCF833520AC0BAA00D35383 /* CircleLikeTableViewCell.m */,
+				7CCF833720AC0BAA00D35383 /* CircleLikeTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		7CCF834220AC184F00D35383 /* 发布 */ = {
+			isa = PBXGroup;
+			children = (
+				7CCF834320AC184F00D35383 /* PublishViewController.h */,
+				7CCF834420AC184F00D35383 /* PublishViewController.m */,
+				7CCF834520AC184F00D35383 /* PublishViewController.xib */,
+			);
+			path = "发布";
+			sourceTree = "<group>";
+		};
+		7CCF834820AC1D4000D35383 /* 话题分类 */ = {
+			isa = PBXGroup;
+			children = (
+				7CCF834920AC1D8A00D35383 /* TopicClassificationVC.h */,
+				7CCF834A20AC1D8A00D35383 /* TopicClassificationVC.m */,
+			);
+			path = "话题分类";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3794,6 +3943,8 @@
 				7C110D0620A030770012040E /* AlipaySDK.bundle in Resources */,
 				7C476E7420A58DD5005ECE03 /* InviteRegistrationTableViewCell.xib in Resources */,
 				7C476E6920A58DD5005ECE03 /* AboutViewController.xib in Resources */,
+				7CCF834F20AC320D00D35383 /* CommentViewController.xib in Resources */,
+				7CCF834720AC184F00D35383 /* PublishViewController.xib in Resources */,
 				7C476E7020A58DD5005ECE03 /* ModifyLoginPasswordFirstStepViewController.xib in Resources */,
 				7C476E6220A58DD5005ECE03 /* MyQRCodeViewController.xib in Resources */,
 				7C476E7C20A58DD5005ECE03 /* RankRuleViewController.xib in Resources */,
@@ -3810,6 +3961,7 @@
 				7C476EB620A59267005ECE03 /* SGQRCode.bundle in Resources */,
 				7C476E7A20A58DD5005ECE03 /* InviteRegistrationRankTableViewCell.xib in Resources */,
 				7C110B5D209FF5690012040E /* LoginViewController.xib in Resources */,
+				7CCF833B20AC0BAA00D35383 /* CircleLikeTableViewCell.xib in Resources */,
 				7C476DB420A58966005ECE03 /* MyMessageCell.xib in Resources */,
 				7C3CFC6220A1B5880084FF2A /* PropertyPaymentHomeCell.xib in Resources */,
 				7C6CA6E120A43BBA0073DD3F /* ServiceMemberCell.xib in Resources */,
@@ -3825,6 +3977,7 @@
 				7C110B41209FF27A0012040E /* ChoseUnitViewController.xib in Resources */,
 				7C476E8C20A58DD5005ECE03 /* IntegralDetailTableViewCell.xib in Resources */,
 				7C110900209FE4270012040E /* LaunchScreen.storyboard in Resources */,
+				7CCF831B20ABBA8000D35383 /* TopicCell.xib in Resources */,
 				7C110BA520A0232F0012040E /* JKEventHandler.js in Resources */,
 				7C476E5120A58DD5005ECE03 /* MyPageCell.xib in Resources */,
 				7C110D3320A045FD0012040E /* IdentityAuthenticationVC.xib in Resources */,
@@ -3837,6 +3990,7 @@
 				7C3CFBF220A14D3D0084FF2A /* TZAlbumCell.xib in Resources */,
 				7C76A6ED20A2A1D90029E310 /* PortalHomePageDetailViewController.xib in Resources */,
 				7C110AAE209FF0C00012040E /* ShareSDKUI.bundle in Resources */,
+				7CCF833920AC0BAA00D35383 /* CircleCommentTableViewCell.xib in Resources */,
 				7C110AB5209FF0C00012040E /* WeiboSDK.bundle in Resources */,
 				7C476E5320A58DD5005ECE03 /* PersonalInformationTableViewCell2.xib in Resources */,
 				7C110B60209FF5690012040E /* RegestViewController.xib in Resources */,
@@ -4031,6 +4185,7 @@
 				7C110A99209FF0C00012040E /* JFLocation.m in Sources */,
 				7C476E7B20A58DD5005ECE03 /* RankRuleViewController.m in Sources */,
 				7C476E7D20A58DD5005ECE03 /* WallentVC.m in Sources */,
+				7CCF832120ABCDC300D35383 /* XMJHttpTool.m in Sources */,
 				7C11095E209FECFB0012040E /* HColor.m in Sources */,
 				7C3CFCCE20A1CA150084FF2A /* UIView+SDExtension.m in Sources */,
 				7C110964209FECFB0012040E /* NSData+Base64Additions.m in Sources */,
@@ -4052,6 +4207,7 @@
 				7C76A6FF20A2E2040029E310 /* YZDisplayTitleLabel.m in Sources */,
 				7C476E8720A58DD5005ECE03 /* TicketCenterViewController.m in Sources */,
 				7C476E9820A58E9E005ECE03 /* City.m in Sources */,
+				7CCF833120AC08BF00D35383 /* PraiseTableViewController.m in Sources */,
 				7C1109A0209FEEC70012040E /* NSDate+Utilities.m in Sources */,
 				7C476DB020A58966005ECE03 /* MyMessageDataModel.m in Sources */,
 				7C110A77209FF0BF0012040E /* YYTextDebugOption.m in Sources */,
@@ -4076,6 +4232,7 @@
 				7C3CFC4820A19DD70084FF2A /* WaringAlertView.m in Sources */,
 				7C110D3D20A06C840012040E /* SecondStepVerificationOfIdentityVC.m in Sources */,
 				7C110957209FECFB0012040E /* UIButton+Additions.m in Sources */,
+				7CCF832E20AC08B000D35383 /* CommentTableViewController.m in Sources */,
 				7C110A75209FF0BF0012040E /* JGIsBlankString.m in Sources */,
 				7C110AA2209FF0C00012040E /* IQTextView.m in Sources */,
 				7C476DAD20A58966005ECE03 /* CallPropertyVC.m in Sources */,
@@ -4089,6 +4246,7 @@
 				7C476E6520A58DD5005ECE03 /* SetVC.m in Sources */,
 				7C11095C209FECFB0012040E /* FHHFPSIndicator.m in Sources */,
 				7C476E6A20A58DD5005ECE03 /* FeedBackVC.m in Sources */,
+				7CCF831E20ABBFE800D35383 /* CircleDataModel.m in Sources */,
 				7C110A84209FF0C00012040E /* NSAttributedString+YYText.m in Sources */,
 				7C110AA3209FF0C00012040E /* IQBarButtonItem.m in Sources */,
 				7C3CFC2720A172720084FF2A /* ACMediaManager.m in Sources */,
@@ -4118,6 +4276,7 @@
 				7C5DC6A620AAB79000981E95 /* RightTableViewController.m in Sources */,
 				7C3CFCC820A1CA150084FF2A /* TAAbstractDotView.m in Sources */,
 				7C76A6EC20A2A1D90029E310 /* PortalHomePageDetailViewController.m in Sources */,
+				7CCF832B20ABF9EE00D35383 /* TopicDetailVC.m in Sources */,
 				7C476EBB20A59267005ECE03 /* SGQRCodeScanningView.m in Sources */,
 				7C110A8B209FF0C00012040E /* YYTextWeakProxy.m in Sources */,
 				7C110A7E209FF0C00012040E /* YYTextSelectionView.m in Sources */,
@@ -4142,6 +4301,7 @@
 				7C476E5A20A58DD5005ECE03 /* ModifyEmailViewController.m in Sources */,
 				7C3CFCCD20A1CA150084FF2A /* SDCycleScrollView.m in Sources */,
 				7C3CFBF820A14D3D0084FF2A /* TZPhotoPickerController.m in Sources */,
+				7CCF833820AC0BAA00D35383 /* CircleCommentTableViewCell.m in Sources */,
 				7C3CFC3120A172720084FF2A /* UIView+ACMediaExt.m in Sources */,
 				7C3CFC3020A172720084FF2A /* UIImageView+ACMediaExt.m in Sources */,
 				7C3CFC4720A19DD70084FF2A /* MyAlterView.m in Sources */,
@@ -4182,6 +4342,7 @@
 				7C476DAA20A58966005ECE03 /* HomePageCell.m in Sources */,
 				7C110AD7209FF19C0012040E /* DictToJson.m in Sources */,
 				7C110B4E209FF4320012040E /* CMUUIDManager.m in Sources */,
+				7CCF835020AC320D00D35383 /* CommentViewController.m in Sources */,
 				7C110A9E209FF0C00012040E /* IQUIViewController+Additions.m in Sources */,
 				7C3CFCB720A1C9BF0084FF2A /* XLZoomingScrollView.m in Sources */,
 				7C3CFC5F20A1B5880084FF2A /* PayTypeChoseView.m in Sources */,
@@ -4208,6 +4369,7 @@
 				7C110ABA209FF0C00012040E /* UITableView+WFEmpty.m in Sources */,
 				7C476E6120A58DD5005ECE03 /* MyQRCodeViewController.m in Sources */,
 				7C110B0D209FF1F00012040E /* MJRefreshComponent.m in Sources */,
+				7CCF834B20AC1D8A00D35383 /* TopicClassificationVC.m in Sources */,
 				7C110AA7209FF0C00012040E /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				7C110A88209FF0C00012040E /* YYTextAsyncLayer.m in Sources */,
 				7C76A70C20A2E7360029E310 /* RequesCover.m in Sources */,
@@ -4245,6 +4407,7 @@
 				7C110B1D209FF1F00012040E /* UIScrollView+MJRefresh.m in Sources */,
 				7C476DBA20A589D3005ECE03 /* NewPagedFlowView.m in Sources */,
 				7C3CFC6120A1B5880084FF2A /* PropertyPaymentHomeCell.m in Sources */,
+				7CCF831A20ABBA8000D35383 /* TopicCell.m in Sources */,
 				7C3CFBF520A14D3D0084FF2A /* TZAssetModel.m in Sources */,
 				7C3CFC8E20A1C7A60084FF2A /* ServiceVC.m in Sources */,
 				7C3CFCAF20A1C9BF0084FF2A /* FSActionSheetConfig.m in Sources */,
@@ -4252,6 +4415,7 @@
 				7C3CFC2A20A172720084FF2A /* HJImageScrollView.m in Sources */,
 				7C5DC69E20AAB6D100981E95 /* ColorUtility.m in Sources */,
 				7C1109A2209FEEC70012040E /* NSObject+Extension.m in Sources */,
+				7CCF834020AC0CCB00D35383 /* CircleCommentDataModel.m in Sources */,
 				7C476EB920A59267005ECE03 /* SGQRCodeHelperTool.m in Sources */,
 				7C476E4F20A58DD5005ECE03 /* MyPageVC.m in Sources */,
 				7C110903209FE4270012040E /* main.m in Sources */,
@@ -4265,12 +4429,15 @@
 				7C110956209FECFB0012040E /* NSString+Common.m in Sources */,
 				7C11099F209FEEC70012040E /* NSDate+Extension.m in Sources */,
 				7C110B6D209FF6350012040E /* NSObject+YYModel.m in Sources */,
+				7CCF833A20AC0BAA00D35383 /* CircleLikeTableViewCell.m in Sources */,
 				7C3CFC6A20A1BC390084FF2A /* MyHouseInfoVC.m in Sources */,
 				7C110B1C209FF1F00012040E /* UIScrollView+MJExtension.m in Sources */,
+				7CCF834620AC184F00D35383 /* PublishViewController.m in Sources */,
 				7C76A6F220A2A1D90029E310 /* ProtalHomePageTableViewCell.m in Sources */,
 				7C5DC6A920AAB80000981E95 /* TopicVC.m in Sources */,
 				7C110B12209FF1F00012040E /* MJRefreshAutoStateFooter.m in Sources */,
 				7C476E6F20A58DD5005ECE03 /* ModifyLoginPasswordFirstStepViewController.m in Sources */,
+				7CCF834120AC0CCB00D35383 /* CircleLikeDataModel.m in Sources */,
 				7C1109AC209FEEC70012040E /* UINavigationController+StackManager.m in Sources */,
 				7C476EC720A5946E005ECE03 /* CommunityVC.m in Sources */,
 				7C110D2420A032940012040E /* UMHybrid.m in Sources */,
@@ -4346,6 +4513,7 @@
 				7C110AD2209FF17A0012040E /* GTMBase64.m in Sources */,
 				7C76A6EB20A2A1D90029E310 /* ProtalHomePageHelpDataModel.m in Sources */,
 				7C5AD33D20A9B0C200158D38 /* HappenCell.m in Sources */,
+				7CCF832520ABD94400D35383 /* RootDataModel.m in Sources */,
 				7C110A80209FF0C00012040E /* YYTextAttribute.m in Sources */,
 				7C3CFC2E20A172720084FF2A /* NSString+ACMediaExt.m in Sources */,
 				7C476DAE20A58966005ECE03 /* CallPropertyDataModel.m in Sources */,
