@@ -12,11 +12,11 @@
 
 @interface NewRoomDataModel : NSObject
 
-@property (nonatomic, assign) NSInteger rcode;
+@property (nonatomic, assign) NSInteger code;
 
 @property (nonatomic, copy) NSString *msg;
 
-@property (nonatomic, strong) NSArray<NewRoomDataList *> *form;
+@property (nonatomic, strong) NSArray<NewRoomDataList *> *data;
 
 @end
 
@@ -27,7 +27,7 @@
 
 @property (nonatomic, copy) NSString *name;
 
-@property (nonatomic, copy) NSString *propertyAreaId;
+@property (nonatomic, copy) NSString *sn;
 
 @end
 

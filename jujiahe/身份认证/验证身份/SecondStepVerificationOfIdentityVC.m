@@ -12,7 +12,9 @@
 #import "HJPhotoPickerView.h"
 #import "HJTableViewCell.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-
+#import "AppDelegate.h"
+#import "BaseTabbarVC.h"
+#import "HomePageVC.h"
 #define IMAGE_SIZE (SCREEN_WIDTH - 60)/4
 
 @interface SecondStepVerificationOfIdentityVC ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,TZImagePickerControllerDelegate>
@@ -445,23 +447,19 @@
     }
     [myArr addObject:subArr];
     [MBProgressHUD showMessage:@"图片上传中..."];
-    [ZTHttpTool postWithImageUrl:@"fileserver/v1/upload/image" param:@{@"timestamp":[StorageUserInfromation dateTimeInterval],@"token":[StorageUserInfromation storageUserInformation].token,@"userId":[StorageUserInfromation storageUserInformation].userId,@"device":@"1",@"sourceApp":@"property"} postImageArr:myArr mimeType:@"image/png" success:^(id responseObj) {
+    [ZTHttpTool postWithImageUrl:@"file/upload" param:@{@"userId":[StorageUserInfromation storageUserInformation].userId,@"device":@"1",@"sourceApp":@"property"} postImageArr:myArr mimeType:@"image/png" success:^(id responseObj) {
         [MBProgressHUD hideHUD];
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
+        NSString * str = [responseObj mj_JSONObject];
         NSDictionary * onceDict = [DictToJson dictionaryWithJsonString:str];
-        XMJLog(@"%@",onceDict);
-        if ([onceDict[@"rocde"] integerValue] == 0) {
-            NSDictionary *comeBackDict = onceDict[@"form"];
+        if ([onceDict[@"success"] integerValue] == 1) {
+            NSDictionary *comeBackDict = onceDict[@"data"];
             [self publishText:comeBackDict];
         }else{
             _nextStepBtn.enabled = YES;
-            
-            [MBProgressHUD showError:onceDict[@"rocde"]];
+            [MBProgressHUD showError:onceDict[@"message"]];
         }
     } failure:^(NSError *error) {
         _nextStepBtn.enabled = YES;
-        
-        NSLog(@"%@",error);
         [MBProgressHUD hideHUD];
         [MBProgressHUD showError:@"网络异常"];
         
@@ -470,29 +468,61 @@
 #pragma mark 发布文字（适用于图片发布）
 - (void)publishText:(NSDictionary *)onceDict{
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:[StorageUserInfromation storageUserInformation].userId forKey:@"userId"];
-    [dict setValue:@"1.0" forKey:@"apiv"];
+    [dict setValue:_roomId forKey:@"houseId"];
+    [dict setValue:[StorageUserInfromation storageUserInformation].ids forKey:@"userId"];
+    [dict setValue:[NSString stringWithFormat:@"%ld",_identity]  forKey:@"cardType"];
+
+    [dict setValue:@"0"  forKey:@"ownerRelationShip"];
+    [dict setValue:_tips  forKey:@"remark"];
+    [dict setValue:_name.text  forKey:@"name"];
+    [dict setValue:_telphone.text  forKey:@"tel"];
+    [dict setValue:_identityCard.text  forKey:@"identityCard"];
+    [dict setValue:@"0"  forKey:@"attachment"];
+    [dict setValue:_verificationCode.text  forKey:@"smscode"];
+
     
     
-    [ZTHttpTool postWithUrl:@"property/v1/PropertyService/publish" param:dict success:^(id responseObj) {
+    [XMJHttpTool postWithUrl:@"propertyCard/addBind" param:dict success:^(id responseObj) {
         _nextStepBtn.enabled = YES;
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
+        NSString * str = [responseObj mj_JSONObject];
         NSDictionary *dict = [DictToJson dictionaryWithJsonString:str];
-        XMJLog(@"%@",dict);
         if ([dict[@"rcode"] integerValue] == 0) {
            
-            [self.navigationController popViewControllerAnimated:YES];
+            [self homePage];
+            
         }else{
             [MBProgressHUD showError:dict[@"rocde"]];
         }
     } failure:^(NSError *error) {
-        XMJLog(@"%@",error)
         _nextStepBtn.enabled = YES;
         [MBProgressHUD showError:@"网络异常"];
         
     }];
 }
-
+- (void)homePage{
+    StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
+    if (!storage.userId) {
+        storage.userId = @"";
+        storage.token = @"";
+        storage.access_token = @"";
+        storage.nickname = @"";
+        storage.sex = @"-1";
+    }
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    BaseTabbarVC *tabBarController = [BaseTabbarVC Shareinstance];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:tabBarController];
+    nav.fd_fullscreenPopGestureRecognizer.enabled = true;
+    nav.fd_prefersNavigationBarHidden = true;
+    nav.fd_interactivePopDisabled = true;
+    nav.fd_viewControllerBasedNavigationBarAppearanceEnabled = false;
+    [nav setNavigationBarHidden:YES animated:YES];
+    tabBarController.selectedIndex = 0;
+    delegate.window.rootViewController = nav;
+    HomePageVC *page = (HomePageVC *)tabBarController.viewControllers[0];
+    if (page) {
+        [page fetchData2];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -516,16 +546,12 @@
         [MBProgressHUD showError:@"请输入正确手机号"];
         return;
     }
-    NSDictionary *dict = @{@"timestamp":[StorageUserInfromation dateTimeInterval],@"username":self.telphone.text,@"device":@"1",@"aim":@"0"};
-    [ZTHttpTool postWithUrl:@"uaa/v1/getSmscode" param:dict success:^(id responseObj) {
-        NSLog(@"%@",[responseObj mj_JSONObject]);
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",str);
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
+    NSDictionary *dict = @{@"phone":self.telphone.text};
+    [ZTHttpTool postWithUrl:@"propertyCard/requestSmscode" param:dict success:^(id responseObj) {
+        NSString * str = [responseObj mj_JSONObject];
         [MBProgressHUD showSuccess:[DictToJson dictionaryWithJsonString:str][@"msg"]];
         if ([[DictToJson dictionaryWithJsonString:str][@"rcode"] integerValue] ==0) {
             [self startTime];
-            //            self.code.text = [DictToJson dictionaryWithJsonString:str][@"form"][@"smscode"];
         }
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
@@ -574,11 +600,42 @@
 }
 
 - (IBAction)nextSetpBtnClick:(id)sender {
+    if ([JGIsBlankString isBlankString:_name.text]) {
+        [MBProgressHUD showError:@"请输入姓名"];
+        return;
+    }
+    if ([JGIsBlankString isBlankString:_telphone.text]) {
+        [MBProgressHUD showError:@"请输入手机号"];
+        return;
+    }
+    if (![StorageUserInfromation valiMobile:self.telphone.text]) {
+        [MBProgressHUD showError:@"请输入正确手机号"];
+        return;
+    }
+    if (_identity == Owner) {
+        
+        if ([JGIsBlankString isBlankString:_verificationCode.text]) {
+            [MBProgressHUD showError:@"请获取验证码"];
+            return;
+        }
+    }
+    if (_identity == FamilyMembers) {
+        if ([JGIsBlankString isBlankString:_relationship.text]) {
+            [MBProgressHUD showError:@"请输入您与业主的关系"];
+            return;
+        }
+    }
     _nextStepBtn.enabled = NO;
     imageArr = [NSMutableArray arrayWithArray:_imageDataSource];
     BOOL flag = [imageArr.lastObject isEqual:self.photoPickerV.addImage];
     if (flag) {
         [imageArr removeLastObject];
+    }
+    if (imageArr.count == 0) {
+        if (_identity == Tenant || _identity == FamilyMembers) {
+            [MBProgressHUD showError:@"请选择图片"];
+            return;
+        }
     }
     if (imageArr.count>0) {
         [self publishImage];

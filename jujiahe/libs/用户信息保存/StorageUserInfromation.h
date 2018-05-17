@@ -49,6 +49,8 @@
 @property (nonatomic,copy) NSString *realname;
 @property (nonatomic,copy) NSString *zipCode;
 
+@property (nonatomic,copy) NSString *areaNumber;
+@property (nonatomic,copy) NSString *currentArea;
 
 //v3.1新增
 @property (nonatomic,copy) NSString *uToken;//用户识别uToken

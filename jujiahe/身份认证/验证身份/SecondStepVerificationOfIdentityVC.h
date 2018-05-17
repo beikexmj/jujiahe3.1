@@ -25,4 +25,7 @@ typedef NS_ENUM(NSInteger, Identity)
 - (IBAction)backBtnClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *nextStepBtn;
 - (IBAction)nextSetpBtnClick:(id)sender;
+@property (nonatomic,copy)NSString *roomId;
+@property (nonatomic,copy)NSString *tips;
+
 @end

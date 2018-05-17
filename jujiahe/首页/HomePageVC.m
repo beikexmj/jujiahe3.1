@@ -277,7 +277,8 @@
         NSString  *choseUnitName = [[NSUserDefaults standardUserDefaults] objectForKey:@"choseUnitName"];
         NSString  *cityNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"cityNumber"];
         NSString  *currentCity = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"];
-        
+        NSString  *areaNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"areaNumber"];
+        NSString  *currentArea = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentArea"];
         NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];
         
         
@@ -286,7 +287,8 @@
         storage.choseUnitName = choseUnitName;
         storage.cityNumber = cityNumber;
         storage.currentCity = currentCity;
-        
+        storage.currentArea = currentArea;
+        storage.areaNumber = areaNumber;
         [NSKeyedArchiver archiveRootObject:storage toFile:file];
         [self fetchData];
     };

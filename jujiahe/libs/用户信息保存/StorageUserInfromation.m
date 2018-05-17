@@ -51,6 +51,8 @@
         self.portrait = [aDecoder decodeObjectForKey:@"portrait"];
         self.realname = [aDecoder decodeObjectForKey:@"realname"];
         self.zipCode = [aDecoder decodeObjectForKey:@"zipCode"];
+        self.currentArea = [aDecoder decodeObjectForKey:@"currentArea"];
+        self.areaNumber = [aDecoder decodeObjectForKey:@"areaNumber"];
 
     }
     return self;
@@ -94,6 +96,8 @@
     [aCoder encodeObject:self.portrait forKey:@"portrait"];
     [aCoder encodeObject:self.realname forKey:@"realname"];
     [aCoder encodeObject:self.zipCode forKey:@"zipCode"];
+    [aCoder encodeObject:self.currentArea forKey:@"currentArea"];
+    [aCoder encodeObject:self.areaNumber forKey:@"areaNumber"];
 
 
 }

@@ -22,6 +22,8 @@
     NSString *choseUnitName;
     NSString *cityNumber;
     NSString *currentCity;
+    NSString *areaNumber;
+    NSString *currentArea;
 }
 
 @end
@@ -35,6 +37,8 @@ BaseTabbarVC *manager = nil;
     choseUnitName = [[NSUserDefaults standardUserDefaults] objectForKey:@"choseUnitName"];
     cityNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"cityNumber"];
     currentCity = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"];
+    areaNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"areaNumber"];
+    currentArea = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentArea"];
     
     NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];
 
@@ -44,7 +48,8 @@ BaseTabbarVC *manager = nil;
     storage.choseUnitName = choseUnitName;
     storage.cityNumber = cityNumber;
     storage.currentCity = currentCity;
-    
+    storage.currentArea = currentArea;
+    storage.areaNumber = areaNumber;
     [NSKeyedArchiver archiveRootObject:storage toFile:file];
 
     

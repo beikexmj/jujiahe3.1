@@ -82,9 +82,17 @@
     if ([defaults objectForKey:@"cityNumber"]) {
         storage.cityNumber = [defaults objectForKey:@"cityNumber"];
     }
+    if ([defaults objectForKey:@"currentArea"]) {
+        storage.currentArea = [defaults objectForKey:@"currentArea"];
+    }
+    
+    if ([defaults objectForKey:@"areaNumber"]) {
+        storage.areaNumber = [defaults objectForKey:@"areaNumber"];
+    }
     if ([defaults objectForKey:@"choseUnitPropertyId"]) {
         storage.choseUnitPropertyId = [defaults objectForKey:@"choseUnitPropertyId"];
     }
+    
     if ([defaults objectForKey:@"choseUnitName"]) {
         storage.choseUnitName = [defaults objectForKey:@"choseUnitName"];
         NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];

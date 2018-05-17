@@ -87,58 +87,62 @@
 }
 
 - (IBAction)nextStepBtnClick:(id)sender {
-    SecondStepVerificationOfIdentityVC *page = [[SecondStepVerificationOfIdentityVC alloc]init];
-    page.identity = _identity;
-    [self.navigationController pushViewController:page animated:YES];
+    if (roomId) {
+        SecondStepVerificationOfIdentityVC *page = [[SecondStepVerificationOfIdentityVC alloc]init];
+        page.identity = _identity;
+        page.roomId = roomId;
+        page.tips = self.tips.text;
+        [self.navigationController pushViewController:page animated:YES];
+    }else{
+        [MBProgressHUD showError:@"请完善选择"];
+    }
+   
 }
 
 - (void)addBuilding{
-    [ZTHttpTool postWithUrl:@"property/v1/select/queryPropertyBuilding" param:@{@"userId":[StorageUserInfromation storageUserInformation].userId,@"propertyAreaId":_unitId} success:^(id responseObj) {
+    [XMJHttpTool postWithUrl:@"building/getDropdown" param:[StorageUserInfromation storageUserInformation].choseUnitPropertyId success:^(id responseObj) {
         [_buildingArr removeAllObjects];
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
+        NSString * str = [responseObj mj_JSONObject];
+       
         NewRoomDataModel *newRoomData = [NewRoomDataModel mj_objectWithKeyValues:str];
-        if (newRoomData.rcode == 0) {
-            [_buildingArr addObjectsFromArray:newRoomData.form];
+        if (newRoomData.code == 0) {
+            [_buildingArr addObjectsFromArray:newRoomData.data];
         }
     } failure:^(NSError *error) {
         
     }];
 }
 - (void)addUint:(NSString *)str{
-    [ZTHttpTool postWithUrl:@"property/v1/select/queryPropertyUnit" param:@{@"userId":[StorageUserInfromation storageUserInformation].userId,@"propertyBuildingId":str} success:^(id responseObj) {
+    [XMJHttpTool postWithUrl:@"unit/getDropdown" param:str success:^(id responseObj) {
         [_unitArr removeAllObjects];
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
+        NSString * str = [responseObj mj_JSONObject];
         NewRoomDataModel *newRoomData = [NewRoomDataModel mj_objectWithKeyValues:str];
-        if (newRoomData.rcode == 0) {
-            [_unitArr addObjectsFromArray:newRoomData.form];
+        if (newRoomData.code == 0) {
+            [_unitArr addObjectsFromArray:newRoomData.data];
         }
     } failure:^(NSError *error) {
         
     }];
 }
 - (void)addRoom:(NSString *)str{
-    [ZTHttpTool postWithUrl:@"property/v1/select/queryPropertyHouse" param:@{@"userId":[StorageUserInfromation storageUserInformation].userId,@"propertyFloorId":str} success:^(id responseObj) {
+    [XMJHttpTool postWithUrl:@"house/getDropdown" param:str success:^(id responseObj) {
         [_roomArr removeAllObjects];
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
+        NSString * str = [responseObj mj_JSONObject];
         NewRoomDataModel *newRoomData = [NewRoomDataModel mj_objectWithKeyValues:str];
-        if (newRoomData.rcode == 0) {
-            [_roomArr addObjectsFromArray:newRoomData.form];
+        if (newRoomData.code == 0) {
+            [_roomArr addObjectsFromArray:newRoomData.data];
         }
     } failure:^(NSError *error) {
         
     }];
 }
 - (void)addFlour:(NSString *)str{
-    [ZTHttpTool postWithUrl:@"property/v1/select/queryPropertyFloor" param:@{@"userId":[StorageUserInfromation storageUserInformation].userId,@"propertyUnitId":str} success:^(id responseObj) {
+    [XMJHttpTool postWithUrl:@"floor/getDropdown" param:str success:^(id responseObj) {
         [_flourArr removeAllObjects];
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
+        NSString * str = [responseObj mj_JSONObject];
         NewRoomDataModel *newRoomData = [NewRoomDataModel mj_objectWithKeyValues:str];
-        if (newRoomData.rcode == 0) {
-            [_flourArr addObjectsFromArray:newRoomData.form];
+        if (newRoomData.code == 0) {
+            [_flourArr addObjectsFromArray:newRoomData.data];
         }
     } failure:^(NSError *error) {
         
@@ -365,25 +369,6 @@
 }
 
 - (IBAction)addRoomNoBtnClick:(id)sender {
-    if (roomId) {
-        [ZTHttpTool postWithUrl:@"property/v1/propertyCard/addRoomCard" param:@{@"userId":[StorageUserInfromation storageUserInformation].userId,@"apiv":@"1.0",@"propertyHouseId":roomId,@"remarks":self.tips.text} success:^(id responseObj) {
-            NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-            NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
-            NSDictionary * dict = [DictToJson dictionaryWithJsonString:str];
-            if ([dict[@"rcode"] integerValue] == 0) {
-                //                if (![[NSUserDefaults standardUserDefaults] valueForKey:@"roomNo"]) {
-                //                    [[NSNotificationCenter defaultCenter] postNotificationName:@"freshRoomNo" object:nil];
-                //                }
-                [self.navigationController popToViewController:[self.navigationController viewControllers][self.navigationController.viewControllers.count - 3] animated:YES];
-            }else{
-                [MBProgressHUD showError:dict[@"msg"]];
-            }
-        } failure:^(NSError *error) {
-            [MBProgressHUD showError:@"网络异常"];
-            
-        }];
-    }else{
-        [MBProgressHUD showError:@"请完善选择"];
-    }
+    
 }
 @end
