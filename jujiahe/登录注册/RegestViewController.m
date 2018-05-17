@@ -124,7 +124,7 @@
     [defaults setObject:self.password.text forKey:@"password"];
 //
     NSDictionary *dict = @{@"phone":self.phoneNum.text,@"password":self.password.text,@"verifyCode":self.code.text,@"loginStatus":@"0"};
-    [XMJHttpTool postWithUrl:@"api/user/register" param:dict success:^(id responseObj) {
+    [XMJHttpTool postWithUrl:@"user/register" param:dict success:^(id responseObj) {
       
         registDataModle *user = [registDataModle yy_modelWithJSON:[responseObj mj_JSONObject]];
         if (user.success) {
@@ -148,7 +148,7 @@
         return;
     }
     NSDictionary *dict = @{@"phone":self.phoneNum.text};
-    [XMJHttpTool postWithUrl:@"api/user/registerVerifyCode" param:dict success:^(id responseObj) {
+    [XMJHttpTool postWithUrl:@"user/registerVerifyCode" param:dict success:^(id responseObj) {
         NSDictionary * dictData = [responseObj mj_JSONObject];
         [MBProgressHUD showSuccess:dictData[@"message"]];
         if ([dictData[@"success"] boolValue] == YES) {

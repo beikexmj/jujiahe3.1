@@ -56,7 +56,7 @@
     _locationView.hidden = YES;
     _locationViewHight.constant = 0;
     
-    NSString *title = [NSString stringWithFormat:@" %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"]];
+    NSString *title = [NSString stringWithFormat:@" %@%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"],[[NSUserDefaults standardUserDefaults] objectForKey:@"currentArea"]];
     [_choseCity setTitle:title forState:UIControlStateNormal];
     
     [self fetchData];
@@ -94,18 +94,17 @@
     
 }
 -(void)fetchData{
-    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"cityLocations"];
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"areaLocations"];
     CLLocation *location = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    NSDictionary *dict = @{@"cityOid":[[NSUserDefaults standardUserDefaults] objectForKey:@"cityNumber"],@"latitude":[NSString stringWithFormat:@"%lf",location.coordinate.latitude] ,@"longitude":[NSString stringWithFormat:@"%lf",location.coordinate.longitude]};
-    
+    NSDictionary *dict = @{@"cityOid":[[NSUserDefaults standardUserDefaults] valueForKey:@"areaNumber"],@"lat":[NSNumber numberWithDouble: location.coordinate.latitude] ,@"lng":[NSNumber numberWithDouble:location.coordinate.longitude]};
     [XMJHttpTool postWithUrl:@"microdistrict/getNearbyDistrict" param:dict success:^(id responseObj) {
         NSString * str = [responseObj mj_JSONObject];
 //        [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
 //        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
         ChoseUnitDataModel *choseUnitData = [ChoseUnitDataModel mj_objectWithKeyValues:str];
-        if (choseUnitData.code == 0) {
+        if (choseUnitData.success) {
             [_myArray removeAllObjects];
-            [_myArray addObjectsFromArray:choseUnitData.form];
+            [_myArray addObjectsFromArray:choseUnitData.data];
             [self rebuildData:_myArray];
             if (_myArray.count ==0) {
                 self.myTableView.hidden = YES;
@@ -121,7 +120,7 @@
 //            [self.myTableView reloadData];
         }else{
             self.myTableView.hidden = YES;
-            [MBProgressHUD showError:choseUnitData.msg];
+            [MBProgressHUD showError:choseUnitData.message];
         }
     } failure:^(NSError *error) {
         XMJLog(@"%@",error);
@@ -137,7 +136,7 @@
         if (_nearByLocationUnitArr.count>0) {
             ChoseUnitDataList *onceDict = _nearByLocationUnitArr[indexPath.row];
             myCell.unitName.text = onceDict.name;
-            myCell.distence.text = [NSString stringWithFormat:@"%@km",onceDict.distance];
+            myCell.distence.text = [NSString stringWithFormat:@"%@m",onceDict.distance];
         }
         return myCell;
     }
@@ -444,7 +443,7 @@
     }
 }
 - (void)cityName:(NSString *)name {
-    NSString *title = [NSString stringWithFormat:@" %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"]];
+    NSString *title = [NSString stringWithFormat:@" %@%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"],[[NSUserDefaults standardUserDefaults] objectForKey:@"currentArea"]];
     [_choseCity setTitle:title forState:UIControlStateNormal];
     [self fetchData];
 }

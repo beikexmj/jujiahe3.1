@@ -14,7 +14,8 @@ typedef NS_ENUM(NSInteger, XXPickerViewMode) {
     XXPickerViewModeYearAndMonth,           // yyyy-MM
     XXPickerViewModeHourAndMinute,          // hh mm
     XXPickerViewModeProvinceCity,           // Province  City
-    XXPickerViewModeProvinceCityAreas,      // Province  City  Areas
+    XXPickerViewModeProvinceCityAreas,     // Province  City  Areas
+    XXPickerViewModeProvinceCityAreasColumn,
     XXPickerViewModeDataSourceForColumn,
     XXPickerViewModeDataSourceFor2Column,   // custom datasource for 2 columns
     XXPickerViewModeDataSourceFor3Column    // custom datasource for 3 columns

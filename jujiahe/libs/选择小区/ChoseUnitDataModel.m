@@ -10,7 +10,7 @@
 
 @implementation ChoseUnitDataModel
 + (NSDictionary *)objectClassInArray{
-    return @{@"form" : [ChoseUnitDataList class]};
+    return @{@"data" : [ChoseUnitDataList class]};
 }
 @end
 

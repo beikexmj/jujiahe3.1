@@ -37,11 +37,16 @@
     StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
     if (![JGIsBlankString isBlankString:storage.sid]) {
         [mutableDict setValue:storage.sid forKey:@"sid"];
+    }else{
+        [mutableDict setValue:@"" forKey:@"sid"];
     }
     if (![JGIsBlankString isBlankString:storage.uToken]) {
         [mutableDict setValue:storage.uToken forKey:@"uToken"];
+    }else{
+        [mutableDict setValue:@"" forKey:@"uToken"];
     }
-//    NSString *jsonStr = [DictToJson jsonStringWithDictionary: mutableDict];
+    XMJLog(@"=============\n%@\n=============",mutableDict);
+    
     NSURL *SessionUrl = [NSURL URLWithString:XMJBASE_URL];
     
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -60,7 +65,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             if (responseObject) {
-                XMJLog(@"/n =====================      %@/n===================",[responseObject mj_JSONObject]);
+                XMJLog(@"\n =====================      %@\n===================",[responseObject mj_JSONObject]);
                 success(responseObject);
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

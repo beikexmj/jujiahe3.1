@@ -88,13 +88,24 @@ static JFAreaDataManager *manager = nil;
         cityNumber(number);
     }
 }
-/// 所有区县的名称
+/// 获取当前区县的city_oid
+- (void)areaNumberWithArea:(NSString *)area areaNumber:(void (^)(NSString *areaNumber))areaNumber{
+    FMResultSet *result = [self.db executeQuery:[NSString stringWithFormat:@"SELECT * FROM city WHERE city_name = '%@';",area]];
+    while ([result next]) {
+        NSString *number = [result stringForColumn:@"city_oid"];
+        
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:[result doubleForColumn:@"city_latitude"] longitude:[result doubleForColumn:@"city_longitude"]];
+        [[NSUserDefaults standardUserDefaults] setObject: [NSKeyedArchiver archivedDataWithRootObject:location] forKey:@"areaLocations"];
+        areaNumber(number);
+    }
+}
+/// 所有当前城市区县的名称
 - (void)areaData:(NSString *)cityNumber areaData:(void (^)(NSMutableArray *areaData))areaData {
     NSMutableArray *resultArray = [[NSMutableArray alloc] init];
-    NSString *sqlString = [NSString stringWithFormat:@"SELECT area_name FROM shop_area WHERE city_number ='%@';",cityNumber];
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT city_name FROM city WHERE city_pid ='%@';",cityNumber];
     FMResultSet *result = [self.db executeQuery:sqlString];
     while ([result next]) {
-        NSString *areaName = [result stringForColumn:@"area_name"];
+        NSString *areaName = [result stringForColumn:@"city_name"];
         [resultArray addObject:areaName];
     }
     areaData(resultArray);

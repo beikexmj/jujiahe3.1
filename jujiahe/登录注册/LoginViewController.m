@@ -173,7 +173,7 @@
 #pragma mark 登录
 - (void)loading{
     NSDictionary *dict = @{@"phone":self.userName.text,@"password":self.password.text,@"loginType":@"0"};
-    [XMJHttpTool postWithUrl:@"api/user/login4App" param:dict success:^(id responseObj) {
+    [XMJHttpTool postWithUrl:@"user/login4App" param:dict success:^(id responseObj) {
         [MBProgressHUD hideHUD];
         NSString * str = [responseObj mj_JSONObject];
         registDataModle *user = [registDataModle yy_modelWithJSON:str];

@@ -9,13 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @class ChoseUnitDataList;
-@interface ChoseUnitDataModel : NSObject
+@interface ChoseUnitDataModel : RootDataModel
 
-@property (nonatomic, assign) NSInteger code;
-
-@property (nonatomic, copy) NSString *msg;
-
-@property (nonatomic, strong) NSArray<ChoseUnitDataList *> *form;
+@property (nonatomic, strong) NSArray<ChoseUnitDataList *> *data;
 
 @end
 

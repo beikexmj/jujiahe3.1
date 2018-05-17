@@ -14,7 +14,7 @@
 #import "JFLocation.h"
 #import "JFSearchView.h"
 #import "ChoseUnitViewController.h"
-
+#import "XXInputView.h"
 #define kCurrentCityInfoDefaults [NSUserDefaults standardUserDefaults]
 
 @interface JFCityViewController ()
@@ -29,6 +29,7 @@ JFSearchViewDelegate>
     NSMutableArray   *_sectionMutableArray;         //存处理过以后的数组
     NSInteger        _HeaderSectionTotal;           //头section的个数
     CGFloat          _cellHeight;                   //添加的(显示区县名称)cell的高度
+    XXInputView *inputView;
 }
 
 @property (nonatomic, strong) UITableView *rootTableView;
@@ -47,6 +48,8 @@ JFSearchViewDelegate>
 @property (nonatomic, strong) NSMutableArray *cityMutableArray;
 /** 根据cityNumber在数据库中查到的区县*/
 @property (nonatomic, strong) NSMutableArray *areaMutableArray;
+@property (nonatomic, strong) NSMutableArray *areaArr;
+
 
 @end
 
@@ -147,16 +150,15 @@ JFSearchViewDelegate>
             [kCurrentCityInfoDefaults setObject:name forKey:@"currentCity"];
             __strong typeof(self) strongSelf = weakSelf;
             if (strongSelf) {
-                strongSelf.headerView.cityName = name;
+//                strongSelf.headerView.cityName = name;
                 if (strongSelf.delegate && [strongSelf.delegate respondsToSelector:@selector(cityName:)]) {
                     [strongSelf.delegate cityName:name];
                 }
             }
-
         }];
     }else {
         cityName = [cityDic valueForKey:@"cityName"];
-        _headerView.cityName = cityName;
+//        _headerView.cityName = cityName;
         [kCurrentCityInfoDefaults setObject:[cityDic valueForKey:@"cityName"] forKey:@"currentCity"];
         
         [_manager cityNumberWithCity:[cityDic valueForKey:@"cityName"] cityNumber:^(NSString *cityNumber) {
@@ -165,22 +167,24 @@ JFSearchViewDelegate>
         
         [self historyCity:cityName];
     }
-    if (self.delegate && [self.delegate respondsToSelector:@selector(cityName:)]) {
-        [self.delegate cityName:cityName];
-        [self.navigationController popViewControllerAnimated:YES];
-    }else{
-        if (!self.comFromFlag) {
-            ChoseUnitViewController *page = [[ChoseUnitViewController alloc]init];
-            page.comFromFlag = 1;
-            [self.navigationController pushViewController:page animated:YES];
-        }else{
-            ChoseUnitViewController *page = [[ChoseUnitViewController alloc]init];
-            page.comFromFlag = 3;
-            [self.navigationController pushViewController:page animated:YES];
-        }
-    }
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(cityName:)]) {
+//        [self.delegate cityName:cityName];
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }else{
+//        if (!self.comFromFlag) {
+//            ChoseUnitViewController *page = [[ChoseUnitViewController alloc]init];
+//            page.comFromFlag = 1;
+//            [self.navigationController pushViewController:page animated:YES];
+//        }else{
+//            ChoseUnitViewController *page = [[ChoseUnitViewController alloc]init];
+//            page.comFromFlag = 3;
+//            [self.navigationController pushViewController:page animated:YES];
+//        }
+//    }
+    [self areaData];
+
     //销毁通知
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 //    [self dismissViewControllerAnimated:YES completion:nil];
 
     
@@ -200,7 +204,7 @@ JFSearchViewDelegate>
         _headerView.delegate = self;
         _headerView.backgroundColor = [UIColor whiteColor];
         _headerView.buttonTitle = @"选择区县";
-        _headerView.cityName = [kCurrentCityInfoDefaults objectForKey:@"currentCity"] ? [kCurrentCityInfoDefaults objectForKey:@"currentCity"] : [kCurrentCityInfoDefaults objectForKey:@"locationCity"];
+        _headerView.cityName =  [kCurrentCityInfoDefaults objectForKey:@"currentCity"] ?[NSString stringWithFormat:@"%@%@",[kCurrentCityInfoDefaults valueForKey:@"currentCity"],[kCurrentCityInfoDefaults valueForKey:@"currentArea"]]:[NSString stringWithFormat:@"%@%@",[kCurrentCityInfoDefaults valueForKey:@"locationCity"],[kCurrentCityInfoDefaults valueForKey:@"locationArea"]];
     }
     return _headerView;
 }
@@ -367,7 +371,9 @@ JFSearchViewDelegate>
         }
         if (indexPath.section == _HeaderSectionTotal - 2) {
             NSString *locationCity = [kCurrentCityInfoDefaults objectForKey:@"locationCity"];
-            _cell.cityNameArray = locationCity ? @[locationCity] : @[@"正在定位..."];
+            NSString *locationArea = [kCurrentCityInfoDefaults objectForKey:@"locationArea"];
+          NSString *area =  [NSString stringWithFormat:@"%@%@",locationCity,locationArea];
+            _cell.cityNameArray = locationArea ? @[area] : @[@"正在定位..."];
         }
 //        if (indexPath.section == _HeaderSectionTotal - 1) {
 //            _cell.cityNameArray = self.historyCityMutableArray;
@@ -437,27 +443,12 @@ JFSearchViewDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    _headerView.cityName = cell.textLabel.text;
     [kCurrentCityInfoDefaults setObject:cell.textLabel.text forKey:@"currentCity"];
     [_manager cityNumberWithCity:cell.textLabel.text cityNumber:^(NSString *cityNumber) {
         [kCurrentCityInfoDefaults setObject:cityNumber forKey:@"cityNumber"];
     }];
     [self historyCity:cell.textLabel.text];
-
-    if (self.delegate && [self.delegate respondsToSelector:@selector(cityName:)]) {
-        [self.delegate cityName:cell.textLabel.text];
-        [self.navigationController popViewControllerAnimated:YES];
-    }else{
-        if (!self.comFromFlag) {
-            ChoseUnitViewController *page = [[ChoseUnitViewController alloc]init];
-            page.comFromFlag = 1;
-            [self.navigationController pushViewController:page animated:YES];
-        }else{
-            ChoseUnitViewController *page = [[ChoseUnitViewController alloc]init];
-            page.comFromFlag = 3;
-            [self.navigationController pushViewController:page animated:YES];
-        }
-    }
+    [self areaData];
 }
 
 #pragma mark --- JFCityHeaderViewDelegate
@@ -521,19 +512,19 @@ JFSearchViewDelegate>
 - (void)searchResults:(NSDictionary *)dic {
     [kCurrentCityInfoDefaults setObject:[dic valueForKey:@"city"] forKey:@"currentCity"];
     [kCurrentCityInfoDefaults setObject:[dic valueForKey:@"city_number"] forKey:@"cityNumber"];
-    NSString *nameStr = [dic valueForKey:@"city"];
     [self historyCity:[dic valueForKey:@"city"]];
+    [self areaData];
 
-    if (self.delegate && [self.delegate respondsToSelector:@selector(cityName:)]) {
-        [self.delegate cityName:nameStr];
-        [self.navigationController popViewControllerAnimated:YES];
-    }else{
-        if (!self.comFromFlag) {
-            ChoseUnitViewController *page = [[ChoseUnitViewController alloc]init];
-            page.comFromFlag = 1;
-            [self.navigationController pushViewController:page animated:YES];
-        }
-    }
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(cityName:)]) {
+//        [self.delegate cityName:nameStr];
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }else{
+//        if (!self.comFromFlag) {
+//            ChoseUnitViewController *page = [[ChoseUnitViewController alloc]init];
+//            page.comFromFlag = 1;
+//            [self.navigationController pushViewController:page animated:YES];
+//        }
+//    }
 //    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -551,11 +542,16 @@ JFSearchViewDelegate>
 //定位成功
 - (void)currentLocation:(NSDictionary *)locationDictionary {
     NSString *city = [locationDictionary valueForKey:@"City"];
+    NSString *area = [locationDictionary valueForKey:@"Area"];
     [kCurrentCityInfoDefaults setObject:city forKey:@"locationCity"];
+    [kCurrentCityInfoDefaults setObject:area forKey:@"locationArea"];
     [_manager cityNumberWithCity:city cityNumber:^(NSString *cityNumber) {
         [kCurrentCityInfoDefaults setObject:cityNumber forKey:@"cityNumber"];
     }];
-    _headerView.cityName = city;
+    [_manager areaNumberWithArea:area areaNumber:^(NSString *areaNumber) {
+        [kCurrentCityInfoDefaults setObject:areaNumber forKey:@"areaNumber"];
+    }];
+    _headerView.cityName = [NSString stringWithFormat:@"%@%@",city,area];
     [self historyCity:city];
     [_rootTableView reloadData];
 }
@@ -590,6 +586,54 @@ JFSearchViewDelegate>
 - (void)dealloc {
     NSLog(@"JFCityViewController dealloc");
 }
+- (void)areaData{
+    _areaArr = [NSMutableArray array];
+    [_manager areaData:[kCurrentCityInfoDefaults objectForKey:@"cityNumber"] areaData:^(NSMutableArray *areaData) {
+        [_areaArr addObjectsFromArray:areaData];
+        [self selectArea];
+       
+    }];
+}
+- (void)selectArea{
+    if (inputView) {
+        [inputView hide];
+    }
+    inputView = [[XXInputView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 200) mode:XXPickerViewModeProvinceCityAreasColumn dataSource:_areaArr];
+    inputView.hideSeparator = YES;
+    __weak typeof (inputView) weakInputView = inputView;
+    WeakSelf
+    inputView.completeBlock = ^(NSString *dateString,NSString *ids){
+        StrongSelf
+        NSLog(@"selected data : %@", dateString);
+        [kCurrentCityInfoDefaults setObject:dateString forKey:@"currentArea"];
+        [strongSelf.manager areaNumberWithArea:dateString areaNumber:^(NSString *areaNumber) {
+            [kCurrentCityInfoDefaults setObject:areaNumber forKey:@"areaNumber"];
+        }];
+        
+        strongSelf.headerView.cityName = [NSString stringWithFormat:@"%@%@",[kCurrentCityInfoDefaults valueForKey:@"currentCity"],dateString];
 
-
+        [strongSelf slipAction];
+        [weakInputView removeFromSuperview];
+    };
+    
+    [self.view addSubview:inputView];
+    [inputView show];
+}
+- (void)slipAction{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cityName:)]) {
+        NSString *cityAndAreaName = [NSString stringWithFormat:@"%@%@",[kCurrentCityInfoDefaults valueForKey:@"currentCity"],[kCurrentCityInfoDefaults valueForKey:@"currentArea"]];
+        [self.delegate cityName:cityAndAreaName];
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        if (!self.comFromFlag) {
+            ChoseUnitViewController *page = [[ChoseUnitViewController alloc]init];
+            page.comFromFlag = 1;
+            [self.navigationController pushViewController:page animated:YES];
+        }else{
+            ChoseUnitViewController *page = [[ChoseUnitViewController alloc]init];
+            page.comFromFlag = 3;
+            [self.navigationController pushViewController:page animated:YES];
+        }
+    }
+}
 @end

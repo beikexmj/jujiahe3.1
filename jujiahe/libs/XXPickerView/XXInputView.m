@@ -154,6 +154,7 @@
         case XXPickerViewModeHourAndMinute:
         case XXPickerViewModeProvinceCity:
         case XXPickerViewModeProvinceCityAreas:
+        case XXPickerViewModeProvinceCityAreasColumn:
         case XXPickerViewModeDataSourceForColumn:
         case XXPickerViewModeDataSourceFor2Column:
         case XXPickerViewModeDataSourceFor3Column:
@@ -200,6 +201,8 @@
         return 3;
     }else if (_pickerViewMode == XXPickerViewModeDataSourceForColumn){
         return 1;
+    }else if (_pickerViewMode == XXPickerViewModeProvinceCityAreasColumn){
+        return 1;
     }
     
     return 0;   // 暂不支持4列
@@ -238,6 +241,8 @@
         if (_pickerViewMode == XXPickerViewModeDataSourceForColumn) {
             NSDictionary *dict = self.dataSource[row];
             content = dict[@"name"];
+        }else if (_pickerViewMode == XXPickerViewModeProvinceCityAreasColumn){
+            content = self.dataSource[row];
         }else{
             NSDictionary *dict = self.dataSource[row];
             NSString *key = dict.allKeys[0];
@@ -272,6 +277,12 @@
     if (_pickerViewMode == XXPickerViewModeDataSourceForColumn) {
         NSDictionary *dict =self.dataSource[row];
         _selectedValue = dict[@"name"];
+        UIView *selectView = [pickerView viewForRow:row forComponent:component];
+        UILabel *selectLabel = (UILabel *)selectView;
+        selectLabel.textColor = RGBA(0x00a7ff, 1);
+        return;
+    }else if (_pickerViewMode == XXPickerViewModeProvinceCityAreasColumn){
+        _selectedValue = self.dataSource[row];
         UIView *selectView = [pickerView viewForRow:row forComponent:component];
         UILabel *selectLabel = (UILabel *)selectView;
         selectLabel.textColor = RGBA(0x00a7ff, 1);
@@ -348,6 +359,11 @@
             self.completeBlock(_selectedValue,dict[@"id"]);
             [self hide];
             return;
+        }else if (_pickerViewMode == XXPickerViewModeProvinceCityAreasColumn){
+            _selectedValue = self.dataSource[0];
+            self.completeBlock(_selectedValue,nil);
+            [self hide];
+            return;
         }
         NSDictionary *dict = self.dataSource[0];
         NSString *key = dict.allKeys[0]; // 1
@@ -386,6 +402,10 @@
                 return;
             }
         }
+    }else if (_pickerViewMode == XXPickerViewModeProvinceCityAreasColumn){
+        self.completeBlock(_selectedValue,nil);
+        [self hide];
+        return;
     }
     self.completeBlock(_selectedValue,nil);
     [self hide];

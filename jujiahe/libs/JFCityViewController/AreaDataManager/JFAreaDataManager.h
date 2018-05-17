@@ -32,6 +32,14 @@
 - (void)cityNumberWithCity:(NSString *)city cityNumber:(void (^)(NSString *cityNumber))cityNumber;
 
 /**
+ 获取市对应的city_number
+ 
+ @param area 查询对象（城市名）
+ @param cityNumber 查询返回值（city_number）
+ */
+- (void)areaNumberWithArea:(NSString *)area areaNumber:(void (^)(NSString *areaNumber))areaNumber;
+
+/**
  获取某个市的所有区县
 
  @param cityNumber 查询对象
