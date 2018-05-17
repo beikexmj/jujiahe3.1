@@ -49,7 +49,7 @@
     btn.backgroundColor = RGBA(0x00a7ff, 1);
     btn.layer.cornerRadius = 20;
     btn.layer.masksToBounds = YES;
-    [btn setTitle:@"发帖/回复话题" forState:UIControlStateNormal];
+    [btn setTitle:@"发帖" forState:UIControlStateNormal];
     [btn setTitleColor:RGBA(0xffffff, 1) forState:UIControlStateNormal];
     [btn.titleLabel setFont:[UIFont systemFontOfSize:17.0]];
     [self.view addSubview:btn];

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="96" id="KGk-i7-Jjw" customClass="EstablishCircleCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSQ-jy-Ol3">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="ZjP-gC-Jcq"/>
+                            <constraint firstAttribute="width" constant="50" id="kjf-Sz-Ivb"/>
+                        </constraints>
+                        <state key="normal" image="login_unchoice"/>
+                        <connections>
+                            <action selector="choseBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hix-P3-efG"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="同时将圈子发送到周边事,周边所有邻居均可参与" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGA-W9-Xcq">
+                        <rect key="frame" x="50" y="0.0" width="262" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="7W8-zj-lHf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提示：圈子发布后，邻居可在恒大照母山小区事中参与圈子话题" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbT-Tc-QEh">
+                        <rect key="frame" x="15" y="50" width="290" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.61176470588235299" green="0.61176470588235299" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kSQ-jy-Ol3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="BJr-sn-owo"/>
+                    <constraint firstItem="hbT-Tc-QEh" firstAttribute="top" secondItem="kSQ-jy-Ol3" secondAttribute="bottom" id="SAr-O7-XBA"/>
+                    <constraint firstItem="kSQ-jy-Ol3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="SFo-b5-9YR"/>
+                    <constraint firstAttribute="trailing" secondItem="hbT-Tc-QEh" secondAttribute="trailing" constant="15" id="WCt-Ua-h5E"/>
+                    <constraint firstAttribute="trailing" secondItem="tGA-W9-Xcq" secondAttribute="trailing" constant="8" id="Z50-tJ-pUN"/>
+                    <constraint firstItem="tGA-W9-Xcq" firstAttribute="leading" secondItem="kSQ-jy-Ol3" secondAttribute="trailing" id="nyw-ZW-2jP"/>
+                    <constraint firstItem="tGA-W9-Xcq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="on6-0a-cSs"/>
+                    <constraint firstItem="hbT-Tc-QEh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="vEh-U7-Yyu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="choseBtn" destination="kSQ-jy-Ol3" id="TtB-Y5-FXS"/>
+                <outlet property="tips" destination="tGA-W9-Xcq" id="kXc-gC-pVM"/>
+                <outlet property="tipsDetail" destination="hbT-Tc-QEh" id="fPn-jK-6kx"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="60"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="login_unchoice" width="20" height="20"/>
+    </resources>
+</document>

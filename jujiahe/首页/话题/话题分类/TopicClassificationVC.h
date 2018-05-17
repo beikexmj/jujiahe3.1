@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YZDisplayViewController.h"
 
-@interface TopicClassificationVC : UIViewController
+@interface TopicClassificationVC : YZDisplayViewController
 
 @end

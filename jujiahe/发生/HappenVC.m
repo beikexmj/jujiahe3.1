@@ -9,6 +9,7 @@
 #import "HappenVC.h"
 #import "AllServiceDataModel.h"
 #import "HappenCell.h"
+#import "EstablishCircleVC.h"
 @interface HappenVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong)UIButton *districtAffairsBtn;
 @property (nonatomic,strong)UIButton *perimeterBtn;
@@ -217,6 +218,10 @@
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     return 30.0;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    EstablishCircleVC *page = [[EstablishCircleVC alloc]init];
+    [self.navigationController pushViewController:page animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

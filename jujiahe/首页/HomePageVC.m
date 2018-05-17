@@ -24,6 +24,8 @@
 #import "YYText.h"
 #import "NSString+URL.h"
 #import "TopicVC.h"
+#import "TopicClassificationVC.h"
+#import "MessageCenterVC.h"
 @interface HomePageVC ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
 {
     CGFloat ox;
@@ -164,7 +166,8 @@
     
 }
 - (void)moreClassificationbtnClick:(UIButton *)btn{
-    
+    TopicClassificationVC *page = [[TopicClassificationVC alloc]init];
+    [self.navigationController pushViewController:page animated:YES];
 }
 #pragma mark --懒加载
 - (NSMutableArray *)imageArray {
@@ -301,14 +304,14 @@
     }
 }
 - (void)meassgeBtnClick{
-    if([[StorageUserInfromation storageUserInformation].userId isEqualToString:@""]){
-        UIAlertView *alert =[ [UIAlertView alloc]initWithTitle:@"未登录" message:@"确定跳回登陆界面？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        alert.tag = 10;
-        [alert show];
-    }else{
+//    if([[StorageUserInfromation storageUserInformation].userId isEqualToString:@""]){
+//        UIAlertView *alert =[ [UIAlertView alloc]initWithTitle:@"未登录" message:@"确定跳回登陆界面？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//        alert.tag = 10;
+//        [alert show];
+//    }else{
         MessageCenterVC * mcVC = [[MessageCenterVC alloc]init];
         [self.navigationController pushViewController:mcVC animated:YES];
-    }
+//    }
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0) {

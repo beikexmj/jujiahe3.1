@@ -117,7 +117,7 @@
                 <constraint firstItem="QZt-8y-DBX" firstAttribute="top" secondItem="4Nk-Io-d5a" secondAttribute="bottom" constant="8" id="vhf-Wd-BEN"/>
                 <constraint firstItem="QZt-8y-DBX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="x0q-Gb-pbf"/>
             </constraints>
-            <point key="canvasLocation" x="-238" y="46"/>
+            <point key="canvasLocation" x="-256" y="-170"/>
         </view>
     </objects>
     <resources>

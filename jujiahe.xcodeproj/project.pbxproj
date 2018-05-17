@@ -423,10 +423,6 @@
 		7C76A6EB20A2A1D90029E310 /* ProtalHomePageHelpDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C76A6DD20A2A1D90029E310 /* ProtalHomePageHelpDataModel.m */; };
 		7C76A6EC20A2A1D90029E310 /* PortalHomePageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C76A6DF20A2A1D90029E310 /* PortalHomePageDetailViewController.m */; };
 		7C76A6ED20A2A1D90029E310 /* PortalHomePageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C76A6E020A2A1D90029E310 /* PortalHomePageDetailViewController.xib */; };
-		7C76A6EE20A2A1D90029E310 /* PortalHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C76A6E220A2A1D90029E310 /* PortalHomePageViewController.m */; };
-		7C76A6EF20A2A1D90029E310 /* PortalHomePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C76A6E320A2A1D90029E310 /* PortalHomePageViewController.xib */; };
-		7C76A6F020A2A1D90029E310 /* ProtalHelpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C76A6E520A2A1D90029E310 /* ProtalHelpTableViewCell.m */; };
-		7C76A6F120A2A1D90029E310 /* ProtalHelpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C76A6E620A2A1D90029E310 /* ProtalHelpTableViewCell.xib */; };
 		7C76A6F220A2A1D90029E310 /* ProtalHomePageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C76A6E820A2A1D90029E310 /* ProtalHomePageTableViewCell.m */; };
 		7C76A6F320A2A1D90029E310 /* ProtalHomePageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C76A6E920A2A1D90029E310 /* ProtalHomePageTableViewCell.xib */; };
 		7C76A6FE20A2E2040029E310 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C76A6F620A2E2040029E310 /* UIView+Frame.m */; };
@@ -437,6 +433,19 @@
 		7C76A70720A2E5250029E310 /* ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C76A70620A2E5250029E310 /* ChildViewController.m */; };
 		7C76A70C20A2E7360029E310 /* RequesCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C76A70A20A2E7360029E310 /* RequesCover.m */; };
 		7C76A70D20A2E7360029E310 /* RequesCover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C76A70B20A2E7360029E310 /* RequesCover.xib */; };
+		7C989A4720AD0E8000F223ED /* TopicClassificationChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A4620AD0E8000F223ED /* TopicClassificationChildVC.m */; };
+		7C989A5020AD162E00F223ED /* TopicClassificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A4E20AD162E00F223ED /* TopicClassificationCell.m */; };
+		7C989A5120AD162E00F223ED /* TopicClassificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C989A4F20AD162E00F223ED /* TopicClassificationCell.xib */; };
+		7C989A5520AD221400F223ED /* CircleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A5420AD221400F223ED /* CircleVC.m */; };
+		7C989A5A20AD228E00F223ED /* CircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A5820AD228E00F223ED /* CircleCell.m */; };
+		7C989A5B20AD228E00F223ED /* CircleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C989A5920AD228E00F223ED /* CircleCell.xib */; };
+		7C989A5E20AD25FB00F223ED /* CircleDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A5C20AD25FB00F223ED /* CircleDetailVC.m */; };
+		7C989A6220AD2A0F00F223ED /* EstablishCircleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A6120AD2A0F00F223ED /* EstablishCircleVC.m */; };
+		7C989A6620AD315F00F223ED /* EstablishCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A6420AD315F00F223ED /* EstablishCircleCell.m */; };
+		7C989A6720AD315F00F223ED /* EstablishCircleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C989A6520AD315F00F223ED /* EstablishCircleCell.xib */; };
+		7C989A6A20AD53E100F223ED /* TopicMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A6920AD53E100F223ED /* TopicMessageVC.m */; };
+		7C989A6D20AD53F400F223ED /* CircleMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A6C20AD53F400F223ED /* CircleMessageVC.m */; };
+		7C989A7020AD541200F223ED /* SystemMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A6F20AD541200F223ED /* SystemMessageVC.m */; };
 		7CCF831A20ABBA8000D35383 /* TopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF831720ABBA7F00D35383 /* TopicCell.m */; };
 		7CCF831B20ABBA8000D35383 /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF831820ABBA7F00D35383 /* TopicCell.xib */; };
 		7CCF831E20ABBFE800D35383 /* CircleDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF831D20ABBFE800D35383 /* CircleDataModel.m */; };
@@ -1313,12 +1322,6 @@
 		7C76A6DE20A2A1D90029E310 /* PortalHomePageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalHomePageDetailViewController.h; sourceTree = "<group>"; };
 		7C76A6DF20A2A1D90029E310 /* PortalHomePageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalHomePageDetailViewController.m; sourceTree = "<group>"; };
 		7C76A6E020A2A1D90029E310 /* PortalHomePageDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PortalHomePageDetailViewController.xib; sourceTree = "<group>"; };
-		7C76A6E120A2A1D90029E310 /* PortalHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalHomePageViewController.h; sourceTree = "<group>"; };
-		7C76A6E220A2A1D90029E310 /* PortalHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalHomePageViewController.m; sourceTree = "<group>"; };
-		7C76A6E320A2A1D90029E310 /* PortalHomePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PortalHomePageViewController.xib; sourceTree = "<group>"; };
-		7C76A6E420A2A1D90029E310 /* ProtalHelpTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtalHelpTableViewCell.h; sourceTree = "<group>"; };
-		7C76A6E520A2A1D90029E310 /* ProtalHelpTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtalHelpTableViewCell.m; sourceTree = "<group>"; };
-		7C76A6E620A2A1D90029E310 /* ProtalHelpTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProtalHelpTableViewCell.xib; sourceTree = "<group>"; };
 		7C76A6E720A2A1D90029E310 /* ProtalHomePageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtalHomePageTableViewCell.h; sourceTree = "<group>"; };
 		7C76A6E820A2A1D90029E310 /* ProtalHomePageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtalHomePageTableViewCell.m; sourceTree = "<group>"; };
 		7C76A6E920A2A1D90029E310 /* ProtalHomePageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProtalHomePageTableViewCell.xib; sourceTree = "<group>"; };
@@ -1338,6 +1341,29 @@
 		7C76A70920A2E7360029E310 /* RequesCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequesCover.h; sourceTree = "<group>"; };
 		7C76A70A20A2E7360029E310 /* RequesCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequesCover.m; sourceTree = "<group>"; };
 		7C76A70B20A2E7360029E310 /* RequesCover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequesCover.xib; sourceTree = "<group>"; };
+		7C989A4520AD0E8000F223ED /* TopicClassificationChildVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicClassificationChildVC.h; sourceTree = "<group>"; };
+		7C989A4620AD0E8000F223ED /* TopicClassificationChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicClassificationChildVC.m; sourceTree = "<group>"; };
+		7C989A4D20AD162E00F223ED /* TopicClassificationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicClassificationCell.h; sourceTree = "<group>"; };
+		7C989A4E20AD162E00F223ED /* TopicClassificationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicClassificationCell.m; sourceTree = "<group>"; };
+		7C989A4F20AD162E00F223ED /* TopicClassificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicClassificationCell.xib; sourceTree = "<group>"; };
+		7C989A5320AD221400F223ED /* CircleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleVC.h; sourceTree = "<group>"; };
+		7C989A5420AD221400F223ED /* CircleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleVC.m; sourceTree = "<group>"; };
+		7C989A5720AD228E00F223ED /* CircleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleCell.h; sourceTree = "<group>"; };
+		7C989A5820AD228E00F223ED /* CircleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleCell.m; sourceTree = "<group>"; };
+		7C989A5920AD228E00F223ED /* CircleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleCell.xib; sourceTree = "<group>"; };
+		7C989A5C20AD25FB00F223ED /* CircleDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleDetailVC.m; sourceTree = "<group>"; };
+		7C989A5D20AD25FB00F223ED /* CircleDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleDetailVC.h; sourceTree = "<group>"; };
+		7C989A6020AD2A0F00F223ED /* EstablishCircleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EstablishCircleVC.h; sourceTree = "<group>"; };
+		7C989A6120AD2A0F00F223ED /* EstablishCircleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EstablishCircleVC.m; sourceTree = "<group>"; };
+		7C989A6320AD315F00F223ED /* EstablishCircleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EstablishCircleCell.h; sourceTree = "<group>"; };
+		7C989A6420AD315F00F223ED /* EstablishCircleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EstablishCircleCell.m; sourceTree = "<group>"; };
+		7C989A6520AD315F00F223ED /* EstablishCircleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EstablishCircleCell.xib; sourceTree = "<group>"; };
+		7C989A6820AD53E100F223ED /* TopicMessageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicMessageVC.h; sourceTree = "<group>"; };
+		7C989A6920AD53E100F223ED /* TopicMessageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicMessageVC.m; sourceTree = "<group>"; };
+		7C989A6B20AD53F400F223ED /* CircleMessageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleMessageVC.h; sourceTree = "<group>"; };
+		7C989A6C20AD53F400F223ED /* CircleMessageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleMessageVC.m; sourceTree = "<group>"; };
+		7C989A6E20AD541200F223ED /* SystemMessageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemMessageVC.h; sourceTree = "<group>"; };
+		7C989A6F20AD541200F223ED /* SystemMessageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemMessageVC.m; sourceTree = "<group>"; };
 		7CCF831620ABBA7F00D35383 /* TopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCell.h; sourceTree = "<group>"; };
 		7CCF831720ABBA7F00D35383 /* TopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCell.m; sourceTree = "<group>"; };
 		7CCF831820ABBA7F00D35383 /* TopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
@@ -3037,6 +3063,12 @@
 				7C476D9D20A58966005ECE03 /* SystemMessageDetailVC.h */,
 				7C476D9E20A58966005ECE03 /* SystemMessageDetailVC.m */,
 				7C476D9F20A58966005ECE03 /* view */,
+				7C989A6820AD53E100F223ED /* TopicMessageVC.h */,
+				7C989A6920AD53E100F223ED /* TopicMessageVC.m */,
+				7C989A6B20AD53F400F223ED /* CircleMessageVC.h */,
+				7C989A6C20AD53F400F223ED /* CircleMessageVC.m */,
+				7C989A6E20AD541200F223ED /* SystemMessageVC.h */,
+				7C989A6F20AD541200F223ED /* SystemMessageVC.m */,
 			);
 			path = "消息中心";
 			sourceTree = "<group>";
@@ -3627,6 +3659,8 @@
 		7C5DC6A020AAB79000981E95 /* 话题 */ = {
 			isa = PBXGroup;
 			children = (
+				7C989A5F20AD29F700F223ED /* 创建圈子 */,
+				7C989A5220AD207300F223ED /* 圈子 */,
 				7CCF834820AC1D4000D35383 /* 话题分类 */,
 				7CCF834220AC184F00D35383 /* 发布 */,
 				7CCF832620ABF7B400D35383 /* 话题详情 */,
@@ -3673,12 +3707,6 @@
 				7C76A6DE20A2A1D90029E310 /* PortalHomePageDetailViewController.h */,
 				7C76A6DF20A2A1D90029E310 /* PortalHomePageDetailViewController.m */,
 				7C76A6E020A2A1D90029E310 /* PortalHomePageDetailViewController.xib */,
-				7C76A6E120A2A1D90029E310 /* PortalHomePageViewController.h */,
-				7C76A6E220A2A1D90029E310 /* PortalHomePageViewController.m */,
-				7C76A6E320A2A1D90029E310 /* PortalHomePageViewController.xib */,
-				7C76A6E420A2A1D90029E310 /* ProtalHelpTableViewCell.h */,
-				7C76A6E520A2A1D90029E310 /* ProtalHelpTableViewCell.m */,
-				7C76A6E620A2A1D90029E310 /* ProtalHelpTableViewCell.xib */,
 				7C76A6E720A2A1D90029E310 /* ProtalHomePageTableViewCell.h */,
 				7C76A6E820A2A1D90029E310 /* ProtalHomePageTableViewCell.m */,
 				7C76A6E920A2A1D90029E310 /* ProtalHomePageTableViewCell.xib */,
@@ -3725,6 +3753,58 @@
 				7C76A70B20A2E7360029E310 /* RequesCover.xib */,
 			);
 			path = "蒙版";
+			sourceTree = "<group>";
+		};
+		7C989A4820AD11D600F223ED /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		7C989A4920AD11D600F223ED /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7C989A4D20AD162E00F223ED /* TopicClassificationCell.h */,
+				7C989A4E20AD162E00F223ED /* TopicClassificationCell.m */,
+				7C989A4F20AD162E00F223ED /* TopicClassificationCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		7C989A5220AD207300F223ED /* 圈子 */ = {
+			isa = PBXGroup;
+			children = (
+				7C989A5620AD228E00F223ED /* view */,
+				7C989A5D20AD25FB00F223ED /* CircleDetailVC.h */,
+				7C989A5C20AD25FB00F223ED /* CircleDetailVC.m */,
+				7C989A5320AD221400F223ED /* CircleVC.h */,
+				7C989A5420AD221400F223ED /* CircleVC.m */,
+			);
+			path = "圈子";
+			sourceTree = "<group>";
+		};
+		7C989A5620AD228E00F223ED /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7C989A5720AD228E00F223ED /* CircleCell.h */,
+				7C989A5820AD228E00F223ED /* CircleCell.m */,
+				7C989A5920AD228E00F223ED /* CircleCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		7C989A5F20AD29F700F223ED /* 创建圈子 */ = {
+			isa = PBXGroup;
+			children = (
+				7C989A6020AD2A0F00F223ED /* EstablishCircleVC.h */,
+				7C989A6120AD2A0F00F223ED /* EstablishCircleVC.m */,
+				7C989A6320AD315F00F223ED /* EstablishCircleCell.h */,
+				7C989A6420AD315F00F223ED /* EstablishCircleCell.m */,
+				7C989A6520AD315F00F223ED /* EstablishCircleCell.xib */,
+			);
+			name = "创建圈子";
+			path = "圈子/创建圈子";
 			sourceTree = "<group>";
 		};
 		7CCF831520ABBA7F00D35383 /* view */ = {
@@ -3810,8 +3890,12 @@
 		7CCF834820AC1D4000D35383 /* 话题分类 */ = {
 			isa = PBXGroup;
 			children = (
+				7C989A4820AD11D600F223ED /* model */,
+				7C989A4920AD11D600F223ED /* view */,
 				7CCF834920AC1D8A00D35383 /* TopicClassificationVC.h */,
 				7CCF834A20AC1D8A00D35383 /* TopicClassificationVC.m */,
+				7C989A4520AD0E8000F223ED /* TopicClassificationChildVC.h */,
+				7C989A4620AD0E8000F223ED /* TopicClassificationChildVC.m */,
 			);
 			path = "话题分类";
 			sourceTree = "<group>";
@@ -3948,17 +4032,19 @@
 				7C476E7020A58DD5005ECE03 /* ModifyLoginPasswordFirstStepViewController.xib in Resources */,
 				7C476E6220A58DD5005ECE03 /* MyQRCodeViewController.xib in Resources */,
 				7C476E7C20A58DD5005ECE03 /* RankRuleViewController.xib in Resources */,
+				7C989A5B20AD228E00F223ED /* CircleCell.xib in Resources */,
 				7C110B62209FF5690012040E /* ResetPasswordViewController.xib in Resources */,
 				7C476DB620A58966005ECE03 /* SystemMessageCell.xib in Resources */,
 				7C476E7620A58DD5005ECE03 /* InviteRegistrationRankViewController.xib in Resources */,
 				7C3CFC8920A1C7A60084FF2A /* ServiceCell.xib in Resources */,
 				7C476E8320A58DD5005ECE03 /* ModifyPaymentPasswordFirstStepViewController.xib in Resources */,
 				7C110A90209FF0C00012040E /* city.db in Resources */,
+				7C989A6720AD315F00F223ED /* EstablishCircleCell.xib in Resources */,
 				7C76A70D20A2E7360029E310 /* RequesCover.xib in Resources */,
 				7C476E6C20A58DD5005ECE03 /* MeassgePushSetUpCell.xib in Resources */,
-				7C76A6EF20A2A1D90029E310 /* PortalHomePageViewController.xib in Resources */,
 				7C110D3920A06C6E0012040E /* FirstStepVerificationOfIdentityVC.xib in Resources */,
 				7C476EB620A59267005ECE03 /* SGQRCode.bundle in Resources */,
+				7C989A5120AD162E00F223ED /* TopicClassificationCell.xib in Resources */,
 				7C476E7A20A58DD5005ECE03 /* InviteRegistrationRankTableViewCell.xib in Resources */,
 				7C110B5D209FF5690012040E /* LoginViewController.xib in Resources */,
 				7CCF833B20AC0BAA00D35383 /* CircleLikeTableViewCell.xib in Resources */,
@@ -4000,7 +4086,6 @@
 				7C476E5520A58DD5005ECE03 /* PersonalInformationViewController.xib in Resources */,
 				7C3CFCB220A1C9BF0084FF2A /* FSActionSheet_cancel@3x.png in Resources */,
 				7C110ABB209FF0C00012040E /* Info.plist in Resources */,
-				7C76A6F120A2A1D90029E310 /* ProtalHelpTableViewCell.xib in Resources */,
 				7C476E7F20A58DD5005ECE03 /* BalanceRechargeViewController.xib in Resources */,
 				7C3CFBF320A14D3D0084FF2A /* TZAssetCell.xib in Resources */,
 				7C1108FD209FE4270012040E /* Assets.xcassets in Resources */,
@@ -4188,6 +4273,7 @@
 				7CCF832120ABCDC300D35383 /* XMJHttpTool.m in Sources */,
 				7C11095E209FECFB0012040E /* HColor.m in Sources */,
 				7C3CFCCE20A1CA150084FF2A /* UIView+SDExtension.m in Sources */,
+				7C989A5E20AD25FB00F223ED /* CircleDetailVC.m in Sources */,
 				7C110964209FECFB0012040E /* NSData+Base64Additions.m in Sources */,
 				7C76A6EA20A2A1D90029E310 /* ProtalHomePageDataModel.m in Sources */,
 				7C110B66209FF5BA0012040E /* ZKUDID.m in Sources */,
@@ -4197,6 +4283,7 @@
 				7C110A8F209FF0C00012040E /* JFAreaDataManager.m in Sources */,
 				7C110B47209FF2CC0012040E /* BaseTabbarVC.m in Sources */,
 				7C110D0C20A030770012040E /* DataSigner.m in Sources */,
+				7C989A6220AD2A0F00F223ED /* EstablishCircleVC.m in Sources */,
 				7C110D1A20A030820012040E /* JKEventHandler+CommunityJSVC.m in Sources */,
 				7C110A97209FF0C00012040E /* JFCityViewController.m in Sources */,
 				7C3CFC2920A172720084FF2A /* HJEditImageViewController.m in Sources */,
@@ -4215,6 +4302,7 @@
 				7C476E5C20A58DD5005ECE03 /* AddNewDeliverAddressVC.m in Sources */,
 				7C476E5820A58DD5005ECE03 /* ModifyNickNameViewController.m in Sources */,
 				7C3CFC8820A1C7A60084FF2A /* ServiceCell.m in Sources */,
+				7C989A5020AD162E00F223ED /* TopicClassificationCell.m in Sources */,
 				7C3CFC2820A172720084FF2A /* ACMediaModel.m in Sources */,
 				7C110D1020A030770012040E /* openssl_wrapper.m in Sources */,
 				7C1109AD209FEEC70012040E /* UINavigationItem+Fixed.m in Sources */,
@@ -4257,18 +4345,20 @@
 				7C5DC6A520AAB79000981E95 /* LeftTableViewController.m in Sources */,
 				7C110A82209FF0C00012040E /* YYTextRubyAnnotation.m in Sources */,
 				7C76A70020A2E2040029E310 /* YZDisplayViewController.m in Sources */,
+				7C989A4720AD0E8000F223ED /* TopicClassificationChildVC.m in Sources */,
 				7C1109A3209FEEC70012040E /* NSString+PinYin.m in Sources */,
 				7C1109B8209FEF430012040E /* BaseViewController.m in Sources */,
 				7C110955209FECFB0012040E /* NSObject+CommonBlock.m in Sources */,
 				7C1109B0209FEEC70012040E /* UIView+Extensions.m in Sources */,
-				7C76A6F020A2A1D90029E310 /* ProtalHelpTableViewCell.m in Sources */,
 				7C476E7E20A58DD5005ECE03 /* BalanceRechargeViewController.m in Sources */,
 				7C476E8420A58DD5005ECE03 /* voucherListDataModel.m in Sources */,
 				7C110D0F20A030770012040E /* NSDataEx.m in Sources */,
 				7C476E8220A58DD5005ECE03 /* ModifyPaymentPasswordFirstStepViewController.m in Sources */,
+				7C989A5A20AD228E00F223ED /* CircleCell.m in Sources */,
 				7C476E9D20A58F44005ECE03 /* EmojiForbid.m in Sources */,
 				7C476EB520A59267005ECE03 /* UIImage+ImageSize.m in Sources */,
 				7C3CFBF620A14D3D0084FF2A /* TZImageManager.m in Sources */,
+				7C989A5520AD221400F223ED /* CircleVC.m in Sources */,
 				7C110B0F209FF1F00012040E /* MJRefreshHeader.m in Sources */,
 				7C476E8B20A58DD5005ECE03 /* IntegralDetailTableViewCell.m in Sources */,
 				7C110961209FECFB0012040E /* HStringData.m in Sources */,
@@ -4293,7 +4383,6 @@
 				7C476DA720A58966005ECE03 /* HomePageDataModel.m in Sources */,
 				7C3CFCC920A1CA150084FF2A /* TAAnimatedDotView.m in Sources */,
 				7C476E5220A58DD5005ECE03 /* PersonalInformationTableViewCell2.m in Sources */,
-				7C76A6EE20A2A1D90029E310 /* PortalHomePageViewController.m in Sources */,
 				7C110BB520A025FF0012040E /* PasswordAlertView.m in Sources */,
 				7C110959209FECFB0012040E /* UIImage+Additions.m in Sources */,
 				7C3CFCB420A1C9BF0084FF2A /* UIView+XLExtension.m in Sources */,
@@ -4394,6 +4483,7 @@
 				7C110B5F209FF5690012040E /* RegestViewController.m in Sources */,
 				7C110AC2209FF0C00012040E /* NSObject+MJCoding.m in Sources */,
 				7C6CA6DC20A43A390073DD3F /* ServiceMemberVC.m in Sources */,
+				7C989A6A20AD53E100F223ED /* TopicMessageVC.m in Sources */,
 				7C476E7520A58DD5005ECE03 /* InviteRegistrationRankViewController.m in Sources */,
 				7C476DAC20A58966005ECE03 /* PGIndexBannerSubiew.m in Sources */,
 				7C3CFC9220A1C91D0084FF2A /* JSBadgeView.m in Sources */,
@@ -4410,6 +4500,7 @@
 				7CCF831A20ABBA8000D35383 /* TopicCell.m in Sources */,
 				7C3CFBF520A14D3D0084FF2A /* TZAssetModel.m in Sources */,
 				7C3CFC8E20A1C7A60084FF2A /* ServiceVC.m in Sources */,
+				7C989A6D20AD53F400F223ED /* CircleMessageVC.m in Sources */,
 				7C3CFCAF20A1C9BF0084FF2A /* FSActionSheetConfig.m in Sources */,
 				7C476EA420A591D5005ECE03 /* NSDate+HooDatePicker.m in Sources */,
 				7C3CFC2A20A172720084FF2A /* HJImageScrollView.m in Sources */,
@@ -4493,6 +4584,7 @@
 				7C110966209FECFB0012040E /* SKPSMTPMessage.m in Sources */,
 				7C110AA0209FF0C00012040E /* IQKeyboardManager.m in Sources */,
 				7C76A6FE20A2E2040029E310 /* UIView+Frame.m in Sources */,
+				7C989A6620AD315F00F223ED /* EstablishCircleCell.m in Sources */,
 				7C110B0C209FF1F00012040E /* MJRefreshBackFooter.m in Sources */,
 				7C476EC420A59454005ECE03 /* HappenVC.m in Sources */,
 				7C110D1C20A030820012040E /* MyWebVC.m in Sources */,
@@ -4500,6 +4592,7 @@
 				7C110BA720A0232F0012040E /* JKWKWebViewController.m in Sources */,
 				7C476EA320A591D5005ECE03 /* HooDatePicker.m in Sources */,
 				7C76A70720A2E5250029E310 /* ChildViewController.m in Sources */,
+				7C989A7020AD541200F223ED /* SystemMessageVC.m in Sources */,
 				7C3CFC3F20A189490084FF2A /* XXInputView.m in Sources */,
 				7C476E7320A58DD5005ECE03 /* InviteRegistrationTableViewCell.m in Sources */,
 				7C1109A4209FEEC70012040E /* NSString+UrlEncode.m in Sources */,

@@ -1,12 +1,13 @@
 //
-//  PublishViewController.m
-//  copooo
+//  EstablishCircleVC.m
+//  jujiahe
 //
-//  Created by XiaMingjiang on 2017/10/27.
-//  Copyright © 2017年 夏明江. All rights reserved.
+//  Created by XiaMingjiang on 2018/5/17.
+//  Copyright © 2018年 世纪之光. All rights reserved.
 //
 
-#import "PublishViewController.h"
+#import "EstablishCircleVC.h"
+
 #import "HJInputView.h"
 #import "HJTableViewCell.h"
 #import "HJPhotoPickerView.h"
@@ -20,13 +21,14 @@
 #import "TZVideoPlayerController.h"
 #import "TZAssetModel.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-
+#import "EstablishCircleCell.h"
 #define IMAGE_SIZE (SCREEN_WIDTH - 60)/4
 typedef void(^Result)(NSData *fileData, NSString *fileName);
-@interface PublishViewController ()<UITextViewDelegate,UITableViewDelegate,UITableViewDataSource,TZImagePickerControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
+@interface EstablishCircleVC ()<UITextViewDelegate,UITableViewDelegate,UITableViewDataSource,TZImagePickerControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     NSMutableArray *imageArr;//上传的图片数组；
     BOOL deleteBtnIndecate;//删除按钮显示与否 YES == 显示 NO== 不显示；
-
+    BOOL selectState;
+    
 }
 /** 文本输入框*/
 @property(nonatomic, strong)    HJInputView *inputV;
@@ -43,29 +45,47 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
 /**  文字长度*/
 @property(nonatomic, strong)    UILabel *textNumLabel;
 /** 线条*/
-@property(nonatomic, strong)    UIView *lineView;
+@property(nonatomic, strong)    UIView *lineViews;
+
+@property(nonatomic, strong)    UILabel *coverName;
 /** 视频asset*/
 @property(nonatomic, strong)   id asset;
 /** 视频array*/
 @property(nonatomic, strong)    NSMutableArray *mediaArray;
 /** 图片array*/
 @property(nonatomic, strong)    NSMutableArray *photos;
+
+@property(nonatomic, strong)    UITextField *circleName;
 @end
 
-@implementation PublishViewController
+@implementation EstablishCircleVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (kDevice_Is_iPhoneX) {
-        _navTitle.font = [UIFont systemFontOfSize:18.0];
-        _navHight.constant = 64+24;
-    }
+    self.isShowNav = YES;
+    self.leftImgName = @"icon_back_gray";
+    
+    _publishBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREENWIDTH - 60, NAVHEIGHT - 44, 60, 44)];
+    [_publishBtn setTitle:@"创建" forState:UIControlStateNormal];
+    [_publishBtn setTitleColor:RGBA(0x00a7ff, 1) forState:UIControlStateNormal];
+    [_publishBtn.titleLabel setFont:[UIFont systemFontOfSize:15.0]];
+    [_publishBtn addTarget:self action:@selector(pulishBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navView addSubview:_publishBtn];
     _mediaArray = [NSMutableArray array];
     _photos = [NSMutableArray array];
     deleteBtnIndecate  = NO;
+    selectState = NO;
     [self viewConfig];
-
+    
     // Do any additional setup after loading the view from its nib.
+}
+- (void)leftButtonClick:(UIButton *)button{
+    if (_asset||_imageDataSource.count>1||![JGIsBlankString isBlankString: _inputV.textV.text]) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"你有未发布的内容" message:@"确认离开？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 // 为图片添加点击事件
 - (void)addTargetForImage{
@@ -86,11 +106,11 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
 }
 - (void)viewConfig{
     __weak typeof(self) weakSelf = self;
-
+    
     // 初始化输入视图 高度 = 150
     _inputV = [[HJInputView alloc]init];
     _inputV.textV.delegate = self;
-    _inputV.placeholerLabel.text = @"说两句对该话题的看法......";
+    _inputV.placeholerLabel.text = @"介绍一下圈子，可以提高邻居的参与度哦......";
     //文字数量
     _textNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 155, 120, 20)];
     _textNumLabel.font = [UIFont systemFontOfSize:11];
@@ -109,12 +129,18 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
         
     }] ;
     //线条
-    _lineView = [[UIView alloc]initWithFrame:CGRectMake(14, 180, SCREEN_WIDTH -28, 1)];
-    _lineView.backgroundColor = RGBCOLOR(221, 221, 221);
+    _lineViews = [[UIView alloc]initWithFrame:CGRectMake(14, 180, SCREEN_WIDTH -28, 1)];
+    _lineViews.backgroundColor = RGBCOLOR(221, 221, 221);
+    
+    
+    _coverName = [[UILabel alloc]initWithFrame:CGRectMake(14, _lineViews.frame.origin.y +10, 120, 15)];
+    _coverName.textColor = RGBA(0x606060, 1);
+    _coverName.font = [UIFont systemFontOfSize:14.0];
+    _coverName.text = @"上传封面图";
     
     // 图片选择视图
     _photoPickerV = [[HJPhotoPickerView alloc]init];
-    _photoPickerV.frame = CGRectMake(0, _lineView.frame.origin.y +10, SCREEN_WIDTH, IMAGE_SIZE +10);
+    _photoPickerV.frame = CGRectMake(0, _coverName.frame.origin.y +10 + 15, SCREEN_WIDTH, IMAGE_SIZE +10);
     _photoPickerV.deleteButton.hidden = YES;
     _photoPickerV.videoImageView.hidden = YES;
     _photoPickerV.reloadTableViewBlock = ^{
@@ -137,18 +163,43 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     // 初始化图片编辑控制器
     self.editVC = [[HJEditImageViewController alloc]init];
     
-    _tabelV = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVHEIGHT) style:UITableViewStyleGrouped];
+    _tabelV = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT + 50, SCREEN_WIDTH, SCREEN_HEIGHT - NAVHEIGHT - 50) style:UITableViewStylePlain];
     
     _tabelV.delegate = self;
     _tabelV.dataSource = self;
     _tabelV.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, CGFLOAT_MIN)];
     _tabelV.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, CGFLOAT_MIN)];
     _tabelV.separatorStyle = UITableViewCellSelectionStyleNone;
+    _tabelV.backgroundColor = RGBA(0xeaeef1, 1);
     [self.view addSubview:_tabelV];
     
     _commentSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(0, 0, 60, 30)];
     _commentSwitch.center = CGPointMake(SCREEN_WIDTH - 44, 22);
     _commentSwitch.on = YES;
+    
+    UIView *cirleNameView = [[UIView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREENWIDTH, 50)];
+    cirleNameView.backgroundColor = RGBA(0xffffff, 1);
+    UILabel *cirleNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 10, 60, 20)];
+    cirleNameLabel.textColor = RGBA(0x606060, 1);
+    cirleNameLabel.font = [UIFont systemFontOfSize:14.0];
+    cirleNameLabel.text = @"圈子名";
+    [cirleNameView addSubview:cirleNameLabel];
+    
+    UIView *lineView2 = [[UIView alloc]initWithFrame:CGRectMake( 65 , 10, 1, 20)];
+    lineView2.backgroundColor = RGBA(0xeaeef1, 1);
+    [cirleNameView addSubview:lineView2];
+    
+    _circleName = [[UITextField alloc]initWithFrame:CGRectMake(90, 0, SCREENWIDTH - 115, 40)];
+    _circleName.font = [UIFont systemFontOfSize:15.0];
+    _circleName.textColor = RGBA(0x303030, 1);
+    _circleName.placeholder = @"请给你的圈子起一个名字";
+    [cirleNameView addSubview:_circleName];
+    
+    UIView *lineView3 = [[UIView alloc]initWithFrame:CGRectMake(0, 40, SCREENWIDTH, 10)];
+    lineView3.backgroundColor = RGBA(0xeaeef1, 1);
+    [cirleNameView addSubview:lineView3];
+    [self.view addSubview:cirleNameView];
+    
 }
 
 - (void)addPhotos:(UIButton *)button{
@@ -176,7 +227,7 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
             
         }else{
             __weak typeof(self) weakSelf = self;
-
+            
             _editVC = [[HJEditImageViewController alloc]init];
             _editVC.currentOffset = (int)button.tag;
             _editVC.reloadBlock = ^(NSMutableArray * images){
@@ -189,7 +240,7 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
             [self.navigationController pushViewController:_editVC animated:YES];
         }
     }
-        
+    
 }
 
 #pragma mark --------------UITextViewDelegate
@@ -219,29 +270,40 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     return 1;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return 2;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString * reuseID = @"HJTableViewCell";
-    static NSString * reuseID1 = @"UITableViewCell";
+    static NSString * reuseID1 = @"EstablishCircleCell";
     
     HJTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
-    UITableViewCell * cell1 = [tableView dequeueReusableCellWithIdentifier:reuseID1];
+    EstablishCircleCell * cell1 = [tableView dequeueReusableCellWithIdentifier:reuseID1];
     if (!cell || !cell1) {
         cell = [[HJTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell1 = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID1];
+        cell1 = [[[NSBundle mainBundle] loadNibNamed:@"EstablishCircleCell" owner:self options:nil] lastObject];
     }
     
     if (indexPath.section) {
-        cell1.textLabel.text = @"开启评论";
-        [cell1 addSubview:_commentSwitch];
+        __weak typeof(cell1) weakCell1 = cell1;
+        cell1.choseBtnBlock = ^{
+            selectState = !selectState;
+            if (selectState) {
+                [weakCell1.choseBtn setImage:[UIImage imageNamed:@"login_choice"] forState:UIControlStateNormal];
+                weakCell1.tips.textColor = RGBA(0x303030, 1);
+            }else{
+                [weakCell1.choseBtn setImage:[UIImage imageNamed:@"login_unchoice"] forState:UIControlStateNormal];
+                weakCell1.tips.textColor = RGBA(0x9c9c9c, 1);
+            }
+        };
+        cell1.selectionStyle  = UITableViewCellSelectionStyleNone;
         return cell1;
     }else{
         [cell addSubview:_inputV];
         [cell addSubview:_photoPickerV];
         [cell addSubview:_textNumLabel];
-        [cell addSubview:_lineView];
+        [cell addSubview:_lineViews];
+        [cell addSubview:_coverName];
         for (UIButton *btn in _photoPickerV.subviews) {
             for (UIButton *subBtn in btn.subviews) {
                 if (deleteBtnIndecate) {
@@ -258,17 +320,17 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat rowHeight = _photoPickerV.frame.size.height + _photoPickerV.frame.origin.y + 10;
     if (!indexPath.section) return rowHeight;
-    return 44;
+    return 90;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return CGFLOAT_MIN;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-     return CGFLOAT_MIN;
+    return 10;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH, CGFLOAT_MIN)];
-    myView.backgroundColor = RGBCOLOR(238, 238, 238);
+    UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH, 10)];
+    myView.backgroundColor = RGBA(0xeaeef1, 1);
     return myView;
 }
 #pragma mark --------------UITableViewDelegate
@@ -281,7 +343,7 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     
-//    [_inputV.textV becomeFirstResponder];
+    //    [_inputV.textV becomeFirstResponder];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [_inputV.textV resignFirstResponder];
@@ -293,21 +355,21 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0) {
         if (_publishType == PUBLISH_PHOTOANDTEXT) {//拍照
             [self openCamera];
         }else{//摄影
-//            [self openCamera];
-           
+            //            [self openCamera];
+            
         }
         
     }else if (buttonIndex == 1){
@@ -329,7 +391,7 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
         //设置拍照后的图片可被编辑
         picker.allowsEditing = YES;
         picker.sourceType = sourceType;
-       
+        
         [self presentViewController:picker animated:YES completion:nil];
     }else{
         //不支持拍照或模拟器系列
@@ -344,25 +406,25 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     //判断资源类型
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]){
         //如果是图片
-         UIImage *image = info[UIImagePickerControllerEditedImage];
+        UIImage *image = info[UIImagePickerControllerEditedImage];
         //压缩图片
         NSData *fileData = UIImageJPEGRepresentation(image, 1.0);
         image = [UIImage imageWithData:fileData];
-//        //保存图片至相册
-//        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+        //        //保存图片至相册
+        //        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
         [_imageDataSource removeLastObject];
         [_imageDataSource addObjectsFromArray:@[image]];
         [_imageDataSource addObject:_photoPickerV.addImage];
-        self.photoPickerV.photoNum = 10;
+        self.photoPickerV.photoNum = 2;
         [self.photoPickerV setSelectedImages:_imageDataSource];
         [self addTargetForImage];
         [self.tabelV reloadData];
-
+        
     }else{
         
         
         
-//        NSData *videoData = [NSData dataWithContentsOfURL:url];
+        //        NSData *videoData = [NSData dataWithContentsOfURL:url];
         //视频上传
         
         
@@ -462,11 +524,11 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     }
 }
 - (void)openPhotos {
-
+    
     NSInteger num;
     BOOL flag = YES;
     if (_publishType == PUBLISH_PHOTOANDTEXT) {
-        num = 10;
+        num = 2;
         flag = NO;
     }else{
         num = 2;
@@ -480,7 +542,7 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
             [_imageDataSource removeLastObject];
             [_imageDataSource addObjectsFromArray:photos];
             [_imageDataSource addObject:_photoPickerV.addImage];
-            self.photoPickerV.photoNum = 10;
+            self.photoPickerV.photoNum = 2;
             [self.photoPickerV setSelectedImages:_imageDataSource];
             [self addTargetForImage];
             [self.tabelV reloadData];
@@ -518,26 +580,18 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     [self presentViewController:imagePickerVc animated:YES completion:nil];
     
     
-
+    
 }
 
-- (IBAction)backBtnClick:(id)sender {
-    if (_asset||_imageDataSource.count>1||![JGIsBlankString isBlankString: _inputV.textV.text]) {
-      UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"你有未发布的内容" message:@"确认离开？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alert show];
-    }else{
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex != 0) {
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
-- (IBAction)pulishBtnClick:(id)sender {
+- (void)pulishBtnClick:(id)sender {
     _publishBtn.enabled = NO;
     imageArr = [NSMutableArray arrayWithArray:_imageDataSource];
-   BOOL flag = [imageArr.lastObject isEqual:self.photoPickerV.addImage];
+    BOOL flag = [imageArr.lastObject isEqual:self.photoPickerV.addImage];
     if (flag) {
         [imageArr removeLastObject];
     }
@@ -570,20 +624,20 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
         NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
         NSDictionary * onceDict = [DictToJson dictionaryWithJsonString:str];
         if ([onceDict[@"rocde"] integerValue] == 0) {
-           NSDictionary *comeBackDict = onceDict[@"form"];
+            NSDictionary *comeBackDict = onceDict[@"form"];
             [self publishText:comeBackDict];
         }else{
             _publishBtn.enabled = YES;
-
+            
             [MBProgressHUD showError:onceDict[@"rocde"]];
         }
     } failure:^(NSError *error) {
         _publishBtn.enabled = YES;
-
+        
         NSLog(@"%@",error);
         [MBProgressHUD hideHUD];
         [MBProgressHUD showError:@"网络异常"];
-
+        
     }];
 }
 #pragma mark 发布文字（适用于图片发布）
@@ -594,7 +648,7 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     if (onceDict) {
         [dict addEntriesFromDictionary:onceDict];
         [dict setValue:@"2" forKey:@"type"];
-
+        
     }else{
         if ([JGIsBlankString isBlankString:_inputV.textV.text]) {
             [MBProgressHUD showError:@"内容不能为空"];
@@ -608,7 +662,7 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     [dict setValue:_commentSwitch.on?@"y":@"n" forKey:@"replyable"];
     [ZTHttpTool postWithUrl:@"social/post/addPost" param:dict success:^(id responseObj) {
         _publishBtn.enabled = YES;
-
+        
         NSLog(@"%@",responseObj);
         NSLog(@"responseObj==%@",[responseObj mj_JSONObject]);
         NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
@@ -622,9 +676,9 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
         }
     } failure:^(NSError *error) {
         _publishBtn.enabled = YES;
-
+        
         [MBProgressHUD showError:@"网络异常"];
-
+        
     }];
 }
 #pragma mark 发布文字（适用于视频发布）
@@ -635,7 +689,7 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     if (videoDict) {
         [dict addEntriesFromDictionary:videoDict];
         [dict setValue:@"3" forKey:@"type"];
-
+        
     }else{
         if ([JGIsBlankString isBlankString:_inputV.textV.text]) {
             [MBProgressHUD showError:@"内容不能为空"];
@@ -663,7 +717,7 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     } failure:^(NSError *error) {
         _publishBtn.enabled = YES;
         [MBProgressHUD showError:@"网络异常"];
-
+        
     }];
 }
 #pragma mark 发布视频
@@ -683,14 +737,14 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
                 CMTime   time = [urlAsset duration];
                 int seconds = ceil(time.value/time.timescale);
                 NSLog(@"seconds ===  %d",seconds);
-              
+                
                 // 主线程执行：
                 dispatch_async(dispatch_get_main_queue(), ^{
                     // something
                     [self publishVedioNext];
-
+                    
                 });
-
+                
                 
             }];
         }else{
@@ -701,7 +755,7 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     }
 }
 
- - (void)publishVedioNext{
+- (void)publishVedioNext{
     [self getVideoFromPHAsset:_asset Complete:^(NSData *fileData, NSString *fileName) {
         [MBProgressHUD showMessage:@"视频上传中..."];
         
@@ -772,3 +826,4 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     }
 }
 @end
+
