@@ -446,6 +446,7 @@
 		7C989A6A20AD53E100F223ED /* TopicMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A6920AD53E100F223ED /* TopicMessageVC.m */; };
 		7C989A6D20AD53F400F223ED /* CircleMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A6C20AD53F400F223ED /* CircleMessageVC.m */; };
 		7C989A7020AD541200F223ED /* SystemMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A6F20AD541200F223ED /* SystemMessageVC.m */; };
+		7CBAF2EF20AE7CF10032DB72 /* QueryLogisticsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAF2EE20AE7CF10032DB72 /* QueryLogisticsVC.m */; };
 		7CCF831A20ABBA8000D35383 /* TopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF831720ABBA7F00D35383 /* TopicCell.m */; };
 		7CCF831B20ABBA8000D35383 /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF831820ABBA7F00D35383 /* TopicCell.xib */; };
 		7CCF831E20ABBFE800D35383 /* CircleDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF831D20ABBFE800D35383 /* CircleDataModel.m */; };
@@ -1364,6 +1365,8 @@
 		7C989A6C20AD53F400F223ED /* CircleMessageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleMessageVC.m; sourceTree = "<group>"; };
 		7C989A6E20AD541200F223ED /* SystemMessageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemMessageVC.h; sourceTree = "<group>"; };
 		7C989A6F20AD541200F223ED /* SystemMessageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemMessageVC.m; sourceTree = "<group>"; };
+		7CBAF2ED20AE7CF10032DB72 /* QueryLogisticsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryLogisticsVC.h; sourceTree = "<group>"; };
+		7CBAF2EE20AE7CF10032DB72 /* QueryLogisticsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryLogisticsVC.m; sourceTree = "<group>"; };
 		7CCF831620ABBA7F00D35383 /* TopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCell.h; sourceTree = "<group>"; };
 		7CCF831720ABBA7F00D35383 /* TopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCell.m; sourceTree = "<group>"; };
 		7CCF831820ABBA7F00D35383 /* TopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
@@ -2902,6 +2905,8 @@
 				7C3CFC8020A1C7A60084FF2A /* ServiceDataModel.m */,
 				7C3CFC8120A1C7A60084FF2A /* ServiceVC.h */,
 				7C3CFC8220A1C7A60084FF2A /* ServiceVC.m */,
+				7CBAF2ED20AE7CF10032DB72 /* QueryLogisticsVC.h */,
+				7CBAF2EE20AE7CF10032DB72 /* QueryLogisticsVC.m */,
 			);
 			path = "物业服务";
 			sourceTree = "<group>";
@@ -4283,6 +4288,7 @@
 				7C110A8F209FF0C00012040E /* JFAreaDataManager.m in Sources */,
 				7C110B47209FF2CC0012040E /* BaseTabbarVC.m in Sources */,
 				7C110D0C20A030770012040E /* DataSigner.m in Sources */,
+				7CBAF2EF20AE7CF10032DB72 /* QueryLogisticsVC.m in Sources */,
 				7C989A6220AD2A0F00F223ED /* EstablishCircleVC.m in Sources */,
 				7C110D1A20A030820012040E /* JKEventHandler+CommunityJSVC.m in Sources */,
 				7C110A97209FF0C00012040E /* JFCityViewController.m in Sources */,
