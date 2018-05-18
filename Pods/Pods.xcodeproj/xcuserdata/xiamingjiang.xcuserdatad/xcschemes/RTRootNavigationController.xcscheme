@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B12F2DEC1339A1E7A206A65FA6A79E03"
-               BlueprintName = "SDWebImage"
+               BlueprintIdentifier = "4BD86FF55F79A0BFA3227201AB00D03F"
+               BlueprintName = "RTRootNavigationController"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libSDWebImage.a">
+               BuildableName = "libRTRootNavigationController.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

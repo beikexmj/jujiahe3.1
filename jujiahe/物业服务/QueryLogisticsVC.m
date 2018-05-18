@@ -19,8 +19,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setPopLeftItem];
-
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self setRightItemWithItemHandler:^(id  _Nonnull sender) {
+        
+    } titles:@"title", nil];
 }
 
 #pragma mark - getter

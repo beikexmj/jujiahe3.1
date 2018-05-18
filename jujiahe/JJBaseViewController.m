@@ -8,9 +8,19 @@
 
 #import "JJBaseViewController.h"
 #import <BlocksKit/UIBarButtonItem+BlocksKit.h>
+#import "UIView+Frame.h"
 
-@interface JJBaseViewController ()
+@implementation JJNavigationBar
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    for (UIView *view in self.subviews) {
+        if ([NSStringFromClass([view class]) containsString:@"ContentView"] ||
+            [NSStringFromClass([view class]) containsString:@"UIBarBackground"]) {
+            view.yz_y = [UIApplication sharedApplication].statusBarFrame.size.height;
+        }
+    }
+}
 @end
 
 @implementation JJBaseViewController
@@ -20,7 +30,7 @@
     self.view.backgroundColor = RGBA(0xffffff, 1);
     [self.navigationController setNavigationBarHidden:YES];
     [self.view addSubview:self.navigationBar];
-
+    
 }
 
 - (void)setLeftItemWithItemHandler:(void (^)(id))action icons:(NSString *)icons, ...
@@ -121,16 +131,14 @@
 
 #pragma mark - getter
 
-- (UINavigationBar *)navigationBar
+- (JJNavigationBar *)navigationBar
 {
     if (!_navigationBar) {
-        _navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, NAVHEIGHT)];
+        _navigationBar = [[JJNavigationBar alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, NAVHEIGHT)];
         _navigationBar.barStyle = UIBarStyleDefault;
         _navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _navigationBar.barTintColor = [UIColor whiteColor];
         _navigationBar.tintColor = RGBA(0x9c9c9c, 1);
-        [_navigationBar setTitleVerticalPositionAdjustment:[UIApplication sharedApplication].statusBarFrame.size.height
-                                             forBarMetrics:UIBarMetricsDefault];
         [_navigationBar pushNavigationItem:self.navigationItem animated:NO];
     }
     return _navigationBar;

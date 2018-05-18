@@ -10,9 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface JJNavigationBar : UINavigationBar
+
+@end
+
 @interface JJBaseViewController : UIViewController
 
-@property (nonatomic, strong) UINavigationBar *navigationBar;
+@property (nonatomic, strong) JJNavigationBar *navigationBar;
 @property (nonatomic, strong) UINavigationItem *navigationItem;
 
 - (void)setLeftItemWithItemHandler:(void (^)(id sender))action
