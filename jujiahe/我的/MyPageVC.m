@@ -23,6 +23,7 @@
 #import "BillingInquiriesVC.h"
 #import "AboutViewController.h"
 #import "FeedBackVC.h"
+#import "HouseManagerVC.h"
 @interface MyPageVC ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UIAlertViewDelegate>
 {
     NSArray *iconArr;
@@ -450,7 +451,8 @@
     [self.navigationController pushViewController:page animated:YES];
 }
 - (void)roomSwitchBtnClick:(UIButton *)btn{
-    
+    HouseManagerVC *page = [[HouseManagerVC alloc]init];
+    [self.navigationController pushViewController:page animated:YES];
 }
 - (UIImageView *)headerBackguandImg{
     if (!_headerBackguandImg) {

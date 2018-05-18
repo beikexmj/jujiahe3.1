@@ -41,7 +41,7 @@
     self.isShowNav = YES;
     _backButton.hidden = NO;
     self.navView.backgroundColor = RGBA(0xf6f6f6, 1);
-    self.titleLabel.text = @"房屋管理";
+    self.titleLabel.text = @"我的房屋";
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
