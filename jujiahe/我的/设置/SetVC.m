@@ -51,7 +51,7 @@
     [btn setTitle:@"退出当前帐号" forState:UIControlStateNormal];
     [btn setTitleColor:RGBA(0x00a7ff, 1) forState:UIControlStateNormal];
     [btn.titleLabel setFont:[UIFont systemFontOfSize:18.0]];
-    btn.layer.cornerRadius = 10.0;
+    btn.layer.cornerRadius = 20.0;
     btn.layer.borderColor = RGBA(0x00a7ff, 1).CGColor;
     btn.layer.borderWidth = 1;
     [btn addTarget:self action:@selector(loadingOffBtn) forControlEvents:UIControlEventTouchUpInside];
@@ -80,72 +80,34 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:indentifierCell owner:self options:nil] lastObject];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (indexPath.section == 0) {
-        cell.typeName.text = @[@"个人资料设置",@"登录密码设置",@"支付密码设置"][indexPath.row];
-    }
-//    else if (indexPath.section == 1){
-//        cell.typeName.text = @"消息推送设置";
-//    }
-    else if (indexPath.section == 1){
-        cell.typeName.text = @[@"意见反馈",@"协议与隐私",@"关于"][indexPath.row];
-    }
+    cell.typeName.text = @[@"登录密码设置",@"消息推送设置",@"协议与隐私"][indexPath.row];
+    
+
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
-        return 3;
-    }else if (section == 1){
-        return 3;
-    }else{
-        return 3;
-    }
+    
+    return 3;
+    
 }
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 10)];
-    myView.backgroundColor = RGBA(0xeeeeee, 1);
-    return myView;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 10;
-}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            PersonalInformationViewController *page = [[PersonalInformationViewController alloc]init];
-            [self.navigationController pushViewController:page animated:YES];
-        }else if (indexPath.row == 1){
-            ModifyLoginPasswordFirstStepViewController *page = [[ModifyLoginPasswordFirstStepViewController alloc]init];
-            [self.navigationController pushViewController:page animated:YES];
-        }else if (indexPath.row == 2){
-            ModifyPaymentPasswordFirstStepViewController *page = [[ModifyPaymentPasswordFirstStepViewController alloc]init];
-            [self.navigationController pushViewController:page animated:YES];
-        }
-    }
-//    else if (indexPath.section == 1){
-//        if (indexPath.row == 0) {
-//            MessagePushSetUpVC *page = [[MessagePushSetUpVC alloc]init];
-//            [self.navigationController pushViewController:page animated:YES];
-//        }
-//    }
-    else if (indexPath.section == 1){
-        if (indexPath.row == 0) {
-            FeedBackVC *page = [[FeedBackVC alloc]init];
-            [self.navigationController pushViewController:page animated:YES];
-        }else if (indexPath.row == 1){
-             MyWebVC *page = [[MyWebVC alloc]init];
-//            page.isShowNav = YES;
-//            page.leftImgName = @"icon_back_gray";
-            page.titleStr = @"协议及隐私";
-            page.url = [NSString stringWithFormat:@"%@%@", BASE_URL2,@"/jujiaheDocument/jujiaheuser/privacy.html"];
-            [self.navigationController pushViewController:page animated:YES];
-        }else if (indexPath.row == 2){
-            AboutViewController *page = [[AboutViewController alloc]init];
-            [self.navigationController pushViewController:page animated:YES];
-        }
+    if (indexPath.row == 0) {
+        ModifyLoginPasswordFirstStepViewController *page = [[ModifyLoginPasswordFirstStepViewController alloc]init];
+        [self.navigationController pushViewController:page animated:YES];
+    }else if (indexPath.row == 1){
+        
+        MessagePushSetUpVC *page = [[MessagePushSetUpVC alloc]init];
+        [self.navigationController pushViewController:page animated:YES];
+    }else if (indexPath.row == 2){
+        MyWebVC *page = [[MyWebVC alloc]init];
+        page.titleStr = @"协议及隐私";
+        page.url = [NSString stringWithFormat:@"%@%@", BASE_URL2,@"/jujiaheDocument/jujiaheuser/privacy.html"];
+        [self.navigationController pushViewController:page animated:YES];
     }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 1;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

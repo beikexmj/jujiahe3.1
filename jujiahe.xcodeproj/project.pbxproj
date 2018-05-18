@@ -339,10 +339,6 @@
 		7C476E5E20A58DD5005ECE03 /* DeliveryAddressDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476DE420A58DD4005ECE03 /* DeliveryAddressDataModel.m */; };
 		7C476E5F20A58DD5005ECE03 /* DeliveryAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476DE720A58DD4005ECE03 /* DeliveryAddressCell.m */; };
 		7C476E6020A58DD5005ECE03 /* DeliveryAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C476DE820A58DD4005ECE03 /* DeliveryAddressCell.xib */; };
-		7C476E6120A58DD5005ECE03 /* MyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476DEB20A58DD4005ECE03 /* MyQRCodeViewController.m */; };
-		7C476E6220A58DD5005ECE03 /* MyQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C476DEC20A58DD4005ECE03 /* MyQRCodeViewController.xib */; };
-		7C476E6320A58DD5005ECE03 /* IntegralVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476DEF20A58DD4005ECE03 /* IntegralVC.m */; };
-		7C476E6420A58DD5005ECE03 /* MyPointDetailDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476DF220A58DD4005ECE03 /* MyPointDetailDataModel.m */; };
 		7C476E6520A58DD5005ECE03 /* SetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476DF520A58DD4005ECE03 /* SetVC.m */; };
 		7C476E6620A58DD5005ECE03 /* SetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476DF820A58DD4005ECE03 /* SetCell.m */; };
 		7C476E6720A58DD5005ECE03 /* SetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C476DF920A58DD4005ECE03 /* SetCell.xib */; };
@@ -466,6 +462,7 @@
 		7CCF834B20AC1D8A00D35383 /* TopicClassificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF834A20AC1D8A00D35383 /* TopicClassificationVC.m */; };
 		7CCF834F20AC320D00D35383 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF834C20AC320D00D35383 /* CommentViewController.xib */; };
 		7CCF835020AC320D00D35383 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF834E20AC320D00D35383 /* CommentViewController.m */; };
+		8170445420AEAA2500CC6937 /* FamilyDynamicsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8170445320AEAA2500CC6937 /* FamilyDynamicsVC.m */; };
 		998EF8F8F6049014D50A4632 /* libPods-jujiaheUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9836249FD7DB973CA5A352A2 /* libPods-jujiaheUITests.a */; };
 		BCABEAD35A4C5C16C99ADFE5 /* libPods-jujiahe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D5DB62CE87FAC01E0BC698 /* libPods-jujiahe.a */; };
 		E9D731C983F4FFBC6A6FC2BC /* libPods-jujiaheTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B62B8ECC7D4E7FE607A18D /* libPods-jujiaheTests.a */; };
@@ -1178,13 +1175,6 @@
 		7C476DE620A58DD4005ECE03 /* DeliveryAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeliveryAddressCell.h; sourceTree = "<group>"; };
 		7C476DE720A58DD4005ECE03 /* DeliveryAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeliveryAddressCell.m; sourceTree = "<group>"; };
 		7C476DE820A58DD4005ECE03 /* DeliveryAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryAddressCell.xib; sourceTree = "<group>"; };
-		7C476DEA20A58DD4005ECE03 /* MyQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQRCodeViewController.h; sourceTree = "<group>"; };
-		7C476DEB20A58DD4005ECE03 /* MyQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQRCodeViewController.m; sourceTree = "<group>"; };
-		7C476DEC20A58DD4005ECE03 /* MyQRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyQRCodeViewController.xib; sourceTree = "<group>"; };
-		7C476DEE20A58DD4005ECE03 /* IntegralVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegralVC.h; sourceTree = "<group>"; };
-		7C476DEF20A58DD4005ECE03 /* IntegralVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegralVC.m; sourceTree = "<group>"; };
-		7C476DF120A58DD4005ECE03 /* MyPointDetailDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPointDetailDataModel.h; sourceTree = "<group>"; };
-		7C476DF220A58DD4005ECE03 /* MyPointDetailDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPointDetailDataModel.m; sourceTree = "<group>"; };
 		7C476DF420A58DD4005ECE03 /* SetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetVC.h; sourceTree = "<group>"; };
 		7C476DF520A58DD4005ECE03 /* SetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetVC.m; sourceTree = "<group>"; };
 		7C476DF720A58DD4005ECE03 /* SetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCell.h; sourceTree = "<group>"; };
@@ -1400,6 +1390,8 @@
 		7CCF834C20AC320D00D35383 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
 		7CCF834D20AC320D00D35383 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		7CCF834E20AC320D00D35383 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		8170445220AEAA2500CC6937 /* FamilyDynamicsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyDynamicsVC.h; sourceTree = "<group>"; };
+		8170445320AEAA2500CC6937 /* FamilyDynamicsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyDynamicsVC.m; sourceTree = "<group>"; };
 		8663A526B869198D67E968F3 /* Pods-jujiaheTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jujiaheTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-jujiaheTests/Pods-jujiaheTests.release.xcconfig"; sourceTree = "<group>"; };
 		88D5DB62CE87FAC01E0BC698 /* libPods-jujiahe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jujiahe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9836249FD7DB973CA5A352A2 /* libPods-jujiaheUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jujiaheUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3005,6 +2997,7 @@
 		7C476D8020A58966005ECE03 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				81144E3020AEA9DC007A69E0 /* 家人动态 */,
 				7C476D8120A58966005ECE03 /* HomePageVC.h */,
 				7C476D8220A58966005ECE03 /* HomePageVC.m */,
 				7C5DC6A020AAB79000981E95 /* 话题 */,
@@ -3136,10 +3129,11 @@
 				7C476DC520A58DD4005ECE03 /* MyPageVC.m */,
 				7C476DC620A58DD4005ECE03 /* view */,
 				7C476DCA20A58DD4005ECE03 /* 个人信息 */,
-				7C476DE920A58DD4005ECE03 /* 我的二维码 */,
-				7C476DED20A58DD4005ECE03 /* 积分 */,
+				7C476DFA20A58DD4005ECE03 /* 关于 */,
+				7C476DFF20A58DD4005ECE03 /* 意见反馈 */,
 				7C476DF320A58DD4005ECE03 /* 设置 */,
 				7C476E0F20A58DD4005ECE03 /* 邀请注册 */,
+				7C476E4320A58DD4005ECE03 /* 账单查询 */,
 				7C476E2820A58DD4005ECE03 /* 钱包 */,
 			);
 			path = "我的";
@@ -3234,44 +3228,12 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		7C476DE920A58DD4005ECE03 /* 我的二维码 */ = {
-			isa = PBXGroup;
-			children = (
-				7C476DEA20A58DD4005ECE03 /* MyQRCodeViewController.h */,
-				7C476DEB20A58DD4005ECE03 /* MyQRCodeViewController.m */,
-				7C476DEC20A58DD4005ECE03 /* MyQRCodeViewController.xib */,
-			);
-			path = "我的二维码";
-			sourceTree = "<group>";
-		};
-		7C476DED20A58DD4005ECE03 /* 积分 */ = {
-			isa = PBXGroup;
-			children = (
-				7C476DEE20A58DD4005ECE03 /* IntegralVC.h */,
-				7C476DEF20A58DD4005ECE03 /* IntegralVC.m */,
-				7C476DF020A58DD4005ECE03 /* model */,
-			);
-			path = "积分";
-			sourceTree = "<group>";
-		};
-		7C476DF020A58DD4005ECE03 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				7C476DF120A58DD4005ECE03 /* MyPointDetailDataModel.h */,
-				7C476DF220A58DD4005ECE03 /* MyPointDetailDataModel.m */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
 		7C476DF320A58DD4005ECE03 /* 设置 */ = {
 			isa = PBXGroup;
 			children = (
 				7C476DF420A58DD4005ECE03 /* SetVC.h */,
 				7C476DF520A58DD4005ECE03 /* SetVC.m */,
 				7C476DF620A58DD4005ECE03 /* view */,
-				7C476DFA20A58DD4005ECE03 /* 关于 */,
-				7C476DFE20A58DD4005ECE03 /* 协议与隐私 */,
-				7C476DFF20A58DD4005ECE03 /* 意见反馈 */,
 				7C476E0220A58DD4005ECE03 /* 消息推送设置 */,
 				7C476E0B20A58DD4005ECE03 /* 登陆密码设置 */,
 			);
@@ -3296,13 +3258,6 @@
 				7C476DFD20A58DD4005ECE03 /* AboutViewController.xib */,
 			);
 			path = "关于";
-			sourceTree = "<group>";
-		};
-		7C476DFE20A58DD4005ECE03 /* 协议与隐私 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "协议与隐私";
 			sourceTree = "<group>";
 		};
 		7C476DFF20A58DD4005ECE03 /* 意见反馈 */ = {
@@ -3421,7 +3376,6 @@
 				7C476E2F20A58DD4005ECE03 /* 余额明细 */,
 				7C476E3520A58DD4005ECE03 /* 支付宝密码设置 */,
 				7C476E3920A58DD4005ECE03 /* 查看优惠券 */,
-				7C476E4320A58DD4005ECE03 /* 账单查询 */,
 			);
 			path = "钱包";
 			sourceTree = "<group>";
@@ -3905,6 +3859,15 @@
 			path = "话题分类";
 			sourceTree = "<group>";
 		};
+		81144E3020AEA9DC007A69E0 /* 家人动态 */ = {
+			isa = PBXGroup;
+			children = (
+				8170445220AEAA2500CC6937 /* FamilyDynamicsVC.h */,
+				8170445320AEAA2500CC6937 /* FamilyDynamicsVC.m */,
+			);
+			path = "家人动态";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -4035,7 +3998,6 @@
 				7CCF834F20AC320D00D35383 /* CommentViewController.xib in Resources */,
 				7CCF834720AC184F00D35383 /* PublishViewController.xib in Resources */,
 				7C476E7020A58DD5005ECE03 /* ModifyLoginPasswordFirstStepViewController.xib in Resources */,
-				7C476E6220A58DD5005ECE03 /* MyQRCodeViewController.xib in Resources */,
 				7C476E7C20A58DD5005ECE03 /* RankRuleViewController.xib in Resources */,
 				7C989A5B20AD228E00F223ED /* CircleCell.xib in Resources */,
 				7C110B62209FF5690012040E /* ResetPasswordViewController.xib in Resources */,
@@ -4462,7 +4424,6 @@
 				7C110B43209FF27A0012040E /* NearByUnitCell.m in Sources */,
 				7C3CFC3220A172720084FF2A /* UIViewController+ACMediaExt.m in Sources */,
 				7C110ABA209FF0C00012040E /* UITableView+WFEmpty.m in Sources */,
-				7C476E6120A58DD5005ECE03 /* MyQRCodeViewController.m in Sources */,
 				7C110B0D209FF1F00012040E /* MJRefreshComponent.m in Sources */,
 				7CCF834B20AC1D8A00D35383 /* TopicClassificationVC.m in Sources */,
 				7C110AA7209FF0C00012040E /* IQUIView+IQKeyboardToolbar.m in Sources */,
@@ -4505,6 +4466,7 @@
 				7C3CFC6120A1B5880084FF2A /* PropertyPaymentHomeCell.m in Sources */,
 				7CCF831A20ABBA8000D35383 /* TopicCell.m in Sources */,
 				7C3CFBF520A14D3D0084FF2A /* TZAssetModel.m in Sources */,
+				8170445420AEAA2500CC6937 /* FamilyDynamicsVC.m in Sources */,
 				7C3CFC8E20A1C7A60084FF2A /* ServiceVC.m in Sources */,
 				7C989A6D20AD53F400F223ED /* CircleMessageVC.m in Sources */,
 				7C3CFCAF20A1C9BF0084FF2A /* FSActionSheetConfig.m in Sources */,
@@ -4586,7 +4548,6 @@
 				7C110A9C209FF0C00012040E /* IQUITextFieldView+Additions.m in Sources */,
 				7C476DB220A58966005ECE03 /* SystemMessageDetailVC.m in Sources */,
 				7C110AC4209FF0C00012040E /* NSObject+MJProperty.m in Sources */,
-				7C476E6420A58DD5005ECE03 /* MyPointDetailDataModel.m in Sources */,
 				7C110966209FECFB0012040E /* SKPSMTPMessage.m in Sources */,
 				7C110AA0209FF0C00012040E /* IQKeyboardManager.m in Sources */,
 				7C76A6FE20A2E2040029E310 /* UIView+Frame.m in Sources */,
@@ -4618,7 +4579,6 @@
 				7C476DAE20A58966005ECE03 /* CallPropertyDataModel.m in Sources */,
 				7C110AA6209FF0C00012040E /* IQToolbar.m in Sources */,
 				7C476E6820A58DD5005ECE03 /* AboutViewController.m in Sources */,
-				7C476E6320A58DD5005ECE03 /* IntegralVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

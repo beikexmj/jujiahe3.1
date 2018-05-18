@@ -13,7 +13,6 @@
 #import "WallentVC.h"
 #import "InvitedRegistrationViewController.h"
 #import "SetVC.h"
-#import "MyQRCodeViewController.h"
 #import "MessageCenterVC.h"
 #import "AppDelegate.h"
 #import "BaseTabbarVC.h"
@@ -21,6 +20,9 @@
 #import "UIView+Extensions.h"
 #import "registDataModle.h"
 #import "XMJButton.h"
+#import "BillingInquiriesVC.h"
+#import "AboutViewController.h"
+#import "FeedBackVC.h"
 @interface MyPageVC ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UIAlertViewDelegate>
 {
     NSArray *iconArr;
@@ -56,8 +58,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNav];
-    iconArr = [NSArray arrayWithObjects:@"my_icon_integral",@"my_icon_wallet",@"my_icon_post",@"my_icon_set", nil];
-    nameArr = [NSArray arrayWithObjects:@"合币",@"钱包",@"我的发帖",@"设置", nil];
+    
     [self.view addSubview:self.myTableView];
     StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
     _badgeView1.badgeText = [storage.countPaying isEqualToString:@"0"]?@"":storage.countPaying;
@@ -257,7 +258,7 @@
     [self.navView addSubview:_setBtn];
     
 
-    UIImage *meassgeBtnImg = [UIImage imageNamed:@"my_icon_set"];
+    UIImage *meassgeBtnImg = [UIImage imageNamed:@"home_icon_massage_black"];
     width = meassgeBtnImg.size.width;
     ox -= width;
 
@@ -311,8 +312,7 @@
 }
 - (void)QRBtnClick{
     [MobClick event:@"pcewm_c"];
-    MyQRCodeViewController *page = [[MyQRCodeViewController alloc]init];
-    [self.navigationController pushViewController:page animated:YES];
+   
 }
 - (UIButton *)QRBtn{
     if (!_QRBtn) {
@@ -446,7 +446,8 @@
     _myTableView.tableHeaderView = headerView;
 }
 - (void)infoDetailBtnClick:(UIButton*)btn{
-    
+    PersonalInformationViewController *page = [[PersonalInformationViewController alloc]init];
+    [self.navigationController pushViewController:page animated:YES];
 }
 - (void)roomSwitchBtnClick:(UIButton *)btn{
     
@@ -595,6 +596,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:identifierCell owner:self options:nil] lastObject];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.tips.hidden = YES;
     if (indexPath.section == 0) {
         cell.icon.image = [UIImage imageNamed:@[@"my_icon_topic",@"my_icon_circle",@"my_icon_activity"][indexPath.row]] ;
         cell.name.text = @[@"我的话题",@"我的圈子",@"我的活动"][indexPath.row];
@@ -607,6 +609,8 @@
     }else if (indexPath.section == 3){
         cell.icon.image =  [UIImage imageNamed:@"my_icon_phone"];
         cell.name.text = @"服务热线";
+        cell.tips.hidden = NO;
+        cell.tips.text = @"18580465179";
     }
     return cell;
 }
@@ -627,7 +631,43 @@
     return 50;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-  
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            
+        }else if (indexPath.row == 1) {
+            
+        }else if (indexPath.row == 2) {
+            
+        }
+    }else if (indexPath.section == 1){
+        if (indexPath.row == 0) {
+            PersonalInformationViewController *page = [[PersonalInformationViewController alloc]init];
+            [self.navigationController pushViewController:page animated:YES];
+        }else if (indexPath.row == 1) {
+            BillingInquiriesVC *page = [[BillingInquiriesVC alloc]init];
+            [self.navigationController pushViewController:page animated:YES];
+        }
+    }else if (indexPath.section == 2){
+        if (indexPath.row == 0) {
+            AboutViewController *page = [[AboutViewController alloc]init];
+            [self.navigationController pushViewController:page animated:YES];
+        }else if (indexPath.row == 1) {
+            FeedBackVC *page = [[FeedBackVC alloc]init];
+            [self.navigationController pushViewController:page animated:YES];
+        }else if (indexPath.row == 2) {
+            SetVC *page = [[SetVC alloc]init];
+            [self.navigationController pushViewController:page animated:YES];
+        }
+    }else if (indexPath.section == 3){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *callPhone = [NSString stringWithFormat:@"tel://%@",@"18580465179"];
+            if (@available(iOS 10.0, *)) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone] options:@{} completionHandler:nil];
+            } else {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone]];
+            }
+        });
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 10;

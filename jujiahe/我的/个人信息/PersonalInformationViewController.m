@@ -12,7 +12,6 @@
 #import "ModifyPhoneNumViewController.h"
 #import "ModifyEmailViewController.h"
 #import "UIImageView+AFNetworking.h"
-#import "MyQRCodeViewController.h"
 #import "HooDatePicker.h"
 #import "DeliveryAddressVC.h"
 @interface PersonalInformationViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,HooDatePickerDelegate>
@@ -206,7 +205,7 @@
     return 1;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -247,14 +246,14 @@
     }
     
 }
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 10)];
-    footerView.backgroundColor = RGBA(0xeeeeee, 1);
-    return footerView;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 10;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+//    UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 10)];
+//    footerView.backgroundColor = RGBA(0xeeeeee, 1);
+//    return footerView;
+//}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+//    return 10;
+//}
 - (void)choseBirthday{
     [self.datePicker show];
 }

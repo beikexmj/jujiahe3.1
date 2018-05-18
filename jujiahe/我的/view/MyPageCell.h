@@ -11,5 +11,6 @@
 @interface MyPageCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *tips;
 
 @end
