@@ -15,6 +15,8 @@
 #import "AppDelegate.h"
 #import "SDCycleScrollView.h"
 #import "CCPScrollView.h"
+#import "QueryLogisticsVC.h"
+
 @interface PropertyServiceVC ()<SDCycleScrollViewDelegate>
 {
     CCPScrollView *ccpScrollView;
@@ -204,6 +206,8 @@
 }
 - (void)btnClick:(UIButton *)btn{
     
+    
+    
     if([[StorageUserInfromation storageUserInformation].userId isEqualToString:@""]){
         UIAlertView *alert =[ [UIAlertView alloc]initWithTitle:@"未登录" message:@"确定跳回登录界面？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         [alert show];
@@ -275,7 +279,8 @@
     }
 }
 - (void)moreClassificationbtnClick:(UIButton *)btn{
-    
+    QueryLogisticsVC *vc = [[QueryLogisticsVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     [MobClick event:@"sqlb_c" label:[NSString stringWithFormat:@"%ld",index]];

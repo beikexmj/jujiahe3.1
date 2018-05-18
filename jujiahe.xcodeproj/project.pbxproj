@@ -449,6 +449,7 @@
 		7CBAF2EF20AE7CF10032DB72 /* QueryLogisticsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAF2EE20AE7CF10032DB72 /* QueryLogisticsVC.m */; };
 		7CBAF2F220AE83970032DB72 /* QueryResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAF2F120AE83970032DB72 /* QueryResultVC.m */; };
 		7CBAF2F520AE83F90032DB72 /* QueryResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAF2F420AE83F90032DB72 /* QueryResultCell.m */; };
+		7CBAF2F820AE9EA70032DB72 /* JJBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAF2F720AE9EA70032DB72 /* JJBaseViewController.m */; };
 		7CCF831A20ABBA8000D35383 /* TopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF831720ABBA7F00D35383 /* TopicCell.m */; };
 		7CCF831B20ABBA8000D35383 /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF831820ABBA7F00D35383 /* TopicCell.xib */; };
 		7CCF831E20ABBFE800D35383 /* CircleDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF831D20ABBFE800D35383 /* CircleDataModel.m */; };
@@ -1373,6 +1374,8 @@
 		7CBAF2F120AE83970032DB72 /* QueryResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryResultVC.m; sourceTree = "<group>"; };
 		7CBAF2F320AE83F90032DB72 /* QueryResultCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryResultCell.h; sourceTree = "<group>"; };
 		7CBAF2F420AE83F90032DB72 /* QueryResultCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryResultCell.m; sourceTree = "<group>"; };
+		7CBAF2F620AE9EA70032DB72 /* JJBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJBaseViewController.h; sourceTree = "<group>"; };
+		7CBAF2F720AE9EA70032DB72 /* JJBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJBaseViewController.m; sourceTree = "<group>"; };
 		7CCF831620ABBA7F00D35383 /* TopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCell.h; sourceTree = "<group>"; };
 		7CCF831720ABBA7F00D35383 /* TopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCell.m; sourceTree = "<group>"; };
 		7CCF831820ABBA7F00D35383 /* TopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
@@ -1550,6 +1553,8 @@
 				7C110B46209FF2CC0012040E /* BaseTabbarVC.m */,
 				7C1109B6209FEF430012040E /* BaseViewController.h */,
 				7C1109B7209FEF430012040E /* BaseViewController.m */,
+				7CBAF2F620AE9EA70032DB72 /* JJBaseViewController.h */,
+				7CBAF2F720AE9EA70032DB72 /* JJBaseViewController.m */,
 				7C1108F6209FE4270012040E /* ViewController.h */,
 				7C1108F7209FE4270012040E /* ViewController.m */,
 				7C1108F9209FE4270012040E /* Main.storyboard */,
@@ -4573,6 +4578,7 @@
 				7C110A9A209FF0C00012040E /* IQNSArray+Sort.m in Sources */,
 				7C110D0D20A030770012040E /* DataVerifier.m in Sources */,
 				7C3CFCCB20A1CA150084FF2A /* TAPageControl.m in Sources */,
+				7CBAF2F820AE9EA70032DB72 /* JJBaseViewController.m in Sources */,
 				7C476E6B20A58DD5005ECE03 /* MeassgePushSetUpCell.m in Sources */,
 				7C3CFC5D20A1B5880084FF2A /* PropertyPaymentHomeDataModel.m in Sources */,
 				7C110A98209FF0C00012040E /* JFSearchView.m in Sources */,

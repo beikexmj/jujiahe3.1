@@ -6,8 +6,8 @@
 //  Copyright © 2018年 世纪之光. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "JJBaseViewController.h"
 
-@interface QueryResultVC : UIViewController
+@interface QueryResultVC : JJBaseViewController
 
 @end

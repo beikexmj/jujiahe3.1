@@ -29,4 +29,14 @@
     return self;
 }
 
+#pragma mark - getter
+
+- (UILabel *)dateLabel
+{
+    if (!_dateLabel) {
+        
+    }
+    return _dateLabel;
+}
+
 @end

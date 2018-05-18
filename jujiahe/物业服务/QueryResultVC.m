@@ -7,6 +7,7 @@
 //
 
 #import "QueryResultVC.h"
+#import <UITableView+FDTemplateLayoutCell.h>
 
 static NSString *kTableViewCellIdentifier = @"com.copticomm.jjh.query.result.cell";
 
