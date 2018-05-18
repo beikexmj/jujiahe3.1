@@ -10,6 +10,7 @@ target 'jujiahe' do
   pod 'SDWebImage', '~> 4.2.2'
   pod 'ReactiveObjC', '~> 3.0.0'
   pod 'Masonry'
+  pod 'UITableView+FDTemplateLayoutCell'
 #  pod 'MJRefresh'
   pod 'CYLTabBarController'
   pod 'FMDB'

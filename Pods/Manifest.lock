@@ -23,6 +23,7 @@ PODS:
   - SDWebImage (4.2.3):
     - SDWebImage/Core (= 4.2.3)
   - SDWebImage/Core (4.2.3)
+  - UITableView+FDTemplateLayoutCell (1.6)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0.4)
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - Masonry
   - ReactiveObjC (~> 3.0.0)
   - SDWebImage (~> 4.2.2)
+  - UITableView+FDTemplateLayoutCell
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
@@ -39,7 +41,8 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   ReactiveObjC: ce79989e8684b9086b5f8d0c74bc7b81a8729c9e
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
+  UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
 
-PODFILE CHECKSUM: 5863542ee00553991cf580c38983ea4da9697fe8
+PODFILE CHECKSUM: a14d584df47f2f6261a0fe32289ade5cd5d1faa0
 
 COCOAPODS: 1.4.0

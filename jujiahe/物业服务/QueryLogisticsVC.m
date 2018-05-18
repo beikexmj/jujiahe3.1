@@ -34,7 +34,7 @@
 
 - (UIView *)textFiledLeftView
 {
-    UIView *view = [[UIView alloc] initWithFrame:<#(CGRect)#>]
+//    UIView *view = [[UIView alloc] initWithFrame:<#(CGRect)#>]
     
     UILabel *lbl = [[UILabel alloc] init];
     lbl.font = [UIFont systemFontOfSize:14];

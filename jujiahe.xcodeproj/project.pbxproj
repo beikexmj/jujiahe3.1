@@ -447,6 +447,8 @@
 		7C989A6D20AD53F400F223ED /* CircleMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A6C20AD53F400F223ED /* CircleMessageVC.m */; };
 		7C989A7020AD541200F223ED /* SystemMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A6F20AD541200F223ED /* SystemMessageVC.m */; };
 		7CBAF2EF20AE7CF10032DB72 /* QueryLogisticsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAF2EE20AE7CF10032DB72 /* QueryLogisticsVC.m */; };
+		7CBAF2F220AE83970032DB72 /* QueryResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAF2F120AE83970032DB72 /* QueryResultVC.m */; };
+		7CBAF2F520AE83F90032DB72 /* QueryResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAF2F420AE83F90032DB72 /* QueryResultCell.m */; };
 		7CCF831A20ABBA8000D35383 /* TopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF831720ABBA7F00D35383 /* TopicCell.m */; };
 		7CCF831B20ABBA8000D35383 /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF831820ABBA7F00D35383 /* TopicCell.xib */; };
 		7CCF831E20ABBFE800D35383 /* CircleDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF831D20ABBFE800D35383 /* CircleDataModel.m */; };
@@ -1367,6 +1369,10 @@
 		7C989A6F20AD541200F223ED /* SystemMessageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemMessageVC.m; sourceTree = "<group>"; };
 		7CBAF2ED20AE7CF10032DB72 /* QueryLogisticsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryLogisticsVC.h; sourceTree = "<group>"; };
 		7CBAF2EE20AE7CF10032DB72 /* QueryLogisticsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryLogisticsVC.m; sourceTree = "<group>"; };
+		7CBAF2F020AE83970032DB72 /* QueryResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryResultVC.h; sourceTree = "<group>"; };
+		7CBAF2F120AE83970032DB72 /* QueryResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryResultVC.m; sourceTree = "<group>"; };
+		7CBAF2F320AE83F90032DB72 /* QueryResultCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryResultCell.h; sourceTree = "<group>"; };
+		7CBAF2F420AE83F90032DB72 /* QueryResultCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryResultCell.m; sourceTree = "<group>"; };
 		7CCF831620ABBA7F00D35383 /* TopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCell.h; sourceTree = "<group>"; };
 		7CCF831720ABBA7F00D35383 /* TopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCell.m; sourceTree = "<group>"; };
 		7CCF831820ABBA7F00D35383 /* TopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
@@ -2907,6 +2913,10 @@
 				7C3CFC8220A1C7A60084FF2A /* ServiceVC.m */,
 				7CBAF2ED20AE7CF10032DB72 /* QueryLogisticsVC.h */,
 				7CBAF2EE20AE7CF10032DB72 /* QueryLogisticsVC.m */,
+				7CBAF2F020AE83970032DB72 /* QueryResultVC.h */,
+				7CBAF2F120AE83970032DB72 /* QueryResultVC.m */,
+				7CBAF2F320AE83F90032DB72 /* QueryResultCell.h */,
+				7CBAF2F420AE83F90032DB72 /* QueryResultCell.m */,
 			);
 			path = "物业服务";
 			sourceTree = "<group>";
@@ -4422,6 +4432,7 @@
 				7C110B15209FF1F00012040E /* MJRefreshBackStateFooter.m in Sources */,
 				7C3CFC4020A189490084FF2A /* XXTextField.m in Sources */,
 				7C110A78209FF0BF0012040E /* YYTextEffectWindow.m in Sources */,
+				7CBAF2F520AE83F90032DB72 /* QueryResultCell.m in Sources */,
 				7C110B61209FF5690012040E /* ResetPasswordViewController.m in Sources */,
 				7C476EBA20A59267005ECE03 /* SGQRCodeScanManager.m in Sources */,
 				7C476E7920A58DD5005ECE03 /* InviteRegistrationRankTableViewCell.m in Sources */,
@@ -4592,6 +4603,7 @@
 				7C76A6FE20A2E2040029E310 /* UIView+Frame.m in Sources */,
 				7C989A6620AD315F00F223ED /* EstablishCircleCell.m in Sources */,
 				7C110B0C209FF1F00012040E /* MJRefreshBackFooter.m in Sources */,
+				7CBAF2F220AE83970032DB72 /* QueryResultVC.m in Sources */,
 				7C476EC420A59454005ECE03 /* HappenVC.m in Sources */,
 				7C110D1C20A030820012040E /* MyWebVC.m in Sources */,
 				7C1109A8209FEEC70012040E /* UIImage+Color.m in Sources */,
