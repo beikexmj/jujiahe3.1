@@ -114,7 +114,7 @@ BaseTabbarVC *manager = nil;
 
     [[UITabBar appearance] setBackgroundImage:CreateImageWithColor(RGBA(0xffffff, 1), CGSizeMake(1, 1))];
     [UITabBar appearance].translucent = NO;
-    [self uploadInfo];
+//    [self uploadInfo];
     
 //    //IM被踢下线
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LogoutNotifi:) name:OnKickNotifi object:nil];

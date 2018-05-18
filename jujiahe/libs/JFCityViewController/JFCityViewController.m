@@ -204,7 +204,7 @@ JFSearchViewDelegate>
         _headerView.delegate = self;
         _headerView.backgroundColor = [UIColor whiteColor];
         _headerView.buttonTitle = @"选择区县";
-        _headerView.cityName =  [kCurrentCityInfoDefaults objectForKey:@"currentCity"] ?[NSString stringWithFormat:@"%@%@",[kCurrentCityInfoDefaults valueForKey:@"currentCity"],[kCurrentCityInfoDefaults valueForKey:@"currentArea"]]:[NSString stringWithFormat:@"%@%@",[kCurrentCityInfoDefaults valueForKey:@"locationCity"],[kCurrentCityInfoDefaults valueForKey:@"locationArea"]];
+        _headerView.cityName =  [kCurrentCityInfoDefaults objectForKey:@"currentCity"] ?[NSString stringWithFormat:@"%@%@",[kCurrentCityInfoDefaults valueForKey:@"currentCity"],[kCurrentCityInfoDefaults valueForKey:@"currentArea"]?[kCurrentCityInfoDefaults valueForKey:@"currentArea"]:@""]:[NSString stringWithFormat:@"%@%@",[kCurrentCityInfoDefaults valueForKey:@"locationCity"],[kCurrentCityInfoDefaults valueForKey:@"locationArea"]?[kCurrentCityInfoDefaults valueForKey:@"locationArea"]:@""];
     }
     return _headerView;
 }
@@ -371,9 +371,7 @@ JFSearchViewDelegate>
         }
         if (indexPath.section == _HeaderSectionTotal - 2) {
             NSString *locationCity = [kCurrentCityInfoDefaults objectForKey:@"locationCity"];
-            NSString *locationArea = [kCurrentCityInfoDefaults objectForKey:@"locationArea"];
-          NSString *area =  [NSString stringWithFormat:@"%@%@",locationCity,locationArea];
-            _cell.cityNameArray = locationArea ? @[area] : @[@"正在定位..."];
+            _cell.cityNameArray = locationCity ? @[locationCity] : @[@"正在定位..."];
         }
 //        if (indexPath.section == _HeaderSectionTotal - 1) {
 //            _cell.cityNameArray = self.historyCityMutableArray;
@@ -542,7 +540,7 @@ JFSearchViewDelegate>
 //定位成功
 - (void)currentLocation:(NSDictionary *)locationDictionary {
     NSString *city = [locationDictionary valueForKey:@"City"];
-    NSString *area = [locationDictionary valueForKey:@"Area"];
+    NSString *area = [locationDictionary valueForKey:@"SubLocality"];
     [kCurrentCityInfoDefaults setObject:city forKey:@"locationCity"];
     [kCurrentCityInfoDefaults setObject:area forKey:@"locationArea"];
     [_manager cityNumberWithCity:city cityNumber:^(NSString *cityNumber) {

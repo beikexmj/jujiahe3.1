@@ -39,6 +39,8 @@
         _navTitle.font = [UIFont systemFontOfSize:18.0];
         _navHight.constant = 64+24;
     }
+    _navTitle.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentArea"];
+
     _myDict = [NSMutableDictionary dictionary];
     _myArray  = [NSMutableArray array];
     _nearByLocationUnitArr = [NSMutableArray array];
@@ -56,7 +58,7 @@
     _locationView.hidden = YES;
     _locationViewHight.constant = 0;
     
-    NSString *title = [NSString stringWithFormat:@" %@%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"],[[NSUserDefaults standardUserDefaults] objectForKey:@"currentArea"]];
+    NSString *title = [NSString stringWithFormat:@" %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"]];
     [_choseCity setTitle:title forState:UIControlStateNormal];
     
     [self fetchData];
@@ -443,8 +445,9 @@
     }
 }
 - (void)cityName:(NSString *)name {
-    NSString *title = [NSString stringWithFormat:@" %@%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"],[[NSUserDefaults standardUserDefaults] objectForKey:@"currentArea"]];
+    NSString *title = [NSString stringWithFormat:@" %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"]];
     [_choseCity setTitle:title forState:UIControlStateNormal];
+    _navTitle.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentArea"];
     [self fetchData];
 }
 @end
