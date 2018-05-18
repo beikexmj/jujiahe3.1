@@ -19,10 +19,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setPopLeftItem];
 
 }
 
 #pragma mark - getter
+
+- (NSString *)title
+{
+    return @"快递查询";
+}
 
 - (UITextField *)numberTextField
 {
