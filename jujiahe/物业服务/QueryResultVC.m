@@ -21,6 +21,7 @@ static NSString *kTableViewCellIdentifier = @"com.copticomm.jjh.query.result.cel
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = RGBA(0xE7EBEF, 1);
     
 }
 

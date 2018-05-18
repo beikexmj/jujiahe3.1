@@ -10,6 +10,7 @@
 #import <BlocksKit/UIBarButtonItem+BlocksKit.h>
 #import "UIView+Frame.h"
 
+
 @implementation JJNavigationBar
 
 - (void)layoutSubviews {
@@ -21,6 +22,13 @@
         }
     }
 }
+
+- (void)setJj_barTintColor:(UIColor *)jj_barTintColor
+{
+    self.backgroundColor = jj_barTintColor;
+    self.barTintColor = jj_barTintColor;
+}
+
 @end
 
 @implementation JJBaseViewController
@@ -42,9 +50,8 @@
         UIBarButtonItem *item = [[UIBarButtonItem alloc] bk_initWithImage:[UIImage imageNamed:objectKey]
                                                                     style:UIBarButtonItemStylePlain
                                                                   handler:action];
-        item.tag = [barItems indexOfObject:objectKey];
         [barItems addObject:item];
-        
+        item.tag = [barItems indexOfObject:objectKey];
     }
     va_end(args);
     self.navigationItem.leftBarButtonItems = barItems;
@@ -59,9 +66,8 @@
         UIBarButtonItem *item = [[UIBarButtonItem alloc] bk_initWithImage:[UIImage imageNamed:objectKey]
                                                                     style:UIBarButtonItemStylePlain
                                                                   handler:action];
-        item.tag = [barItems indexOfObject:objectKey];
         [barItems addObject:item];
-        
+        item.tag = [barItems indexOfObject:objectKey];
     }
     va_end(args);
     self.navigationItem.rightBarButtonItems = barItems;
@@ -76,8 +82,8 @@
         UIBarButtonItem *item = [[UIBarButtonItem alloc] bk_initWithTitle:objectKey
                                                                     style:UIBarButtonItemStylePlain
                                                                   handler:action];
-        item.tag = [barItems indexOfObject:objectKey];
         [barItems addObject:item];
+        item.tag = [barItems indexOfObject:objectKey];
     }
     va_end(args);
     self.navigationItem.leftBarButtonItems = barItems;
@@ -92,8 +98,8 @@
         UIBarButtonItem *item = [[UIBarButtonItem alloc] bk_initWithTitle:objectKey
                                                                     style:UIBarButtonItemStylePlain
                                                                   handler:action];
-        item.tag = [barItems indexOfObject:objectKey];
         [barItems addObject:item];
+        item.tag = [barItems indexOfObject:objectKey];
     }
     va_end(args);
     self.navigationItem.rightBarButtonItems = barItems;
@@ -137,8 +143,9 @@
         _navigationBar = [[JJNavigationBar alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, NAVHEIGHT)];
         _navigationBar.barStyle = UIBarStyleDefault;
         _navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        _navigationBar.barTintColor = [UIColor whiteColor];
+        _navigationBar.jj_barTintColor = [UIColor whiteColor];
         _navigationBar.tintColor = RGBA(0x9c9c9c, 1);
+        _navigationBar.translucent = NO;
         [_navigationBar pushNavigationItem:self.navigationItem animated:NO];
     }
     return _navigationBar;

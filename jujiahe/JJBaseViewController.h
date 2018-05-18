@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JJNavigationBar : UINavigationBar
 
+@property (nonatomic, strong) UIColor *jj_barTintColor;
+
 @end
 
 @interface JJBaseViewController : UIViewController

@@ -446,6 +446,7 @@
 		7C989A6A20AD53E100F223ED /* TopicMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A6920AD53E100F223ED /* TopicMessageVC.m */; };
 		7C989A6D20AD53F400F223ED /* CircleMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A6C20AD53F400F223ED /* CircleMessageVC.m */; };
 		7C989A7020AD541200F223ED /* SystemMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C989A6F20AD541200F223ED /* SystemMessageVC.m */; };
+		7C9B1D7420AECD2F009965CB /* JJLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9B1D7320AECD2F009965CB /* JJLabel.m */; };
 		7CBAF2EF20AE7CF10032DB72 /* QueryLogisticsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAF2EE20AE7CF10032DB72 /* QueryLogisticsVC.m */; };
 		7CBAF2F220AE83970032DB72 /* QueryResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAF2F120AE83970032DB72 /* QueryResultVC.m */; };
 		7CBAF2F520AE83F90032DB72 /* QueryResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAF2F420AE83F90032DB72 /* QueryResultCell.m */; };
@@ -1368,6 +1369,8 @@
 		7C989A6C20AD53F400F223ED /* CircleMessageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleMessageVC.m; sourceTree = "<group>"; };
 		7C989A6E20AD541200F223ED /* SystemMessageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemMessageVC.h; sourceTree = "<group>"; };
 		7C989A6F20AD541200F223ED /* SystemMessageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemMessageVC.m; sourceTree = "<group>"; };
+		7C9B1D7220AECD2F009965CB /* JJLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJLabel.h; sourceTree = "<group>"; };
+		7C9B1D7320AECD2F009965CB /* JJLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJLabel.m; sourceTree = "<group>"; };
 		7CBAF2ED20AE7CF10032DB72 /* QueryLogisticsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryLogisticsVC.h; sourceTree = "<group>"; };
 		7CBAF2EE20AE7CF10032DB72 /* QueryLogisticsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryLogisticsVC.m; sourceTree = "<group>"; };
 		7CBAF2F020AE83970032DB72 /* QueryResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryResultVC.h; sourceTree = "<group>"; };
@@ -2895,6 +2898,7 @@
 		7C3CFC6C20A1C7A60084FF2A /* 物业服务 */ = {
 			isa = PBXGroup;
 			children = (
+				7C9B1D7120AECD17009965CB /* Views */,
 				7C6CA6BA20A3D6A70073DD3F /* 满意度调查 */,
 				7C3CFC6D20A1C7A60084FF2A /* AllServiceDataModel.h */,
 				7C3CFC6E20A1C7A60084FF2A /* AllServiceDataModel.m */,
@@ -3827,6 +3831,15 @@
 			path = "圈子/创建圈子";
 			sourceTree = "<group>";
 		};
+		7C9B1D7120AECD17009965CB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7C9B1D7220AECD2F009965CB /* JJLabel.h */,
+				7C9B1D7320AECD2F009965CB /* JJLabel.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7CCF831520ABBA7F00D35383 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -4334,6 +4347,7 @@
 				7C110A9B209FF0C00012040E /* IQUIScrollView+Additions.m in Sources */,
 				7C11095B209FECFB0012040E /* UIView+CustomAutoLayout.m in Sources */,
 				7C3CFC4C20A19F0A0084FF2A /* ScaleButton.m in Sources */,
+				7C9B1D7420AECD2F009965CB /* JJLabel.m in Sources */,
 				7C3CFC8B20A1C7A60084FF2A /* ServiceComentView.m in Sources */,
 				7C476E8920A58DD5005ECE03 /* BillingDetailVC.m in Sources */,
 				7C110A9F209FF0C00012040E /* IQUIWindow+Hierarchy.m in Sources */,
