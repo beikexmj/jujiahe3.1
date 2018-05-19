@@ -248,13 +248,14 @@
     payView.payBtnBlock = ^{
         StrongSelf
         if (payWay == 1) {
-            if ([StorageUserInfromation storageUserInformation].payPasswordSet.integerValue == 1) {
-                [weakPasswordAlertView show];
-            }else{
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"设置支付密码" message:@"为保障您的账户资金安全，请先设置支付密码" delegate:strongSelf cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-                alert.tag = 100;
-                [alert show];
-            }
+//            if ([StorageUserInfromation storageUserInformation].payPasswordSet.integerValue == 1) {
+//                [weakPasswordAlertView show];
+//            }else{
+//                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"设置支付密码" message:@"为保障您的账户资金安全，请先设置支付密码" delegate:strongSelf cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//                alert.tag = 100;
+//                [alert show];
+//            }
+            [strongSelf weiXinPay];
         }else{
             [strongSelf aliPay];
         }
@@ -314,6 +315,9 @@
         }
         NSLog(@"reslut = %@",resultDic);
     }];
+}
+- (void)weiXinPay{
+    
 }
 #pragma mark password delegate
 -(void)PasswordAlertViewCompleteInputWith:(NSString*)password{

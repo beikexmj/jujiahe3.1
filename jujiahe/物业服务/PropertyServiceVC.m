@@ -17,6 +17,7 @@
 #import "CCPScrollView.h"
 #import "QueryLogisticsVC.h"
 #import "PropertyPaymentVC.h"
+#import "AreaHeadlineVC.h"
 @interface PropertyServiceVC ()<SDCycleScrollViewDelegate>
 {
     CCPScrollView *ccpScrollView;
@@ -227,7 +228,9 @@
     }else if ([name isEqualToString:@"社区报事"]) {
         
     }else if ([name isEqualToString:@"代收包裹"]) {
-        
+        AreaHeadlineVC *page = [[AreaHeadlineVC alloc]init];
+        [self.navigationController pushViewController:page animated:YES];
+        return;
     }else if ([name isEqualToString:@"缴物管费"]) {
         PropertyPaymentVC *page = [[PropertyPaymentVC alloc]init];
         page.propertyHouseId = dict.ids;
