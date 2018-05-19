@@ -59,8 +59,8 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:indentifierCell owner:self options:nil] lastObject];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.typeName.text = @[@"活动推送",@"用户消息",@"系统消息"][indexPath.row];
-    cell.content.text = @[@"优惠活动、促销商品、限时抢购等精选类容",@"点赞、回复、动态消息提示",@"接收到系统消息推送"][indexPath.row];
+    cell.typeName.text = @[@"话题推送",@"圈子消息消息",@"系统消息"][indexPath.row];
+    cell.content.text = @[@"话题评论、点赞、回复消息推送",@"圈子评论、点赞、回复消息推送",@"系统消息推送"][indexPath.row];
     if (_data) {
         switch (indexPath.row) {
             case 0:

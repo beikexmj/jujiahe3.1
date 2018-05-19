@@ -168,7 +168,7 @@
             [self sexSet];
         }else if(indexPath.row == 4){
             cell.regimentationLabel.text = @"手机号码";
-            cell.nameStr.text = [NSString stringWithFormat:@"%@****%@",[storage.username substringToIndex:3],[storage.username substringFromIndex:7]];
+//            cell.nameStr.text = [NSString stringWithFormat:@"%@****%@",[storage.username substringToIndex:3],[storage.username substringFromIndex:7]];
         }else if (indexPath.row == 5){
             cell.regimentationLabel.text = @"邮箱";
             cell.nameStr.text = storage.email;

@@ -11,7 +11,6 @@
 #import "JSBadgeView.h"
 #import "PersonalInformationViewController.h"
 #import "WallentVC.h"
-#import "InvitedRegistrationViewController.h"
 #import "SetVC.h"
 #import "MessageCenterVC.h"
 #import "AppDelegate.h"
@@ -24,6 +23,8 @@
 #import "AboutViewController.h"
 #import "FeedBackVC.h"
 #import "HouseManagerVC.h"
+#import "MyPropertyServiceVC.h"
+#import "MessageCenterVC.h"
 @interface MyPageVC ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UIAlertViewDelegate>
 {
     NSArray *iconArr;
@@ -276,10 +277,12 @@
     [_meassgeBtn addTarget:self action:@selector(meassgeBtnClick) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)setBtnClick{
-    
+    SetVC *page = [[SetVC alloc]init];
+    [self.navigationController pushViewController:page animated:YES];
 }
 - (void)meassgeBtnClick{
-    
+    MessageCenterVC *page = [[MessageCenterVC alloc]init];
+    [self.navigationController pushViewController:page animated:YES];
 }
 - (void)rightButtonClick:(UIButton *)button{
     [MobClick event:@"pcxx_c"];
@@ -550,35 +553,35 @@
 }
 - (void)btnClick:(UIButton*)btn{
     
-    NSString *orderType = @"";
-    
+    NSInteger index = 0;
     switch (btn.tag) {
         case 10:
         {
-            orderType = @"2";
+            index = 1;
         }
             break;
         case 20:
         {
-            orderType = @"9";
+            index = 2;
         }
             break;
         case 30:
         {
-            orderType = @"6";
+            index = 3;
         }
             break;
         case 40:
         {
-            orderType = @"";
+            index = 0;
         }
             break;
             
         default:
             break;
     }
-    [MobClick event:@"pczt_c" label:orderType];
-
+    MyPropertyServiceVC *page = [[MyPropertyServiceVC alloc]init];
+    page.index = index;
+    [self.navigationController pushViewController:page animated:YES];
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView == self.myTableView) {

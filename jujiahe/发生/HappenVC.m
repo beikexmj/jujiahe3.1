@@ -10,6 +10,8 @@
 #import "AllServiceDataModel.h"
 #import "HappenCell.h"
 #import "EstablishCircleVC.h"
+#import "CircleVC.h"
+
 @interface HappenVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong)UIButton *districtAffairsBtn;
 @property (nonatomic,strong)UIButton *perimeterBtn;
@@ -78,7 +80,7 @@
     UIView *locationView = [[UIView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREENWIDTH, 40)];
     locationView.backgroundColor = RGBA(0xeaeef1, 1);
     UIImageView *locationImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 10, 15, 20)];
-    locationImageView.image = [UIImage imageNamed:@"my_icon_list"];
+    locationImageView.image = [UIImage imageNamed:@"hap_icon_location"];
     [locationView addSubview:locationImageView];
     
     UILabel *locationLabel = [[UILabel alloc]initWithFrame:CGRectMake(35, 0, SCREENWIDTH - 50, 40)];
@@ -160,7 +162,8 @@
     myScrollView.contentSize = CGSizeMake(SCREENWIDTH, sectionY);
 }
 - (void)btnClick:(UIButton *)btn{
-    
+    CircleVC *page = [[CircleVC alloc]init];
+    [self.navigationController pushViewController:page animated:YES];
 }
 
 - (void)btnChoseClick:(UIButton *)btn{
@@ -196,8 +199,13 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"HappenCell" owner:self options:nil] lastObject];
     }
-    cell.img.image = [UIImage imageNamed:@"home_btn_menjin"];
-    cell.name.text = @"小区麻友";
+    if (indexPath.row == 0) {
+        cell.img.image = [UIImage imageNamed:@"addPic"];
+        cell.name.text = @"创建圈子";
+    }else{
+        cell.img.image = [UIImage imageNamed:@"home_btn_menjin"];
+        cell.name.text = @"小区麻友";
+    }
     return cell;
 }
 #pragma mark ---- UICollectionViewDelegateFlowLayout
@@ -220,8 +228,14 @@
     return 30.0;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    EstablishCircleVC *page = [[EstablishCircleVC alloc]init];
-    [self.navigationController pushViewController:page animated:YES];
+    if (indexPath.row == 0) {
+        EstablishCircleVC *page = [[EstablishCircleVC alloc]init];
+        [self.navigationController pushViewController:page animated:YES];
+    }else{
+        CircleVC *page = [[CircleVC alloc]init];
+        [self.navigationController pushViewController:page animated:YES];
+    }
+  
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

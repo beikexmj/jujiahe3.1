@@ -351,18 +351,6 @@
 		7C476E6E20A58DD5005ECE03 /* MessagePushSetUpDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476E0A20A58DD4005ECE03 /* MessagePushSetUpDataModel.m */; };
 		7C476E6F20A58DD5005ECE03 /* ModifyLoginPasswordFirstStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476E0D20A58DD4005ECE03 /* ModifyLoginPasswordFirstStepViewController.m */; };
 		7C476E7020A58DD5005ECE03 /* ModifyLoginPasswordFirstStepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C476E0E20A58DD4005ECE03 /* ModifyLoginPasswordFirstStepViewController.xib */; };
-		7C476E7120A58DD5005ECE03 /* InvitedRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476E1120A58DD4005ECE03 /* InvitedRegistrationViewController.m */; };
-		7C476E7220A58DD5005ECE03 /* InvitedRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C476E1220A58DD4005ECE03 /* InvitedRegistrationViewController.xib */; };
-		7C476E7320A58DD5005ECE03 /* InviteRegistrationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476E1520A58DD4005ECE03 /* InviteRegistrationTableViewCell.m */; };
-		7C476E7420A58DD5005ECE03 /* InviteRegistrationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C476E1620A58DD4005ECE03 /* InviteRegistrationTableViewCell.xib */; };
-		7C476E7520A58DD5005ECE03 /* InviteRegistrationRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476E1920A58DD4005ECE03 /* InviteRegistrationRankViewController.m */; };
-		7C476E7620A58DD5005ECE03 /* InviteRegistrationRankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C476E1A20A58DD4005ECE03 /* InviteRegistrationRankViewController.xib */; };
-		7C476E7720A58DD5005ECE03 /* InvitedRegistrationDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476E1D20A58DD4005ECE03 /* InvitedRegistrationDataModel.m */; };
-		7C476E7820A58DD5005ECE03 /* InviteRankingDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476E1F20A58DD4005ECE03 /* InviteRankingDataModel.m */; };
-		7C476E7920A58DD5005ECE03 /* InviteRegistrationRankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476E2220A58DD4005ECE03 /* InviteRegistrationRankTableViewCell.m */; };
-		7C476E7A20A58DD5005ECE03 /* InviteRegistrationRankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C476E2320A58DD4005ECE03 /* InviteRegistrationRankTableViewCell.xib */; };
-		7C476E7B20A58DD5005ECE03 /* RankRuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476E2620A58DD4005ECE03 /* RankRuleViewController.m */; };
-		7C476E7C20A58DD5005ECE03 /* RankRuleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C476E2720A58DD4005ECE03 /* RankRuleViewController.xib */; };
 		7C476E7D20A58DD5005ECE03 /* WallentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476E2A20A58DD4005ECE03 /* WallentVC.m */; };
 		7C476E7E20A58DD5005ECE03 /* BalanceRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476E2D20A58DD4005ECE03 /* BalanceRechargeViewController.m */; };
 		7C476E7F20A58DD5005ECE03 /* BalanceRechargeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C476E2E20A58DD4005ECE03 /* BalanceRechargeViewController.xib */; };
@@ -467,6 +455,20 @@
 		7CCF834F20AC320D00D35383 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF834C20AC320D00D35383 /* CommentViewController.xib */; };
 		7CCF835020AC320D00D35383 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF834E20AC320D00D35383 /* CommentViewController.m */; };
 		8170445420AEAA2500CC6937 /* FamilyDynamicsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8170445320AEAA2500CC6937 /* FamilyDynamicsVC.m */; };
+		81E4D7E820AFB86700FC5B5D /* PropertyFeePayDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D7E720AFB81500FC5B5D /* PropertyFeePayDataModel.m */; };
+		81E4D7E920AFB86700FC5B5D /* PropertyFeeArreargeTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D7E120AFB7C700FC5B5D /* PropertyFeeArreargeTimeCell.m */; };
+		81E4D7EA20AFB86700FC5B5D /* PropertyFeePayToTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D7DF20AFB7C700FC5B5D /* PropertyFeePayToTimeCell.m */; };
+		81E4D7EB20AFB86700FC5B5D /* PropertyPaymentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D7DE20AFB7C700FC5B5D /* PropertyPaymentVC.m */; };
+		81E4D7EC20AFB88B00FC5B5D /* PropertyFeeArreargeTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81E4D7DD20AFB7C700FC5B5D /* PropertyFeeArreargeTimeCell.xib */; };
+		81E4D7ED20AFB88B00FC5B5D /* PropertyFeePayToTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81E4D7E320AFB7C800FC5B5D /* PropertyFeePayToTimeCell.xib */; };
+		81E4D7FE20AFB98400FC5B5D /* RecordQueryDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D7F120AFB91400FC5B5D /* RecordQueryDataModel.m */; };
+		81E4D7FF20AFB98400FC5B5D /* RecordQueryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D7F320AFB91400FC5B5D /* RecordQueryVC.m */; };
+		81E4D80020AFB98400FC5B5D /* RecordQueryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D7F620AFB91400FC5B5D /* RecordQueryCell.m */; };
+		81E4D80120AFB99000FC5B5D /* RechargeDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D7FA20AFB91400FC5B5D /* RechargeDetailVC.m */; };
+		81E4D80220AFB9A800FC5B5D /* ArrearageDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D7FD20AFB91400FC5B5D /* ArrearageDetailVC.m */; };
+		81E4D80320AFB9CB00FC5B5D /* RecordQueryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81E4D7F720AFB91400FC5B5D /* RecordQueryCell.xib */; };
+		81E4D80A20AFBEEF00FC5B5D /* MyPropertyServiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D80920AFBEEF00FC5B5D /* MyPropertyServiceVC.m */; };
+		81E4D80D20AFC09200FC5B5D /* MyProperyServiceClassTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D80C20AFC09200FC5B5D /* MyProperyServiceClassTableViewController.m */; };
 		998EF8F8F6049014D50A4632 /* libPods-jujiaheUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9836249FD7DB973CA5A352A2 /* libPods-jujiaheUITests.a */; };
 		BCABEAD35A4C5C16C99ADFE5 /* libPods-jujiahe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D5DB62CE87FAC01E0BC698 /* libPods-jujiahe.a */; };
 		E9D731C983F4FFBC6A6FC2BC /* libPods-jujiaheTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B62B8ECC7D4E7FE607A18D /* libPods-jujiaheTests.a */; };
@@ -1199,25 +1201,6 @@
 		7C476E0C20A58DD4005ECE03 /* ModifyLoginPasswordFirstStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyLoginPasswordFirstStepViewController.h; sourceTree = "<group>"; };
 		7C476E0D20A58DD4005ECE03 /* ModifyLoginPasswordFirstStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyLoginPasswordFirstStepViewController.m; sourceTree = "<group>"; };
 		7C476E0E20A58DD4005ECE03 /* ModifyLoginPasswordFirstStepViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifyLoginPasswordFirstStepViewController.xib; sourceTree = "<group>"; };
-		7C476E1020A58DD4005ECE03 /* InvitedRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitedRegistrationViewController.h; sourceTree = "<group>"; };
-		7C476E1120A58DD4005ECE03 /* InvitedRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitedRegistrationViewController.m; sourceTree = "<group>"; };
-		7C476E1220A58DD4005ECE03 /* InvitedRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvitedRegistrationViewController.xib; sourceTree = "<group>"; };
-		7C476E1420A58DD4005ECE03 /* InviteRegistrationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteRegistrationTableViewCell.h; sourceTree = "<group>"; };
-		7C476E1520A58DD4005ECE03 /* InviteRegistrationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteRegistrationTableViewCell.m; sourceTree = "<group>"; };
-		7C476E1620A58DD4005ECE03 /* InviteRegistrationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteRegistrationTableViewCell.xib; sourceTree = "<group>"; };
-		7C476E1820A58DD4005ECE03 /* InviteRegistrationRankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteRegistrationRankViewController.h; sourceTree = "<group>"; };
-		7C476E1920A58DD4005ECE03 /* InviteRegistrationRankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteRegistrationRankViewController.m; sourceTree = "<group>"; };
-		7C476E1A20A58DD4005ECE03 /* InviteRegistrationRankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteRegistrationRankViewController.xib; sourceTree = "<group>"; };
-		7C476E1C20A58DD4005ECE03 /* InvitedRegistrationDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitedRegistrationDataModel.h; sourceTree = "<group>"; };
-		7C476E1D20A58DD4005ECE03 /* InvitedRegistrationDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitedRegistrationDataModel.m; sourceTree = "<group>"; };
-		7C476E1E20A58DD4005ECE03 /* InviteRankingDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteRankingDataModel.h; sourceTree = "<group>"; };
-		7C476E1F20A58DD4005ECE03 /* InviteRankingDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteRankingDataModel.m; sourceTree = "<group>"; };
-		7C476E2120A58DD4005ECE03 /* InviteRegistrationRankTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteRegistrationRankTableViewCell.h; sourceTree = "<group>"; };
-		7C476E2220A58DD4005ECE03 /* InviteRegistrationRankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteRegistrationRankTableViewCell.m; sourceTree = "<group>"; };
-		7C476E2320A58DD4005ECE03 /* InviteRegistrationRankTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteRegistrationRankTableViewCell.xib; sourceTree = "<group>"; };
-		7C476E2520A58DD4005ECE03 /* RankRuleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankRuleViewController.h; sourceTree = "<group>"; };
-		7C476E2620A58DD4005ECE03 /* RankRuleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankRuleViewController.m; sourceTree = "<group>"; };
-		7C476E2720A58DD4005ECE03 /* RankRuleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankRuleViewController.xib; sourceTree = "<group>"; };
 		7C476E2920A58DD4005ECE03 /* WallentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallentVC.h; sourceTree = "<group>"; };
 		7C476E2A20A58DD4005ECE03 /* WallentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallentVC.m; sourceTree = "<group>"; };
 		7C476E2C20A58DD4005ECE03 /* BalanceRechargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceRechargeViewController.h; sourceTree = "<group>"; };
@@ -1404,6 +1387,31 @@
 		7CCF834E20AC320D00D35383 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		8170445220AEAA2500CC6937 /* FamilyDynamicsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyDynamicsVC.h; sourceTree = "<group>"; };
 		8170445320AEAA2500CC6937 /* FamilyDynamicsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyDynamicsVC.m; sourceTree = "<group>"; };
+		81E4D7DC20AFB7C700FC5B5D /* PropertyFeePayToTimeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropertyFeePayToTimeCell.h; sourceTree = "<group>"; };
+		81E4D7DD20AFB7C700FC5B5D /* PropertyFeeArreargeTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PropertyFeeArreargeTimeCell.xib; sourceTree = "<group>"; };
+		81E4D7DE20AFB7C700FC5B5D /* PropertyPaymentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertyPaymentVC.m; sourceTree = "<group>"; };
+		81E4D7DF20AFB7C700FC5B5D /* PropertyFeePayToTimeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertyFeePayToTimeCell.m; sourceTree = "<group>"; };
+		81E4D7E020AFB7C700FC5B5D /* PropertyFeeArreargeTimeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropertyFeeArreargeTimeCell.h; sourceTree = "<group>"; };
+		81E4D7E120AFB7C700FC5B5D /* PropertyFeeArreargeTimeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertyFeeArreargeTimeCell.m; sourceTree = "<group>"; };
+		81E4D7E220AFB7C800FC5B5D /* PropertyPaymentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropertyPaymentVC.h; sourceTree = "<group>"; };
+		81E4D7E320AFB7C800FC5B5D /* PropertyFeePayToTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PropertyFeePayToTimeCell.xib; sourceTree = "<group>"; };
+		81E4D7E620AFB81500FC5B5D /* PropertyFeePayDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropertyFeePayDataModel.h; sourceTree = "<group>"; };
+		81E4D7E720AFB81500FC5B5D /* PropertyFeePayDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertyFeePayDataModel.m; sourceTree = "<group>"; };
+		81E4D7F020AFB91400FC5B5D /* RecordQueryDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordQueryDataModel.h; sourceTree = "<group>"; };
+		81E4D7F120AFB91400FC5B5D /* RecordQueryDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordQueryDataModel.m; sourceTree = "<group>"; };
+		81E4D7F220AFB91400FC5B5D /* RecordQueryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordQueryVC.h; sourceTree = "<group>"; };
+		81E4D7F320AFB91400FC5B5D /* RecordQueryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordQueryVC.m; sourceTree = "<group>"; };
+		81E4D7F520AFB91400FC5B5D /* RecordQueryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordQueryCell.h; sourceTree = "<group>"; };
+		81E4D7F620AFB91400FC5B5D /* RecordQueryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordQueryCell.m; sourceTree = "<group>"; };
+		81E4D7F720AFB91400FC5B5D /* RecordQueryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordQueryCell.xib; sourceTree = "<group>"; };
+		81E4D7F920AFB91400FC5B5D /* RechargeDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RechargeDetailVC.h; sourceTree = "<group>"; };
+		81E4D7FA20AFB91400FC5B5D /* RechargeDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RechargeDetailVC.m; sourceTree = "<group>"; };
+		81E4D7FC20AFB91400FC5B5D /* ArrearageDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArrearageDetailVC.h; sourceTree = "<group>"; };
+		81E4D7FD20AFB91400FC5B5D /* ArrearageDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArrearageDetailVC.m; sourceTree = "<group>"; };
+		81E4D80820AFBEEF00FC5B5D /* MyPropertyServiceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPropertyServiceVC.h; sourceTree = "<group>"; };
+		81E4D80920AFBEEF00FC5B5D /* MyPropertyServiceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPropertyServiceVC.m; sourceTree = "<group>"; };
+		81E4D80B20AFC09200FC5B5D /* MyProperyServiceClassTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyProperyServiceClassTableViewController.h; sourceTree = "<group>"; };
+		81E4D80C20AFC09200FC5B5D /* MyProperyServiceClassTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyProperyServiceClassTableViewController.m; sourceTree = "<group>"; };
 		8663A526B869198D67E968F3 /* Pods-jujiaheTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jujiaheTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-jujiaheTests/Pods-jujiaheTests.release.xcconfig"; sourceTree = "<group>"; };
 		88D5DB62CE87FAC01E0BC698 /* libPods-jujiahe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jujiahe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9836249FD7DB973CA5A352A2 /* libPods-jujiaheUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jujiaheUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2890,6 +2898,7 @@
 		7C3CFC6C20A1C7A60084FF2A /* 物业服务 */ = {
 			isa = PBXGroup;
 			children = (
+				81E4D7D020AFB74700FC5B5D /* 物业缴费 */,
 				7C9B1D7120AECD17009965CB /* Views */,
 				7C6CA6BA20A3D6A70073DD3F /* 满意度调查 */,
 				7C3CFC6D20A1C7A60084FF2A /* AllServiceDataModel.h */,
@@ -3146,12 +3155,12 @@
 			children = (
 				7C476DC420A58DD4005ECE03 /* MyPageVC.h */,
 				7C476DC520A58DD4005ECE03 /* MyPageVC.m */,
+				81E4D80420AFBE8A00FC5B5D /* 我的物业服务 */,
 				7C476DC620A58DD4005ECE03 /* view */,
 				7C476DCA20A58DD4005ECE03 /* 个人信息 */,
 				7C476DFA20A58DD4005ECE03 /* 关于 */,
 				7C476DFF20A58DD4005ECE03 /* 意见反馈 */,
 				7C476DF320A58DD4005ECE03 /* 设置 */,
-				7C476E0F20A58DD4005ECE03 /* 邀请注册 */,
 				7C476E4320A58DD4005ECE03 /* 账单查询 */,
 				7C476E2820A58DD4005ECE03 /* 钱包 */,
 			);
@@ -3318,72 +3327,6 @@
 				7C476E0E20A58DD4005ECE03 /* ModifyLoginPasswordFirstStepViewController.xib */,
 			);
 			path = "登陆密码设置";
-			sourceTree = "<group>";
-		};
-		7C476E0F20A58DD4005ECE03 /* 邀请注册 */ = {
-			isa = PBXGroup;
-			children = (
-				7C476E1020A58DD4005ECE03 /* InvitedRegistrationViewController.h */,
-				7C476E1120A58DD4005ECE03 /* InvitedRegistrationViewController.m */,
-				7C476E1220A58DD4005ECE03 /* InvitedRegistrationViewController.xib */,
-				7C476E1320A58DD4005ECE03 /* view */,
-				7C476E1720A58DD4005ECE03 /* 邀请排行榜 */,
-			);
-			path = "邀请注册";
-			sourceTree = "<group>";
-		};
-		7C476E1320A58DD4005ECE03 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				7C476E1420A58DD4005ECE03 /* InviteRegistrationTableViewCell.h */,
-				7C476E1520A58DD4005ECE03 /* InviteRegistrationTableViewCell.m */,
-				7C476E1620A58DD4005ECE03 /* InviteRegistrationTableViewCell.xib */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		7C476E1720A58DD4005ECE03 /* 邀请排行榜 */ = {
-			isa = PBXGroup;
-			children = (
-				7C476E1820A58DD4005ECE03 /* InviteRegistrationRankViewController.h */,
-				7C476E1920A58DD4005ECE03 /* InviteRegistrationRankViewController.m */,
-				7C476E1A20A58DD4005ECE03 /* InviteRegistrationRankViewController.xib */,
-				7C476E1B20A58DD4005ECE03 /* model */,
-				7C476E2020A58DD4005ECE03 /* view */,
-				7C476E2420A58DD4005ECE03 /* 排名规则 */,
-			);
-			path = "邀请排行榜";
-			sourceTree = "<group>";
-		};
-		7C476E1B20A58DD4005ECE03 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				7C476E1C20A58DD4005ECE03 /* InvitedRegistrationDataModel.h */,
-				7C476E1D20A58DD4005ECE03 /* InvitedRegistrationDataModel.m */,
-				7C476E1E20A58DD4005ECE03 /* InviteRankingDataModel.h */,
-				7C476E1F20A58DD4005ECE03 /* InviteRankingDataModel.m */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		7C476E2020A58DD4005ECE03 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				7C476E2120A58DD4005ECE03 /* InviteRegistrationRankTableViewCell.h */,
-				7C476E2220A58DD4005ECE03 /* InviteRegistrationRankTableViewCell.m */,
-				7C476E2320A58DD4005ECE03 /* InviteRegistrationRankTableViewCell.xib */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		7C476E2420A58DD4005ECE03 /* 排名规则 */ = {
-			isa = PBXGroup;
-			children = (
-				7C476E2520A58DD4005ECE03 /* RankRuleViewController.h */,
-				7C476E2620A58DD4005ECE03 /* RankRuleViewController.m */,
-				7C476E2720A58DD4005ECE03 /* RankRuleViewController.xib */,
-			);
-			path = "排名规则";
 			sourceTree = "<group>";
 		};
 		7C476E2820A58DD4005ECE03 /* 钱包 */ = {
@@ -3896,6 +3839,93 @@
 			path = "家人动态";
 			sourceTree = "<group>";
 		};
+		81E4D7D020AFB74700FC5B5D /* 物业缴费 */ = {
+			isa = PBXGroup;
+			children = (
+				81E4D7EE20AFB91400FC5B5D /* 记录查询 */,
+				81E4D7E520AFB81500FC5B5D /* model */,
+				81E4D7E020AFB7C700FC5B5D /* PropertyFeeArreargeTimeCell.h */,
+				81E4D7E120AFB7C700FC5B5D /* PropertyFeeArreargeTimeCell.m */,
+				81E4D7DD20AFB7C700FC5B5D /* PropertyFeeArreargeTimeCell.xib */,
+				81E4D7DC20AFB7C700FC5B5D /* PropertyFeePayToTimeCell.h */,
+				81E4D7DF20AFB7C700FC5B5D /* PropertyFeePayToTimeCell.m */,
+				81E4D7E320AFB7C800FC5B5D /* PropertyFeePayToTimeCell.xib */,
+				81E4D7E220AFB7C800FC5B5D /* PropertyPaymentVC.h */,
+				81E4D7DE20AFB7C700FC5B5D /* PropertyPaymentVC.m */,
+			);
+			path = "物业缴费";
+			sourceTree = "<group>";
+		};
+		81E4D7E520AFB81500FC5B5D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				81E4D7E620AFB81500FC5B5D /* PropertyFeePayDataModel.h */,
+				81E4D7E720AFB81500FC5B5D /* PropertyFeePayDataModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		81E4D7EE20AFB91400FC5B5D /* 记录查询 */ = {
+			isa = PBXGroup;
+			children = (
+				81E4D7EF20AFB91400FC5B5D /* model */,
+				81E4D7F220AFB91400FC5B5D /* RecordQueryVC.h */,
+				81E4D7F320AFB91400FC5B5D /* RecordQueryVC.m */,
+				81E4D7F420AFB91400FC5B5D /* view */,
+				81E4D7F820AFB91400FC5B5D /* 充值详情 */,
+				81E4D7FB20AFB91400FC5B5D /* 欠费详情 */,
+			);
+			path = "记录查询";
+			sourceTree = "<group>";
+		};
+		81E4D7EF20AFB91400FC5B5D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				81E4D7F020AFB91400FC5B5D /* RecordQueryDataModel.h */,
+				81E4D7F120AFB91400FC5B5D /* RecordQueryDataModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		81E4D7F420AFB91400FC5B5D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				81E4D7F520AFB91400FC5B5D /* RecordQueryCell.h */,
+				81E4D7F620AFB91400FC5B5D /* RecordQueryCell.m */,
+				81E4D7F720AFB91400FC5B5D /* RecordQueryCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		81E4D7F820AFB91400FC5B5D /* 充值详情 */ = {
+			isa = PBXGroup;
+			children = (
+				81E4D7F920AFB91400FC5B5D /* RechargeDetailVC.h */,
+				81E4D7FA20AFB91400FC5B5D /* RechargeDetailVC.m */,
+			);
+			path = "充值详情";
+			sourceTree = "<group>";
+		};
+		81E4D7FB20AFB91400FC5B5D /* 欠费详情 */ = {
+			isa = PBXGroup;
+			children = (
+				81E4D7FC20AFB91400FC5B5D /* ArrearageDetailVC.h */,
+				81E4D7FD20AFB91400FC5B5D /* ArrearageDetailVC.m */,
+			);
+			path = "欠费详情";
+			sourceTree = "<group>";
+		};
+		81E4D80420AFBE8A00FC5B5D /* 我的物业服务 */ = {
+			isa = PBXGroup;
+			children = (
+				81E4D80820AFBEEF00FC5B5D /* MyPropertyServiceVC.h */,
+				81E4D80920AFBEEF00FC5B5D /* MyPropertyServiceVC.m */,
+				81E4D80B20AFC09200FC5B5D /* MyProperyServiceClassTableViewController.h */,
+				81E4D80C20AFC09200FC5B5D /* MyProperyServiceClassTableViewController.m */,
+			);
+			path = "我的物业服务";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -4011,6 +4041,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81E4D80320AFB9CB00FC5B5D /* RecordQueryCell.xib in Resources */,
+				81E4D7EC20AFB88B00FC5B5D /* PropertyFeeArreargeTimeCell.xib in Resources */,
+				81E4D7ED20AFB88B00FC5B5D /* PropertyFeePayToTimeCell.xib in Resources */,
 				7C476E5920A58DD5005ECE03 /* ModifyNickNameViewController.xib in Resources */,
 				7C476DA920A58966005ECE03 /* DailySurpriseCell.xib in Resources */,
 				7C476E8620A58DD5005ECE03 /* TicketCenterTableViewCell.xib in Resources */,
@@ -4021,16 +4054,13 @@
 				7C476E9620A58E9E005ECE03 /* address.txt in Resources */,
 				7C110AAB209FF0C00012040E /* ShareSDKConfigFile.bundle in Resources */,
 				7C110D0620A030770012040E /* AlipaySDK.bundle in Resources */,
-				7C476E7420A58DD5005ECE03 /* InviteRegistrationTableViewCell.xib in Resources */,
 				7C476E6920A58DD5005ECE03 /* AboutViewController.xib in Resources */,
 				7CCF834F20AC320D00D35383 /* CommentViewController.xib in Resources */,
 				7CCF834720AC184F00D35383 /* PublishViewController.xib in Resources */,
 				7C476E7020A58DD5005ECE03 /* ModifyLoginPasswordFirstStepViewController.xib in Resources */,
-				7C476E7C20A58DD5005ECE03 /* RankRuleViewController.xib in Resources */,
 				7C989A5B20AD228E00F223ED /* CircleCell.xib in Resources */,
 				7C110B62209FF5690012040E /* ResetPasswordViewController.xib in Resources */,
 				7C476DB620A58966005ECE03 /* SystemMessageCell.xib in Resources */,
-				7C476E7620A58DD5005ECE03 /* InviteRegistrationRankViewController.xib in Resources */,
 				7C3CFC8920A1C7A60084FF2A /* ServiceCell.xib in Resources */,
 				7C476E8320A58DD5005ECE03 /* ModifyPaymentPasswordFirstStepViewController.xib in Resources */,
 				7C110A90209FF0C00012040E /* city.db in Resources */,
@@ -4040,7 +4070,6 @@
 				7C110D3920A06C6E0012040E /* FirstStepVerificationOfIdentityVC.xib in Resources */,
 				7C476EB620A59267005ECE03 /* SGQRCode.bundle in Resources */,
 				7C989A5120AD162E00F223ED /* TopicClassificationCell.xib in Resources */,
-				7C476E7A20A58DD5005ECE03 /* InviteRegistrationRankTableViewCell.xib in Resources */,
 				7C110B5D209FF5690012040E /* LoginViewController.xib in Resources */,
 				7CCF833B20AC0BAA00D35383 /* CircleLikeTableViewCell.xib in Resources */,
 				7C476DB420A58966005ECE03 /* MyMessageCell.xib in Resources */,
@@ -4067,7 +4096,6 @@
 				7C110B44209FF27A0012040E /* NearByUnitCell.xib in Resources */,
 				7C110AB8209FF0C00012040E /* ShareSDK.bundle in Resources */,
 				7C110AB7209FF0C00012040E /* README.txt in Resources */,
-				7C476E7220A58DD5005ECE03 /* InvitedRegistrationViewController.xib in Resources */,
 				7C3CFBF220A14D3D0084FF2A /* TZAlbumCell.xib in Resources */,
 				7C76A6ED20A2A1D90029E310 /* PortalHomePageDetailViewController.xib in Resources */,
 				7C110AAE209FF0C00012040E /* ShareSDKUI.bundle in Resources */,
@@ -4262,8 +4290,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81E4D80220AFB9A800FC5B5D /* ArrearageDetailVC.m in Sources */,
+				81E4D80120AFB99000FC5B5D /* RechargeDetailVC.m in Sources */,
+				81E4D7FE20AFB98400FC5B5D /* RecordQueryDataModel.m in Sources */,
+				81E4D7FF20AFB98400FC5B5D /* RecordQueryVC.m in Sources */,
+				81E4D80020AFB98400FC5B5D /* RecordQueryCell.m in Sources */,
+				81E4D7E820AFB86700FC5B5D /* PropertyFeePayDataModel.m in Sources */,
+				81E4D7E920AFB86700FC5B5D /* PropertyFeeArreargeTimeCell.m in Sources */,
+				81E4D7EA20AFB86700FC5B5D /* PropertyFeePayToTimeCell.m in Sources */,
+				81E4D7EB20AFB86700FC5B5D /* PropertyPaymentVC.m in Sources */,
 				7C110A99209FF0C00012040E /* JFLocation.m in Sources */,
-				7C476E7B20A58DD5005ECE03 /* RankRuleViewController.m in Sources */,
 				7C476E7D20A58DD5005ECE03 /* WallentVC.m in Sources */,
 				7CCF832120ABCDC300D35383 /* XMJHttpTool.m in Sources */,
 				7C11095E209FECFB0012040E /* HColor.m in Sources */,
@@ -4291,6 +4327,7 @@
 				7C476E8720A58DD5005ECE03 /* TicketCenterViewController.m in Sources */,
 				7C476E9820A58E9E005ECE03 /* City.m in Sources */,
 				7CCF833120AC08BF00D35383 /* PraiseTableViewController.m in Sources */,
+				81E4D80D20AFC09200FC5B5D /* MyProperyServiceClassTableViewController.m in Sources */,
 				7C1109A0209FEEC70012040E /* NSDate+Utilities.m in Sources */,
 				7C476DB020A58966005ECE03 /* MyMessageDataModel.m in Sources */,
 				7C110A77209FF0BF0012040E /* YYTextDebugOption.m in Sources */,
@@ -4368,7 +4405,6 @@
 				7C110A8B209FF0C00012040E /* YYTextWeakProxy.m in Sources */,
 				7C110A7E209FF0C00012040E /* YYTextSelectionView.m in Sources */,
 				7C476EBF20A592DF005ECE03 /* XMJButton.m in Sources */,
-				7C476E7820A58DD5005ECE03 /* InviteRankingDataModel.m in Sources */,
 				7C110AC5209FF0C00012040E /* NSString+MJExtension.m in Sources */,
 				7C3CFC5020A1B4F50084FF2A /* HouseManagerVC.m in Sources */,
 				7C476E9920A58E9E005ECE03 /* Province.m in Sources */,
@@ -4388,6 +4424,7 @@
 				7C3CFCCD20A1CA150084FF2A /* SDCycleScrollView.m in Sources */,
 				7C3CFBF820A14D3D0084FF2A /* TZPhotoPickerController.m in Sources */,
 				7CCF833820AC0BAA00D35383 /* CircleCommentTableViewCell.m in Sources */,
+				81E4D80A20AFBEEF00FC5B5D /* MyPropertyServiceVC.m in Sources */,
 				7C3CFC3120A172720084FF2A /* UIView+ACMediaExt.m in Sources */,
 				7C3CFC3020A172720084FF2A /* UIImageView+ACMediaExt.m in Sources */,
 				7C3CFC4720A19DD70084FF2A /* MyAlterView.m in Sources */,
@@ -4416,7 +4453,6 @@
 				7CBAF2F520AE83F90032DB72 /* QueryResultCell.m in Sources */,
 				7C110B61209FF5690012040E /* ResetPasswordViewController.m in Sources */,
 				7C476EBA20A59267005ECE03 /* SGQRCodeScanManager.m in Sources */,
-				7C476E7920A58DD5005ECE03 /* InviteRegistrationRankTableViewCell.m in Sources */,
 				7C3CFC2F20A172720084FF2A /* UIImage+ACGif.m in Sources */,
 				7C110963209FECFB0012040E /* HSK_CFUtilities.m in Sources */,
 				7C110B17209FF1F00012040E /* MJRefreshNormalHeader.m in Sources */,
@@ -4449,7 +4485,6 @@
 				7C3CFC2620A172720084FF2A /* ACMediaImageCell.m in Sources */,
 				7C3CFCB620A1C9BF0084FF2A /* XLProgressView.m in Sources */,
 				7C110B40209FF27A0012040E /* ChoseUnitViewController.m in Sources */,
-				7C476E7120A58DD5005ECE03 /* InvitedRegistrationViewController.m in Sources */,
 				7C3CFCB020A1C9BF0084FF2A /* FSActionSheetItem.m in Sources */,
 				7C110B43209FF27A0012040E /* NearByUnitCell.m in Sources */,
 				7C3CFC3220A172720084FF2A /* UIViewController+ACMediaExt.m in Sources */,
@@ -4481,7 +4516,6 @@
 				7C110AC2209FF0C00012040E /* NSObject+MJCoding.m in Sources */,
 				7C6CA6DC20A43A390073DD3F /* ServiceMemberVC.m in Sources */,
 				7C989A6A20AD53E100F223ED /* TopicMessageVC.m in Sources */,
-				7C476E7520A58DD5005ECE03 /* InviteRegistrationRankViewController.m in Sources */,
 				7C476DAC20A58966005ECE03 /* PGIndexBannerSubiew.m in Sources */,
 				7C3CFC9220A1C91D0084FF2A /* JSBadgeView.m in Sources */,
 				7C110B18209FF1F00012040E /* MJRefreshStateHeader.m in Sources */,
@@ -4559,7 +4593,6 @@
 				7C3CFC5D20A1B5880084FF2A /* PropertyPaymentHomeDataModel.m in Sources */,
 				7C110A98209FF0C00012040E /* JFSearchView.m in Sources */,
 				7C476EB820A59267005ECE03 /* SGQRCodeGenerateManager.m in Sources */,
-				7C476E7720A58DD5005ECE03 /* InvitedRegistrationDataModel.m in Sources */,
 				7C110A79209FF0BF0012040E /* YYTextInput.m in Sources */,
 				7C110A7A209FF0C00012040E /* YYTextKeyboardManager.m in Sources */,
 				7C110D0A20A030770012040E /* Order.m in Sources */,
@@ -4593,7 +4626,6 @@
 				7C76A70720A2E5250029E310 /* ChildViewController.m in Sources */,
 				7C989A7020AD541200F223ED /* SystemMessageVC.m in Sources */,
 				7C3CFC3F20A189490084FF2A /* XXInputView.m in Sources */,
-				7C476E7320A58DD5005ECE03 /* InviteRegistrationTableViewCell.m in Sources */,
 				7C1109A4209FEEC70012040E /* NSString+UrlEncode.m in Sources */,
 				7C476DC220A58B25005ECE03 /* NSString+URL.m in Sources */,
 				7C110A8D209FF0C00012040E /* YYTextView.m in Sources */,

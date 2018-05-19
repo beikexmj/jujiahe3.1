@@ -17,6 +17,7 @@
     NSString *roomId;
     NSString *flourId;
     XXInputView *inputView;
+    UIView *maskView;
 }
 @property (nonatomic,strong)NSMutableArray <NewRoomDataList *>*buildingArr;
 @property (nonatomic,strong)NSMutableArray <NewRoomDataList *>*unitArr;
@@ -42,6 +43,8 @@
     _roomArr = [NSMutableArray array];
     _flourArr = [NSMutableArray array];
     
+    maskView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    maskView.backgroundColor = RGBA(0x000000, 0.3);
     // Do any additional setup after loading the view from its nib.
 }
 - (void)backViewColor{
@@ -152,6 +155,8 @@
     if (inputView) {
         [inputView hide];
     }
+    [maskView removeFromSuperview];
+    __weak typeof (maskView) weakMaskView = maskView;
     UIButton *btn = sender;
     switch (btn.tag) {
         case 10:
@@ -202,10 +207,10 @@
                         strongSelf.buildingName.font = [UIFont systemFontOfSize:16.0];
 
                     }
-                    
+                    [weakMaskView removeFromSuperview];
                     
                 };
-                
+                [self.view addSubview:maskView];
                 [self.view addSubview:inputView];
                 [inputView show];
                 [MBProgressHUD hideHUD];
@@ -261,8 +266,9 @@
                         strongSelf.unitName.font = [UIFont systemFontOfSize:16.0];
 
                     }
+                    [weakMaskView removeFromSuperview];
                 };
-                
+                [self.view addSubview:maskView];
                 [self.view addSubview:inputView];
                 [inputView show];
                 [MBProgressHUD hideHUD];
@@ -314,8 +320,10 @@
                         strongSelf.flourName.textColor = RGBA(0x606060, 1);
                         strongSelf.flourName.font = [UIFont systemFontOfSize:16.0];
                     }
+                    [weakMaskView removeFromSuperview];
+
                 };
-                
+                [self.view addSubview:maskView];
                 [self.view addSubview:inputView];
                 [inputView show];
                 [MBProgressHUD hideHUD];
@@ -352,8 +360,10 @@
                     roomId = ids;
                     strongSelf.roomNum.textColor = RGBA(0x606060, 1);
                     strongSelf.roomNum.font = [UIFont systemFontOfSize:16.0];
+                    [weakMaskView removeFromSuperview];
+
                 };
-                
+                [self.view addSubview:maskView];
                 [self.view addSubview:inputView];
                 [inputView show];
                 [MBProgressHUD hideHUD];
@@ -367,8 +377,10 @@
             break;
     }
 }
-
-- (IBAction)addRoomNoBtnClick:(id)sender {
-    
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [maskView removeFromSuperview];
+    if (inputView) {
+        [inputView hide];
+    }
 }
 @end
