@@ -7,11 +7,15 @@
 //
 
 #import "FollowConversationVC.h"
-#import "HMSegmentedControl.h"
+#import <UITableView+FDTemplateLayoutCell.h>
+#import "FollowConversationCell.h"
 
-@interface FollowConversationVC ()
+static NSString *const kFollowConversationTableViewCell = @"com.copticomm.jjh.followConversation.tableview.cell";
+static NSString *const kFollowConversationTableViewFooter = @"com.copticomm.jjh.followConversation.tableview.footer";
 
-@property (nonatomic, strong) HMSegmentedControl *segmentedControl;
+@interface FollowConversationVC ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -19,28 +23,81 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.view addSubview:self.segmentedControl];
+    self.view.backgroundColor = RGBA(0xE7EBEF, 1);
+    [self.view addSubview:self.tableView];
+    [self setupConstraints];
 }
 
-- (HMSegmentedControl *)segmentedControl
+- (void)setupConstraints
 {
-    if (!_segmentedControl) {
-        _segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"回复的", @"关注的", @"发布的"]];
-        _segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
-        _segmentedControl.frame = CGRectMake(0, NAVHEIGHT, SCREENWIDTH, 40);
-        _segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
-        _segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
-        _segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : RGBA(0x606060, 1),
-                                                  NSFontAttributeName : [UIFont systemFontOfSize:15]};
-        _segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : RGBA(0x00a7ff, 1),
-                                                          NSFontAttributeName : [UIFont systemFontOfSize:15]};
-        _segmentedControl.verticalDividerEnabled = NO;
-        _segmentedControl.selectionIndicatorHeight = 1.5;
-        _segmentedControl.selectionIndicatorColor = RGBA(0x00a7ff, 1);
-        _segmentedControl.backgroundColor = RGBA(0xf6f6f6, 1);
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.equalTo(self.view);
+        make.top.equalTo(self.view).with.offset(40);
+    }];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 9;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   FollowConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:kFollowConversationTableViewCell
+                                                                  forIndexPath:indexPath];
+    [cell setData];
+    cell.count = indexPath.section;
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [tableView fd_heightForCellWithIdentifier:kFollowConversationTableViewCell
+                                    cacheByIndexPath:indexPath
+                                       configuration:^(FollowConversationCell *cell) {
+                                           [cell setData];
+                                           cell.count = indexPath.section;
+                                       }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kFollowConversationTableViewFooter];
+    if (!view) {
+        view = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:kFollowConversationTableViewFooter];
+        view.backgroundView = [UIView new];
     }
-    return _segmentedControl;
+    return view;
+}
+
+#pragma mark - getter
+
+- (UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] init];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.backgroundColor = [UIColor clearColor];
+        [_tableView registerClass:[FollowConversationCell class]
+           forCellReuseIdentifier:kFollowConversationTableViewCell];
+    }
+    return _tableView;
 }
 
 @end

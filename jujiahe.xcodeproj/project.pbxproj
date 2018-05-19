@@ -309,6 +309,8 @@
 		7C40D16F20AFF17D005F0212 /* FollowConversationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C40D16E20AFF17D005F0212 /* FollowConversationVC.m */; };
 		7C40D17220AFF196005F0212 /* PublishConversationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C40D17120AFF196005F0212 /* PublishConversationVC.m */; };
 		7C40D17620AFF1F1005F0212 /* ReplyConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C40D17520AFF1F1005F0212 /* ReplyConversationCell.m */; };
+		7C40D17920B00EDF005F0212 /* FollowConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C40D17820B00EDF005F0212 /* FollowConversationCell.m */; };
+		7C40D17D20B01291005F0212 /* ImageFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C40D17C20B01291005F0212 /* ImageFlowView.m */; };
 		7C476DA620A58966005ECE03 /* HomePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476D8220A58966005ECE03 /* HomePageVC.m */; };
 		7C476DA720A58966005ECE03 /* HomePageDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476D8520A58966005ECE03 /* HomePageDataModel.m */; };
 		7C476DA820A58966005ECE03 /* DailySurpriseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476D8820A58966005ECE03 /* DailySurpriseCell.m */; };
@@ -1141,6 +1143,10 @@
 		7C40D17120AFF196005F0212 /* PublishConversationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublishConversationVC.m; sourceTree = "<group>"; };
 		7C40D17420AFF1F1005F0212 /* ReplyConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplyConversationCell.h; sourceTree = "<group>"; };
 		7C40D17520AFF1F1005F0212 /* ReplyConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplyConversationCell.m; sourceTree = "<group>"; };
+		7C40D17720B00EDF005F0212 /* FollowConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowConversationCell.h; sourceTree = "<group>"; };
+		7C40D17820B00EDF005F0212 /* FollowConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowConversationCell.m; sourceTree = "<group>"; };
+		7C40D17B20B01291005F0212 /* ImageFlowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageFlowView.h; sourceTree = "<group>"; };
+		7C40D17C20B01291005F0212 /* ImageFlowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageFlowView.m; sourceTree = "<group>"; };
 		7C476D8120A58966005ECE03 /* HomePageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageVC.h; sourceTree = "<group>"; };
 		7C476D8220A58966005ECE03 /* HomePageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageVC.m; sourceTree = "<group>"; };
 		7C476D8420A58966005ECE03 /* HomePageDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageDataModel.h; sourceTree = "<group>"; };
@@ -3077,6 +3083,7 @@
 		7C40D16320AFF011005F0212 /* 我的话题 */ = {
 			isa = PBXGroup;
 			children = (
+				7C40D17A20B01263005F0212 /* Views */,
 				7C40D17320AFF1DD005F0212 /* Cells */,
 				7C40D16420AFF083005F0212 /* SubjectConversationVC.h */,
 				7C40D16520AFF083005F0212 /* SubjectConversationVC.m */,
@@ -3095,8 +3102,19 @@
 			children = (
 				7C40D17420AFF1F1005F0212 /* ReplyConversationCell.h */,
 				7C40D17520AFF1F1005F0212 /* ReplyConversationCell.m */,
+				7C40D17720B00EDF005F0212 /* FollowConversationCell.h */,
+				7C40D17820B00EDF005F0212 /* FollowConversationCell.m */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		7C40D17A20B01263005F0212 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7C40D17B20B01291005F0212 /* ImageFlowView.h */,
+				7C40D17C20B01291005F0212 /* ImageFlowView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7C476D8020A58966005ECE03 /* 首页 */ = {
@@ -4397,6 +4415,7 @@
 				7C110B47209FF2CC0012040E /* BaseTabbarVC.m in Sources */,
 				7C110D0C20A030770012040E /* DataSigner.m in Sources */,
 				7CBAF2EF20AE7CF10032DB72 /* QueryLogisticsVC.m in Sources */,
+				7C40D17920B00EDF005F0212 /* FollowConversationCell.m in Sources */,
 				7C989A6220AD2A0F00F223ED /* EstablishCircleVC.m in Sources */,
 				7C110D1A20A030820012040E /* JKEventHandler+CommunityJSVC.m in Sources */,
 				7C110A97209FF0C00012040E /* JFCityViewController.m in Sources */,
@@ -4589,6 +4608,7 @@
 				7C3CFC8A20A1C7A60084FF2A /* ServiceComentVC.m in Sources */,
 				7C110965209FECFB0012040E /* NSStream+SKPSMTPExtensions.m in Sources */,
 				7C110960209FECFB0012040E /* HPublic.m in Sources */,
+				7C40D17D20B01291005F0212 /* ImageFlowView.m in Sources */,
 				7C110A7F209FF0C00012040E /* YYTextArchiver.m in Sources */,
 				7C476E6620A58DD5005ECE03 /* SetCell.m in Sources */,
 				7C3CFC8320A1C7A60084FF2A /* AllServiceDataModel.m in Sources */,
