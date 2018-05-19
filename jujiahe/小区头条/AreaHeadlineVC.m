@@ -20,6 +20,7 @@
     [super viewDidLoad];
     self.isShowNav = YES;
     self.titleLabel.text = @"小区头条";
+    _backButton.hidden = NO;
     _headerTitleArr =[NSArray arrayWithObjects:@"小区公告",@"物业新闻",@"科普宣传",@"温馨提示",@"我的名字很长很长",@"短的",nil];
     // 模仿网络延迟，0.2秒后，才知道有多少标题
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

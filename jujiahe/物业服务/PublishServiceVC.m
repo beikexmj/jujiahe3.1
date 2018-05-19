@@ -22,6 +22,7 @@
 #import "TZAssetModel.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "PropertyServiceTagDataModel.h"
+#import "PublishServiceCell.h"
 #define IMAGE_SIZE (SCREEN_WIDTH - 60)/4
 typedef void(^Result)(NSData *fileData, NSString *fileName);
 @interface PublishServiceVC ()<UITextViewDelegate,UITableViewDelegate,UITableViewDataSource,TZImagePickerControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
@@ -30,7 +31,7 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     NSMutableArray *typeArr;
     NSString *propertyServiceId;//菜单服务类型id,标签id
     BOOL deleteBtnIndecate;//删除按钮显示与否 YES == 显示 NO== 不显示；
-    
+    BOOL pubulishToSocailFlag; //==NO 否 ；== YES 是
 }
 /** 文本输入框*/
 @property(nonatomic, strong)    HJInputView *inputV;
@@ -87,6 +88,7 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     _propertyServiceTagArr = [NSArray array];
     bottomBtnHight = TABBARHEIGHT;
     deleteBtnIndecate = NO;
+    pubulishToSocailFlag = NO;
     [self.view addSubview:self.publishBtn];
     [self.view addSubview:self.roomSelectView];
     [self fetchServiceTag];
@@ -115,7 +117,7 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(40, 5, SCREENWIDTH - 45, 30)];
         label.font = [UIFont systemFontOfSize:15.0];
         label.textColor = RGBA(0x606060, 1);
-        label.text = @"请选择房号";
+        label.text = [StorageUserInfromation storageUserInformation].choseUnitName;
         [_roomSelectView addSubview:label];
         _houseName = label;
         
@@ -418,23 +420,36 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     return 1;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    if ([_titleStr isEqualToString:@"投诉私信"]) {
+        return 2;
+    }
+    return 2;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString * reuseID = @"HJTableViewCell";
-    static NSString * reuseID1 = @"UITableViewCell";
+    static NSString * reuseID1 = @"PublishServiceCell";
     
     HJTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
-    UITableViewCell * cell1 = [tableView dequeueReusableCellWithIdentifier:reuseID1];
+    PublishServiceCell * cell1 = [tableView dequeueReusableCellWithIdentifier:reuseID1];
     if (!cell || !cell1) {
         cell = [[HJTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell1 = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID1];
+        cell1 = [[PublishServiceCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID1];
     }
     
     if (indexPath.section) {
-        cell1.textLabel.text = @"开启评论";
-        [cell1 addSubview:_commentSwitch];
+        __weak typeof (cell1) weakCell1 = cell1;
+        cell1.selectBtnBlock = ^{
+            pubulishToSocailFlag = !pubulishToSocailFlag;
+            if (pubulishToSocailFlag) {
+                weakCell1.titleName.textColor = RGBA(0x303030, 1);
+                weakCell1.selectStateImage.image = [UIImage imageNamed:@"hap_btn_choice"];
+            }else{
+                weakCell1.titleName.textColor = RGBA(0x9c9c9c, 1);
+                weakCell1.selectStateImage.image = [UIImage imageNamed:@"hap_btn_unchoice"];
+            }
+        };
+        cell1.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell1;
     }else{
         [cell addSubview:_serviceTypeOrNumView];
@@ -461,13 +476,13 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat rowHeight = _photoPickerV.frame.size.height + _photoPickerV.frame.origin.y + 10;
     if (!indexPath.section) return rowHeight;
-    return 44;
+    return 40;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return CGFLOAT_MIN;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return CGFLOAT_MIN;
+    return 10;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,SCREENWIDTH, CGFLOAT_MIN)];

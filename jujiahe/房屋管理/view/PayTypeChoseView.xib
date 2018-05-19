@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -114,14 +114,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSd-Ub-mur">
                             <rect key="frame" x="0.0" y="40" width="375" height="40"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="life_icon_balance" translatesAutoresizingMaskIntoConstraints="NO" id="LrU-CJ-bWE">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="微信icon" translatesAutoresizingMaskIntoConstraints="NO" id="LrU-CJ-bWE">
                                     <rect key="frame" x="20" y="10" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="j2k-CZ-gJc"/>
                                         <constraint firstAttribute="width" constant="20" id="rUM-4G-D1X"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户余额支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZC5-sK-2nO">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZC5-sK-2nO">
                                     <rect key="frame" x="55" y="9.5" width="94" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="SIZ-LW-hUB"/>
@@ -215,9 +215,9 @@
     <resources>
         <image name="home_button1_normal" width="375" height="59"/>
         <image name="icon_back_gray" width="10" height="19"/>
-        <image name="life_icon_balance" width="18" height="18"/>
         <image name="life_icon_choice" width="18" height="18"/>
         <image name="life_icon_unchoice" width="18" height="18"/>
         <image name="life_icon_支付宝" width="18" height="18"/>
+        <image name="微信icon" width="18" height="18"/>
     </resources>
 </document>
