@@ -462,6 +462,7 @@
 		819B469F20B0021E00B045E3 /* UIImage+ColorAtPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B469820B0012C00B045E3 /* UIImage+ColorAtPoint.m */; };
 		819B46A020B0022700B045E3 /* UILabel+ContentSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B469A20B0012C00B045E3 /* UILabel+ContentSize.m */; };
 		819B46A120B0023300B045E3 /* LaunchIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B468D20B000CE00B045E3 /* LaunchIntroductionView.m */; };
+		819B46A420B00B2300B045E3 /* CirclePublishCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B46A320B00B2300B045E3 /* CirclePublishCell.m */; };
 		81E4D7E820AFB86700FC5B5D /* PropertyFeePayDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D7E720AFB81500FC5B5D /* PropertyFeePayDataModel.m */; };
 		81E4D7E920AFB86700FC5B5D /* PropertyFeeArreargeTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D7E120AFB7C700FC5B5D /* PropertyFeeArreargeTimeCell.m */; };
 		81E4D7EA20AFB86700FC5B5D /* PropertyFeePayToTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D7DF20AFB7C700FC5B5D /* PropertyFeePayToTimeCell.m */; };
@@ -1410,6 +1411,8 @@
 		819B469920B0012C00B045E3 /* UILabel+ContentSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+ContentSize.h"; sourceTree = "<group>"; };
 		819B469A20B0012C00B045E3 /* UILabel+ContentSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ContentSize.m"; sourceTree = "<group>"; };
 		819B469B20B0012C00B045E3 /* EBForeNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBForeNotification.h; sourceTree = "<group>"; };
+		819B46A220B00B2300B045E3 /* CirclePublishCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CirclePublishCell.h; sourceTree = "<group>"; };
+		819B46A320B00B2300B045E3 /* CirclePublishCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CirclePublishCell.m; sourceTree = "<group>"; };
 		81E4D7DC20AFB7C700FC5B5D /* PropertyFeePayToTimeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropertyFeePayToTimeCell.h; sourceTree = "<group>"; };
 		81E4D7DD20AFB7C700FC5B5D /* PropertyFeeArreargeTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PropertyFeeArreargeTimeCell.xib; sourceTree = "<group>"; };
 		81E4D7DE20AFB7C700FC5B5D /* PropertyPaymentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertyPaymentVC.m; sourceTree = "<group>"; };
@@ -3840,6 +3843,8 @@
 				7CCF834320AC184F00D35383 /* PublishViewController.h */,
 				7CCF834420AC184F00D35383 /* PublishViewController.m */,
 				7CCF834520AC184F00D35383 /* PublishViewController.xib */,
+				819B46A220B00B2300B045E3 /* CirclePublishCell.h */,
+				819B46A320B00B2300B045E3 /* CirclePublishCell.m */,
 			);
 			path = "发布";
 			sourceTree = "<group>";
@@ -4370,6 +4375,7 @@
 				81E4D7EB20AFB86700FC5B5D /* PropertyPaymentVC.m in Sources */,
 				7C110A99209FF0C00012040E /* JFLocation.m in Sources */,
 				7C476E7D20A58DD5005ECE03 /* WallentVC.m in Sources */,
+				819B46A420B00B2300B045E3 /* CirclePublishCell.m in Sources */,
 				7CCF832120ABCDC300D35383 /* XMJHttpTool.m in Sources */,
 				7C11095E209FECFB0012040E /* HColor.m in Sources */,
 				7C3CFCCE20A1CA150084FF2A /* UIView+SDExtension.m in Sources */,

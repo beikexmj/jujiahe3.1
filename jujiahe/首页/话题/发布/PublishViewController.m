@@ -20,7 +20,7 @@
 #import "TZVideoPlayerController.h"
 #import "TZAssetModel.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-
+#import "CirclePublishCell.h"
 #define IMAGE_SIZE (SCREEN_WIDTH - 60)/4
 typedef void(^Result)(NSData *fileData, NSString *fileName);
 @interface PublishViewController ()<UITextViewDelegate,UITableViewDelegate,UITableViewDataSource,TZImagePickerControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
@@ -137,13 +137,14 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     // 初始化图片编辑控制器
     self.editVC = [[HJEditImageViewController alloc]init];
     
-    _tabelV = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVHEIGHT) style:UITableViewStyleGrouped];
+    _tabelV = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVHEIGHT) style:UITableViewStylePlain];
     
     _tabelV.delegate = self;
     _tabelV.dataSource = self;
     _tabelV.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, CGFLOAT_MIN)];
     _tabelV.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, CGFLOAT_MIN)];
     _tabelV.separatorStyle = UITableViewCellSelectionStyleNone;
+    _tabelV.backgroundColor = RGBCOLOR(238, 238, 238);
     [self.view addSubview:_tabelV];
     
     _commentSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(0, 0, 60, 30)];
@@ -219,23 +220,31 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
     return 1;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return 2;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString * reuseID = @"HJTableViewCell";
-    static NSString * reuseID1 = @"UITableViewCell";
+    static NSString * reuseID1 = @"CirclePublishCell";
     
     HJTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
-    UITableViewCell * cell1 = [tableView dequeueReusableCellWithIdentifier:reuseID1];
+    CirclePublishCell * cell1 = [tableView dequeueReusableCellWithIdentifier:reuseID1];
     if (!cell || !cell1) {
         cell = [[HJTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell1 = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID1];
+        cell1 = [[CirclePublishCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID1];
     }
     
     if (indexPath.section) {
-        cell1.textLabel.text = @"开启评论";
-        [cell1 addSubview:_commentSwitch];
+        cell1.circleName.text = [NSString stringWithFormat:@"%@ (当前圈子)",@"宠物圈"];
+        NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+        paraStyle.lineSpacing = 3; //设置行间距
+        paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:cell1.circleName.text attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0f],NSForegroundColorAttributeName:RGBA(0x303030, 1),NSParagraphStyleAttributeName:paraStyle}];
+        [attrStr addAttribute:NSForegroundColorAttributeName value:RGBA(0x9c9c9c, 1) range:NSMakeRange(cell1.circleName.text.length - 6, 6)];
+        [attrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13.0f] range:NSMakeRange(cell1.circleName.text.length - 6, 6)];
+        cell1.circleName.attributedText = attrStr;
+        
+        cell1.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell1;
     }else{
         [cell addSubview:_inputV];
@@ -258,13 +267,13 @@ typedef void(^Result)(NSData *fileData, NSString *fileName);
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat rowHeight = _photoPickerV.frame.size.height + _photoPickerV.frame.origin.y + 10;
     if (!indexPath.section) return rowHeight;
-    return 44;
+    return 85;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return CGFLOAT_MIN;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-     return CGFLOAT_MIN;
+     return 10;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH, CGFLOAT_MIN)];
