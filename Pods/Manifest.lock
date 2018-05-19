@@ -41,6 +41,7 @@ PODS:
   - SDWebImage (4.2.3):
     - SDWebImage/Core (= 4.2.3)
   - SDWebImage/Core (4.2.3)
+  - TYPagerController (2.1.2)
   - UITableView+FDTemplateLayoutCell (1.6)
 
 DEPENDENCIES:
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - ReactiveObjC
   - RTRootNavigationController
   - SDWebImage (~> 4.2.2)
+  - TYPagerController
   - UITableView+FDTemplateLayoutCell
 
 SPEC CHECKSUMS:
@@ -63,8 +65,9 @@ SPEC CHECKSUMS:
   ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
   RTRootNavigationController: 1429554f853e8319a383849befed73d5dc58a108
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
+  TYPagerController: 262556ecef99986d26ed77fb1288a198ed42f4af
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
 
-PODFILE CHECKSUM: ce13484449cbce9fe19acdc28061ff4ee462d97a
+PODFILE CHECKSUM: e1e2dbe1f033556a5c36f0fe1b6ddaa53a468c86
 
 COCOAPODS: 1.4.0

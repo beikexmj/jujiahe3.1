@@ -28,8 +28,8 @@ static NSString *const kMomentTableViewCellIdentifier = @"com.copticomm.jjh.mome
     self.view.backgroundColor = [UIColor whiteColor];
     [self configurationNavitation];
     
-    [self.contentView addSubview:self.headerView];
     [self.contentView addSubview:self.tableView];
+    [self.contentView addSubview:self.headerView];
     [self setupConstraints];
 }
 
