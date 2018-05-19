@@ -37,8 +37,11 @@
     [super viewDidLoad];
     self.view.backgroundColor = RGBA(0xffffff, 1);
     [self.navigationController setNavigationBarHidden:YES];
+    [self.view addSubview:self.contentView];
     [self.view addSubview:self.navigationBar];
-    
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
 }
 
 - (void)setLeftItemWithItemHandler:(void (^)(id))action icons:(NSString *)icons, ...
@@ -107,22 +110,20 @@
 
 - (void)setPopLeftItem
 {
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_back_gray"]
-                                                             style:UIBarButtonItemStylePlain
-                                                            target:self
-                                                            action:@selector(popAction)];
-    item.tag = 0;
-    self.navigationItem.leftBarButtonItem = item;
+    @weakify(self);
+    [self setLeftItemWithItemHandler:^(id  _Nonnull sender) {
+        @strongify(self);
+        [self.navigationController popViewControllerAnimated:YES];
+    } icons:@"icon_back_gray", nil];
 }
 
 - (void)setDismissLeftItem
 {
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_back_gray"]
-                                                             style:UIBarButtonItemStylePlain
-                                                            target:self
-                                                            action:@selector(dismissAction)];
-    item.tag = 0;
-    self.navigationItem.leftBarButtonItem = item;
+    @weakify(self);
+    [self setLeftItemWithItemHandler:^(id  _Nonnull sender) {
+        @strongify(self);
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } icons:@"icon_back_gray", nil];
 }
 
 - (void)popAction
@@ -158,6 +159,14 @@
         
     }
     return _navigationItem;
+}
+
+- (UIView *)contentView
+{
+    if (!_contentView) {
+        _contentView = [[UIView alloc] init];
+    }
+    return _contentView;
 }
 
 @end

@@ -21,6 +21,8 @@
 #import "UIView+Extensions.h"
 #import "registDataModle.h"
 #import "XMJButton.h"
+#import "MyMomentVC.h"
+
 @interface MyPageVC ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UIAlertViewDelegate>
 {
     NSArray *iconArr;
@@ -627,7 +629,17 @@
     return 50;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-  
+    switch (indexPath.row) {
+        case 1:
+        {
+            MyMomentVC *vc = [[MyMomentVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 10;

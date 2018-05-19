@@ -23,10 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = RGBA(0xE7EBEF, 1);
-    [self setRightItemWithItemHandler:^(id  _Nonnull sender) {
+    [self setPopLeftItem];
+    [self setLeftItemWithItemHandler:^(id  _Nonnull sender) {
         
-    } titles:@"title", nil];
-    
+    } icons:@"icon_back_gray", nil];
     [self.view addSubview:self.numberTextField];
     [self.view addSubview:self.queryButton];
     [self setupConstraints];

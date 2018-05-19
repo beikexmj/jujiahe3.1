@@ -301,6 +301,9 @@
 		7C3CFCCC20A1CA150084FF2A /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CFCC320A1CA150084FF2A /* SDCollectionViewCell.m */; };
 		7C3CFCCD20A1CA150084FF2A /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CFCC520A1CA150084FF2A /* SDCycleScrollView.m */; };
 		7C3CFCCE20A1CA150084FF2A /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CFCC720A1CA150084FF2A /* UIView+SDExtension.m */; };
+		7C40D15A20AFB519005F0212 /* MyMomentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C40D15920AFB519005F0212 /* MyMomentVC.m */; };
+		7C40D15E20AFB549005F0212 /* MyMomentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C40D15D20AFB549005F0212 /* MyMomentCell.m */; };
+		7C40D16220AFC20C005F0212 /* MyMomentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C40D16120AFC20C005F0212 /* MyMomentHeaderView.m */; };
 		7C476DA620A58966005ECE03 /* HomePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476D8220A58966005ECE03 /* HomePageVC.m */; };
 		7C476DA720A58966005ECE03 /* HomePageDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476D8520A58966005ECE03 /* HomePageDataModel.m */; };
 		7C476DA820A58966005ECE03 /* DailySurpriseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476D8820A58966005ECE03 /* DailySurpriseCell.m */; };
@@ -1117,6 +1120,12 @@
 		7C3CFCC520A1CA150084FF2A /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
 		7C3CFCC620A1CA150084FF2A /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		7C3CFCC720A1CA150084FF2A /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
+		7C40D15820AFB519005F0212 /* MyMomentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMomentVC.h; sourceTree = "<group>"; };
+		7C40D15920AFB519005F0212 /* MyMomentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMomentVC.m; sourceTree = "<group>"; };
+		7C40D15C20AFB549005F0212 /* MyMomentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMomentCell.h; sourceTree = "<group>"; };
+		7C40D15D20AFB549005F0212 /* MyMomentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMomentCell.m; sourceTree = "<group>"; };
+		7C40D16020AFC20C005F0212 /* MyMomentHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMomentHeaderView.h; sourceTree = "<group>"; };
+		7C40D16120AFC20C005F0212 /* MyMomentHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMomentHeaderView.m; sourceTree = "<group>"; };
 		7C476D8120A58966005ECE03 /* HomePageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageVC.h; sourceTree = "<group>"; };
 		7C476D8220A58966005ECE03 /* HomePageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageVC.m; sourceTree = "<group>"; };
 		7C476D8420A58966005ECE03 /* HomePageDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageDataModel.h; sourceTree = "<group>"; };
@@ -3021,6 +3030,35 @@
 			path = PageControl;
 			sourceTree = "<group>";
 		};
+		7C40D15720AFB4EA005F0212 /* 我的圈子 */ = {
+			isa = PBXGroup;
+			children = (
+				7C40D15F20AFC1F5005F0212 /* Views */,
+				7C40D15B20AFB538005F0212 /* Cells */,
+				7C40D15820AFB519005F0212 /* MyMomentVC.h */,
+				7C40D15920AFB519005F0212 /* MyMomentVC.m */,
+			);
+			path = "我的圈子";
+			sourceTree = "<group>";
+		};
+		7C40D15B20AFB538005F0212 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7C40D15C20AFB549005F0212 /* MyMomentCell.h */,
+				7C40D15D20AFB549005F0212 /* MyMomentCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		7C40D15F20AFC1F5005F0212 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7C40D16020AFC20C005F0212 /* MyMomentHeaderView.h */,
+				7C40D16120AFC20C005F0212 /* MyMomentHeaderView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7C476D8020A58966005ECE03 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3151,6 +3189,7 @@
 		7C476DC320A58DD4005ECE03 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				7C40D15720AFB4EA005F0212 /* 我的圈子 */,
 				7C476DC420A58DD4005ECE03 /* MyPageVC.h */,
 				7C476DC520A58DD4005ECE03 /* MyPageVC.m */,
 				7C476DC620A58DD4005ECE03 /* view */,
@@ -4322,6 +4361,7 @@
 				7C110A97209FF0C00012040E /* JFCityViewController.m in Sources */,
 				7C3CFC2920A172720084FF2A /* HJEditImageViewController.m in Sources */,
 				7C3CFCB520A1C9BF0084FF2A /* XLPhotoBrowser.m in Sources */,
+				7C40D15A20AFB519005F0212 /* MyMomentVC.m in Sources */,
 				7C3CFCB320A1C9BF0084FF2A /* UIImage+XLExtension.m in Sources */,
 				7C110A7C209FF0C00012040E /* YYTextLine.m in Sources */,
 				7C110A8C209FF0C00012040E /* YYLabel.m in Sources */,
@@ -4576,10 +4616,12 @@
 				7C476DA620A58966005ECE03 /* HomePageVC.m in Sources */,
 				7C110A81209FF0C00012040E /* YYTextParser.m in Sources */,
 				7C110AC3209FF0C00012040E /* NSObject+MJKeyValue.m in Sources */,
+				7C40D16220AFC20C005F0212 /* MyMomentHeaderView.m in Sources */,
 				7C110A95209FF0C00012040E /* JFCityHeaderView.m in Sources */,
 				7C110A83209FF0C00012040E /* YYTextRunDelegate.m in Sources */,
 				7C476E5620A58DD5005ECE03 /* ModifyPhoneNumViewController.m in Sources */,
 				7C110B6E209FF6350012040E /* YYClassInfo.m in Sources */,
+				7C40D15E20AFB549005F0212 /* MyMomentCell.m in Sources */,
 				7C3CFCAD20A1C9BF0084FF2A /* FSActionSheet.m in Sources */,
 				7C11095A209FECFB0012040E /* UIView+Additions.m in Sources */,
 				7C110AD3209FF17A0012040E /* JGEncrypt.m in Sources */,
