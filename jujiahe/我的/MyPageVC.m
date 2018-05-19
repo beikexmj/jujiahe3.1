@@ -25,6 +25,8 @@
 #import "HouseManagerVC.h"
 #import "MyPropertyServiceVC.h"
 #import "MessageCenterVC.h"
+#import "MyMomentVC.h"
+#import "SubjectConversationVC.h"
 @interface MyPageVC ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UIAlertViewDelegate>
 {
     NSArray *iconArr;
@@ -38,7 +40,7 @@
     UILabel *roomAddress;
     UILabel *allStateNum;
     JSBadgeView *_badgeView;
-
+    
 }
 @property (nonatomic,strong)UITableView *myTableView;
 @property (nonatomic,strong)UIImageView *headerBackguandImg;
@@ -71,22 +73,22 @@
     _headerIcon.image = [UIImage imageNamed:@"默认头像60x60"];
     [self reSetHeaderIcon];
     if ([StorageUserInfromation storageUserInformation].sex.integerValue == 0) {
-//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
+        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
     }else if ([StorageUserInfromation storageUserInformation].sex.integerValue == 1){
-//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
-
+        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
+        
     }else{
-//        [_nicknameBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-
+        //        [_nicknameBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        
     }
-
+    
     NSInteger num = storage.socialUnread.integerValue + storage.systemUnread.integerValue;
     if (num) {
         meaasgeFlagView.hidden = NO;
     }else{
         meaasgeFlagView.hidden = YES;
     }
-//    _badgeView4.badgeText = num == 0?@"":[NSString stringWithFormat:@"%ld",num];
+    //    _badgeView4.badgeText = num == 0?@"":[NSString stringWithFormat:@"%ld",num];
     if(![[StorageUserInfromation storageUserInformation].userId isEqualToString:@""]){
         [self fetchData];
     }
@@ -104,26 +106,26 @@
     _badgeView2.badgeText = [storage.countShipping isEqualToString:@"0"]?@"":storage.countShipping;
     _badgeView3.badgeText = [storage.countShippingSend isEqualToString:@"0"]?@"":storage.countShippingSend;
     NSInteger num = storage.socialUnread.integerValue + storage.systemUnread.integerValue;
-//    _badgeView4.badgeText = num == 0?@"":[NSString stringWithFormat:@"%ld",num];
+    //    _badgeView4.badgeText = num == 0?@"":[NSString stringWithFormat:@"%ld",num];
     if (num) {
         meaasgeFlagView.hidden = NO;
     }else{
         meaasgeFlagView.hidden = YES;
     }
-//    [_nicknameBtn setTitle:[NSString stringWithFormat:@" %@",[StorageUserInfromation storageUserInformation].nickname] forState:UIControlStateNormal];
+    //    [_nicknameBtn setTitle:[NSString stringWithFormat:@" %@",[StorageUserInfromation storageUserInformation].nickname] forState:UIControlStateNormal];
     if ([StorageUserInfromation storageUserInformation].sex.integerValue == 0) {
-//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
+        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
     }else if ([StorageUserInfromation storageUserInformation].sex.integerValue == 1){
-//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
+        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
         
     }else{
-//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
-
+        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
+        
     }
     [self reSetHeaderIcon];
     [self fetchUnreadMessageCount];
     [self fetchUnreadGoodsMessageCount];
-
+    
 }
 - (void)fetchUnreadMessageCount{
     NSDictionary *dict = @{@"apiv":@"1.0",@"userId":[StorageUserInfromation storageUserInformation].userId};
@@ -138,7 +140,7 @@
             storage.systemUnread = [NSString stringWithFormat:@"%ld",[onceDict[@"form"][@"systemUnread"] integerValue] ];
             [NSKeyedArchiver archiveRootObject:storage toFile:file];
             NSInteger num = storage.socialUnread.integerValue + storage.systemUnread.integerValue;
-//            _badgeView4.badgeText = (num == 0?@"":[NSString stringWithFormat:@"%ld",num]);
+            //            _badgeView4.badgeText = (num == 0?@"":[NSString stringWithFormat:@"%ld",num]);
             if (num) {
                 meaasgeFlagView.hidden = NO;
             }else{
@@ -160,30 +162,30 @@
         registDataModle *user = [registDataModle mj_objectWithKeyValues:str];
         StorageUserInfromation * storage = [StorageUserInfromation storageUserInformation];
         NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];
-//        if (user.rcode == 0) {
-//            storage.email = user.form.email;
-//            storage.nickname = user.form.nickname;
-//            storage.token = @"123456";
-//            storage.username = user.form.username;
-//            storage.sessionId = user.form.sessionId;
-//            storage.accountBalance =  [NSString stringWithFormat:@"%.2f",user.form.accountBalance.floatValue];
-//            storage.point = user.form.point;
-//            storage.sex = user.form.sex;
-//            storage.invitationCode = user.form.invitationCode;
-//            storage.invitationLink = user.form.invitationLink;
-//            storage.payPasswordSet = user.form.payPasswordSet;
-//            storage.socialUnread = user.form.socialUnread;
-//            storage.systemUnread = user.form.systemUnread;
-//            storage.countShippingSend = user.form.countShippingSend;
-//            storage.countShipping = user.form.countShipping;
-//            storage.countPaying = user.form.countPaying;
-//            storage.userId = user.form.userId;
-//            [NSKeyedArchiver archiveRootObject:storage toFile:file];
-//            
-//            _badgeView1.badgeText = [storage.countPaying isEqualToString:@"0"]?@"":storage.countPaying;
-//            _badgeView2.badgeText = [storage.countShipping isEqualToString:@"0"]?@"":storage.countShipping;
-//            _badgeView3.badgeText = [storage.countShippingSend isEqualToString:@"0"]?@"":storage.countShippingSend;
-//        }
+        //        if (user.rcode == 0) {
+        //            storage.email = user.form.email;
+        //            storage.nickname = user.form.nickname;
+        //            storage.token = @"123456";
+        //            storage.username = user.form.username;
+        //            storage.sessionId = user.form.sessionId;
+        //            storage.accountBalance =  [NSString stringWithFormat:@"%.2f",user.form.accountBalance.floatValue];
+        //            storage.point = user.form.point;
+        //            storage.sex = user.form.sex;
+        //            storage.invitationCode = user.form.invitationCode;
+        //            storage.invitationLink = user.form.invitationLink;
+        //            storage.payPasswordSet = user.form.payPasswordSet;
+        //            storage.socialUnread = user.form.socialUnread;
+        //            storage.systemUnread = user.form.systemUnread;
+        //            storage.countShippingSend = user.form.countShippingSend;
+        //            storage.countShipping = user.form.countShipping;
+        //            storage.countPaying = user.form.countPaying;
+        //            storage.userId = user.form.userId;
+        //            [NSKeyedArchiver archiveRootObject:storage toFile:file];
+        //
+        //            _badgeView1.badgeText = [storage.countPaying isEqualToString:@"0"]?@"":storage.countPaying;
+        //            _badgeView2.badgeText = [storage.countShipping isEqualToString:@"0"]?@"":storage.countShipping;
+        //            _badgeView3.badgeText = [storage.countShippingSend isEqualToString:@"0"]?@"":storage.countShippingSend;
+        //        }
         
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
@@ -202,7 +204,7 @@
     }else{
         meaasgeFlagView.hidden = YES;
     }
- 
+    
 }
 //- (void)viewWillDisappear:(BOOL)animated
 //{
@@ -221,10 +223,10 @@
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    if([[StorageUserInfromation storageUserInformation].userId isEqualToString:@""]){
-//        UIAlertView *alert =[ [UIAlertView alloc]initWithTitle:@"未登录" message:@"确定跳回登录界面？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-//        [alert show];
-//    }
+    //    if([[StorageUserInfromation storageUserInformation].userId isEqualToString:@""]){
+    //        UIAlertView *alert =[ [UIAlertView alloc]initWithTitle:@"未登录" message:@"确定跳回登录界面？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    //        [alert show];
+    //    }
 }
 - (void)fetchData{
     [self freshInterface];
@@ -236,7 +238,7 @@
         LoginViewController *controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         delegate.window.rootViewController =  [[UINavigationController alloc] initWithRootViewController:controller];
-
+        
     }
 }
 - (void)setNav{
@@ -258,19 +260,21 @@
     [self.navView addSubview:_setBtn];
     [_setBtn addTarget:self action:@selector(setBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.navView addSubview:_setBtn];
-    
-
     UIImage *meassgeBtnImg = [UIImage imageNamed:@"home_icon_massage_black"];
+//=======
+//
+//    UIImage *meassgeBtnImg = [UIImage imageNamed:@"my_icon_set"];
+//>>>>>>> dev
     width = meassgeBtnImg.size.width;
     ox -= width;
-
+    
     _meassgeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _meassgeBtn.backgroundColor = [UIColor clearColor];
     _meassgeBtn.frame = CGRectMake(ox, oy, width, height);
     if (meassgeBtnImg) {
         [_meassgeBtn setImage:meassgeBtnImg forState:UIControlStateNormal];
     }
-
+    
     _meassgeBtn.userInteractionEnabled = YES;
     _badgeView = [[JSBadgeView alloc] initWithParentView:_meassgeBtn alignment:JSBadgeViewAlignmentTopLeft];
     [self.navView addSubview:_meassgeBtn];
@@ -333,11 +337,11 @@
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
         _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//        // 手动添加下拉刷新
-//        UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-//        refreshControl.tintColor = RGBA(0xffffff, 1);
-//        [refreshControl addTarget:self action:@selector(refreshControlStateChange:) forControlEvents:UIControlEventValueChanged];
-//        [_myTableView addSubview:refreshControl];
+        //        // 手动添加下拉刷新
+        //        UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+        //        refreshControl.tintColor = RGBA(0xffffff, 1);
+        //        [refreshControl addTarget:self action:@selector(refreshControlStateChange:) forControlEvents:UIControlEventValueChanged];
+        //        [_myTableView addSubview:refreshControl];
         [self addTableHeaderView];
     }
     return _myTableView;
@@ -358,7 +362,7 @@
     infoDetailBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [headerView addSubview:infoDetailBtn];
     [infoDetailBtn addTarget:self action:@selector(infoDetailBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     Y += 15 + 75 + 15;
     
     UIView *midleView = [[UIView alloc]initWithFrame:CGRectMake(20, Y, SCREENWIDTH - 40, 75)];
@@ -411,7 +415,7 @@
     UIView *lineView3 = [[UIView alloc]initWithFrame:CGRectMake(3*(SCREENWIDTH - 15)/4.0, 28, 1, 50)];
     lineView3.backgroundColor = RGBA(0xeeeeee, 1);
     [myView addSubview:lineView3];
-
+    
     [myView addSubview:self.reSee];
     [myView addSubview:self.areadySee];
     [myView addSubview:self.areadyComplateBtn];
@@ -434,7 +438,7 @@
     _badgeView1 = [[JSBadgeView alloc] initWithParentView:_reSee alignment:JSBadgeViewAlignmentTopRight];
     _badgeView2 = [[JSBadgeView alloc] initWithParentView:_areadySee alignment:JSBadgeViewAlignmentTopRight];
     _badgeView3 = [[JSBadgeView alloc] initWithParentView:_areadyComplateBtn alignment:JSBadgeViewAlignmentTopRight];
-
+    
     Y += 100;
     
     UIView *lineView4 = [[UIView alloc]initWithFrame:CGRectMake(0, Y, SCREENWIDTH, 10)];
@@ -492,7 +496,7 @@
         _nicknameLabel = [[UILabel alloc]initWithFrame:CGRectMake(105, 15 + 37.5 - 15, SCREENWIDTH - 120, 30)];
         _nicknameLabel.textColor = RGBA(0x303030, 1);
         [_nicknameLabel setFont:[UIFont systemFontOfSize:16.0]];
-
+        
     }
     return _nicknameLabel;
 }
@@ -582,6 +586,10 @@
     MyPropertyServiceVC *page = [[MyPropertyServiceVC alloc]init];
     page.index = index;
     [self.navigationController pushViewController:page animated:YES];
+//=======
+//    [MobClick event:@"pczt_c" label:orderType];
+//
+//>>>>>>> dev
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView == self.myTableView) {
@@ -637,12 +645,22 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            
-        }else if (indexPath.row == 1) {
-            
-        }else if (indexPath.row == 2) {
-            
+        switch (indexPath.row) {
+            case 0:
+            {
+                SubjectConversationVC *vc = [[SubjectConversationVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 1:
+            {
+                MyMomentVC *vc = [[MyMomentVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+                
+            default:
+                break;
         }
     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {
@@ -674,6 +692,7 @@
         });
     }
 }
+    
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 10;
 }
@@ -686,16 +705,16 @@
     [self reSetHeaderIcon];
 }
 - (void)modifyNickname{
-//    [_nicknameBtn setTitle:[NSString stringWithFormat:@" %@",[StorageUserInfromation storageUserInformation].nickname?[StorageUserInfromation storageUserInformation].nickname:@""] forState:UIControlStateNormal];
+    //    [_nicknameBtn setTitle:[NSString stringWithFormat:@" %@",[StorageUserInfromation storageUserInformation].nickname?[StorageUserInfromation storageUserInformation].nickname:@""] forState:UIControlStateNormal];
 }
 - (void)replaceSex{
     if ([StorageUserInfromation storageUserInformation].sex.integerValue == 0) {
-//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
+        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
     }else if ([StorageUserInfromation storageUserInformation].sex.integerValue == 1){
-//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
+        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
         
     }else{
-//        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
+        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
         
     }
 }
@@ -706,13 +725,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

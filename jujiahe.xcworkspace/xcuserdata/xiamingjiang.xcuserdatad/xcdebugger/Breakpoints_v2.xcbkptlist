@@ -81,6 +81,38 @@
             endingLineNumber = "546"
             landmarkName = "-currentLocation:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[JFCityViewController currentLocation:]"
+                  moduleName = "jujiahe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xiamingjiang/Library/TempleProject/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
+                  timestampString = "548415495.882233"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "546"
+                  endingLineNumber = "546"
+                  offsetFromSymbolStart = "306">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[JFCityViewController currentLocation:]_block_invoke"
+                  moduleName = "jujiahe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xiamingjiang/Library/TempleProject/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
+                  timestampString = "548415495.885066"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "547"
+                  endingLineNumber = "547"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -97,38 +129,6 @@
             endingLineNumber = "548"
             landmarkName = "-currentLocation:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[JFCityViewController currentLocation:]"
-                  moduleName = "jujiahe"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xiamingjiang/Library/TempleProject/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
-                  timestampString = "548330147.39606"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "548"
-                  endingLineNumber = "548"
-                  offsetFromSymbolStart = "306">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__40-[JFCityViewController currentLocation:]_block_invoke"
-                  moduleName = "jujiahe"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xiamingjiang/Library/TempleProject/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
-                  timestampString = "548330147.398775"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "549"
-                  endingLineNumber = "549"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

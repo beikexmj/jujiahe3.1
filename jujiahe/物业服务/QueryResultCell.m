@@ -10,9 +10,10 @@
 
 @interface QueryResultCell ()
 
-@property (nonatomic, strong) UILabel *dateLabel;
-@property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UILabel     *dateLabel;
+@property (nonatomic, strong) UILabel     *timeLabel;
 @property (nonatomic, strong) UIImageView *affixImageView;
+
 @property (nonatomic, strong) UILabel *titleLabel;
 
 

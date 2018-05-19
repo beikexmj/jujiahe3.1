@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) JJNavigationBar *navigationBar;
 @property (nonatomic, strong) UINavigationItem *navigationItem;
+@property (nonatomic, strong) UIView *contentView;
 
 - (void)setLeftItemWithItemHandler:(void (^)(id sender))action
                              icons:(NSString *)icons, ...NS_REQUIRES_NIL_TERMINATION;

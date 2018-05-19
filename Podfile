@@ -13,6 +13,7 @@ target 'jujiahe' do
   pod 'UITableView+FDTemplateLayoutCell'
   pod 'BlocksKit'
   pod 'RTRootNavigationController'
+  pod 'TYPagerController'
 #  pod 'MJRefresh'
   pod 'CYLTabBarController'
   pod 'FMDB'

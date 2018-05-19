@@ -59,11 +59,6 @@
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
-		<key>TYPagerController.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>12</integer>
-		</dict>
 		<key>UITableView+FDTemplateLayoutCell.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
