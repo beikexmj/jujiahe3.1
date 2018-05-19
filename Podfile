@@ -8,10 +8,11 @@ target 'jujiahe' do
   # Pods for jujiahe
   pod 'AFNetworking', '~> 3.0.4'
   pod 'SDWebImage', '~> 4.2.2'
-  pod 'ReactiveObjC', '~> 3.0.0'
+  pod 'ReactiveObjC'
   pod 'Masonry'
   pod 'UITableView+FDTemplateLayoutCell'
   pod 'BlocksKit'
+  pod 'RTRootNavigationController'
 #  pod 'MJRefresh'
   pod 'CYLTabBarController'
   pod 'FMDB'

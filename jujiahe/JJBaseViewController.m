@@ -8,8 +8,26 @@
 
 #import "JJBaseViewController.h"
 #import <BlocksKit/UIBarButtonItem+BlocksKit.h>
+#import "UIView+Frame.h"
 
-@interface JJBaseViewController ()
+
+@implementation JJNavigationBar
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    for (UIView *view in self.subviews) {
+        if ([NSStringFromClass([view class]) containsString:@"ContentView"] ||
+            [NSStringFromClass([view class]) containsString:@"UIBarBackground"]) {
+            view.yz_y = [UIApplication sharedApplication].statusBarFrame.size.height;
+        }
+    }
+}
+
+- (void)setJj_barTintColor:(UIColor *)jj_barTintColor
+{
+    self.backgroundColor = jj_barTintColor;
+    self.barTintColor = jj_barTintColor;
+}
 
 @end
 
@@ -20,7 +38,7 @@
     self.view.backgroundColor = RGBA(0xffffff, 1);
     [self.navigationController setNavigationBarHidden:YES];
     [self.view addSubview:self.navigationBar];
-
+    
 }
 
 - (void)setLeftItemWithItemHandler:(void (^)(id))action icons:(NSString *)icons, ...
@@ -32,9 +50,8 @@
         UIBarButtonItem *item = [[UIBarButtonItem alloc] bk_initWithImage:[UIImage imageNamed:objectKey]
                                                                     style:UIBarButtonItemStylePlain
                                                                   handler:action];
-        item.tag = [barItems indexOfObject:objectKey];
         [barItems addObject:item];
-        
+        item.tag = [barItems indexOfObject:objectKey];
     }
     va_end(args);
     self.navigationItem.leftBarButtonItems = barItems;
@@ -49,9 +66,8 @@
         UIBarButtonItem *item = [[UIBarButtonItem alloc] bk_initWithImage:[UIImage imageNamed:objectKey]
                                                                     style:UIBarButtonItemStylePlain
                                                                   handler:action];
-        item.tag = [barItems indexOfObject:objectKey];
         [barItems addObject:item];
-        
+        item.tag = [barItems indexOfObject:objectKey];
     }
     va_end(args);
     self.navigationItem.rightBarButtonItems = barItems;
@@ -66,8 +82,8 @@
         UIBarButtonItem *item = [[UIBarButtonItem alloc] bk_initWithTitle:objectKey
                                                                     style:UIBarButtonItemStylePlain
                                                                   handler:action];
-        item.tag = [barItems indexOfObject:objectKey];
         [barItems addObject:item];
+        item.tag = [barItems indexOfObject:objectKey];
     }
     va_end(args);
     self.navigationItem.leftBarButtonItems = barItems;
@@ -82,8 +98,8 @@
         UIBarButtonItem *item = [[UIBarButtonItem alloc] bk_initWithTitle:objectKey
                                                                     style:UIBarButtonItemStylePlain
                                                                   handler:action];
-        item.tag = [barItems indexOfObject:objectKey];
         [barItems addObject:item];
+        item.tag = [barItems indexOfObject:objectKey];
     }
     va_end(args);
     self.navigationItem.rightBarButtonItems = barItems;
@@ -121,16 +137,15 @@
 
 #pragma mark - getter
 
-- (UINavigationBar *)navigationBar
+- (JJNavigationBar *)navigationBar
 {
     if (!_navigationBar) {
-        _navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, NAVHEIGHT)];
+        _navigationBar = [[JJNavigationBar alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, NAVHEIGHT)];
         _navigationBar.barStyle = UIBarStyleDefault;
         _navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        _navigationBar.barTintColor = [UIColor whiteColor];
+        _navigationBar.jj_barTintColor = [UIColor whiteColor];
         _navigationBar.tintColor = RGBA(0x9c9c9c, 1);
-        [_navigationBar setTitleVerticalPositionAdjustment:[UIApplication sharedApplication].statusBarFrame.size.height
-                                             forBarMetrics:UIBarMetricsDefault];
+        _navigationBar.translucent = NO;
         [_navigationBar pushNavigationItem:self.navigationItem animated:NO];
     }
     return _navigationBar;
