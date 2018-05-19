@@ -9,7 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface MessageCenterVC : BaseViewController
-@property (nonatomic,strong)UIScrollView *myScrollView;
-@property (nonatomic,strong)UITableView *myMessageTableView;
-@property (nonatomic,strong)UITableView *systemMessageTableView;
 @end

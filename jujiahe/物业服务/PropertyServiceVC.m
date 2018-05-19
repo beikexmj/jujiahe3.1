@@ -16,7 +16,7 @@
 #import "SDCycleScrollView.h"
 #import "CCPScrollView.h"
 #import "QueryLogisticsVC.h"
-
+#import "PropertyPaymentVC.h"
 @interface PropertyServiceVC ()<SDCycleScrollViewDelegate>
 {
     CCPScrollView *ccpScrollView;
@@ -208,11 +208,11 @@
     
     
     
-    if([[StorageUserInfromation storageUserInformation].userId isEqualToString:@""]){
-        UIAlertView *alert =[ [UIAlertView alloc]initWithTitle:@"未登录" message:@"确定跳回登录界面？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alert show];
-        return;
-    }
+//    if([[StorageUserInfromation storageUserInformation].userId isEqualToString:@""]){
+//        UIAlertView *alert =[ [UIAlertView alloc]initWithTitle:@"未登录" message:@"确定跳回登录界面？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//        [alert show];
+//        return;
+//    }
     
     NSInteger section = btn.tag/100;
     NSInteger row = btn.tag%100;
@@ -228,8 +228,10 @@
         
     }else if ([name isEqualToString:@"代收包裹"]) {
         
-    }else if ([name isEqualToString:@"物业缴费"]) {
-        
+    }else if ([name isEqualToString:@"缴物管费"]) {
+        PropertyPaymentVC *page = [[PropertyPaymentVC alloc]init];
+        page.propertyHouseId = dict.ids;
+        [self.navigationController pushViewController:page animated:YES];
     }else if ([name isEqualToString:@"园区保修"]) {
         
     }else if ([name isEqualToString:@"秩序维护"]) {

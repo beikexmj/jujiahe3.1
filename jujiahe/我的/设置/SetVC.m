@@ -10,7 +10,7 @@
 #import "SetCell.h"
 #import "PersonalInformationViewController.h"
 #import "ModifyLoginPasswordFirstStepViewController.h"
-#import "ModifyPaymentPasswordFirstStepViewController.h"
+#import "ResetPasswordViewController.h"
 #import "MyWebVC.h"
 #import "AboutViewController.h"
 #import "MessagePushSetUpVC.h"
@@ -93,7 +93,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        ModifyLoginPasswordFirstStepViewController *page = [[ModifyLoginPasswordFirstStepViewController alloc]init];
+        ResetPasswordViewController *page = [[ResetPasswordViewController alloc]init];
         [self.navigationController pushViewController:page animated:YES];
     }else if (indexPath.row == 1){
         
