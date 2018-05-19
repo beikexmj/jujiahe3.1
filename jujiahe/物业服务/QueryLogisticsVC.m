@@ -85,17 +85,10 @@
 
 - (UIView *)textFiledLeftView
 {
-<<<<<<< HEAD
-    UIView *view = [[UIView alloc] init];
-    
-    UILabel *lbl = [[UILabel alloc] init];
-    lbl.font = [UIFont systemFontOfSize:14];
-=======
     JJLabel *lbl = [[JJLabel alloc] init];
     lbl.font = [UIFont systemFontOfSize:16];
     lbl.textColor = RGBA(0x303030, 1);
     lbl.textEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
->>>>>>> dev
     lbl.text = @"快递单号";
     [lbl sizeToFit];
     
