@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ImageFlowConfiguration : NSObject
 
 @property (nonatomic) CGSize     multiImageSize;
@@ -18,7 +20,7 @@
 
 @property (nonatomic) CGFloat    preferredLayoutWidth;
 
-@property (nonatomic, copy) void (^displayImage)(UIImageView *imageView, NSInteger position);
+@property (nonatomic, copy, nullable) void (^displayImage)(UIImageView *imageView, NSInteger position);
 
 @end
 
@@ -29,3 +31,5 @@
 - (instancetype)initWithConfiguration:(ImageFlowConfiguration *)configuration;
 
 @end
+
+NS_ASSUME_NONNULL_END

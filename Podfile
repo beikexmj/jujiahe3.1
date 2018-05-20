@@ -14,6 +14,7 @@ target 'jujiahe' do
   pod 'BlocksKit'
   pod 'RTRootNavigationController'
   pod 'TYPagerController'
+  pod 'JMButton'
 #  pod 'MJRefresh'
   pod 'CYLTabBarController'
   pod 'FMDB'
