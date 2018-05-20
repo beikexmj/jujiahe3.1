@@ -228,6 +228,7 @@
 		7C110D3920A06C6E0012040E /* FirstStepVerificationOfIdentityVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C110D3720A06C6E0012040E /* FirstStepVerificationOfIdentityVC.xib */; };
 		7C110D3D20A06C840012040E /* SecondStepVerificationOfIdentityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C110D3B20A06C840012040E /* SecondStepVerificationOfIdentityVC.m */; };
 		7C110D3E20A06C840012040E /* SecondStepVerificationOfIdentityVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C110D3C20A06C840012040E /* SecondStepVerificationOfIdentityVC.xib */; };
+		7C2D4ABF20B10E9E00F40CD6 /* PublishConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D4ABE20B10E9E00F40CD6 /* PublishConversationCell.m */; };
 		7C3CFBF220A14D3D0084FF2A /* TZAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3CFBDE20A14D3D0084FF2A /* TZAlbumCell.xib */; };
 		7C3CFBF320A14D3D0084FF2A /* TZAssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3CFBDF20A14D3D0084FF2A /* TZAssetCell.xib */; };
 		7C3CFBF420A14D3D0084FF2A /* TZAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CFBE120A14D3D0084FF2A /* TZAssetCell.m */; };
@@ -989,6 +990,8 @@
 		7C110D3A20A06C840012040E /* SecondStepVerificationOfIdentityVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondStepVerificationOfIdentityVC.h; sourceTree = "<group>"; };
 		7C110D3B20A06C840012040E /* SecondStepVerificationOfIdentityVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondStepVerificationOfIdentityVC.m; sourceTree = "<group>"; };
 		7C110D3C20A06C840012040E /* SecondStepVerificationOfIdentityVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondStepVerificationOfIdentityVC.xib; sourceTree = "<group>"; };
+		7C2D4ABD20B10E9E00F40CD6 /* PublishConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublishConversationCell.h; sourceTree = "<group>"; };
+		7C2D4ABE20B10E9E00F40CD6 /* PublishConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublishConversationCell.m; sourceTree = "<group>"; };
 		7C3CFBDE20A14D3D0084FF2A /* TZAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TZAlbumCell.xib; sourceTree = "<group>"; };
 		7C3CFBDF20A14D3D0084FF2A /* TZAssetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TZAssetCell.xib; sourceTree = "<group>"; };
 		7C3CFBE020A14D3D0084FF2A /* TZAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZAssetCell.h; sourceTree = "<group>"; };
@@ -3104,6 +3107,8 @@
 				7C40D17520AFF1F1005F0212 /* ReplyConversationCell.m */,
 				7C40D17720B00EDF005F0212 /* FollowConversationCell.h */,
 				7C40D17820B00EDF005F0212 /* FollowConversationCell.m */,
+				7C2D4ABD20B10E9E00F40CD6 /* PublishConversationCell.h */,
+				7C2D4ABE20B10E9E00F40CD6 /* PublishConversationCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -4748,6 +4753,7 @@
 				7C110B3E209FF27A0012040E /* ChoseUnitTableViewCell.m in Sources */,
 				7C110AC6209FF0C00012040E /* MBProgressHUD+NJ.m in Sources */,
 				7C110B1A209FF1F00012040E /* MJRefreshConst.m in Sources */,
+				7C2D4ABF20B10E9E00F40CD6 /* PublishConversationCell.m in Sources */,
 				7C476DB120A58966005ECE03 /* SystemMessageDataModel.m in Sources */,
 				7C110AD2209FF17A0012040E /* GTMBase64.m in Sources */,
 				7C76A6EB20A2A1D90029E310 /* ProtalHomePageHelpDataModel.m in Sources */,
