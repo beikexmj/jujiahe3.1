@@ -26,7 +26,7 @@
 #import "TopicVC.h"
 #import "TopicClassificationVC.h"
 #import "MessageCenterVC.h"
-#import "FamilyDynamicsVC.h"
+#import "FamilyDynamicVC.h"
 @interface HomePageVC ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
 {
     CGFloat ox;
@@ -164,8 +164,8 @@
     
 }
 - (void)headerBtnClick:(UIButton *)btn{
-    FamilyDynamicsVC *page = [[FamilyDynamicsVC alloc]init];
-    [self.navigationController pushViewController:page animated:YES];
+    FamilyDynamicVC *vc = [[FamilyDynamicVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)moreClassificationbtnClick:(UIButton *)btn{
     TopicClassificationVC *page = [[TopicClassificationVC alloc]init];

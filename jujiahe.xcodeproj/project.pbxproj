@@ -228,6 +228,11 @@
 		7C110D3920A06C6E0012040E /* FirstStepVerificationOfIdentityVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C110D3720A06C6E0012040E /* FirstStepVerificationOfIdentityVC.xib */; };
 		7C110D3D20A06C840012040E /* SecondStepVerificationOfIdentityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C110D3B20A06C840012040E /* SecondStepVerificationOfIdentityVC.m */; };
 		7C110D3E20A06C840012040E /* SecondStepVerificationOfIdentityVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C110D3C20A06C840012040E /* SecondStepVerificationOfIdentityVC.xib */; };
+		7C21320720B161100017AF85 /* FamilyDynamicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C21320620B1610F0017AF85 /* FamilyDynamicVC.m */; };
+		7C21320A20B161320017AF85 /* FamilyWarningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C21320920B161320017AF85 /* FamilyWarningVC.m */; };
+		7C21320F20B161820017AF85 /* FamilyWarningInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C21320E20B161820017AF85 /* FamilyWarningInfoView.m */; };
+		7C21321220B164BB0017AF85 /* FamilyWarningTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C21321120B164BB0017AF85 /* FamilyWarningTableHeaderView.m */; };
+		7C21321520B165B40017AF85 /* FamilyWarningCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C21321420B165B40017AF85 /* FamilyWarningCell.m */; };
 		7C2D4ABF20B10E9E00F40CD6 /* PublishConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D4ABE20B10E9E00F40CD6 /* PublishConversationCell.m */; };
 		7C3CFBF220A14D3D0084FF2A /* TZAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3CFBDE20A14D3D0084FF2A /* TZAlbumCell.xib */; };
 		7C3CFBF320A14D3D0084FF2A /* TZAssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3CFBDF20A14D3D0084FF2A /* TZAssetCell.xib */; };
@@ -997,6 +1002,16 @@
 		7C110D3A20A06C840012040E /* SecondStepVerificationOfIdentityVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondStepVerificationOfIdentityVC.h; sourceTree = "<group>"; };
 		7C110D3B20A06C840012040E /* SecondStepVerificationOfIdentityVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondStepVerificationOfIdentityVC.m; sourceTree = "<group>"; };
 		7C110D3C20A06C840012040E /* SecondStepVerificationOfIdentityVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondStepVerificationOfIdentityVC.xib; sourceTree = "<group>"; };
+		7C21320520B1610F0017AF85 /* FamilyDynamicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyDynamicVC.h; sourceTree = "<group>"; };
+		7C21320620B1610F0017AF85 /* FamilyDynamicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyDynamicVC.m; sourceTree = "<group>"; };
+		7C21320820B161320017AF85 /* FamilyWarningVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyWarningVC.h; sourceTree = "<group>"; };
+		7C21320920B161320017AF85 /* FamilyWarningVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyWarningVC.m; sourceTree = "<group>"; };
+		7C21320D20B161820017AF85 /* FamilyWarningInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyWarningInfoView.h; sourceTree = "<group>"; };
+		7C21320E20B161820017AF85 /* FamilyWarningInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyWarningInfoView.m; sourceTree = "<group>"; };
+		7C21321020B164BB0017AF85 /* FamilyWarningTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyWarningTableHeaderView.h; sourceTree = "<group>"; };
+		7C21321120B164BB0017AF85 /* FamilyWarningTableHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyWarningTableHeaderView.m; sourceTree = "<group>"; };
+		7C21321320B165B40017AF85 /* FamilyWarningCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyWarningCell.h; sourceTree = "<group>"; };
+		7C21321420B165B40017AF85 /* FamilyWarningCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyWarningCell.m; sourceTree = "<group>"; };
 		7C2D4ABD20B10E9E00F40CD6 /* PublishConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublishConversationCell.h; sourceTree = "<group>"; };
 		7C2D4ABE20B10E9E00F40CD6 /* PublishConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublishConversationCell.m; sourceTree = "<group>"; };
 		7C3CFBDE20A14D3D0084FF2A /* TZAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TZAlbumCell.xib; sourceTree = "<group>"; };
@@ -2790,6 +2805,39 @@
 			path = "验证身份";
 			sourceTree = "<group>";
 		};
+		7C21320420B160C60017AF85 /* 家人动态 */ = {
+			isa = PBXGroup;
+			children = (
+				7C21320C20B161590017AF85 /* Views */,
+				7C21320B20B161530017AF85 /* Cells */,
+				7C21320520B1610F0017AF85 /* FamilyDynamicVC.h */,
+				7C21320620B1610F0017AF85 /* FamilyDynamicVC.m */,
+				7C21320820B161320017AF85 /* FamilyWarningVC.h */,
+				7C21320920B161320017AF85 /* FamilyWarningVC.m */,
+			);
+			path = "家人动态";
+			sourceTree = "<group>";
+		};
+		7C21320B20B161530017AF85 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7C21321320B165B40017AF85 /* FamilyWarningCell.h */,
+				7C21321420B165B40017AF85 /* FamilyWarningCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		7C21320C20B161590017AF85 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7C21320D20B161820017AF85 /* FamilyWarningInfoView.h */,
+				7C21320E20B161820017AF85 /* FamilyWarningInfoView.m */,
+				7C21321020B164BB0017AF85 /* FamilyWarningTableHeaderView.h */,
+				7C21321120B164BB0017AF85 /* FamilyWarningTableHeaderView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7C3CFBDC20A14D3D0084FF2A /* TZImagePickerController */ = {
 			isa = PBXGroup;
 			children = (
@@ -3156,7 +3204,7 @@
 		7C476D8020A58966005ECE03 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
-				81144E3020AEA9DC007A69E0 /* 家人动态 */,
+				7C21320420B160C60017AF85 /* 家人动态 */,
 				7C476D8120A58966005ECE03 /* HomePageVC.h */,
 				7C476D8220A58966005ECE03 /* HomePageVC.m */,
 				7C5DC6A020AAB79000981E95 /* 话题 */,
@@ -4631,6 +4679,7 @@
 				7C476E8A20A58DD5005ECE03 /* BillingInquiriesVC.m in Sources */,
 				7C110B15209FF1F00012040E /* MJRefreshBackStateFooter.m in Sources */,
 				7C3CFC4020A189490084FF2A /* XXTextField.m in Sources */,
+				7C21320720B161100017AF85 /* FamilyDynamicVC.m in Sources */,
 				7C110A78209FF0BF0012040E /* YYTextEffectWindow.m in Sources */,
 				7CBAF2F520AE83F90032DB72 /* QueryResultCell.m in Sources */,
 				7C110B61209FF5690012040E /* ResetPasswordViewController.m in Sources */,
@@ -4688,6 +4737,7 @@
 				7C40D17D20B01291005F0212 /* ImageFlowView.m in Sources */,
 				7C110A7F209FF0C00012040E /* YYTextArchiver.m in Sources */,
 				7C476E6620A58DD5005ECE03 /* SetCell.m in Sources */,
+				7C21320F20B161820017AF85 /* FamilyWarningInfoView.m in Sources */,
 				7C3CFC8320A1C7A60084FF2A /* AllServiceDataModel.m in Sources */,
 				7C3CFC5E20A1B5880084FF2A /* InputAlert.m in Sources */,
 				7C110ACB209FF1030012040E /* ZTHttpTool.m in Sources */,
@@ -4714,7 +4764,7 @@
 				7C3CFC6120A1B5880084FF2A /* PropertyPaymentHomeCell.m in Sources */,
 				7CCF831A20ABBA8000D35383 /* TopicCell.m in Sources */,
 				7C3CFBF520A14D3D0084FF2A /* TZAssetModel.m in Sources */,
-				8170445420AEAA2500CC6937 /* FamilyDynamicsVC.m in Sources */,
+				7C21320A20B161320017AF85 /* FamilyWarningVC.m in Sources */,
 				7C3CFC8E20A1C7A60084FF2A /* ServiceVC.m in Sources */,
 				7C989A6D20AD53F400F223ED /* CircleMessageVC.m in Sources */,
 				7C3CFCAF20A1C9BF0084FF2A /* FSActionSheetConfig.m in Sources */,
@@ -4729,6 +4779,7 @@
 				7C476EB720A59267005ECE03 /* SGQRCodeAlbumManager.m in Sources */,
 				7C110A85209FF0C00012040E /* NSParagraphStyle+YYText.m in Sources */,
 				7C1109AE209FEEC70012040E /* UIScrollView+Pages.m in Sources */,
+				7C21321220B164BB0017AF85 /* FamilyWarningTableHeaderView.m in Sources */,
 				7C5DC69F20AAB6D100981E95 /* HMSegmentedControl.m in Sources */,
 				7C110AC1209FF0C00012040E /* NSObject+MJClass.m in Sources */,
 				7C110B0B209FF1F00012040E /* MJRefreshAutoFooter.m in Sources */,
@@ -4742,6 +4793,7 @@
 				7CCF834620AC184F00D35383 /* PublishViewController.m in Sources */,
 				7C76A6F220A2A1D90029E310 /* ProtalHomePageTableViewCell.m in Sources */,
 				7C5DC6A920AAB80000981E95 /* TopicVC.m in Sources */,
+				7C21321520B165B40017AF85 /* FamilyWarningCell.m in Sources */,
 				7C110B12209FF1F00012040E /* MJRefreshAutoStateFooter.m in Sources */,
 				7C476E6F20A58DD5005ECE03 /* ModifyLoginPasswordFirstStepViewController.m in Sources */,
 				7CCF834120AC0CCB00D35383 /* CircleLikeDataModel.m in Sources */,
