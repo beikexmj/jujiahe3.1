@@ -147,6 +147,9 @@
         _navigationBar.jj_barTintColor = [UIColor whiteColor];
         _navigationBar.tintColor = RGBA(0x9c9c9c, 1);
         _navigationBar.translucent = NO;
+        _navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : RGBA(0x333333, 1),
+                                               NSFontAttributeName : [UIFont systemFontOfSize:NAVHEIGHT == 88 ? 18 : 16]
+                                               };
         [_navigationBar pushNavigationItem:self.navigationItem animated:NO];
     }
     return _navigationBar;

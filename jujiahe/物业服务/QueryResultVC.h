@@ -8,6 +8,16 @@
 
 #import "JJBaseViewController.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
+@interface QueryExpressInfoView : UIView
+
+
+
+@end
+
 @interface QueryResultVC : JJBaseViewController
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -24,11 +24,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = RGBA(0xE7EBEF, 1);
     [self setPopLeftItem];
-    [self setLeftItemWithItemHandler:^(id  _Nonnull sender) {
-        
-    } icons:@"icon_back_gray", nil];
-    [self.view addSubview:self.numberTextField];
-    [self.view addSubview:self.queryButton];
+    [self.contentView addSubview:self.numberTextField];
+    [self.contentView addSubview:self.queryButton];
     [self setupConstraints];
     [self setEvents];
 }
@@ -36,14 +33,14 @@
 - (void)setupConstraints
 {
     [self.numberTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
+        make.left.right.equalTo(self.contentView);
         make.top.equalTo(self.navigationBar.mas_bottom).with.offset(10);
         make.height.mas_equalTo(40);
     }];
     [self.queryButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(20);
-        make.right.equalTo(self.view).with.offset(-20);
-        make.bottom.equalTo(self.view).with.offset(-150);
+        make.left.equalTo(self.contentView).with.offset(20);
+        make.right.equalTo(self.contentView).with.offset(-20);
+        make.bottom.equalTo(self.contentView).with.offset(-150);
         make.height.mas_equalTo(40);
     }];
 }

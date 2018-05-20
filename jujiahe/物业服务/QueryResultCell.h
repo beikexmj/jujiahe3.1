@@ -8,6 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
+typedef NS_ENUM(NSInteger, QueryResultCellDividerType) {
+    QueryResultCellDividerTypeDefault = 0,
+    QueryResultCellDividerTypeOnlyTop,
+    QueryResultCellDividerTypeOnlyBottom,
+};
+
 @interface QueryResultCell : UITableViewCell
 
+@property (nonatomic) BOOL highlight;
+@property (nonatomic) QueryResultCellDividerType dividerType;
+
+- (void)setData;
+
 @end
+
+NS_ASSUME_NONNULL_END

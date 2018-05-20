@@ -10,7 +10,7 @@
 #import "ImageFlowView.h"
 #import <JMButton/JMButton.h>
 
-#define IMAGE_LENGHT (SCREENWIDTH - 60) / 3
+#define IMAGE_LENGHT (SCREENWIDTH - 50) / 3
 
 @interface PublishConversationCell ()
 
@@ -112,8 +112,8 @@
         ImageFlowConfiguration *configuration = [[ImageFlowConfiguration alloc] init];
         configuration.singleImageSize = CGSizeMake(SCREENWIDTH - 30, IMAGE_LENGHT);
         configuration.multiImageSize = CGSizeMake(IMAGE_LENGHT, IMAGE_LENGHT);
-        configuration.verticalSpacing = 15;
-        configuration.horizontalSpacing = 15;
+        configuration.verticalSpacing = 10;
+        configuration.horizontalSpacing = 10;
         configuration.preferredLayoutWidth = SCREENWIDTH - 30;
         configuration.displayImage = ^(UIImageView *imageView, NSInteger position) {
             imageView.backgroundColor = [UIColor grayColor];
