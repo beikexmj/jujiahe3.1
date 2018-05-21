@@ -24,7 +24,7 @@
 @property (nonatomic, strong) FamilyDynamicDialogView *dialogView;
 @property (nonatomic, strong) BMKMapView              *mapView;
 
-@property (nonatomic, strong) BMKLocationService *locationService;
+@property (nonatomic, strong) BMKLocationService      *locationService;
 
 @end
 
