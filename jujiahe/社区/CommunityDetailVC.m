@@ -133,6 +133,12 @@
 
                 UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(10 + k*((SCREENWIDTH - 50)/2.0), yy, (SCREENWIDTH - 50)/2.0, (SCREENWIDTH - 50)/2.0)];
 
+               
+
+                UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10 + k*((SCREENWIDTH - 50)/2.0), yy, (SCREENWIDTH - 50)/2.0, (SCREENWIDTH - 50)/2.0)];
+                [imageView sd_setImageWithURL:[NSURL URLWithString:_myArr[i].data[j*2 + k].icon] placeholderImage:[UIImage imageNamed:@"icon_默认"] options:SDWebImageAllowInvalidSSLCertificates];
+                [myView addSubview:imageView];
+                
                 UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,  (SCREENWIDTH - 50)/2.0 - 30,  (SCREENWIDTH - 50)/2.0, 30)];
                 nameLabel.text = _myArr[i].data[j*2 +k].name;
                 nameLabel.font = [UIFont systemFontOfSize:13.0];
@@ -140,11 +146,6 @@
                 nameLabel.backgroundColor = RGBA(0x000000, 0.5);
                 nameLabel.textAlignment =NSTextAlignmentCenter;
                 [myView addSubview:nameLabel];
-
-                UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10 + k*((SCREENWIDTH - 50)/2.0), yy, (SCREENWIDTH - 50)/2.0, (SCREENWIDTH - 50)/2.0)];
-                [imageView sd_setImageWithURL:[NSURL URLWithString:_myArr[i].data[j*2 + k].icon] placeholderImage:[UIImage imageNamed:@"icon_默认"] options:SDWebImageAllowInvalidSSLCertificates];
-                [myView addSubview:imageView];
-
                 UIButton  *btn = [[UIButton alloc]initWithFrame:CGRectMake(10 + k*((SCREENWIDTH - 50)/2.0), yy, (SCREENWIDTH - 50)/2.0, (SCREENWIDTH - 50)/2.0)];
                 btn.tag = j*2 + (k+1) + i*100;
                 [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
