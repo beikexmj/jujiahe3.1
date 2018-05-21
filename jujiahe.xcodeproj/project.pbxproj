@@ -470,7 +470,6 @@
 		7CCF834B20AC1D8A00D35383 /* TopicClassificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF834A20AC1D8A00D35383 /* TopicClassificationVC.m */; };
 		7CCF834F20AC320D00D35383 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF834C20AC320D00D35383 /* CommentViewController.xib */; };
 		7CCF835020AC320D00D35383 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF834E20AC320D00D35383 /* CommentViewController.m */; };
-		8170445420AEAA2500CC6937 /* FamilyDynamicsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8170445320AEAA2500CC6937 /* FamilyDynamicsVC.m */; };
 		819B468A20AFF0D800B045E3 /* PublishServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B468920AFF0D800B045E3 /* PublishServiceCell.m */; };
 		819B469C20B0020800B045E3 /* EBBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B469120B0012C00B045E3 /* EBBannerView.m */; };
 		819B469D20B0020800B045E3 /* EBForeNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B469320B0012C00B045E3 /* EBForeNotification.m */; };
@@ -493,6 +492,7 @@
 		81E4D80320AFB9CB00FC5B5D /* RecordQueryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81E4D7F720AFB91400FC5B5D /* RecordQueryCell.xib */; };
 		81E4D80A20AFBEEF00FC5B5D /* MyPropertyServiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D80920AFBEEF00FC5B5D /* MyPropertyServiceVC.m */; };
 		81E4D80D20AFC09200FC5B5D /* MyProperyServiceClassTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E4D80C20AFC09200FC5B5D /* MyProperyServiceClassTableViewController.m */; };
+		81FAD72920B25CBF003B4C1F /* happenCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 81FAD72820B25CBF003B4C1F /* happenCell2.m */; };
 		998EF8F8F6049014D50A4632 /* libPods-jujiaheUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9836249FD7DB973CA5A352A2 /* libPods-jujiaheUITests.a */; };
 		BCABEAD35A4C5C16C99ADFE5 /* libPods-jujiahe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D5DB62CE87FAC01E0BC698 /* libPods-jujiahe.a */; };
 		E9D731C983F4FFBC6A6FC2BC /* libPods-jujiaheTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B62B8ECC7D4E7FE607A18D /* libPods-jujiaheTests.a */; };
@@ -1441,8 +1441,6 @@
 		7CCF834C20AC320D00D35383 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
 		7CCF834D20AC320D00D35383 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		7CCF834E20AC320D00D35383 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
-		8170445220AEAA2500CC6937 /* FamilyDynamicsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyDynamicsVC.h; sourceTree = "<group>"; };
-		8170445320AEAA2500CC6937 /* FamilyDynamicsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyDynamicsVC.m; sourceTree = "<group>"; };
 		819B468820AFF0D800B045E3 /* PublishServiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublishServiceCell.h; sourceTree = "<group>"; };
 		819B468920AFF0D800B045E3 /* PublishServiceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublishServiceCell.m; sourceTree = "<group>"; };
 		819B468C20B000CE00B045E3 /* LaunchIntroductionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchIntroductionView.h; sourceTree = "<group>"; };
@@ -1486,6 +1484,8 @@
 		81E4D80920AFBEEF00FC5B5D /* MyPropertyServiceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPropertyServiceVC.m; sourceTree = "<group>"; };
 		81E4D80B20AFC09200FC5B5D /* MyProperyServiceClassTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyProperyServiceClassTableViewController.h; sourceTree = "<group>"; };
 		81E4D80C20AFC09200FC5B5D /* MyProperyServiceClassTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyProperyServiceClassTableViewController.m; sourceTree = "<group>"; };
+		81FAD72720B25CBF003B4C1F /* happenCell2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = happenCell2.h; sourceTree = "<group>"; };
+		81FAD72820B25CBF003B4C1F /* happenCell2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = happenCell2.m; sourceTree = "<group>"; };
 		8663A526B869198D67E968F3 /* Pods-jujiaheTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jujiaheTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-jujiaheTests/Pods-jujiaheTests.release.xcconfig"; sourceTree = "<group>"; };
 		88D5DB62CE87FAC01E0BC698 /* libPods-jujiahe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jujiahe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9836249FD7DB973CA5A352A2 /* libPods-jujiaheUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jujiaheUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3741,6 +3741,8 @@
 				7C5AD33A20A9B0C200158D38 /* HappenCell.h */,
 				7C5AD33B20A9B0C200158D38 /* HappenCell.m */,
 				7C5AD33C20A9B0C200158D38 /* HappenCell.xib */,
+				81FAD72720B25CBF003B4C1F /* happenCell2.h */,
+				81FAD72820B25CBF003B4C1F /* happenCell2.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -4011,15 +4013,6 @@
 				7C989A4620AD0E8000F223ED /* TopicClassificationChildVC.m */,
 			);
 			path = "话题分类";
-			sourceTree = "<group>";
-		};
-		81144E3020AEA9DC007A69E0 /* 家人动态 */ = {
-			isa = PBXGroup;
-			children = (
-				8170445220AEAA2500CC6937 /* FamilyDynamicsVC.h */,
-				8170445320AEAA2500CC6937 /* FamilyDynamicsVC.m */,
-			);
-			path = "家人动态";
 			sourceTree = "<group>";
 		};
 		819B468B20B000CE00B045E3 /* LaunchIntroduction */ = {
@@ -4695,6 +4688,7 @@
 				7C110B1E209FF1F00012040E /* UIView+MJExtension.m in Sources */,
 				7C110954209FECFB0012040E /* NSData+Common.m in Sources */,
 				7C476DAA20A58966005ECE03 /* HomePageCell.m in Sources */,
+				81FAD72920B25CBF003B4C1F /* happenCell2.m in Sources */,
 				7C110AD7209FF19C0012040E /* DictToJson.m in Sources */,
 				7C110B4E209FF4320012040E /* CMUUIDManager.m in Sources */,
 				7CCF835020AC320D00D35383 /* CommentViewController.m in Sources */,
