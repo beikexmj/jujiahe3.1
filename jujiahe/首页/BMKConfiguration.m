@@ -8,6 +8,8 @@
 
 #import "BMKConfiguration.h"
 
+static NSString *const BMKPrivateKey = @"fzZSVYYDriqmjVwKZDfbvWZ0VVf63jfo";
+
 @interface BMKConfiguration ()<BMKGeneralDelegate>
 
 @end
@@ -29,8 +31,41 @@
     self = [super init];
     if (self) {
         self.mapManager = [[BMKMapManager alloc] init];
+        
+        if ([BMKMapManager setCoordinateTypeUsedInBaiduMapSDK:BMK_COORDTYPE_BD09LL]) {
+            XMJLog(@"经纬度类型设置成功");
+        } else {
+            XMJLog(@"经纬度类型设置失败");
+        }
+        BOOL ret = [_mapManager start:BMKPrivateKey generalDelegate:self];
+        if (!ret) {
+            XMJLog(@"manager start failed!");
+        }
     }
     return self;
+}
+
+#pragma mark - BMKGeneralDelegate
+
+- (void)onGetNetworkState:(int)iError
+{
+    if (0 == iError) {
+        XMJLog(@"联网成功");
+    }
+    else{
+        XMJLog(@"onGetNetworkState %d",iError);
+    }
+    
+}
+
+- (void)onGetPermissionState:(int)iError
+{
+    if (0 == iError) {
+        XMJLog(@"授权成功");
+    }
+    else {
+        XMJLog(@"onGetPermissionState %d",iError);
+    }
 }
 
 @end

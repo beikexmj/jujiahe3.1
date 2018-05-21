@@ -11,8 +11,10 @@
 #import <JMButton.h>
 #import "YYText.h"
 #import "YYLabel.h"
+#import <BaiduMapAPI_Map/BMKMapComponent.h>
+#import <BaiduMapAPI_Location/BMKLocationComponent.h>
 
-@interface FamilyDynamicVC ()
+@interface FamilyDynamicVC ()<BMKMapViewDelegate, BMKLocationServiceDelegate>
 
 @property (nonatomic, strong) JMBaseButton            *titleView;
 @property (nonatomic, strong) UIButton                *refreshButton;
@@ -20,6 +22,9 @@
 @property (nonatomic, strong) UIButton                *dynamicButton;
 @property (nonatomic, strong) UIButton                *currentLocationButton;
 @property (nonatomic, strong) FamilyDynamicDialogView *dialogView;
+@property (nonatomic, strong) BMKMapView              *mapView;
+
+@property (nonatomic, strong) BMKLocationService *locationService;
 
 @end
 
@@ -30,6 +35,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self configurationNavigation];
     
+    [self.contentView addSubview:self.mapView];
     [self.contentView addSubview:self.refreshButton];
     [self.contentView addSubview:self.chatButton];
     [self.contentView addSubview:self.dynamicButton];
@@ -39,14 +45,33 @@
     [self setData];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.mapView viewWillAppear];
+    self.mapView.delegate = self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.mapView viewWillDisappear];
+    self.mapView.delegate = nil;
+}
+
 - (void)configurationNavigation
 {
     [self setPopLeftItem];
     self.navigationItem.titleView = self.titleView;
+    [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationBar.shadowImage = [UIImage new];
 }
 
 - (void)setupConstraints
 {
+    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView);
+    }];
     [self.refreshButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).with.offset(15);
         make.bottom.equalTo(self.currentLocationButton.mas_top).with.offset(-20);
@@ -86,6 +111,20 @@
                           }
                   range:NSMakeRange(0, dialogText.length)];
     _dialogView.text = text;
+}
+
+#pragma mark - BMKMapViewDelegate
+
+#pragma mark - BMKLocationServiceDelegate
+
+- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
+{
+    
+}
+
+- (void)didFailToLocateUserWithError:(NSError *)error
+{
+    
 }
 
 #pragma mark - getter
@@ -152,6 +191,25 @@
         _dialogView = [[FamilyDynamicDialogView alloc] initWithFrame:CGRectMake(0, NAVHEIGHT + 70, 0, 0)];
     }
     return _dialogView;
+}
+
+- (BMKMapView *)mapView
+{
+    if (!_mapView) {
+        _mapView = [[BMKMapView alloc] init];
+        _mapView.showsUserLocation = YES;
+        _mapView.userTrackingMode = BMKUserTrackingModeNone;
+    }
+    return _mapView;
+}
+
+- (BMKLocationService *)locationService
+{
+    if (!_locationService) {
+        _locationService = [[BMKLocationService alloc] init];
+        _locationService.delegate = self;
+    }
+    return _locationService;
 }
 
 @end

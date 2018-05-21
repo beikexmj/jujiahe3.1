@@ -10,11 +10,9 @@
 #import "LoginViewController.h"
 #import "JFCityViewController.h"
 #import "BaseTabbarVC.h"
-#import <BaiduMapAPI_Map/BMKMapComponent.h>
+#import "BMKConfiguration.h"
 
 @interface AppDelegate ()
-
-@property (nonatomic, strong) BMKMapManager *mapManager;
 
 @end
 
@@ -40,6 +38,8 @@ static AppDelegate *_appDelegate;
     manager.shouldResignOnTouchOutside = YES;
     manager.shouldToolbarUsesTextFieldTintColor = YES;
     manager.enableAutoToolbar = NO;
+    
+    [BMKConfiguration sharedInstance];
     
     SDWebImageDownloader *sdmanager = [SDWebImageManager sharedManager].imageDownloader;
     [sdmanager setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
@@ -95,11 +95,6 @@ static AppDelegate *_appDelegate;
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-- (void)setupBMManager
-{
-    self.mapManager = [[BMKMapManager alloc] init];
 }
 
 @end
