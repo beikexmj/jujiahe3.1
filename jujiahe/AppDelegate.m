@@ -10,7 +10,11 @@
 #import "LoginViewController.h"
 #import "JFCityViewController.h"
 #import "BaseTabbarVC.h"
+#import <BaiduMapAPI_Map/BMKMapComponent.h>
+
 @interface AppDelegate ()
+
+@property (nonatomic, strong) BMKMapManager *mapManager;
 
 @end
 
@@ -93,5 +97,9 @@ static AppDelegate *_appDelegate;
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)setupBMManager
+{
+    self.mapManager = [[BMKMapManager alloc] init];
+}
 
 @end

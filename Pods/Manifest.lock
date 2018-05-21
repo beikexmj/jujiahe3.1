@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
+  - BaiduMapKit (4.0.0)
   - BlocksKit (2.2.5):
     - BlocksKit/All (= 2.2.5)
   - BlocksKit/All (2.2.5):
@@ -47,6 +48,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0.4)
+  - BaiduMapKit
   - BlocksKit
   - CYLTabBarController
   - FMDB
@@ -60,6 +62,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
+  BaiduMapKit: 8fa2eb2ca81b92b740b19d9ff3b59d751d3e92e1
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   CYLTabBarController: c374643dea6dadece8bdff9c70f7387f8ffd7d08
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
@@ -71,6 +74,6 @@ SPEC CHECKSUMS:
   TYPagerController: 262556ecef99986d26ed77fb1288a198ed42f4af
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
 
-PODFILE CHECKSUM: 2539b904e5294947e76faefbad912b67c471429e
+PODFILE CHECKSUM: a19fefc2e676df951b8282260436ec92d7305abd
 
 COCOAPODS: 1.4.0

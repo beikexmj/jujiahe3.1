@@ -417,6 +417,7 @@
 		7C476EBF20A592DF005ECE03 /* XMJButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476EBE20A592DF005ECE03 /* XMJButton.m */; };
 		7C476EC420A59454005ECE03 /* HappenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476EC320A59454005ECE03 /* HappenVC.m */; };
 		7C476EC720A5946E005ECE03 /* CommunityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476EC620A5946E005ECE03 /* CommunityVC.m */; };
+		7C4CDB4620B2AA8C00D1DD01 /* BMKConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4CDB4520B2AA8C00D1DD01 /* BMKConfiguration.m */; };
 		7C5AD33620A9A32900158D38 /* CommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5AD33420A9A32900158D38 /* CommunityCell.m */; };
 		7C5AD33720A9A32900158D38 /* CommunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C5AD33520A9A32900158D38 /* CommunityCell.xib */; };
 		7C5AD33D20A9B0C200158D38 /* HappenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5AD33B20A9B0C200158D38 /* HappenCell.m */; };
@@ -1338,6 +1339,8 @@
 		7C476EC320A59454005ECE03 /* HappenVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappenVC.m; sourceTree = "<group>"; };
 		7C476EC520A5946E005ECE03 /* CommunityVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunityVC.h; sourceTree = "<group>"; };
 		7C476EC620A5946E005ECE03 /* CommunityVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommunityVC.m; sourceTree = "<group>"; };
+		7C4CDB4420B2AA8C00D1DD01 /* BMKConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMKConfiguration.h; sourceTree = "<group>"; };
+		7C4CDB4520B2AA8C00D1DD01 /* BMKConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMKConfiguration.m; sourceTree = "<group>"; };
 		7C5AD33320A9A32900158D38 /* CommunityCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunityCell.h; sourceTree = "<group>"; };
 		7C5AD33420A9A32900158D38 /* CommunityCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommunityCell.m; sourceTree = "<group>"; };
 		7C5AD33520A9A32900158D38 /* CommunityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityCell.xib; sourceTree = "<group>"; };
@@ -3176,6 +3179,8 @@
 				7C21320420B160C60017AF85 /* 家人动态 */,
 				7C476D8120A58966005ECE03 /* HomePageVC.h */,
 				7C476D8220A58966005ECE03 /* HomePageVC.m */,
+				7C4CDB4420B2AA8C00D1DD01 /* BMKConfiguration.h */,
+				7C4CDB4520B2AA8C00D1DD01 /* BMKConfiguration.m */,
 				7C5DC6A020AAB79000981E95 /* 话题 */,
 				7C476D8320A58966005ECE03 /* model */,
 				7C476D8620A58966005ECE03 /* view */,
@@ -4340,9 +4345,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-jujiahe/Pods-jujiahe-resources.sh",
+				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4605,6 +4613,7 @@
 				7C3CFC8420A1C7A60084FF2A /* PropertyServiceVC.m in Sources */,
 				7C476E8A20A58DD5005ECE03 /* BillingInquiriesVC.m in Sources */,
 				7C110B15209FF1F00012040E /* MJRefreshBackStateFooter.m in Sources */,
+				7C4CDB4620B2AA8C00D1DD01 /* BMKConfiguration.m in Sources */,
 				7C3CFC4020A189490084FF2A /* XXTextField.m in Sources */,
 				7C21320720B161100017AF85 /* FamilyDynamicVC.m in Sources */,
 				7C110A78209FF0BF0012040E /* YYTextEffectWindow.m in Sources */,
