@@ -9,14 +9,17 @@
 #import "FamilyDynamicVC.h"
 #import "FamilyWarningVC.h"
 #import <JMButton.h>
+#import "YYText.h"
+#import "YYLabel.h"
 
 @interface FamilyDynamicVC ()
 
-@property (nonatomic, strong) JMBaseButton *titleView;
-@property (nonatomic, strong) UIButton     *refreshButton;
-@property (nonatomic, strong) UIButton     *chatButton;
-@property (nonatomic, strong) UIButton     *dynamicButton;
-@property (nonatomic, strong) UIButton     *currentLocationButton;
+@property (nonatomic, strong) JMBaseButton            *titleView;
+@property (nonatomic, strong) UIButton                *refreshButton;
+@property (nonatomic, strong) UIButton                *chatButton;
+@property (nonatomic, strong) UIButton                *dynamicButton;
+@property (nonatomic, strong) UIButton                *currentLocationButton;
+@property (nonatomic, strong) FamilyDynamicDialogView *dialogView;
 
 @end
 
@@ -31,13 +34,9 @@
     [self.contentView addSubview:self.chatButton];
     [self.contentView addSubview:self.dynamicButton];
     [self.contentView addSubview:self.currentLocationButton];
+    [self.contentView addSubview:self.dialogView];
     [self setupConstraints];
-    
-    @weakify(self);
-    [self setRightItemWithItemHandler:^(id  _Nonnull sender) {
-        @strongify(self);
-        [self.navigationController pushViewController:[FamilyWarningVC new] animated:YES];
-    } titles:@"详情", nil];
+    [self setData];
 }
 
 - (void)configurationNavigation
@@ -64,6 +63,29 @@
         make.right.equalTo(self.dynamicButton);
         make.bottom.equalTo(self.refreshButton);
     }];
+}
+
+- (void)setData
+{
+    NSString *dialogText = @"text text text";
+    NSString *actionText = @"查看详情";
+    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@%@", dialogText, actionText]];
+    
+    NSRange range = NSMakeRange(dialogText.length, actionText.length);
+    [text yy_setFont:[UIFont systemFontOfSize:14] range:range];
+    @weakify(self);
+    [text yy_setTextHighlightRange:range
+                             color:RGBA(0x07d7f6, 1)
+                   backgroundColor:nil
+                         tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+                             @strongify(self);
+                             [self.navigationController pushViewController:[FamilyWarningVC new] animated:YES];
+                         }];
+    [text setAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor],
+                          NSFontAttributeName : [UIFont systemFontOfSize:14]
+                          }
+                  range:NSMakeRange(0, dialogText.length)];
+    _dialogView.text = text;
 }
 
 #pragma mark - getter
@@ -122,6 +144,81 @@
                                   forState:UIControlStateNormal];
     }
     return _dynamicButton;
+}
+
+- (FamilyDynamicDialogView *)dialogView
+{
+    if (!_dialogView) {
+        _dialogView = [[FamilyDynamicDialogView alloc] initWithFrame:CGRectMake(0, NAVHEIGHT + 70, 0, 0)];
+    }
+    return _dialogView;
+}
+
+@end
+
+@interface FamilyDynamicDialogView ()
+
+@property (nonatomic, strong) YYLabel *titleLabel;
+
+@end
+
+@implementation FamilyDynamicDialogView
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self addSubview:self.titleLabel];
+        [self addSubview:self.closeButton];
+        self.backgroundColor = RGBA(0x000000, 0.3);
+    }
+    return self;
+}
+
+- (void)setText:(NSAttributedString *)text
+{
+    YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:CGSizeMake(SCREENWIDTH / 2, MAXFLOAT)
+                                                            text:text];
+    self.titleLabel.attributedText = text;
+    self.titleLabel.textLayout = layout;
+    self.titleLabel.yz_width = layout.textBoundingSize.width;
+    self.titleLabel.yz_height = layout.textBoundingSize.height;
+    
+    self.yz_height = self.titleLabel.yz_height + 6;
+    self.yz_width = self.titleLabel.yz_width + 29 + self.closeButton.yz_width;
+    self.closeButton.yz_x = self.yz_width - self.closeButton.yz_width - 7;
+    self.closeButton.yz_centerY = self.yz_height / 2;
+    
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+                                                   byRoundingCorners:UIRectCornerTopRight | UIRectCornerBottomRight
+                                                         cornerRadii:CGSizeMake(self.yz_height / 2, self.yz_height / 2)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
+}
+
+#pragma mark - getter
+
+- (YYLabel *)titleLabel
+{
+    if (!_titleLabel) {
+        _titleLabel = [[YYLabel alloc] initWithFrame:CGRectMake(15, 3, SCREENWIDTH / 2, 0)];
+        _titleLabel.numberOfLines = 0;
+        _titleLabel.userInteractionEnabled = YES;
+    }
+    return _titleLabel;
+}
+
+- (UIButton *)closeButton
+{
+    if (!_closeButton) {
+        UIImage *img = [UIImage imageNamed:@"home_family_icon_delete"];
+        _closeButton = [[UIButton alloc] initWithFrame:(CGRect){CGPointZero, img.size}];
+        [_closeButton setBackgroundImage:[UIImage imageNamed:@"home_family_icon_delete"]
+                                forState:UIControlStateNormal];
+    }
+    return _closeButton;
 }
 
 @end

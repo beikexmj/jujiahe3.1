@@ -34,6 +34,7 @@
 #import "MyAlterView.h"
 #import "ScaleButton.h"
 #import "RootDataModel.h"
+#import "UIView+Frame.h"
 #import <ReactiveObjC/ReactiveObjC.h>
 #import <RTRootNavigationController/RTRootNavigationController.h>
 #import <RTRootNavigationController/UIViewController+RTRootNavigationController.h>
