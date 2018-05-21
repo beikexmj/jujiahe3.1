@@ -1,46 +1,43 @@
 //
-//  CommunityVC.m
+//  CommunityClassificationVC.m
 //  jujiahe
 //
-//  Created by XiaMingjiang on 2018/5/11.
+//  Created by 夏明江 on 2018/5/21.
 //  Copyright © 2018年 世纪之光. All rights reserved.
 //
 
-#import "CommunityVC.h"
-#import "CommunityCell.h"
 #import "CommunityClassificationVC.h"
-@interface CommunityVC ()<UITableViewDelegate,UITableViewDataSource>
+#import "CommunityClassificationCell.h"
+#import "CommunityDetailVC.h"
+@interface CommunityClassificationVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *myTableView;
-
 @end
 
-@implementation CommunityVC
+@implementation CommunityClassificationVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isShowNav = YES;
-    self.titleLabel.text = @"社区";
+    _backButton.hidden = NO;
+    self.titleLabel.text = _titleStr;
     [self.view addSubview:self.myTableView];
-    
     // Do any additional setup after loading the view.
 }
 - (UITableView *)myTableView{
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREENWIDTH, SCREENHEIGHT-TABBARHEIGHT-NAVHEIGHT)style:UITableViewStylePlain];
-        _myTableView.backgroundView = nil;
-        _myTableView.backgroundColor = [UIColor clearColor];
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREENWIDTH, SCREENHEIGHT-NAVHEIGHT)style:UITableViewStylePlain];
+        _myTableView.backgroundColor = RGBA(0xeaeef1, 1);
         _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
     }
     return _myTableView;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cell = @"CommunityCell";
-    CommunityCell *myCell = [tableView dequeueReusableCellWithIdentifier:cell];
+    static NSString *cell = @"CommunityClassificationCell";
+    CommunityClassificationCell *myCell = [tableView dequeueReusableCellWithIdentifier:cell];
     if (!myCell) {
-        myCell = [[[NSBundle mainBundle] loadNibNamed:cell owner:self options:nil] lastObject];
+        myCell = [[CommunityClassificationCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell];
     }
     myCell.selectionStyle = UITableViewCellSelectionStyleNone;
     return myCell;
@@ -50,11 +47,10 @@
     return 8;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 180;
+    return 105;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    CommunityClassificationVC *page = [[CommunityClassificationVC alloc]init];
-    page.titleStr = @"123";
+    CommunityDetailVC *page = [[CommunityDetailVC alloc]init];
     [self.navigationController pushViewController:page animated:YES];
 }
 - (void)didReceiveMemoryWarning {

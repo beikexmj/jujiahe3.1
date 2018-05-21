@@ -46,7 +46,7 @@
 }
 - (UITableView *)myTableView{
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREENWIDTH, SCREENHEIGHT - NAVHEIGHT - TABBARHEIGHT)];
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT - 165, SCREENWIDTH, SCREENHEIGHT - NAVHEIGHT - TABBARHEIGHT - 165)];
         _myTableView.dataSource = self;
         _myTableView.delegate = self;
         _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -154,8 +154,8 @@
     CGRect rect = headerView.frame;
     rect.size.height = sectionY;
     headerView.frame = rect;
-    
-    self.myTableView.tableHeaderView = headerView;
+    [self.view addSubview:headerView];
+//    self.myTableView.tableHeaderView = headerView;
     
 //    for (int i = 0; i<_myArr.count; i++) {
 //        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, sectionY + 5, 5, 15)];
