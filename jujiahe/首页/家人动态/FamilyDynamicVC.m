@@ -369,6 +369,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+//家人动态 跳转
 -(void)familyWarningBtnClick{
     [self.navigationController pushViewController:[FamilyWarningVC new] animated:YES];
 }
