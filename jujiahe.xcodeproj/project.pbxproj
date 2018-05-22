@@ -421,7 +421,6 @@
 		7C476EBF20A592DF005ECE03 /* XMJButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476EBE20A592DF005ECE03 /* XMJButton.m */; };
 		7C476EC420A59454005ECE03 /* HappenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476EC320A59454005ECE03 /* HappenVC.m */; };
 		7C476EC720A5946E005ECE03 /* CommunityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C476EC620A5946E005ECE03 /* CommunityVC.m */; };
-		7C4CDB4620B2AA8C00D1DD01 /* BMKConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4CDB4520B2AA8C00D1DD01 /* BMKConfiguration.m */; };
 		7C5AD33620A9A32900158D38 /* CommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5AD33420A9A32900158D38 /* CommunityCell.m */; };
 		7C5AD33720A9A32900158D38 /* CommunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C5AD33520A9A32900158D38 /* CommunityCell.xib */; };
 		7C5AD33D20A9B0C200158D38 /* HappenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5AD33B20A9B0C200158D38 /* HappenCell.m */; };
@@ -1351,8 +1350,6 @@
 		7C476EC320A59454005ECE03 /* HappenVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappenVC.m; sourceTree = "<group>"; };
 		7C476EC520A5946E005ECE03 /* CommunityVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunityVC.h; sourceTree = "<group>"; };
 		7C476EC620A5946E005ECE03 /* CommunityVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommunityVC.m; sourceTree = "<group>"; };
-		7C4CDB4420B2AA8C00D1DD01 /* BMKConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMKConfiguration.h; sourceTree = "<group>"; };
-		7C4CDB4520B2AA8C00D1DD01 /* BMKConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMKConfiguration.m; sourceTree = "<group>"; };
 		7C5AD33320A9A32900158D38 /* CommunityCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunityCell.h; sourceTree = "<group>"; };
 		7C5AD33420A9A32900158D38 /* CommunityCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommunityCell.m; sourceTree = "<group>"; };
 		7C5AD33520A9A32900158D38 /* CommunityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityCell.xib; sourceTree = "<group>"; };
@@ -2803,8 +2800,6 @@
 				7C21320920B161320017AF85 /* FamilyWarningVC.m */,
 				5F1749CE20B3B03700070848 /* DynamicVC.h */,
 				5F1749CF20B3B03700070848 /* DynamicVC.m */,
-				7C4CDB4420B2AA8C00D1DD01 /* BMKConfiguration.h */,
-				7C4CDB4520B2AA8C00D1DD01 /* BMKConfiguration.m */,
 				5F1749D420B3C2D100070848 /* FamilyManageVC.h */,
 				5F1749D520B3C2D100070848 /* FamilyManageVC.m */,
 			);
@@ -4121,8 +4116,6 @@
 				7C1108EC209FE4270012040E /* Sources */,
 				7C1108ED209FE4270012040E /* Frameworks */,
 				7C1108EE209FE4270012040E /* Resources */,
-				B1DD0194FB362E5E4C8FE28B /* [CP] Embed Pods Frameworks */,
-				A8DA3A88D16F9C19397D74D0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4141,8 +4134,6 @@
 				7C110904209FE4270012040E /* Sources */,
 				7C110905209FE4270012040E /* Frameworks */,
 				7C110906209FE4270012040E /* Resources */,
-				CB458DA4EE1463E1D5C12B0B /* [CP] Embed Pods Frameworks */,
-				CB6557A17B237BB8A8E93D63 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4162,8 +4153,6 @@
 				7C11090F209FE4270012040E /* Sources */,
 				7C110910209FE4270012040E /* Frameworks */,
 				7C110911209FE4270012040E /* Resources */,
-				0140F93C7BAB3707F07DFA1D /* [CP] Embed Pods Frameworks */,
-				E5BADBB9E3EC7124F978A815 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4326,21 +4315,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0140F93C7BAB3707F07DFA1D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jujiaheUITests/Pods-jujiaheUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		225ADAF4B95DFDFB626EEB49 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4357,24 +4331,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A8DA3A88D16F9C19397D74D0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-jujiahe/Pods-jujiahe-resources.sh",
-				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jujiahe/Pods-jujiahe-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AFCD7CA7CC2B02FC201DA056 /* [CP] Check Pods Manifest.lock */ = {
@@ -4395,51 +4351,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B1DD0194FB362E5E4C8FE28B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jujiahe/Pods-jujiahe-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CB458DA4EE1463E1D5C12B0B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jujiaheTests/Pods-jujiaheTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CB6557A17B237BB8A8E93D63 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jujiaheTests/Pods-jujiaheTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CD6D9C61FBD034ACDC2A0EB6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4456,21 +4367,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E5BADBB9E3EC7124F978A815 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jujiaheUITests/Pods-jujiaheUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -4635,7 +4531,6 @@
 				7C3CFC8420A1C7A60084FF2A /* PropertyServiceVC.m in Sources */,
 				7C476E8A20A58DD5005ECE03 /* BillingInquiriesVC.m in Sources */,
 				7C110B15209FF1F00012040E /* MJRefreshBackStateFooter.m in Sources */,
-				7C4CDB4620B2AA8C00D1DD01 /* BMKConfiguration.m in Sources */,
 				7C3CFC4020A189490084FF2A /* XXTextField.m in Sources */,
 				7C21320720B161100017AF85 /* FamilyDynamicVC.m in Sources */,
 				7C110A78209FF0BF0012040E /* YYTextEffectWindow.m in Sources */,

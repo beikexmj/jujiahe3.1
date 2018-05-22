@@ -10,7 +10,6 @@
 #import "LoginViewController.h"
 #import "JFCityViewController.h"
 #import "BaseTabbarVC.h"
-#import "BMKConfiguration.h"
 
 @interface AppDelegate ()
 
@@ -38,8 +37,6 @@ static AppDelegate *_appDelegate;
     manager.shouldResignOnTouchOutside = YES;
     manager.shouldToolbarUsesTextFieldTintColor = YES;
     manager.enableAutoToolbar = NO;
-    
-    [BMKConfiguration sharedInstance];
     
     SDWebImageDownloader *sdmanager = [SDWebImageManager sharedManager].imageDownloader;
     [sdmanager setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" forHTTPHeaderField:@"Accept"];

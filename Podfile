@@ -15,7 +15,6 @@ target 'jujiahe' do
   pod 'RTRootNavigationController'
   pod 'TYPagerController'
   pod 'JMButton'
-  pod 'BaiduMapKit'
 #  pod 'MJRefresh'
   pod 'CYLTabBarController'
   pod 'FMDB'
