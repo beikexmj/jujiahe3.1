@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B5E09F320B2B57700A2609D /* peopleIMView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E09F220B2B57700A2609D /* peopleIMView.m */; };
+		4B5E09F520B2B58400A2609D /* peopleIMView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5E09F420B2B58300A2609D /* peopleIMView.xib */; };
 		7C1108F5209FE4270012040E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1108F4209FE4270012040E /* AppDelegate.m */; };
 		7C1108F8209FE4270012040E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1108F7209FE4270012040E /* ViewController.m */; };
 		7C1108FB209FE4270012040E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C1108F9209FE4270012040E /* Main.storyboard */; };
@@ -470,7 +472,6 @@
 		7CCF834B20AC1D8A00D35383 /* TopicClassificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF834A20AC1D8A00D35383 /* TopicClassificationVC.m */; };
 		7CCF834F20AC320D00D35383 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF834C20AC320D00D35383 /* CommentViewController.xib */; };
 		7CCF835020AC320D00D35383 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF834E20AC320D00D35383 /* CommentViewController.m */; };
-		8170445420AEAA2500CC6937 /* FamilyDynamicsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8170445320AEAA2500CC6937 /* FamilyDynamicsVC.m */; };
 		819B468A20AFF0D800B045E3 /* PublishServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B468920AFF0D800B045E3 /* PublishServiceCell.m */; };
 		819B469C20B0020800B045E3 /* EBBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B469120B0012C00B045E3 /* EBBannerView.m */; };
 		819B469D20B0020800B045E3 /* EBForeNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B469320B0012C00B045E3 /* EBForeNotification.m */; };
@@ -517,6 +518,9 @@
 
 /* Begin PBXFileReference section */
 		1610063C70B9B77E52241FEA /* Pods-jujiaheUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jujiaheUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jujiaheUITests/Pods-jujiaheUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4B5E09F120B2B57700A2609D /* peopleIMView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = peopleIMView.h; sourceTree = "<group>"; };
+		4B5E09F220B2B57700A2609D /* peopleIMView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = peopleIMView.m; sourceTree = "<group>"; };
+		4B5E09F420B2B58300A2609D /* peopleIMView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = peopleIMView.xib; sourceTree = "<group>"; };
 		7C1108F0209FE4270012040E /* jujiahe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jujiahe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C1108F3209FE4270012040E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7C1108F4209FE4270012040E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1441,8 +1445,6 @@
 		7CCF834C20AC320D00D35383 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
 		7CCF834D20AC320D00D35383 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		7CCF834E20AC320D00D35383 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
-		8170445220AEAA2500CC6937 /* FamilyDynamicsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyDynamicsVC.h; sourceTree = "<group>"; };
-		8170445320AEAA2500CC6937 /* FamilyDynamicsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyDynamicsVC.m; sourceTree = "<group>"; };
 		819B468820AFF0D800B045E3 /* PublishServiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublishServiceCell.h; sourceTree = "<group>"; };
 		819B468920AFF0D800B045E3 /* PublishServiceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublishServiceCell.m; sourceTree = "<group>"; };
 		819B468C20B000CE00B045E3 /* LaunchIntroductionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchIntroductionView.h; sourceTree = "<group>"; };
@@ -2834,6 +2836,9 @@
 				7C21320E20B161820017AF85 /* FamilyWarningInfoView.m */,
 				7C21321020B164BB0017AF85 /* FamilyWarningTableHeaderView.h */,
 				7C21321120B164BB0017AF85 /* FamilyWarningTableHeaderView.m */,
+				4B5E09F120B2B57700A2609D /* peopleIMView.h */,
+				4B5E09F220B2B57700A2609D /* peopleIMView.m */,
+				4B5E09F420B2B58300A2609D /* peopleIMView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4013,15 +4018,6 @@
 			path = "话题分类";
 			sourceTree = "<group>";
 		};
-		81144E3020AEA9DC007A69E0 /* 家人动态 */ = {
-			isa = PBXGroup;
-			children = (
-				8170445220AEAA2500CC6937 /* FamilyDynamicsVC.h */,
-				8170445320AEAA2500CC6937 /* FamilyDynamicsVC.m */,
-			);
-			path = "家人动态";
-			sourceTree = "<group>";
-		};
 		819B468B20B000CE00B045E3 /* LaunchIntroduction */ = {
 			isa = PBXGroup;
 			children = (
@@ -4156,7 +4152,6 @@
 				7C1108EC209FE4270012040E /* Sources */,
 				7C1108ED209FE4270012040E /* Frameworks */,
 				7C1108EE209FE4270012040E /* Resources */,
-				B1DD0194FB362E5E4C8FE28B /* [CP] Embed Pods Frameworks */,
 				A8DA3A88D16F9C19397D74D0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -4176,8 +4171,6 @@
 				7C110904209FE4270012040E /* Sources */,
 				7C110905209FE4270012040E /* Frameworks */,
 				7C110906209FE4270012040E /* Resources */,
-				CB458DA4EE1463E1D5C12B0B /* [CP] Embed Pods Frameworks */,
-				CB6557A17B237BB8A8E93D63 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4197,8 +4190,6 @@
 				7C11090F209FE4270012040E /* Sources */,
 				7C110910209FE4270012040E /* Frameworks */,
 				7C110911209FE4270012040E /* Resources */,
-				0140F93C7BAB3707F07DFA1D /* [CP] Embed Pods Frameworks */,
-				E5BADBB9E3EC7124F978A815 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4269,6 +4260,7 @@
 				7C110B3F209FF27A0012040E /* ChoseUnitTableViewCell.xib in Resources */,
 				7C476E5B20A58DD5005ECE03 /* ModifyEmailViewController.xib in Resources */,
 				7C3CFCB120A1C9BF0084FF2A /* FSActionSheet_cancel@2x.png in Resources */,
+				4B5E09F520B2B58400A2609D /* peopleIMView.xib in Resources */,
 				7C3CFC6020A1B5880084FF2A /* PayTypeChoseView.xib in Resources */,
 				7C476E9620A58E9E005ECE03 /* address.txt in Resources */,
 				7C110AAB209FF0C00012040E /* ShareSDKConfigFile.bundle in Resources */,
@@ -4358,21 +4350,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0140F93C7BAB3707F07DFA1D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jujiaheUITests/Pods-jujiaheUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		225ADAF4B95DFDFB626EEB49 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4397,9 +4374,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-jujiahe/Pods-jujiahe-resources.sh",
+				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4424,51 +4404,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B1DD0194FB362E5E4C8FE28B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jujiahe/Pods-jujiahe-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CB458DA4EE1463E1D5C12B0B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jujiaheTests/Pods-jujiaheTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CB6557A17B237BB8A8E93D63 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jujiaheTests/Pods-jujiaheTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CD6D9C61FBD034ACDC2A0EB6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4485,21 +4420,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E5BADBB9E3EC7124F978A815 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jujiaheUITests/Pods-jujiaheUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -4733,6 +4653,7 @@
 				7C110D1220A030770012040E /* RSADataVerifier.m in Sources */,
 				7C3CFC8A20A1C7A60084FF2A /* ServiceComentVC.m in Sources */,
 				7C110965209FECFB0012040E /* NSStream+SKPSMTPExtensions.m in Sources */,
+				4B5E09F320B2B57700A2609D /* peopleIMView.m in Sources */,
 				7C110960209FECFB0012040E /* HPublic.m in Sources */,
 				7C40D17D20B01291005F0212 /* ImageFlowView.m in Sources */,
 				7C110A7F209FF0C00012040E /* YYTextArchiver.m in Sources */,

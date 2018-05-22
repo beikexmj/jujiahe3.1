@@ -20,7 +20,9 @@
 #import <UserNotifications/UserNotifications.h>  // Push组件必须的系统库
 #import "LaunchIntroductionView.h"
 #import "EBForeNotification.h"
-@interface AppDelegate ()<WXApiDelegate,JPUSHRegisterDelegate>
+@interface AppDelegate ()<WXApiDelegate,JPUSHRegisterDelegate>{
+    BMKMapManager* _mapManager;
+}
 
 @end
 
@@ -74,6 +76,7 @@ static AppDelegate *_appDelegate;
         self.window.rootViewController = nav;
     }
     [self setJPush:launchOptions];
+    [self setBaiDuMapManager];
     [WXApi registerApp:@"wx74a28fcbd5e80775"];
      [LaunchIntroductionView sharedWithImages:@[@"引导页1",@"引导页2",@"引导页3"]];
     return YES;
@@ -281,6 +284,15 @@ static AppDelegate *_appDelegate;
     }
     //    }
     XMJLog(@"%@",payResoult);
+}
+
+-(void)setBaiDuMapManager{
+    _mapManager = [[BMKMapManager alloc]init];
+    // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
+    BOOL ret = [_mapManager start:@"RAaLGZQsUgxzfQ4aH8It6Gpvbygz4AST"  generalDelegate:nil];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
 }
 
 

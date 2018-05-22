@@ -15,6 +15,7 @@ target 'jujiahe' do
   pod 'RTRootNavigationController'
   pod 'TYPagerController'
   pod 'JMButton'
+  pod “BaiduMapKit” #百度地图SDK
 #  pod 'MJRefresh'
   pod 'CYLTabBarController'
   pod 'FMDB'

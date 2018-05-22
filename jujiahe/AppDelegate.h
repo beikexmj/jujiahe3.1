@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <BaiduMapAPI_Map/BMKMapComponent.h>//引入地图功能所有的头文件
 
 static NSString *appKey = @"f4c05efcf4f635adfc6b4822";//极光推送
 static NSString *channel = @"jjh_push_distribution";//
