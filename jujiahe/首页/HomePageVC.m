@@ -27,6 +27,9 @@
 #import "TopicClassificationVC.h"
 #import "MessageCenterVC.h"
 #import "FamilyDynamicVC.h"
+#import <SDWebImage/UIButton+WebCache.h>
+#import "UITableView+WFEmpty.h"
+
 @interface HomePageVC ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
 {
     CGFloat ox;
@@ -36,6 +39,7 @@
     CGFloat picHight;
     JSBadgeView *_badgeView;
     BOOL refreshflag;
+    NSInteger pageIndex;
 }
 @property (nonatomic,strong)UIButton *locationBtn;
 @property (nonatomic,strong)UIButton *meassgeBtn;
@@ -43,17 +47,14 @@
 @property (nonatomic,strong)UILabel *buildingNameLab;
 @property (nonatomic,strong)UITableView *myTableView;
 @property (weak, nonatomic) SDCycleScrollView *cycleScrollView;
-@property (nonatomic,strong) HomePageForm *homePageData;
-@property (nonatomic,strong) Activity_form *activity_from_roll;
-@property (nonatomic,strong) Activity_form *activity_from_list;
-@property (nonatomic,strong) NeighborhoodForm *neighborhoodFormArr;
 @property (nonatomic,strong) NSMutableDictionary *activity_Dict;
-@property (nonatomic, strong) NSMutableArray<Template_dataArr *> *template_data;
-
 /**
 *  图片数组
 */
 @property (nonatomic, strong) NSMutableArray *imageArray;
+
+@property (nonatomic,strong)HomePageData *homePageData;
+@property (nonatomic,strong)NSMutableArray <TopicModelData *> *dataArr;
 
 @end
 
@@ -64,10 +65,17 @@
     [self setNav];
     [self.view addSubview:self.myTableView];
     _activity_Dict = [NSMutableDictionary dictionary];
-    _template_data = [NSMutableArray array];
+    _dataArr = [NSMutableArray array];
     refreshflag = YES;
-//    [self fetchData];
-    [self rebuildHomeFace];
+    self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        pageIndex = 0;
+        [self fetchData:1];
+    }];
+    self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        pageIndex++;
+        [self fetchData:pageIndex];
+    }];
+    [self fetchData:1];
     // Do any additional setup after loading the view.
 }
 - (void)viewWillAppear:(BOOL)animated
@@ -80,14 +88,81 @@
     [super viewWillDisappear:animated];
 }
 
-- (void)fetchData{
-    
+- (void)fetchData:(NSInteger)pageNum{
+    StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
+    NSDictionary *dict = @{@"cityOid":storage.areaNumber,@"userId":storage.ids?storage.ids:@"",@"pageNum":[NSString stringWithFormat:@"%ld",pageNum],@"pageSize":@"20"};
+    [XMJHttpTool postWithUrl:@"homepage/getHomepage" param:dict success:^(id responseObj) {
+        NSString * str = [responseObj mj_JSONObject];
+        HomePageDataModel *data = [HomePageDataModel mj_objectWithKeyValues:str];
+        
+        if (data.success) {
+            _homePageData = data.data;
+            if (pageNum == 1) {
+                [self rebuildHomeFace];
+                if (_homePageData.topicModel.data.count == 0) {
+                    [self.myTableView addEmptyViewWithImageName:@"暂无积分" title:@"暂无信息"];
+                    self.myTableView.emptyView.hidden = NO;
+                }else{
+                    self.myTableView.emptyView.hidden = YES;
+                }
+                [_dataArr removeAllObjects];
+                [_dataArr addObjectsFromArray:_homePageData.topicModel.data];
+                
+                [self.myTableView reloadData];
+            }else{
+                [_dataArr addObjectsFromArray:_homePageData.topicModel.data];
+                if (_dataArr.count == 0) {
+                    [self.myTableView addEmptyViewWithImageName:@"暂无积分" title:@"暂无信息"];
+                    [self.myTableView.emptyView setHidden:NO];
+                }else{
+                    [self.myTableView.emptyView setHidden:YES];
+                }
+                if(_homePageData.topicModel.data == 0){
+                    [MBProgressHUD showError:@"没有更多数据"];
+                    pageIndex--;
+                }else{
+                    NSMutableArray *insertIndexPaths = [NSMutableArray array];
+                    for (int ind = 0; ind < _homePageData.topicModel.data.count; ind++) {
+                        NSIndexPath    *newPath =  [NSIndexPath indexPathForRow: _dataArr.count - _homePageData.topicModel.data.count + ind inSection:0];
+                        [insertIndexPaths addObject:newPath];
+                    }
+                    //重新调用UITableView的方法, 来生成行.
+                    [UIView performWithoutAnimation:^{
+                        [self.myTableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationNone];
+                        [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_dataArr.count - _homePageData.topicModel.data.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
+                    }];
+                }
+            }
+        }else{
+            [self.myTableView addEmptyViewWithImageName:@"该时段暂无历史记录" title:@"该时段暂无历史记录"];
+            [self.myTableView.emptyView setHidden:NO];
+            if(pageNum>1){
+                pageIndex--;
+            }
+        }
+        if (pageNum != 1) {
+            [self.myTableView.mj_footer endRefreshing];
+        }else{
+            [self.myTableView.mj_header endRefreshing];
+        }
+    } failure:^(NSError *error) {
+        [self.myTableView addEmptyViewWithImageName:@"暂无网络连接" title:@"网络不给力，请检测您的网络设置"];
+        self.myTableView.emptyView.hidden = NO;
+        if (pageNum != 1) {
+            [self.myTableView.mj_footer endRefreshing];
+        }else{
+            [self.myTableView.mj_header endRefreshing];
+        }
+        if(pageNum>1){
+            pageIndex--;
+        }
+    }];
 }
 - (void)fetchData2{
     
 }
 - (void)rebuildHomeFace{
-    NSArray *imageArr = @[@"home_btn_dongtai",@"home_btn_menjin",@"home_btn_dongtai",@"home_btn_menjin"];
+    NSArray<RecommendedResultModelList *> *imageArr = _homePageData.recommendedResultModelList;
     NSInteger num = 4;
     CGFloat btnWidth = (SCREENWIDTH - 40)/2.0;
     CGFloat btnHeight =  btnWidth * (85.0/170);
@@ -104,7 +179,7 @@
     UILabel *temperature = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, 100, 30)];
     temperature.textColor = RGBA(0xffffff, 1);
     temperature.font = [UIFont systemFontOfSize:19.0];
-    temperature.text  = @"20°C";
+    temperature.text  = [NSString stringWithFormat:@"%@°C",_homePageData.weatherResultModel.temp];
     CGRect frame  = temperature.frame;
     frame.size.width = [temperature sizeThatFits:CGSizeMake(MAXFLOAT, 30)].width;
     temperature.frame = frame;
@@ -113,13 +188,13 @@
     UILabel *subTemperature = [[UILabel alloc]initWithFrame:CGRectMake(frame.size.width + frame.origin.x + 10, 0, 150, 30)];
     subTemperature.textColor = RGBA(0xffffff, 1);
     subTemperature.font = [UIFont systemFontOfSize:14.0];
-    subTemperature.text  = @"晴    15/20°C";
+    subTemperature.text  = [NSString stringWithFormat:@"%@    %@/%@°C",_homePageData.weatherResultModel.condition,_homePageData.weatherResultModel.tempDay,_homePageData.weatherResultModel.tempNight];
     [weatherView addSubview:subTemperature];
    
     UILabel *airQuality = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH - 135, 0, 120, 30)];
     airQuality.textColor = RGBA(0xffffff, 1);
     airQuality.font = [UIFont systemFontOfSize:14.0];
-    airQuality.text  = @"空气质量：优";
+    airQuality.text  = [NSString stringWithFormat:@"空气质量：%@",_homePageData.weatherResultModel.value_level];
     airQuality.textAlignment = NSTextAlignmentRight;
     [weatherView addSubview:airQuality];
     
@@ -130,7 +205,7 @@
             UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(15 + (btnWidth+10)*j,  30 + 15 + i*(btnHeight + 10), btnWidth, btnHeight)];
             k++;
             btn.tag = k;
-            [btn setBackgroundImage:[UIImage imageNamed:imageArr[k-1]] forState:UIControlStateNormal];
+            [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:imageArr[k-1].pictureUrl] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(headerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
             [headerView addSubview:btn];
         }
@@ -245,30 +320,8 @@
     StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
     NSInteger num = storage.socialUnread.integerValue + storage.systemUnread.integerValue;
     _badgeView.badgeText = num == 0?@"":[NSString stringWithFormat:@"%ld",num];
-//    [self fetchUnreadMessageCount];
 }
-- (void)fetchUnreadMessageCount{
-    NSDictionary *dict = @{@"apiv":@"1.0",@"userId":[StorageUserInfromation storageUserInformation].userId};
-    [ZTHttpTool postWithUrl:@"jujiaheuser/v1/userInfo/unreadMessageCount" param:dict success:^(id responseObj) {
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSDictionary * onceDict = [DictToJson dictionaryWithJsonString:str];
-        NSLog(@"%@",onceDict);
-        if ([onceDict[@"rcode"] integerValue] == 0) {
-            NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];
-            StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
-            storage.socialUnread = [NSString stringWithFormat:@"%ld",[onceDict[@"form"][@"socialUnread"] integerValue]];
-            storage.systemUnread = [NSString stringWithFormat:@"%ld",[onceDict[@"form"][@"systemUnread"] integerValue] ];
-            [NSKeyedArchiver archiveRootObject:storage toFile:file];
-            NSInteger num = storage.socialUnread.integerValue + storage.systemUnread.integerValue;
-            _badgeView.badgeText = num == 0?@"":[NSString stringWithFormat:@"%ld",num];
-        }
-        
-    } failure:^(NSError *error) {
-        
-        
-    }];
-    
-}
+
 - (void)locationBtnClick{
     [MobClick event:@"csq_c"];
     ChoseUnitViewController *page = [[ChoseUnitViewController alloc]init];
@@ -292,7 +345,7 @@
         storage.currentArea = currentArea;
         storage.areaNumber = areaNumber;
         [NSKeyedArchiver archiveRootObject:storage toFile:file];
-        [self fetchData];
+        [self fetchData:1];
     };
     [self.navigationController pushViewController:page animated:YES];
 }

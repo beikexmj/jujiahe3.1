@@ -209,8 +209,8 @@ typedef enum {
 /** 清除图片缓存（兼容旧版本方法） */
 - (void)clearCache;
 
-@property (nonatomic, strong) Daily_word_data *advertisement_data;
+@property (nonatomic, strong) RecommendedResultModelList *advertisement_data;
 
-+ (instancetype)cycleScrollViewWithFrame:(CGRect)frame imagesGroup:(NSArray *)imagesGroup advertisement_data:(Daily_word_data *)data;
++ (instancetype)cycleScrollViewWithFrame:(CGRect)frame imagesGroup:(NSArray *)imagesGroup advertisement_data:(RecommendedResultModelList *)data;
 
 @end

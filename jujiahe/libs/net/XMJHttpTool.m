@@ -30,7 +30,6 @@
 }
 
 + (void)postWithUrl:(NSString *)url param:(id)params success:(void (^)(id responseObj))success failure:(void(^)(NSError *error))failure{
-
     params = @{@"data":params};
   NSMutableDictionary  *mutableDict = [NSMutableDictionary dictionaryWithDictionary:params];
 
@@ -39,6 +38,10 @@
         [mutableDict setValue:storage.sid forKey:@"sid"];
     }else{
         [mutableDict setValue:@"" forKey:@"sid"];
+    }
+    if (![JGIsBlankString isBlankString:params[@"data"][@"pageNum"]]) {
+        [mutableDict setValue:params[@"data"][@"pageNum"] forKey:@"pageNum"];
+        [mutableDict setValue:params[@"data"][@"pageSize"] forKey:@"pageSize"];
     }
     if (![JGIsBlankString isBlankString:storage.uToken]) {
         [mutableDict setValue:storage.uToken forKey:@"uToken"];
