@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="peopleIMView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKm-Vb-fSL">
+                    <rect key="frame" x="0.0" y="517" width="375" height="150"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_icon_pro3" translatesAutoresizingMaskIntoConstraints="NO" id="lct-df-2wa">
+                            <rect key="frame" x="15" y="15" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="J4t-Bv-4Qj"/>
+                                <constraint firstAttribute="height" constant="50" id="x8i-1M-jwF"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="家人昵称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81i-31-b7g">
+                            <rect key="frame" x="80" y="15" width="70" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="4uE-6o-Lsc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIQ-bM-r2Q">
+                            <rect key="frame" x="80" y="87" width="125" height="38"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="125" id="Dxi-WW-uhv"/>
+                                <constraint firstAttribute="height" constant="38" id="Qdf-zN-Yyz"/>
+                            </constraints>
+                            <state key="normal" title="联系Ta">
+                                <color key="titleColor" red="0.0" green="0.65490196078431373" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="contactClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="tQe-v0-hYT"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egz-11-aGC">
+                            <rect key="frame" x="240" y="87" width="125" height="38"/>
+                            <color key="backgroundColor" red="0.0" green="0.65490196078431373" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="125" id="keQ-Gb-UNh"/>
+                                <constraint firstAttribute="height" constant="38" id="tiw-Kx-wcb"/>
+                            </constraints>
+                            <state key="normal" title="导航">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="navClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="FIT-uQ-RDA"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前位置:重庆市渝北区黄山大道68号木星" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oT1-pD-lTo">
+                            <rect key="frame" x="80" y="44" width="285" height="41"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="81i-31-b7g" firstAttribute="top" secondItem="cKm-Vb-fSL" secondAttribute="top" constant="15" id="8RD-ma-gyX"/>
+                        <constraint firstAttribute="trailing" secondItem="Egz-11-aGC" secondAttribute="trailing" constant="10" id="Jqc-Lh-y1T"/>
+                        <constraint firstAttribute="bottom" secondItem="CIQ-bM-r2Q" secondAttribute="bottom" constant="25" id="KaF-jc-AmB"/>
+                        <constraint firstAttribute="height" constant="150" id="ODk-xg-Scm"/>
+                        <constraint firstItem="lct-df-2wa" firstAttribute="top" secondItem="cKm-Vb-fSL" secondAttribute="top" constant="15" id="RCn-ah-T36"/>
+                        <constraint firstItem="CIQ-bM-r2Q" firstAttribute="leading" secondItem="cKm-Vb-fSL" secondAttribute="leading" constant="80" id="SPd-A0-cUE"/>
+                        <constraint firstItem="81i-31-b7g" firstAttribute="leading" secondItem="lct-df-2wa" secondAttribute="trailing" constant="15" id="VNA-pC-YaO"/>
+                        <constraint firstAttribute="bottom" secondItem="Egz-11-aGC" secondAttribute="bottom" constant="25" id="ZCy-K2-pbF"/>
+                        <constraint firstItem="lct-df-2wa" firstAttribute="leading" secondItem="cKm-Vb-fSL" secondAttribute="leading" constant="15" id="c4d-K9-8yR"/>
+                        <constraint firstItem="oT1-pD-lTo" firstAttribute="top" secondItem="81i-31-b7g" secondAttribute="bottom" constant="8" id="fJy-60-wxC"/>
+                        <constraint firstAttribute="trailing" secondItem="oT1-pD-lTo" secondAttribute="trailing" constant="10" id="lqR-je-g0y"/>
+                        <constraint firstItem="oT1-pD-lTo" firstAttribute="leading" secondItem="lct-df-2wa" secondAttribute="trailing" constant="15" id="wL7-aA-r2a"/>
+                    </constraints>
+                </view>
+                <view alpha="0.34999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5XV-b9-xF1">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="517"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="cKm-Vb-fSL" secondAttribute="bottom" id="BuN-jQ-S71"/>
+                <constraint firstAttribute="trailing" secondItem="cKm-Vb-fSL" secondAttribute="trailing" id="EML-a7-rOV"/>
+                <constraint firstItem="cKm-Vb-fSL" firstAttribute="top" secondItem="5XV-b9-xF1" secondAttribute="bottom" id="NOh-kg-eVz"/>
+                <constraint firstItem="5XV-b9-xF1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Vzh-2W-N21"/>
+                <constraint firstItem="5XV-b9-xF1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fct-m4-rej"/>
+                <constraint firstAttribute="trailing" secondItem="5XV-b9-xF1" secondAttribute="trailing" id="mGa-r8-JHs"/>
+                <constraint firstItem="cKm-Vb-fSL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="uo5-b7-TzF"/>
+            </constraints>
+            <connections>
+                <outlet property="address" destination="oT1-pD-lTo" id="pWR-Iw-Vnf"/>
+                <outlet property="contactBtn" destination="CIQ-bM-r2Q" id="ouL-fC-DLX"/>
+                <outlet property="grayView" destination="5XV-b9-xF1" id="6g0-4G-elk"/>
+                <outlet property="navBtn" destination="Egz-11-aGC" id="GwE-sr-Gsd"/>
+                <outlet property="peopleImage" destination="lct-df-2wa" id="ejJ-9r-i5c"/>
+                <outlet property="peopleName" destination="81i-31-b7g" id="L86-Tm-btd"/>
+            </connections>
+            <point key="canvasLocation" x="-258" y="-4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="my_icon_pro3" width="24" height="29"/>
+    </resources>
+</document>

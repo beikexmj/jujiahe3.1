@@ -7,7 +7,11 @@
 //
 
 #import "JJBaseViewController.h"
+#import <BaiduMapAPI_Map/BMKMapComponent.h>//引入地图功能所有的头文件
+
 
 @interface FamilyDynamicVC : JJBaseViewController
+
+
 
 @end
