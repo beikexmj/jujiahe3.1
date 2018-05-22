@@ -46,7 +46,7 @@
 }
 - (UITableView *)myTableView{
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT - 165, SCREENWIDTH, SCREENHEIGHT - NAVHEIGHT - TABBARHEIGHT - 165)];
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT + 165, SCREENWIDTH, SCREENHEIGHT - NAVHEIGHT - TABBARHEIGHT - 165)];
         _myTableView.dataSource = self;
         _myTableView.delegate = self;
         _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -134,7 +134,7 @@
     
     CGFloat sectionY = 0;
     
-    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 0)];
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREENWIDTH, 0)];
     
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, sectionY + 10, 5, 15)];
     lineView.backgroundColor  = RGBA(0x00a7ff, 1);
@@ -146,7 +146,7 @@
     [headerView  addSubview:markTitle];
     sectionY += 10 + 15 + 10;
     
-    [headerView addSubview:_myCollectionView];
+    [headerView addSubview:self.myCollectionView];
     self.automaticallyAdjustsScrollViewInsets = NO;
 
     sectionY += 120 +10;

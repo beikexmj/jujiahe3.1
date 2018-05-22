@@ -40,6 +40,7 @@
         myCell = [[CommunityClassificationCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell];
     }
     myCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [myCell setData];
     return myCell;
     
 }

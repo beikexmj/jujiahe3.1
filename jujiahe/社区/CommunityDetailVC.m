@@ -10,7 +10,7 @@
 #import <WebKit/WebKit.h>
 #import "AllServiceDataModel.h"
 
-@interface CommunityDetailVC ()<WKUIDelegate>
+@interface CommunityDetailVC ()<WKNavigationDelegate>
 @property (nonatomic,strong)UIScrollView *myScrollView;
 @property (nonatomic,strong)UIButton *signUpBtn;
 @property (nonatomic,strong)WKWebView *webView;
@@ -32,11 +32,11 @@
     [self.myScrollView addSubview:self.readNum];
     [self.myScrollView addSubview:self.time];
     [self.myScrollView addSubview:self.webView];
-    [self.myScrollView addSubview:self.signUpBtn];
+    [self.view addSubview:self.signUpBtn];
     self.readNum.text = @"阅读：2000";
     self.time.text = @"12:20";
-    [self.view addSubview:self.bottomView];
-    [self dataWithBottomView];
+    [self.myScrollView addSubview:self.bottomView];
+    [self fetchData];
     // Do any additional setup after loading the view.
 }
 - (void)fetchData{
@@ -65,7 +65,7 @@
 - (WKWebView *)webView{
     if (!_webView) {
         _webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT + 10, 40, 0)];
-        _webView.UIDelegate = self;
+        _webView.navigationDelegate = self;
     }
     return _webView;
 }
@@ -100,7 +100,7 @@
 }
 - (UIView *)bottomView{
     if (!_bottomView) {
-        _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT + 40, SCREEN_WIDTH, 0)];
+        _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, 0)];
         _bottomView.backgroundColor = RGBA(0xffffff, 1);
     }
     return _bottomView;
@@ -124,41 +124,42 @@
     sectionY += 10 + 15 + 10;
     
     for (int i = 0; i<_myArr.count; i++) {
-        CGFloat yy = sectionY;
+        CGFloat yy = sectionY + 10;
         for (int j = 0; j<_myArr[i].data.count/2 +(_myArr[i].data.count%2 ==0?0:1); j++) {
             for (int k = 0; k<2; k++) {
                 if (j*2 + (k+1)>_myArr[i].data.count) {
                     continue;
                 }
 
-                UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(10 + k*((SCREENWIDTH - 50)/2.0), yy, (SCREENWIDTH - 50)/2.0, (SCREENWIDTH - 50)/2.0)];
+                UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(30 + k*((SCREENWIDTH - 80)/2.0 + 20), yy, (SCREENWIDTH - 80)/2.0, (SCREENWIDTH - 80)/2.0)];
 
                
 
-                UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10 + k*((SCREENWIDTH - 50)/2.0), yy, (SCREENWIDTH - 50)/2.0, (SCREENWIDTH - 50)/2.0)];
+                UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, (SCREENWIDTH - 80)/2.0, (SCREENWIDTH - 80)/2.0)];
                 [imageView sd_setImageWithURL:[NSURL URLWithString:_myArr[i].data[j*2 + k].icon] placeholderImage:[UIImage imageNamed:@"icon_默认"] options:SDWebImageAllowInvalidSSLCertificates];
                 [myView addSubview:imageView];
                 
-                UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,  (SCREENWIDTH - 50)/2.0 - 30,  (SCREENWIDTH - 50)/2.0, 30)];
+                UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,  (SCREENWIDTH - 80)/2.0 - 30,  (SCREENWIDTH - 80)/2.0, 30)];
                 nameLabel.text = _myArr[i].data[j*2 +k].name;
                 nameLabel.font = [UIFont systemFontOfSize:13.0];
                 nameLabel.textColor = RGBA(0xffffff, 1);
                 nameLabel.backgroundColor = RGBA(0x000000, 0.5);
                 nameLabel.textAlignment =NSTextAlignmentCenter;
                 [myView addSubview:nameLabel];
-                UIButton  *btn = [[UIButton alloc]initWithFrame:CGRectMake(10 + k*((SCREENWIDTH - 50)/2.0), yy, (SCREENWIDTH - 50)/2.0, (SCREENWIDTH - 50)/2.0)];
+                UIButton  *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, (SCREENWIDTH - 80)/2.0, (SCREENWIDTH - 80)/2.0)];
                 btn.tag = j*2 + (k+1) + i*100;
                 [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
                 [myView addSubview:btn];
                 [_bottomView addSubview:myView];
             }
-            yy = yy + 130;
+            yy = yy + (SCREENWIDTH - 80)/2.0 + 30;
         }
-        sectionY = sectionY + (_myArr[i].data.count/2 +(_myArr[i].data.count%2 ==0?0:1))*(SCREENWIDTH - 50)/2.0 + 30;
+        sectionY = sectionY + (_myArr[i].data.count/2 +(_myArr[i].data.count%2 ==0?0:1))*((SCREENWIDTH - 80)/2.0 + 30);
     }
    CGRect rect = _bottomView.frame;
     rect.size.height  = sectionY;
     _bottomView.frame = rect;
+    self.myScrollView.contentSize = CGSizeMake(SCREENWIDTH, sectionY + 40);
     [self.webView loadHTMLString:@"12327483247237943732732483" baseURL:nil];
 
 }

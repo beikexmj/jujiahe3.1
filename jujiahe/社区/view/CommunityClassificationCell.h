@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CommunityClassificationCell : UITableViewCell
-
+- (void)setData;
 @end
