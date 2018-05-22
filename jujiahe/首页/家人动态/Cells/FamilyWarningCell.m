@@ -35,9 +35,9 @@
         make.left.top.equalTo(self.contentView).with.offset(15);
     }];
     [self.warningContainer mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).with.offset(40);
-        make.top.equalTo(self.dateLabel.mas_bottom).with.offset(10);
-        make.bottom.right.equalTo(self.contentView).with.offset(-15);
+        make.left.equalTo(self.contentView).with.offset(40).priorityHigh();
+        make.top.equalTo(self.dateLabel.mas_bottom).with.offset(10).priorityHigh();
+        make.bottom.right.equalTo(self.contentView).with.offset(-15).priorityHigh();
     }];
 }
 

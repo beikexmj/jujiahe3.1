@@ -66,7 +66,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
     //隐藏返回按钮
     self.navigationItem.hidesBackButton = YES;
     //禁止页面左侧滑动返回，注意，如果仅仅需要禁止此单个页面返回，还需要在viewWillDisapper下开放侧滑权限
@@ -437,7 +436,7 @@
     [self.view addSubview:maskView];
     [self.view addSubview:inputView];
     [inputView show];
-//    [MBProgressHUD hideHUD];
+//    [MBProgressHUD hideHUD];ƒ
 }
 
 @end

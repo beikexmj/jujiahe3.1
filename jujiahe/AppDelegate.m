@@ -396,4 +396,5 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     // Required,For systems with less than or equal to iOS6
     [JPUSHService handleRemoteNotification:userInfo];
 }
+
 @end
