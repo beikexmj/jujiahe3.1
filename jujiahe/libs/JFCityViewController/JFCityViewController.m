@@ -599,6 +599,10 @@ JFSearchViewDelegate>
     inputView = [[XXInputView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 200) mode:XXPickerViewModeProvinceCityAreasColumn dataSource:_areaArr];
     inputView.hideSeparator = YES;
     __weak typeof (inputView) weakInputView = inputView;
+    
+//    UIView *maskView = [[UIView alloc]initWithFrame:self.view.bounds];
+//    maskView.backgroundColor = RGBA(0x000000, 0.3);
+//    [self.view addSubview:maskView];
     WeakSelf
     inputView.completeBlock = ^(NSString *dateString,NSString *ids){
         StrongSelf
@@ -613,7 +617,6 @@ JFSearchViewDelegate>
         [strongSelf slipAction];
         [weakInputView removeFromSuperview];
     };
-    
     [self.view addSubview:inputView];
     [inputView show];
 }

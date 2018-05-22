@@ -12,29 +12,36 @@
 
 @end
 
-@implementation HomePageForm
+@implementation HomePageData
 + (NSDictionary *)objectClassInArray{
-    return @{@"broadcast_data" : [Broadcast_dataArr class],@"menu_data":[Menu_dataArr class],@"template_data":[Template_dataArr class]};
+    return @{@"recommendedResultModelList" : [RecommendedResultModelList class]};
 }
 @end
 
-@implementation Advertisement_data
+@implementation WeatherResultModel
 
-+ (NSDictionary *)objectClassInArray{
-    return @{@"data" : [Advertisement_dataArr class]};
+
+@end
+
+@implementation RecommendedResultModelList
+
++ (NSDictionary *)replacedKeyFromPropertyName{
+    return @{
+             @"ids" : @"id"
+             };
 }
 
 @end
 
-@implementation Advertisement_dataArr
+@implementation TopicModel
+
++ (NSDictionary *)objectClassInArray{
+    return @{@"data" : [TopicModelData class]};
+}
 
 @end
 
-@implementation Broadcast_dataArr
-
-@end
-
-@implementation Daily_word_data
+@implementation TopicModelData
 + (NSDictionary *)replacedKeyFromPropertyName{
     return @{
              @"ids" : @"id"
@@ -42,42 +49,3 @@
 }
 @end
 
-@implementation Menu_dataArr
-+ (NSDictionary *)replacedKeyFromPropertyName{
-    return @{
-             @"ids" : @"id"
-             };
-}
-@end
-
-@implementation Template_dataArr
-+ (NSDictionary *)replacedKeyFromPropertyName{
-    return @{
-             @"ids" : @"id"
-             };
-}
-@end
-
-@implementation Activity_form
-+ (NSDictionary *)objectClassInArray{
-    return @{@"form" : [Activity_formArr class]};
-}
-@end
-
-@implementation Activity_formArr
-
-@end
-
-@implementation NeighborhoodForm
-+ (NSDictionary *)objectClassInArray{
-    return @{@"form" : [NeighborhoodFormArr class]};
-}
-@end
-
-@implementation NeighborhoodFormArr
-+ (NSDictionary *)replacedKeyFromPropertyName{
-    return @{
-             @"ids" : @"id"
-             };
-}
-@end

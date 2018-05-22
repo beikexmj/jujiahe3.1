@@ -10,6 +10,7 @@
 #import "FamilyWarningVC.h"
 #import "peopleIMView.h"
 #import "XXTextField.h"
+#import "YYText.h"
 #import "DynamicVC.h"
 
 @interface FamilyDynamicVC ()<BMKMapViewDelegate,BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate,UIGestureRecognizerDelegate>{
@@ -26,6 +27,12 @@
     UIView *maskView;
     NSMutableArray *buildArr;
     UIButton *chooseBtn;
+    
+    UIView *attrStrView;
+    YYLabel *yyRule;
+    UILabel *label;
+    
+    CGFloat attrStrViewWidth;
 }
 
 
@@ -75,7 +82,6 @@
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
 
-    
     _mapView = [[BMKMapView alloc]initWithFrame:self.view.bounds];
     [self.view addSubview:_mapView];
     _locService = [[BMKLocationService alloc]init];
@@ -88,6 +94,13 @@
     
     buildArr=[[NSMutableArray alloc]initWithArray:@[@"重庆南坪万达",@"重庆财富中心",@"重庆高科",@"重庆解放碑",@"观音桥"]];
     
+    [self setBtnUI];
+    
+    [self setAttrStr];
+    
+}
+
+-(void)setBtnUI{
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.frame = CGRectMake(-10, 20, 44, 44);
@@ -97,7 +110,7 @@
     
     
     chooseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    chooseBtn.backgroundColor=[UIColor redColor];
+    //    chooseBtn.backgroundColor=[UIColor redColor];
     [chooseBtn setTitle:@"重庆财富中心" forState:UIControlStateNormal];
     chooseBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [chooseBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -172,12 +185,128 @@
     [chooseBtn1 setImageEdgeInsets:UIEdgeInsetsMake(titleHeight, titleWidth*0.5, -titleHeight, -titleWidth*0.5)];
 }
 
+-(void)setAttrStr{
+    attrStrView=[[UIView alloc]init];
+    [attrStrView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
+    attrStrView.layer.cornerRadius=15;
+    attrStrView.layer.masksToBounds=YES;
+    [self.view addSubview:attrStrView];
+    [attrStrView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).with.offset(-275);
+        make.top.equalTo(self.view).with.offset(120);
+        make.width.mas_equalTo(275);
+        make.height.mas_equalTo(30);
+    }];
+    
+    UIButton *delBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [delBtn setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
+    [delBtn setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
+    [delBtn addTarget:self action:@selector(delBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [attrStrView addSubview:delBtn];
+    [delBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(attrStrView);
+        make.centerY.equalTo(attrStrView);
+        make.height.width.mas_equalTo(30);
+    }];
+    
+    yyRule = [YYLabel new];
+    [attrStrView addSubview:yyRule];
+    [self setYYLabelValue:@"张三"];
+    
+    attrStrView.hidden=YES;
+}
+
+-(void)setYYLabelValue:(NSString*)name{
+    
+//    NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+//    paraStyle.lineSpacing = 3; //设置行间距
+//    paraStyle.lineBreakMode = NSLineBreakByTruncatingMiddle;//ab...cd
+
+    NSString *ruleStr =[NSString stringWithFormat:@"家人%@离开安全围栏查看详情",name];
+    
+    NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:14]};
+    CGSize   sizeC = CGSizeMake(MAXFLOAT ,30);
+    CGSize   sizeFileName = [ruleStr boundingRectWithSize:sizeC
+                                                     options:NSStringDrawingUsesLineFragmentOrigin
+                                                  attributes:dic
+                                                     context:nil].size;
+    
+    attrStrViewWidth=sizeFileName.width+25+34;
+    attrStrViewWidth=attrStrViewWidth>SCREEN_WIDTH?SCREEN_WIDTH:attrStrViewWidth;
+    [attrStrView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(attrStrViewWidth);
+        if (attrStrView.hidden) {
+            make.left.equalTo(self.view).with.offset(-attrStrViewWidth);
+        }
+        
+    }];
+    
+    
+    NSMutableAttributedString *attrStr1 = [[NSMutableAttributedString alloc] initWithString:ruleStr attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0f]}];
+    @weakify(self);
+    [attrStr1 yy_setTextHighlightRange:NSMakeRange(ruleStr.length-4, 4) color:RGBA(0x07D7F6, 1) backgroundColor:[UIColor clearColor] tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+        @strongify(self);
+        [self.navigationController pushViewController:[FamilyWarningVC new] animated:YES];
+    }];
+    yyRule.attributedText = attrStr1;
+    [yyRule setLineBreakMode:NSLineBreakByTruncatingMiddle];
+//    yyRule.backgroundColor=[UIColor redColor];
+    [yyRule mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(attrStrView).with.offset(25);
+        make.centerY.equalTo(attrStrView);
+        make.right.equalTo(attrStrView).with.offset(-30);
+        make.height.mas_equalTo(30);
+    }];
+    
+}
+
+//- (void)mapViewFitAnnotations:(NSArray<CLLocation *> *)locations
+-(void)mapViewFitAnnotations:(NSArray*)locations
+{
+    if (locations.count < 2) return;
+    
+//    CLLocationCoordinate2D coor = [locations[0] coordinate];
+    CLLocationCoordinate2D coor = (CLLocationCoordinate2D){[locations[0][0] floatValue],[locations[0][1] floatValue]};
+   
+    BMKMapPoint pt = BMKMapPointForCoordinate(coor);
+    
+    CGFloat ltX, ltY, rbX, rbY;
+    
+    ltX = pt.x; ltY = pt.y;
+    rbX = pt.x; rbY = pt.y;
+    
+    for (int i = 1; i < locations.count; i++) {
+        
+//        CLLocationCoordinate2D coor = [locations[i] coordinate];
+         CLLocationCoordinate2D coor = (CLLocationCoordinate2D){[locations[i][0] floatValue],[locations[i][1] floatValue]};
+        
+        
+        BMKMapPoint pt = BMKMapPointForCoordinate(coor);
+        
+        if (pt.x < ltX) ltX = pt.x;
+        if (pt.x > rbX) rbX = pt.x;
+        if (pt.y > ltY) ltY = pt.y;
+        if (pt.y < rbY) rbY = pt.y;
+    }
+    
+    BMKMapRect rect;
+    rect.origin = BMKMapPointMake(ltX , ltY);
+    rect.size = BMKMapSizeMake(rbX - ltX, rbY - ltY);
+    
+    [_mapView setVisibleMapRect:rect];
+    _mapView.zoomLevel = _mapView.zoomLevel -1;
+    NSLog(@"-------%f--------",_mapView.zoomLevel);
+}
+
+
 -(void)position{
     [_locService startUserLocationService];
-    _mapView.zoomLevel = 17; //地图等级，数字越大越清晰
+    _mapView.zoomLevel = 18; //地图等级，数字越大越清晰
+    
     _mapView.showsUserLocation = NO;//先关闭显示的定位图层
     _mapView.userTrackingMode =BMKUserTrackingModeFollow; //设置定位的跟随状态
     _mapView.showsUserLocation = YES;//显示定位图层
+    
     
     [self performSelector:@selector(refreshMap) withObject:self afterDelay:0.5];
     
@@ -189,9 +318,9 @@
     [_mapView removeAnnotations: _mapView.annotations];
     [_mapView removeOverlays:_mapView.overlays];
     
-    imageArr=@[@"pro_btn_invitation",@"pro_btn_news",@"my_icon_pro3"];
- locationArr=@[@[@"29.611000",@"106.510000"],@[@"29.616000",@"106.513000"],@[@"29.618000",@"106.515000"]];
-    
+    imageArr=@[@"pro_btn_invitation",@"pro_btn_news",@"my_icon_pro3",@"my_icon_pro3"];
+ locationArr=@[@[@"29.611000",@"106.510000"],@[@"29.616000",@"106.513000"],@[@"29.618000",@"106.515000"],@[@"29.628000",@"106.565000"]];
+//    [self mapViewFitAnnotations:locationArr];
     
     for (int i=0; i<imageArr.count; i++) {
         _pointAnnotation = [[BMKPointAnnotation alloc] init];
@@ -395,19 +524,16 @@
 //}
 
 -(void)IMBtnClick{
-    CLLocationCoordinate2D pt = (CLLocationCoordinate2D){29.611000,106.510000};
+    if (attrStrView.hidden) {
+        attrStrView.hidden=NO;
+        [self setYYLabelValue:@"李四王"];
+        [self animationView];
+    }else{
+        [self setYYLabelValue:@"王五哈哈哈王五哈哈哈王五哈哈哈王五哈哈哈"];
+        
+    }
     
-    BMKReverseGeoCodeOption *reverseGeocodeSearchOption = [[BMKReverseGeoCodeOption alloc]init];
-    reverseGeocodeSearchOption.reverseGeoPoint = pt;
-    BOOL flag = [_geocodesearch reverseGeoCode:reverseGeocodeSearchOption];
-    if(flag)
-    {
-        NSLog(@"反geo检索发送成功");
-    }
-    else
-    {
-        NSLog(@"反geo检索发送失败");
-    }
+    
 }
 
 -(void)currentPositionBtnClick{
@@ -438,10 +564,39 @@
         [self setBtn:chooseBtn1];
         [weakMaskView removeFromSuperview];
     };
+    inputView.cancleBlock = ^{
+        [weakMaskView removeFromSuperview];
+    };
     [self.view addSubview:maskView];
     [self.view addSubview:inputView];
     [inputView show];
 //    [MBProgressHUD hideHUD];ƒ
+}
+
+-(void)delBtnClick{
+    [UIView animateWithDuration:0.5f animations:^{
+        [attrStrView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.view).offset(-attrStrViewWidth);
+        }];
+        [self.view layoutIfNeeded];//这里是关键
+
+    } completion:^(BOOL finished) {
+        attrStrView.hidden=YES;
+    }];
+    
+}
+
+-(void)animationView{
+//    [self.view setNeedsUpdateConstraints];
+    [UIView animateWithDuration:0.5f animations:^{
+        [attrStrView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.view).offset(-15);
+        }];
+        [self.view layoutIfNeeded];//这里是关键
+        //        self.backView.alpha = 0.35;//透明度的变化依然和老方法一样
+    } completion:^(BOOL finished) {
+
+    }];
 }
 
 @end

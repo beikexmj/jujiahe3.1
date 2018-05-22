@@ -38,11 +38,11 @@
     _item = item;
     self.textLabel.text = item.title;
     if (item.value && ![item.value is_empty]) {
-        self.detailTextLabel.textColor = RGBA(0x9c9c9c, 1);
-        self.detailTextLabel.text = item.placeholder;
-    } else {
         self.detailTextLabel.textColor = RGBA(0x303030, 1);
         self.detailTextLabel.text = item.value;
+    } else {
+        self.detailTextLabel.textColor = RGBA(0x9c9c9c, 1);
+        self.detailTextLabel.text = item.placeholder;
     }
 }
 

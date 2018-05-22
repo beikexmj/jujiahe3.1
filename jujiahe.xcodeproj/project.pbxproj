@@ -21,6 +21,7 @@
 		5F06939720B421A800758A38 /* FamilyEditCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06939620B421A800758A38 /* FamilyEditCellFactory.m */; };
 		5F06939A20B424A700758A38 /* FamilyManageEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06939920B424A700758A38 /* FamilyManageEditVC.m */; };
 		5F06939D20B42B2500758A38 /* FamilyManageEditSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06939C20B42B2500758A38 /* FamilyManageEditSectionView.m */; };
+		5F0693A120B43C9000758A38 /* AnniversaryAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0693A020B43C9000758A38 /* AnniversaryAddVC.m */; };
 		5F1749D020B3B03700070848 /* DynamicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749CF20B3B03700070848 /* DynamicVC.m */; };
 		5F1749D320B3B28A00070848 /* DynamicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749D220B3B28A00070848 /* DynamicCell.m */; };
 		5F1749D620B3C2D100070848 /* FamilyManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749D520B3C2D100070848 /* FamilyManageVC.m */; };
@@ -562,6 +563,8 @@
 		5F06939920B424A700758A38 /* FamilyManageEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyManageEditVC.m; sourceTree = "<group>"; };
 		5F06939B20B42B2500758A38 /* FamilyManageEditSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyManageEditSectionView.h; sourceTree = "<group>"; };
 		5F06939C20B42B2500758A38 /* FamilyManageEditSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyManageEditSectionView.m; sourceTree = "<group>"; };
+		5F06939F20B43C9000758A38 /* AnniversaryAddVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnniversaryAddVC.h; sourceTree = "<group>"; };
+		5F0693A020B43C9000758A38 /* AnniversaryAddVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnniversaryAddVC.m; sourceTree = "<group>"; };
 		5F1749CE20B3B03700070848 /* DynamicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicVC.h; sourceTree = "<group>"; };
 		5F1749CF20B3B03700070848 /* DynamicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicVC.m; sourceTree = "<group>"; };
 		5F1749D120B3B28A00070848 /* DynamicCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicCell.h; sourceTree = "<group>"; };
@@ -1666,8 +1669,11 @@
 		5F06937D20B40BF100758A38 /* 纪念日 */ = {
 			isa = PBXGroup;
 			children = (
+				5F06939E20B43C6B00758A38 /* Cells */,
 				5F02C28720B405E0006227AC /* AnniversaryVC.h */,
 				5F02C28820B405E0006227AC /* AnniversaryVC.m */,
+				5F06939F20B43C9000758A38 /* AnniversaryAddVC.h */,
+				5F0693A020B43C9000758A38 /* AnniversaryAddVC.m */,
 			);
 			path = "纪念日";
 			sourceTree = "<group>";
@@ -1696,6 +1702,15 @@
 				5F06939020B419B300758A38 /* FamilyEditCheckmarkerCell.m */,
 				5F06939B20B42B2500758A38 /* FamilyManageEditSectionView.h */,
 				5F06939C20B42B2500758A38 /* FamilyManageEditSectionView.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5F06939E20B43C6B00758A38 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5F02C28A20B4068B006227AC /* AnniversaryCell.h */,
+				5F02C28B20B4068B006227AC /* AnniversaryCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -2947,8 +2962,6 @@
 				5F1749D220B3B28A00070848 /* DynamicCell.m */,
 				5F1749DD20B3F4BA00070848 /* FamilyAlbumCell.h */,
 				5F1749DE20B3F4BA00070848 /* FamilyAlbumCell.m */,
-				5F02C28A20B4068B006227AC /* AnniversaryCell.h */,
-				5F02C28B20B4068B006227AC /* AnniversaryCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -4872,6 +4885,7 @@
 				7C1109AC209FEEC70012040E /* UINavigationController+StackManager.m in Sources */,
 				7C476EC720A5946E005ECE03 /* CommunityVC.m in Sources */,
 				7C110D2420A032940012040E /* UMHybrid.m in Sources */,
+				5F0693A120B43C9000758A38 /* AnniversaryAddVC.m in Sources */,
 				7C40D17220AFF196005F0212 /* PublishConversationVC.m in Sources */,
 				7C110A8E209FF0C00012040E /* EmptyView.m in Sources */,
 				7C476DBE20A58A6D005ECE03 /* CCPScrollView.m in Sources */,
