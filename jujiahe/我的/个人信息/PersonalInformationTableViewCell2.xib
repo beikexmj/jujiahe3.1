@@ -44,7 +44,7 @@
                                 <color key="textColor" red="0.37647058823529411" green="0.37647058823529411" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="默认头像60x60" translatesAutoresizingMaskIntoConstraints="NO" id="dkd-9i-dFm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="per_head" translatesAutoresizingMaskIntoConstraints="NO" id="dkd-9i-dFm">
                                 <rect key="frame" x="248" y="8" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="SK2-Om-1oj"/>
@@ -202,6 +202,6 @@
         <image name="icon_more2" width="8" height="15"/>
         <image name="my_circle_choice" width="10" height="10"/>
         <image name="my_circle_unchoice" width="10" height="10"/>
-        <image name="默认头像60x60" width="30" height="30"/>
+        <image name="per_head" width="70" height="70"/>
     </resources>
 </document>

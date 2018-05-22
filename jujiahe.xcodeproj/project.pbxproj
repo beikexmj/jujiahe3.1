@@ -241,6 +241,7 @@
 		7C21320F20B161820017AF85 /* FamilyWarningInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C21320E20B161820017AF85 /* FamilyWarningInfoView.m */; };
 		7C21321220B164BB0017AF85 /* FamilyWarningTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C21321120B164BB0017AF85 /* FamilyWarningTableHeaderView.m */; };
 		7C21321520B165B40017AF85 /* FamilyWarningCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C21321420B165B40017AF85 /* FamilyWarningCell.m */; };
+		7C24517320B404CF0046B619 /* HappenDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C24517220B404CF0046B619 /* HappenDataModel.m */; };
 		7C2D4ABF20B10E9E00F40CD6 /* PublishConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D4ABE20B10E9E00F40CD6 /* PublishConversationCell.m */; };
 		7C3CFBF220A14D3D0084FF2A /* TZAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3CFBDE20A14D3D0084FF2A /* TZAlbumCell.xib */; };
 		7C3CFBF320A14D3D0084FF2A /* TZAssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3CFBDF20A14D3D0084FF2A /* TZAssetCell.xib */; };
@@ -1033,6 +1034,8 @@
 		7C21321120B164BB0017AF85 /* FamilyWarningTableHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyWarningTableHeaderView.m; sourceTree = "<group>"; };
 		7C21321320B165B40017AF85 /* FamilyWarningCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyWarningCell.h; sourceTree = "<group>"; };
 		7C21321420B165B40017AF85 /* FamilyWarningCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyWarningCell.m; sourceTree = "<group>"; };
+		7C24517120B404CF0046B619 /* HappenDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HappenDataModel.h; sourceTree = "<group>"; };
+		7C24517220B404CF0046B619 /* HappenDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappenDataModel.m; sourceTree = "<group>"; };
 		7C2D4ABD20B10E9E00F40CD6 /* PublishConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublishConversationCell.h; sourceTree = "<group>"; };
 		7C2D4ABE20B10E9E00F40CD6 /* PublishConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublishConversationCell.m; sourceTree = "<group>"; };
 		7C3CFBDE20A14D3D0084FF2A /* TZAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TZAlbumCell.xib; sourceTree = "<group>"; };
@@ -3774,6 +3777,8 @@
 		7C5AD33820A9B09800158D38 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				7C24517120B404CF0046B619 /* HappenDataModel.h */,
+				7C24517220B404CF0046B619 /* HappenDataModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -4480,6 +4485,7 @@
 				81E4D7FE20AFB98400FC5B5D /* RecordQueryDataModel.m in Sources */,
 				81E4D7FF20AFB98400FC5B5D /* RecordQueryVC.m in Sources */,
 				81BC5F8A20B2DDD7007F8AB1 /* CommunityClassificationVC.m in Sources */,
+				7C24517320B404CF0046B619 /* HappenDataModel.m in Sources */,
 				81E4D80020AFB98400FC5B5D /* RecordQueryCell.m in Sources */,
 				81E4D7E820AFB86700FC5B5D /* PropertyFeePayDataModel.m in Sources */,
 				81E4D7E920AFB86700FC5B5D /* PropertyFeeArreargeTimeCell.m in Sources */,

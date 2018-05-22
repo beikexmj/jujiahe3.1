@@ -67,8 +67,9 @@
     _activity_Dict = [NSMutableDictionary dictionary];
     _dataArr = [NSMutableArray array];
     refreshflag = YES;
+    pageIndex = 1;
     self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        pageIndex = 0;
+        pageIndex = 1;
         [self fetchData:1];
     }];
     self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
@@ -163,13 +164,15 @@
 }
 - (void)rebuildHomeFace{
     NSArray<RecommendedResultModelList *> *imageArr = _homePageData.recommendedResultModelList;
-    NSInteger num = 4;
+    NSInteger num = imageArr.count;
     CGFloat btnWidth = (SCREENWIDTH - 40)/2.0;
     CGFloat btnHeight =  btnWidth * (85.0/170);
     if (num == 2) {
         picHight = 30 + 15 + 30 + btnHeight;
-    }else{
+    }else if (num == 4){
         picHight = 30 + 15 + 30 + btnHeight*2 + 10;
+    }else{
+        picHight = 30 + 30;
     }
 
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, picHight)];
@@ -188,7 +191,7 @@
     UILabel *subTemperature = [[UILabel alloc]initWithFrame:CGRectMake(frame.size.width + frame.origin.x + 10, 0, 150, 30)];
     subTemperature.textColor = RGBA(0xffffff, 1);
     subTemperature.font = [UIFont systemFontOfSize:14.0];
-    subTemperature.text  = [NSString stringWithFormat:@"%@    %@/%@°C",_homePageData.weatherResultModel.condition,_homePageData.weatherResultModel.tempDay,_homePageData.weatherResultModel.tempNight];
+    subTemperature.text  = [NSString stringWithFormat:@"%@    %@/%@°C",_homePageData.weatherResultModel.condition,_homePageData.weatherResultModel.tempNight,_homePageData.weatherResultModel.tempDay];
     [weatherView addSubview:subTemperature];
    
     UILabel *airQuality = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH - 135, 0, 120, 30)];
@@ -434,46 +437,75 @@
     mycell.followBtnTwo.layer.borderColor = RGBA(0x9c9c9c, 1).CGColor;
     mycell.followBtnThree.layer.borderColor = RGBA(0x9c9c9c, 1).CGColor;
 
-    if (indexPath.row == 0) {
-        mycell.subViewOne.hidden = NO;
-        mycell.imageOne.image = [UIImage imageNamed:@"home_btn_dongtai"];
-        mycell.titleOne.text =@"母亲节送什么礼物？";
-        NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
-        paraStyle.lineSpacing = 6; //设置行间距
-        paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:mycell.titleOne.text attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0f],NSForegroundColorAttributeName:RGBA(0x303030, 1),NSParagraphStyleAttributeName:paraStyle}];
-        mycell.titleOne.attributedText = attrStr;
-    }else if (indexPath.row == 1){
-        mycell.subViewTwo.hidden = NO;
-        mycell.imageTwo.image = [UIImage imageNamed:@"home_btn_dongtai"];
-        mycell.titleTwo.text = @"错过了孩子成长的伴侣，才是人生最大的遗憾！";
-        NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
-        paraStyle.lineSpacing = 6; //设置行间距
-        paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:mycell.titleTwo.text attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0f],NSForegroundColorAttributeName:RGBA(0x303030, 1),NSParagraphStyleAttributeName:paraStyle}];
-        mycell.titleTwo.attributedText = attrStr;
-    }else if (indexPath.row == 2){
-        mycell.subViewThree.hidden = NO;
-        mycell.titleThree.text = @"暑假将至，十条优质暑期旅游线路，赶紧带孩子上来一次温馨的家庭旅行！";
-        NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
-        paraStyle.lineSpacing = 6; //设置行间距
-        paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:mycell.titleThree.text attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0f],NSForegroundColorAttributeName:RGBA(0x303030, 1),NSParagraphStyleAttributeName:paraStyle}];
-        mycell.titleThree.attributedText = attrStr;
-        mycell.imageOneInViewThree.image = [UIImage imageNamed:@"home_btn_dongtai"];
-        mycell.imageTwoInViewThree.image = [UIImage imageNamed:@"home_btn_dongtai"];
-        mycell.imageThreeInViewThree.image = [UIImage imageNamed:@"home_btn_dongtai"];
-        mycell.followBtnThreeWidth.constant = 55;
-        [mycell.followBtnThree setTitle:@"已关注" forState:UIControlStateNormal];
-        [mycell.followBtnThree setTitleColor:RGBA(0x00a7ff, 1) forState:UIControlStateNormal];
-        mycell.followBtnThree.layer.borderColor = RGBA(0x00a7ff, 1).CGColor;
+    if (_dataArr.count>0) {
+        TopicModelData *onceDict = _dataArr[indexPath.row];
+        NSMutableArray *coverArr = [NSMutableArray array];
+        if ([JGIsBlankString isBlankString:onceDict.covers ]) {
+           [coverArr addObject:[DictToJson arrWithJsonString:onceDict.covers]];
+        }
+        if (onceDict.layerType == 1) {
+            mycell.subViewOne.hidden = NO;
+            [mycell.imageOne sd_setImageWithURL:[NSURL URLWithString:coverArr.lastObject] placeholderImage:[UIImage imageNamed:@"icon_默认"]];
+            mycell.titleOne.text = onceDict.title;
+            mycell.markOne.text = onceDict.typeName;
+            NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+            paraStyle.lineSpacing = 6; //设置行间距
+            paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:mycell.titleOne.text attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0f],NSForegroundColorAttributeName:RGBA(0x303030, 1),NSParagraphStyleAttributeName:paraStyle}];
+            mycell.titleOne.attributedText = attrStr;
+            if (onceDict.attentionFlag == 1) {
+                mycell.followBtnOneWidth.constant = 55;
+                [mycell.followBtnOne setTitle:@"已关注" forState:UIControlStateNormal];
+                [mycell.followBtnOne setTitleColor:RGBA(0x00a7ff, 1) forState:UIControlStateNormal];
+                mycell.followBtnOne.layer.borderColor = RGBA(0x00a7ff, 1).CGColor;
+            }
+        }else if (onceDict.layerType == 2){
+            mycell.subViewTwo.hidden = NO;
+            [mycell.imageTwo sd_setImageWithURL:[NSURL URLWithString:coverArr.lastObject] placeholderImage:[UIImage imageNamed:@"icon_默认"]];
+            mycell.titleTwo.text = onceDict.title;
+            mycell.markTwo.text = onceDict.typeName;
+            NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+            paraStyle.lineSpacing = 6; //设置行间距
+            paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:mycell.titleTwo.text attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0f],NSForegroundColorAttributeName:RGBA(0x303030, 1),NSParagraphStyleAttributeName:paraStyle}];
+            mycell.titleTwo.attributedText = attrStr;
+            if (onceDict.attentionFlag == 1) {
+                mycell.followBtnTwoWidth.constant = 55;
+                [mycell.followBtnTwo setTitle:@"已关注" forState:UIControlStateNormal];
+                [mycell.followBtnTwo setTitleColor:RGBA(0x00a7ff, 1) forState:UIControlStateNormal];
+                mycell.followBtnTwo.layer.borderColor = RGBA(0x00a7ff, 1).CGColor;
+            }
+        }else if (onceDict.layerType == 3){
+            mycell.subViewThree.hidden = NO;
+            mycell.titleThree.text = onceDict.title;
+            mycell.markThree.text = onceDict.typeName;
+            NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+            paraStyle.lineSpacing = 6; //设置行间距
+            paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:mycell.titleThree.text attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0f],NSForegroundColorAttributeName:RGBA(0x303030, 1),NSParagraphStyleAttributeName:paraStyle}];
+            mycell.titleThree.attributedText = attrStr;
+            if (coverArr.count>0) {
+                [mycell.imageOneInViewThree sd_setImageWithURL:[NSURL URLWithString:coverArr[0]] placeholderImage:[UIImage imageNamed:@"icon_默认"]];
+            }
+            if (coverArr.count>1) {
+                [mycell.imageTwoInViewThree sd_setImageWithURL:[NSURL URLWithString:coverArr[1]] placeholderImage:[UIImage imageNamed:@"icon_默认"]];
+            }
+            if (coverArr.count>2) {
+                [mycell.imageThreeInViewThree sd_setImageWithURL:[NSURL URLWithString:coverArr[2]] placeholderImage:[UIImage imageNamed:@"icon_默认"]];
+            }
+            if (onceDict.attentionFlag == 1) {
+                mycell.followBtnThreeWidth.constant = 55;
+                [mycell.followBtnThree setTitle:@"已关注" forState:UIControlStateNormal];
+                [mycell.followBtnThree setTitleColor:RGBA(0x00a7ff, 1) forState:UIControlStateNormal];
+                mycell.followBtnThree.layer.borderColor = RGBA(0x00a7ff, 1).CGColor;
+            }
+        }
     }
-    
     return mycell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-   
-    return 3;
+    
+    return _dataArr.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {

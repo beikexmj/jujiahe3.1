@@ -73,17 +73,8 @@
                   symbolName = "-[JFCityViewController currentLocation:]"
                   moduleName = "jujiahe"
                   usesParentBreakpointCondition = "Yes"
-<<<<<<< HEAD
                   urlString = "file:///Users/xiamingjiang/Desktop/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
-<<<<<<< HEAD
-                  timestampString = "548646223.422117"
-=======
-                  urlString = "file:///Users/xiamingjiang/Library/TempleProject/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
-                  timestampString = "548575714.982329"
->>>>>>> dev
-=======
-                  timestampString = "548665724.899057"
->>>>>>> xiamingjiang
+                  timestampString = "548679979.237816"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "546"
@@ -97,17 +88,8 @@
                   symbolName = "__40-[JFCityViewController currentLocation:]_block_invoke"
                   moduleName = "jujiahe"
                   usesParentBreakpointCondition = "Yes"
-<<<<<<< HEAD
                   urlString = "file:///Users/xiamingjiang/Desktop/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
-<<<<<<< HEAD
-                  timestampString = "548646223.424726"
-=======
-                  urlString = "file:///Users/xiamingjiang/Library/TempleProject/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
-                  timestampString = "548575714.9848"
->>>>>>> dev
-=======
-                  timestampString = "548665724.901723"
->>>>>>> xiamingjiang
+                  timestampString = "548679979.245996"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "547"

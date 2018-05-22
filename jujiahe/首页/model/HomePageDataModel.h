@@ -75,6 +75,7 @@ TopicModel,TopicModelData;
 
 @property (nonatomic, assign) NSInteger attentionFlag;
 
+@property (nonatomic, assign) NSInteger layerType;
 @end
 
 

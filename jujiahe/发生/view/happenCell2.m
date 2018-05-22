@@ -87,9 +87,9 @@
         make.height.mas_equalTo(1);
     }];
 }
-- (void)setData{
-    self.circleName.text = @"我要去旅行";
-    self.circleHost.text = @"圈主：周杰伦";
+- (void)setData:(HappenDataCirclesThings *)data{
+    self.circleName.text = data.name;
+    self.circleHost.text = data.subName;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

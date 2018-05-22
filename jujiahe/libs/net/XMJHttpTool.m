@@ -79,47 +79,38 @@
 }
 
 + (void)postWithImageUrl:(NSString *)url param:(id)params postImageArr:(NSArray*)postImageArr  mimeType:(NSString*)mimeType success:(void (^)(id responseObj))success failure:(void(^)(NSError *error))failure{
-    NSURL *SessionUrl = [NSURL URLWithString:BASE_URL];
+    NSURL *SessionUrl = [NSURL URLWithString:XMJBASE_URL];
     
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFHTTPSessionManager *mgr = [[AFHTTPSessionManager alloc] initWithBaseURL:SessionUrl sessionConfiguration:config];
     mgr.requestSerializer = [AFHTTPRequestSerializer serializer];
     mgr.responseSerializer = [AFJSONResponseSerializer serializer];
-    // 加上这行代码，https ssl 验证。
-    [mgr setSecurityPolicy:[XMJHttpTool customSecurityPolicy]];
+//    // 加上这行代码，https ssl 验证。
+//    [mgr setSecurityPolicy:[XMJHttpTool customSecurityPolicy]];
     
     NSMutableDictionary  *mutableDict = [NSMutableDictionary dictionaryWithDictionary:params];
     
     StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
-    if (![JGIsBlankString isBlankString:storage.uuid]) {
-        [mutableDict setValue:storage.uuid forKey:@"uuid"];
+    if (![JGIsBlankString isBlankString:storage.uToken]) {
+        [mutableDict setValue:storage.uToken forKey:@"uToken"];
     }
-    if (![JGIsBlankString isBlankString:storage.userId ]) {
-        [mutableDict setValue:storage.userId forKey:@"userId"];
+    if (![JGIsBlankString isBlankString:storage.sid]) {
+        [mutableDict setValue:storage.sid forKey:@"sid"];
     }
-    if (![url isEqualToString:@"uaa/oauth/token"]) {
-        if (![JGIsBlankString isBlankString:storage.access_token]) {
-            [mutableDict setValue:storage.access_token forKey:@"access_token"];
-        }
-    }
-    [mutableDict setValue:@"jujiahe_app" forKey:@"device"];
-    [mutableDict setValue:[CMUUIDManager readUUID] forKey:@"deviceCode"];
+    
     [mgr POST:url parameters:mutableDict constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
      {
          NSArray * array = [postImageArr objectAtIndex:0];
          NSArray * array1 = [postImageArr objectAtIndex:1];
-
          // 上传 多张图片
          for(NSInteger i = 0; i < [array count]; i++) {
              NSData * picData = UIImageJPEGRepresentation([[postImageArr objectAtIndex:0] objectAtIndex: i], 1);
             UIImage * images = [UIImage imageWithData:picData];
              while ([picData length]>1024*500) {
-                 
                  picData =  UIImageJPEGRepresentation(images, 0.3);
                  if ([picData length]>1024*500) {
                      images =  [StorageUserInfromation imageCompressForWidth:images targetWidth:images.size.width*0.5];
                      picData =  UIImageJPEGRepresentation(images, 0.3);
-
                  }
              }
              NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -130,47 +121,10 @@
              [formData appendPartWithFileData:picData name:[array1 objectAtIndex:i] fileName:fileName mimeType:mimeType];
          }
      } progress:^(NSProgress * _Nonnull uploadProgress) {
-         
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSString * str = [JGEncrypt encryptWithContent:[responseObject mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-            if ([[DictToJson dictionaryWithJsonString:str][@"rcode"] integerValue] == 9999){
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                [defaults setValue:nil forKey:@"accountNo"];
-                AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                LoginViewController *controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-                delegate.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:controller];
-                [MBProgressHUD showError:@"登录已过期或账号已在其他终端登录" toView:controller.view];
-            }
              success(responseObject);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSString * str = error.userInfo[@"NSLocalizedDescription"];
-            
-            if ([str containsString:@"401"]) {
-                NSDictionary *dict2 = @{@"grant_type":@"refresh_token",@"refresh_token":storage.refresh_token?storage.refresh_token:@""};
-                [self postWithUrl:@"uaa/oauth/token" param:dict2 success:^(id responseObj) {
-                    NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-                    if ([[DictToJson dictionaryWithJsonString:str][@"rcode"] integerValue] == 0) {
-                        NSDictionary *onceDict = [DictToJson dictionaryWithJsonString:str];
-                        onceDict = onceDict[@"form"];
-                        storage.access_token = onceDict[@"access_token"];
-                        storage.refresh_token = onceDict[@"refresh_token"];
-                        storage.uuid = onceDict[@"uuid"];
-                        storage.expires_in = onceDict[@"expires_in"];
-                        NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];
-                        [NSKeyedArchiver archiveRootObject:storage toFile:file];
-                        [self postWithImageUrl:url param:params postImageArr:postImageArr mimeType:mimeType success:^(id responseObj) {
-                            success(responseObj);
-                        } failure:^(NSError *error) {
-                            failure(error);
-                        }];
-                    }
-                } failure:^(NSError *error) {
-                    failure(error);
-                }];
-            }else{
-                failure(error);
-                [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
-            }
+            failure(error);
         }];
     
 }
