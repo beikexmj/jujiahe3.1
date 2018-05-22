@@ -8,6 +8,7 @@
 
 #import "AnniversaryVC.h"
 #import "AnniversaryCell.h"
+#import "AnniversaryAddVC.h"
 
 static NSString *const kAnniversaryTableViewCell = @"com.copticomm.jjh.anniversary.tableview.cell";
 
@@ -80,6 +81,7 @@ static NSString *const kAnniversaryTableViewCell = @"com.copticomm.jjh.anniversa
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [self.navigationController pushViewController:[AnniversaryAddVC new] animated:YES];
 }
 
 #pragma mark - getter

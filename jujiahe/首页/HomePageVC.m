@@ -205,7 +205,11 @@
             UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(15 + (btnWidth+10)*j,  30 + 15 + i*(btnHeight + 10), btnWidth, btnHeight)];
             k++;
             btn.tag = k;
-            [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:imageArr[k-1].pictureUrl] forState:UIControlStateNormal];
+            if ([imageArr is_empty]) {
+                [btn sd_setBackgroundImageWithURL:nil forState:UIControlStateNormal];
+            } else {
+                [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:imageArr[k-1].pictureUrl] forState:UIControlStateNormal];
+            }
             [btn addTarget:self action:@selector(headerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
             [headerView addSubview:btn];
         }
