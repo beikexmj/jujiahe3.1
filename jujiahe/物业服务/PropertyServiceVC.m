@@ -18,12 +18,14 @@
 #import "QueryLogisticsVC.h"
 #import "PropertyPaymentVC.h"
 #import "AreaHeadlineVC.h"
+#import "PropertyServiceDataModel.h"
 @interface PropertyServiceVC ()<SDCycleScrollViewDelegate>
 {
     CCPScrollView *ccpScrollView;
+    NSMutableArray <PropertyServiceList*>*muMyArr;
 }
 @property (nonatomic,strong)UIScrollView *myScrollView;
-@property (nonatomic,strong) NSArray <AllServiceArr*> *myArr;
+@property (nonatomic,strong) NSArray <PropertyServiceList*> *myArr;
 @end
 
 @implementation PropertyServiceVC
@@ -46,14 +48,12 @@
     return _myScrollView;
 }
 - (void)fetchData{
-    NSDictionary *dict = @{@"apiv":@"1.0",@"propertyAreaId":@"1c265c5b5a3741cca88ace5dac48a6ef"};
-    [ZTHttpTool postWithUrl:@"jujiahe/v1/serviceMenu/infos" param:dict success:^(id responseObj) {
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSDictionary * onceDict = [DictToJson dictionaryWithJsonString:str];
-        NSLog(@"%@",onceDict);
-        AllServiceDataModel *data = [AllServiceDataModel mj_objectWithKeyValues:str];
-        if (data.rcode == 0) {
-            _myArr = data.form;
+    NSDictionary *dict = @{@"propertyId":[StorageUserInfromation storageUserInformation].choseUnitPropertyId};
+    [XMJHttpTool postWithUrl:@"property/home" param:dict success:^(id responseObj) {
+        NSString * str = [responseObj mj_JSONObject];
+        PropertyServiceDataModel *data = [PropertyServiceDataModel mj_objectWithKeyValues:str];
+        if (data.success) {
+            _myArr = data.data.list;
             if (_myArr.count>0) {
                 [self rebuildView];
             }
@@ -71,7 +71,7 @@
     UILabel *markTitle = [[UILabel alloc]initWithFrame:CGRectMake(20, sectionY + 10, 100, 15)];
     markTitle.textColor = RGBA(0x303030, 1);
     markTitle.font = [UIFont systemFontOfSize:16.0];
-    markTitle.text = @"生活话题";
+    markTitle.text = @"社区政务";
     [self.myScrollView  addSubview:markTitle];
     
     UILabel *moreClassification = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH - 130, sectionY + 10, 100, 15)];
@@ -93,7 +93,18 @@
     
     CGFloat picHight = (SCREENWIDTH- 30)*(8/15.0);
     NSArray * myArr = @[@"home_btn_menjin",@"home_btn_menjin",@"home_btn_menjin"];
-   
+    NSMutableArray * muArr;
+    for (PropertyServiceList * data in _myArr) {
+        if (data.type == 2) {
+            for (int i = 0; i<data.menuElements.count; i++) {
+                [muArr addObject:data.menuElements[i].link];
+
+            }
+        }
+    }
+    if (muArr) {
+        myArr = muArr;
+    }
     SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(15, sectionY, SCREENWIDTH-30, picHight) imagesGroup:myArr advertisement_data:nil];
     cycleScrollView.delegate = self;
     [self.myScrollView addSubview:cycleScrollView];
@@ -140,8 +151,12 @@
     }];
     [self.myScrollView addSubview:alertView];
     sectionY += 35 + 20;
-    
+    muMyArr = [NSMutableArray array];
     for (int i = 0; i<_myArr.count; i++) {
+        if (_myArr[i].type != 0) {
+            continue;
+        }
+        [muMyArr addObject:_myArr[i]];
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, sectionY + 30, 5, 15)];
         lineView.backgroundColor = RGBA(0x00a7ff, 1);
         [self.myScrollView addSubview:lineView];
@@ -152,23 +167,23 @@
         typeName.text = _myArr[i].name;
         [self.myScrollView addSubview:typeName];
         CGFloat yy = sectionY + 40;
-        for (int j = 0; j<_myArr[i].data.count/4 +(_myArr[i].data.count%4 ==0?0:1); j++) {
+        for (int j = 0; j<_myArr[i].menuElements.count/4 +(_myArr[i].menuElements.count%4 ==0?0:1); j++) {
             for (int k = 0; k<4; k++) {
-                if (j*4 + (k+1)>_myArr[i].data.count) {
+                if (j*4 + (k+1)>_myArr[i].menuElements.count) {
                     continue;
                 }
                 
                 UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(k*(SCREENWIDTH/4.0), yy, SCREENWIDTH/4.0, 110)];
                 
                 UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, SCREENWIDTH/4.0, 20)];
-                nameLabel.text = _myArr[i].data[j*4 +k].name;
+                nameLabel.text = _myArr[i].menuElements[j*4 +k].name;
                 nameLabel.font = [UIFont systemFontOfSize:13.0];
                 nameLabel.textColor = RGBA(0x606060, 1);
                 nameLabel.textAlignment =NSTextAlignmentCenter;
                 [myView addSubview:nameLabel];
                 
                 UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake((SCREENWIDTH/4.0 - 55)/2.0, 20, 55, 55)];
-                [imageView sd_setImageWithURL:[NSURL URLWithString:_myArr[i].data[j*4 + k].icon] placeholderImage:[UIImage imageNamed:@"icon_默认"] options:SDWebImageAllowInvalidSSLCertificates];
+                [imageView sd_setImageWithURL:[NSURL URLWithString:_myArr[i].menuElements[j*4 + k].link] placeholderImage:[UIImage imageNamed:@"icon_默认"] options:SDWebImageAllowInvalidSSLCertificates];
                 [myView addSubview:imageView];
                 
                 UIButton  *btn = [[UIButton alloc]initWithFrame:CGRectMake( 0 , 0 , SCREENWIDTH/4.0, 100)];
@@ -178,7 +193,7 @@
                 [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
                 [myView addSubview:btn];
                 
-                if (_myArr[i].data[j*4 +k].hot == 1) {
+                if (_myArr[i].menuElements[j*4 +k].isHot == 1) {
                     JSBadgeView *bage = [[JSBadgeView alloc]initWithParentView:btn alignment:JSBadgeViewAlignmentTopCenter];
                     bage.layer.borderColor = RGBA(0xffffff, 1).CGColor;
                     bage.layer.borderWidth = 1;
@@ -191,7 +206,7 @@
             }
             yy = yy + 110;
         }
-        sectionY = sectionY + (_myArr[i].data.count/4 +(_myArr[i].data.count%4 ==0?0:1))*110 + 20;
+        sectionY = sectionY + (_myArr[i].menuElements.count/4 +(_myArr[i].menuElements.count%4 ==0?0:1))*110 + 20;
     }
     
     UIButton *moreBtn = [[UIButton alloc]initWithFrame:CGRectMake(15, sectionY + 20, SCREENWIDTH - 30, (SCREENWIDTH - 30)*(180/700.0))];
@@ -217,61 +232,37 @@
     
     NSInteger section = btn.tag/100;
     NSInteger row = btn.tag%100;
-    AllServiceDict *dict = _myArr[section].data[row-1];
+    MenuElementsData *dict = muMyArr[section].menuElements[row-1];
     NSString *name = dict.name;
-    if ([name isEqualToString:@"呼叫物管"]) {
-        
-    }else if ([name isEqualToString:@"生活缴费"]) {
-        
-    }else if ([name isEqualToString:@"开水开电"]) {
-        
-    }else if ([name isEqualToString:@"社区报事"]) {
-        
-    }else if ([name isEqualToString:@"代收包裹"]) {
-        AreaHeadlineVC *page = [[AreaHeadlineVC alloc]init];
+    if ([name isEqualToString:@"园区保修"]) {
+        ServiceVC *page = [[ServiceVC alloc]init];
+        page.titleStr = name;
         [self.navigationController pushViewController:page animated:YES];
-        return;
+    }else if ([name isEqualToString:@"门禁开门"]) {
+        
+    }else if ([name isEqualToString:@"访客邀请"]) {
+        
+    }else if ([name isEqualToString:@"快递查询"]) {
+        
+    }else if ([name isEqualToString:@"投诉私信"]) {
+        ServiceVC *page = [[ServiceVC alloc]init];
+        page.titleStr = name;
+        [self.navigationController pushViewController:page animated:YES];
     }else if ([name isEqualToString:@"缴物管费"]) {
         PropertyPaymentVC *page = [[PropertyPaymentVC alloc]init];
-        page.propertyHouseId = dict.ids;
+        page.propertyHouseId = @"15445";
         [self.navigationController pushViewController:page animated:YES];
-    }else if ([name isEqualToString:@"园区保修"]) {
+    }else if ([name isEqualToString:@"满意度调查"]) {
         
-    }else if ([name isEqualToString:@"秩序维护"]) {
-        
-    }else if ([name isEqualToString:@"户内保修"]) {
-        
-    }else if ([name isEqualToString:@"关于物业"]) {
-        
-    }else if ([name isEqualToString:@"开门"]) {
-        
-    }else if ([name isEqualToString:@"缴费大厅"]) {
-        
-    }else if ([name isEqualToString:@"清洁"]) {
-        
-    }else if ([name isEqualToString:@"教育"]) {
-        
-    }else if ([name isEqualToString:@"维护"]) {
-        
-    }else if ([name isEqualToString:@"代办"]) {
+    }else if ([name isEqualToString:@"小区头条"]) {
+        AreaHeadlineVC *page = [[AreaHeadlineVC alloc]init];
+        [self.navigationController pushViewController:page animated:YES];
+    }else if ([name isEqualToString:@"服务团队"]) {
         
     }
    
-    if ([dict.type isEqualToString:@"7"]) {
-        return;
-    }else if ([dict.type isEqualToString:@"6"]){
-       
-        return;
-    }
-    if (dict.type.integerValue == 8 | dict.type.integerValue == 9 |dict.type.integerValue == 10 |dict.type.integerValue == 11 |dict.type.integerValue == 12) {
-        ServiceVC *page = [[ServiceVC alloc]init];
-        page.titleStr = name;
-        if (!dict.ids) {
-            return;
-        }
-        page.menuId = dict.ids;
-        [self.navigationController pushViewController:page animated:YES];
-    }
+   
+   
     
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

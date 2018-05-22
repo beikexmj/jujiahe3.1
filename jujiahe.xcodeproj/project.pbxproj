@@ -242,6 +242,7 @@
 		7C21321220B164BB0017AF85 /* FamilyWarningTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C21321120B164BB0017AF85 /* FamilyWarningTableHeaderView.m */; };
 		7C21321520B165B40017AF85 /* FamilyWarningCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C21321420B165B40017AF85 /* FamilyWarningCell.m */; };
 		7C24517320B404CF0046B619 /* HappenDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C24517220B404CF0046B619 /* HappenDataModel.m */; };
+		7C24517620B43C270046B619 /* PropertyServiceDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C24517520B43C270046B619 /* PropertyServiceDataModel.m */; };
 		7C2D4ABF20B10E9E00F40CD6 /* PublishConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D4ABE20B10E9E00F40CD6 /* PublishConversationCell.m */; };
 		7C3CFBF220A14D3D0084FF2A /* TZAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3CFBDE20A14D3D0084FF2A /* TZAlbumCell.xib */; };
 		7C3CFBF320A14D3D0084FF2A /* TZAssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3CFBDF20A14D3D0084FF2A /* TZAssetCell.xib */; };
@@ -1036,6 +1037,8 @@
 		7C21321420B165B40017AF85 /* FamilyWarningCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyWarningCell.m; sourceTree = "<group>"; };
 		7C24517120B404CF0046B619 /* HappenDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HappenDataModel.h; sourceTree = "<group>"; };
 		7C24517220B404CF0046B619 /* HappenDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappenDataModel.m; sourceTree = "<group>"; };
+		7C24517420B43C270046B619 /* PropertyServiceDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropertyServiceDataModel.h; sourceTree = "<group>"; };
+		7C24517520B43C270046B619 /* PropertyServiceDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertyServiceDataModel.m; sourceTree = "<group>"; };
 		7C2D4ABD20B10E9E00F40CD6 /* PublishConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublishConversationCell.h; sourceTree = "<group>"; };
 		7C2D4ABE20B10E9E00F40CD6 /* PublishConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublishConversationCell.m; sourceTree = "<group>"; };
 		7C3CFBDE20A14D3D0084FF2A /* TZAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TZAlbumCell.xib; sourceTree = "<group>"; };
@@ -3078,6 +3081,8 @@
 				7CBAF2F420AE83F90032DB72 /* QueryResultCell.m */,
 				819B468820AFF0D800B045E3 /* PublishServiceCell.h */,
 				819B468920AFF0D800B045E3 /* PublishServiceCell.m */,
+				7C24517420B43C270046B619 /* PropertyServiceDataModel.h */,
+				7C24517520B43C270046B619 /* PropertyServiceDataModel.m */,
 			);
 			path = "物业服务";
 			sourceTree = "<group>";
@@ -4581,6 +4586,7 @@
 				7C1109A3209FEEC70012040E /* NSString+PinYin.m in Sources */,
 				7C1109B8209FEF430012040E /* BaseViewController.m in Sources */,
 				7C110955209FECFB0012040E /* NSObject+CommonBlock.m in Sources */,
+				7C24517620B43C270046B619 /* PropertyServiceDataModel.m in Sources */,
 				7C1109B0209FEEC70012040E /* UIView+Extensions.m in Sources */,
 				7C476E7E20A58DD5005ECE03 /* BalanceRechargeViewController.m in Sources */,
 				7C476E8420A58DD5005ECE03 /* voucherListDataModel.m in Sources */,
