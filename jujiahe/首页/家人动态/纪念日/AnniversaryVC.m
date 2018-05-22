@@ -1,23 +1,23 @@
 //
-//  FamilyManageVC.m
+//  AnniversaryVC.m
 //  jujiahe
 //
 //  Created by kerwin on 2018/5/22.
 //  Copyright © 2018年 世纪之光. All rights reserved.
 //
 
-#import "FamilyManageVC.h"
-#import "FamilyManageCell.h"
+#import "AnniversaryVC.h"
+#import "AnniversaryCell.h"
 
-static NSString *const kFamilyManageTableViewCell = @"com.copticomm.jjh.family.manage.tablevew.cell";
+static NSString *const kAnniversaryTableViewCell = @"com.copticomm.jjh.anniversary.tableview.cell";
 
-@interface FamilyManageVC ()<UITableViewDelegate, UITableViewDataSource>
+@interface AnniversaryVC ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
 
-@implementation FamilyManageVC
+@implementation AnniversaryVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,6 +33,15 @@ static NSString *const kFamilyManageTableViewCell = @"com.copticomm.jjh.family.m
     [self setPopLeftItem];
     self.navigationBar.jj_barTintColor = RGBA(0xf6f6f6, 1);
     self.navigationBar.shadowImage = [UIImage new];
+    
+    UIImage *dateImage = [UIImage imageNamed:@"home_family_icon_date"];
+    UIButton *dateButton = [[UIButton alloc] initWithFrame:(CGRect){CGPointZero, dateImage.size}];
+    [dateButton setBackgroundImage:dateImage forState:UIControlStateNormal];
+    [[dateButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        
+    }];
+    UIBarButtonItem *dateItem = [[UIBarButtonItem alloc] initWithCustomView:dateButton];
+    self.navigationItem.rightBarButtonItems = @[dateItem];
 }
 
 - (void)setupConstraints
@@ -52,10 +61,10 @@ static NSString *const kFamilyManageTableViewCell = @"com.copticomm.jjh.family.m
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FamilyManageCell *cell = [tableView dequeueReusableCellWithIdentifier:kFamilyManageTableViewCell];
+    AnniversaryCell *cell = [tableView dequeueReusableCellWithIdentifier:kAnniversaryTableViewCell];
     if (!cell) {
-        cell = [[FamilyManageCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                       reuseIdentifier:kFamilyManageTableViewCell];
+        cell = [[AnniversaryCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:kAnniversaryTableViewCell];
     }
     [cell setData];
     return cell;
@@ -77,7 +86,7 @@ static NSString *const kFamilyManageTableViewCell = @"com.copticomm.jjh.family.m
 
 - (NSString *)title
 {
-    return @"家人管理";
+    return @"纪念日";
 }
 
 - (UITableView *)tableView

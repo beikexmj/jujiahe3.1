@@ -60,6 +60,7 @@
         config.padding = 7.5;
         config.styleType = JMButtonStyleTypeTop;
         _button = [[JMBaseButton alloc] initWithFrame:CGRectZero ButtonConfig:config];
+        _button.userInteractionEnabled = NO;
     }
     return _button;
 }
