@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F1749D020B3B03700070848 /* DynamicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749CF20B3B03700070848 /* DynamicVC.m */; };
+		5F1749D320B3B28A00070848 /* DynamicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749D220B3B28A00070848 /* DynamicCell.m */; };
+		5F1749D620B3C2D100070848 /* FamilyManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749D520B3C2D100070848 /* FamilyManageVC.m */; };
+		5F1749D920B3C3AB00070848 /* FamilyManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749D820B3C3AB00070848 /* FamilyManageCell.m */; };
 		7C1108F5209FE4270012040E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1108F4209FE4270012040E /* AppDelegate.m */; };
 		7C1108F8209FE4270012040E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1108F7209FE4270012040E /* ViewController.m */; };
 		7C1108FB209FE4270012040E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C1108F9209FE4270012040E /* Main.storyboard */; };
@@ -511,6 +515,14 @@
 
 /* Begin PBXFileReference section */
 		1610063C70B9B77E52241FEA /* Pods-jujiaheUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jujiaheUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jujiaheUITests/Pods-jujiaheUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5F1749CE20B3B03700070848 /* DynamicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicVC.h; sourceTree = "<group>"; };
+		5F1749CF20B3B03700070848 /* DynamicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicVC.m; sourceTree = "<group>"; };
+		5F1749D120B3B28A00070848 /* DynamicCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicCell.h; sourceTree = "<group>"; };
+		5F1749D220B3B28A00070848 /* DynamicCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicCell.m; sourceTree = "<group>"; };
+		5F1749D420B3C2D100070848 /* FamilyManageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyManageVC.h; sourceTree = "<group>"; };
+		5F1749D520B3C2D100070848 /* FamilyManageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyManageVC.m; sourceTree = "<group>"; };
+		5F1749D720B3C3AB00070848 /* FamilyManageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyManageCell.h; sourceTree = "<group>"; };
+		5F1749D820B3C3AB00070848 /* FamilyManageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyManageCell.m; sourceTree = "<group>"; };
 		7C1108F0209FE4270012040E /* jujiahe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jujiahe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C1108F3209FE4270012040E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7C1108F4209FE4270012040E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -2789,6 +2801,12 @@
 				7C21320620B1610F0017AF85 /* FamilyDynamicVC.m */,
 				7C21320820B161320017AF85 /* FamilyWarningVC.h */,
 				7C21320920B161320017AF85 /* FamilyWarningVC.m */,
+				5F1749CE20B3B03700070848 /* DynamicVC.h */,
+				5F1749CF20B3B03700070848 /* DynamicVC.m */,
+				7C4CDB4420B2AA8C00D1DD01 /* BMKConfiguration.h */,
+				7C4CDB4520B2AA8C00D1DD01 /* BMKConfiguration.m */,
+				5F1749D420B3C2D100070848 /* FamilyManageVC.h */,
+				5F1749D520B3C2D100070848 /* FamilyManageVC.m */,
 			);
 			path = "家人动态";
 			sourceTree = "<group>";
@@ -2798,6 +2816,10 @@
 			children = (
 				7C21321320B165B40017AF85 /* FamilyWarningCell.h */,
 				7C21321420B165B40017AF85 /* FamilyWarningCell.m */,
+				5F1749D120B3B28A00070848 /* DynamicCell.h */,
+				5F1749D220B3B28A00070848 /* DynamicCell.m */,
+				5F1749D720B3C3AB00070848 /* FamilyManageCell.h */,
+				5F1749D820B3C3AB00070848 /* FamilyManageCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -3179,8 +3201,6 @@
 				7C21320420B160C60017AF85 /* 家人动态 */,
 				7C476D8120A58966005ECE03 /* HomePageVC.h */,
 				7C476D8220A58966005ECE03 /* HomePageVC.m */,
-				7C4CDB4420B2AA8C00D1DD01 /* BMKConfiguration.h */,
-				7C4CDB4520B2AA8C00D1DD01 /* BMKConfiguration.m */,
 				7C5DC6A020AAB79000981E95 /* 话题 */,
 				7C476D8320A58966005ECE03 /* model */,
 				7C476D8620A58966005ECE03 /* view */,
@@ -4500,6 +4520,7 @@
 				7C476E5820A58DD5005ECE03 /* ModifyNickNameViewController.m in Sources */,
 				7C3CFC8820A1C7A60084FF2A /* ServiceCell.m in Sources */,
 				7C989A5020AD162E00F223ED /* TopicClassificationCell.m in Sources */,
+				5F1749D020B3B03700070848 /* DynamicVC.m in Sources */,
 				7C3CFC2820A172720084FF2A /* ACMediaModel.m in Sources */,
 				7C110D1020A030770012040E /* openssl_wrapper.m in Sources */,
 				7C1109AD209FEEC70012040E /* UINavigationItem+Fixed.m in Sources */,
@@ -4598,6 +4619,7 @@
 				7C3CFC2D20A172720084FF2A /* HJTableViewCell.m in Sources */,
 				7C110B11209FF1F00012040E /* MJRefreshAutoNormalFooter.m in Sources */,
 				7C110ABC209FF0C00012040E /* MJExtensionConst.m in Sources */,
+				5F1749D320B3B28A00070848 /* DynamicCell.m in Sources */,
 				7C110B4D209FF4320012040E /* CMKeyChain.m in Sources */,
 				7C11095D209FECFB0012040E /* UIWindow+FHH.m in Sources */,
 				7C3CFBFB20A14D3D0084FF2A /* TZVideoPlayerController.m in Sources */,
@@ -4702,6 +4724,7 @@
 				7C476DBA20A589D3005ECE03 /* NewPagedFlowView.m in Sources */,
 				7C3CFC6120A1B5880084FF2A /* PropertyPaymentHomeCell.m in Sources */,
 				7CCF831A20ABBA8000D35383 /* TopicCell.m in Sources */,
+				5F1749D920B3C3AB00070848 /* FamilyManageCell.m in Sources */,
 				7C3CFBF520A14D3D0084FF2A /* TZAssetModel.m in Sources */,
 				7C21320A20B161320017AF85 /* FamilyWarningVC.m in Sources */,
 				7C3CFC8E20A1C7A60084FF2A /* ServiceVC.m in Sources */,
@@ -4794,6 +4817,7 @@
 				7C476E6420A58DD5005ECE03 /* MyPointDetailDataModel.m in Sources */,
 				7C110966209FECFB0012040E /* SKPSMTPMessage.m in Sources */,
 				7C110AA0209FF0C00012040E /* IQKeyboardManager.m in Sources */,
+				5F1749D620B3C2D100070848 /* FamilyManageVC.m in Sources */,
 				7C76A6FE20A2E2040029E310 /* UIView+Frame.m in Sources */,
 				7C40D16620AFF083005F0212 /* SubjectConversationVC.m in Sources */,
 				7C989A6620AD315F00F223ED /* EstablishCircleCell.m in Sources */,
