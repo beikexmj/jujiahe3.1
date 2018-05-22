@@ -51,7 +51,11 @@
 
 
 #define KEY @"1234567812345678"
+<<<<<<< HEAD
 #define XMJBASE_URL  @"http://172.16.21.224:8205/api" //3.1开发
+=======
+#define XMJBASE_URL  @"http://172.16.21.224:8205/api" //3.1测试
+>>>>>>> liuxin
 
 #define BASE_URL  @"https://jujiahe.copticomm.com/appt" //外网测试
 #define BASE_URL2  @"https://jujiahe.copticomm.com" //外网测试
