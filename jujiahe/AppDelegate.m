@@ -52,6 +52,7 @@ static AppDelegate *_appDelegate;
     SDWebImageDownloader *sdmanager = [SDWebImageManager sharedManager].imageDownloader;
     [sdmanager setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
     [sdmanager setValue:@"zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4" forHTTPHeaderField:@"Accept-Language"];
+#if 0
     if (![StorageUserInfromation storageUserInformation].choseUnitPropertyId || [[StorageUserInfromation storageUserInformation].choseUnitPropertyId isEqualToString:@""]) {
         JFCityViewController *cityViewController = [[JFCityViewController alloc] init];
         cityViewController.title = @"选择城市";
@@ -75,6 +76,24 @@ static AppDelegate *_appDelegate;
         tabBarController.selectedIndex = 0;
         self.window.rootViewController = nav;
     }
+#else
+    if (![StorageUserInfromation storageUserInformation].userId || [[StorageUserInfromation storageUserInformation].userId  isEqual:@""]) {
+        StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
+        storage.userId = @"";
+        storage.token = @"";
+        storage.access_token = @"";
+        storage.uuid = @"";
+    }
+    BaseTabbarVC *tabBarController = [BaseTabbarVC Shareinstance];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:tabBarController];
+    nav.fd_fullscreenPopGestureRecognizer.enabled = true;
+    nav.fd_prefersNavigationBarHidden = true;
+    nav.fd_interactivePopDisabled = true;
+    nav.fd_viewControllerBasedNavigationBarAppearanceEnabled = false;
+    [nav setNavigationBarHidden:YES animated:YES];
+    tabBarController.selectedIndex = 0;
+    self.window.rootViewController = nav;
+#endif
     [self setJPush:launchOptions];
     [self setBaiDuMapManager];
     [WXApi registerApp:@"wx74a28fcbd5e80775"];
