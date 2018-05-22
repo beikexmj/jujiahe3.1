@@ -432,6 +432,9 @@
         @strongify(self);
         [chooseBtn1 setTitle:dateString forState:UIControlStateNormal];
         [self setBtn:chooseBtn1];
+        
+    };
+    inputView.cancleBlock = ^{
         [weakMaskView removeFromSuperview];
     };
     [self.view addSubview:maskView];

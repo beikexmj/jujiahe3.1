@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, XXPickerViewMode) {
 @property (nonatomic, assign) Boolean hideSeparator;            // 是否隐藏分割线, 默认NO
 @property (nonatomic, copy) CompletedBlock completeBlock;       // 完成Block
 @property (nonatomic, assign) XXPickerViewMode pickerViewMode;  // 模式
+@property (nonatomic,strong)void (^cancleBlock)(void);
 
 // init
 
