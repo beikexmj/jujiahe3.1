@@ -8,6 +8,7 @@
 
 #import "FamilyManageVC.h"
 #import "FamilyManageCell.h"
+#import "FamilyManageEditVC.h"
 
 static NSString *const kFamilyManageTableViewCell = @"com.copticomm.jjh.family.manage.tablevew.cell";
 
@@ -71,6 +72,7 @@ static NSString *const kFamilyManageTableViewCell = @"com.copticomm.jjh.family.m
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [self.navigationController pushViewController:[FamilyManageEditVC new] animated:YES];
 }
 
 #pragma mark - getter

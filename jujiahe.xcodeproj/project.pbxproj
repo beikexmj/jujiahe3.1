@@ -13,6 +13,14 @@
 		4CFDE34CAEE1E55DE260175C /* libPods-jujiaheUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 141FCF94328526502FE450C6 /* libPods-jujiaheUITests.a */; };
 		5F02C28920B405E0006227AC /* AnniversaryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F02C28820B405E0006227AC /* AnniversaryVC.m */; };
 		5F02C28C20B4068B006227AC /* AnniversaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F02C28B20B4068B006227AC /* AnniversaryCell.m */; };
+		5F06938520B40F4000758A38 /* FamilyEditItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06938420B40F4000758A38 /* FamilyEditItem.m */; };
+		5F06938820B410F400758A38 /* FamilyEditTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06938720B410F400758A38 /* FamilyEditTextFieldCell.m */; };
+		5F06938B20B4165300758A38 /* FamilyEditPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06938A20B4165300758A38 /* FamilyEditPickerCell.m */; };
+		5F06938E20B4177300758A38 /* NSObject+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06938D20B4177300758A38 /* NSObject+Empty.m */; };
+		5F06939120B419B300758A38 /* FamilyEditCheckmarkerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06939020B419B300758A38 /* FamilyEditCheckmarkerCell.m */; };
+		5F06939720B421A800758A38 /* FamilyEditCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06939620B421A800758A38 /* FamilyEditCellFactory.m */; };
+		5F06939A20B424A700758A38 /* FamilyManageEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06939920B424A700758A38 /* FamilyManageEditVC.m */; };
+		5F06939D20B42B2500758A38 /* FamilyManageEditSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06939C20B42B2500758A38 /* FamilyManageEditSectionView.m */; };
 		5F1749D020B3B03700070848 /* DynamicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749CF20B3B03700070848 /* DynamicVC.m */; };
 		5F1749D320B3B28A00070848 /* DynamicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749D220B3B28A00070848 /* DynamicCell.m */; };
 		5F1749D620B3C2D100070848 /* FamilyManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749D520B3C2D100070848 /* FamilyManageVC.m */; };
@@ -538,6 +546,22 @@
 		5F02C28820B405E0006227AC /* AnniversaryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnniversaryVC.m; sourceTree = "<group>"; };
 		5F02C28A20B4068B006227AC /* AnniversaryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnniversaryCell.h; sourceTree = "<group>"; };
 		5F02C28B20B4068B006227AC /* AnniversaryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnniversaryCell.m; sourceTree = "<group>"; };
+		5F06938320B40F4000758A38 /* FamilyEditItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyEditItem.h; sourceTree = "<group>"; };
+		5F06938420B40F4000758A38 /* FamilyEditItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyEditItem.m; sourceTree = "<group>"; };
+		5F06938620B410F400758A38 /* FamilyEditTextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyEditTextFieldCell.h; sourceTree = "<group>"; };
+		5F06938720B410F400758A38 /* FamilyEditTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyEditTextFieldCell.m; sourceTree = "<group>"; };
+		5F06938920B4165300758A38 /* FamilyEditPickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyEditPickerCell.h; sourceTree = "<group>"; };
+		5F06938A20B4165300758A38 /* FamilyEditPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyEditPickerCell.m; sourceTree = "<group>"; };
+		5F06938C20B4177300758A38 /* NSObject+Empty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Empty.h"; sourceTree = "<group>"; };
+		5F06938D20B4177300758A38 /* NSObject+Empty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Empty.m"; sourceTree = "<group>"; };
+		5F06938F20B419B300758A38 /* FamilyEditCheckmarkerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyEditCheckmarkerCell.h; sourceTree = "<group>"; };
+		5F06939020B419B300758A38 /* FamilyEditCheckmarkerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyEditCheckmarkerCell.m; sourceTree = "<group>"; };
+		5F06939520B421A800758A38 /* FamilyEditCellFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyEditCellFactory.h; sourceTree = "<group>"; };
+		5F06939620B421A800758A38 /* FamilyEditCellFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyEditCellFactory.m; sourceTree = "<group>"; };
+		5F06939820B424A700758A38 /* FamilyManageEditVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyManageEditVC.h; sourceTree = "<group>"; };
+		5F06939920B424A700758A38 /* FamilyManageEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyManageEditVC.m; sourceTree = "<group>"; };
+		5F06939B20B42B2500758A38 /* FamilyManageEditSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyManageEditSectionView.h; sourceTree = "<group>"; };
+		5F06939C20B42B2500758A38 /* FamilyManageEditSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyManageEditSectionView.m; sourceTree = "<group>"; };
 		5F1749CE20B3B03700070848 /* DynamicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicVC.h; sourceTree = "<group>"; };
 		5F1749CF20B3B03700070848 /* DynamicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicVC.m; sourceTree = "<group>"; };
 		5F1749D120B3B28A00070848 /* DynamicCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicCell.h; sourceTree = "<group>"; };
@@ -1623,6 +1647,57 @@
 				854A3432A28F103EF50F69CB /* Pods-jujiaheUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		5F06937C20B40BE300758A38 /* 家人管理 */ = {
+			isa = PBXGroup;
+			children = (
+				5F06937F20B40C5900758A38 /* Cells */,
+				5F1749D420B3C2D100070848 /* FamilyManageVC.h */,
+				5F1749D520B3C2D100070848 /* FamilyManageVC.m */,
+				5F06938320B40F4000758A38 /* FamilyEditItem.h */,
+				5F06938420B40F4000758A38 /* FamilyEditItem.m */,
+				5F06939820B424A700758A38 /* FamilyManageEditVC.h */,
+				5F06939920B424A700758A38 /* FamilyManageEditVC.m */,
+			);
+			path = "家人管理";
+			sourceTree = "<group>";
+		};
+		5F06937D20B40BF100758A38 /* 纪念日 */ = {
+			isa = PBXGroup;
+			children = (
+				5F02C28720B405E0006227AC /* AnniversaryVC.h */,
+				5F02C28820B405E0006227AC /* AnniversaryVC.m */,
+			);
+			path = "纪念日";
+			sourceTree = "<group>";
+		};
+		5F06937E20B40BFA00758A38 /* 家庭相册 */ = {
+			isa = PBXGroup;
+			children = (
+				5F1749DA20B3F3B900070848 /* FamilyAlbumVC.h */,
+				5F1749DB20B3F3B900070848 /* FamilyAlbumVC.m */,
+			);
+			path = "家庭相册";
+			sourceTree = "<group>";
+		};
+		5F06937F20B40C5900758A38 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5F06939520B421A800758A38 /* FamilyEditCellFactory.h */,
+				5F06939620B421A800758A38 /* FamilyEditCellFactory.m */,
+				5F1749D720B3C3AB00070848 /* FamilyManageCell.h */,
+				5F1749D820B3C3AB00070848 /* FamilyManageCell.m */,
+				5F06938620B410F400758A38 /* FamilyEditTextFieldCell.h */,
+				5F06938720B410F400758A38 /* FamilyEditTextFieldCell.m */,
+				5F06938920B4165300758A38 /* FamilyEditPickerCell.h */,
+				5F06938A20B4165300758A38 /* FamilyEditPickerCell.m */,
+				5F06938F20B419B300758A38 /* FamilyEditCheckmarkerCell.h */,
+				5F06939020B419B300758A38 /* FamilyEditCheckmarkerCell.m */,
+				5F06939B20B42B2500758A38 /* FamilyManageEditSectionView.h */,
+				5F06939C20B42B2500758A38 /* FamilyManageEditSectionView.m */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		7C1108E7209FE4270012040E = {
@@ -2846,6 +2921,9 @@
 		7C21320420B160C60017AF85 /* 家人动态 */ = {
 			isa = PBXGroup;
 			children = (
+				5F06937E20B40BFA00758A38 /* 家庭相册 */,
+				5F06937D20B40BF100758A38 /* 纪念日 */,
+				5F06937C20B40BE300758A38 /* 家人管理 */,
 				7C21320C20B161590017AF85 /* Views */,
 				7C21320B20B161530017AF85 /* Cells */,
 				7C21320520B1610F0017AF85 /* FamilyDynamicVC.h */,
@@ -2854,12 +2932,8 @@
 				7C21320920B161320017AF85 /* FamilyWarningVC.m */,
 				5F1749CE20B3B03700070848 /* DynamicVC.h */,
 				5F1749CF20B3B03700070848 /* DynamicVC.m */,
-				5F1749D420B3C2D100070848 /* FamilyManageVC.h */,
-				5F1749D520B3C2D100070848 /* FamilyManageVC.m */,
-				5F1749DA20B3F3B900070848 /* FamilyAlbumVC.h */,
-				5F1749DB20B3F3B900070848 /* FamilyAlbumVC.m */,
-				5F02C28720B405E0006227AC /* AnniversaryVC.h */,
-				5F02C28820B405E0006227AC /* AnniversaryVC.m */,
+				5F06938C20B4177300758A38 /* NSObject+Empty.h */,
+				5F06938D20B4177300758A38 /* NSObject+Empty.m */,
 			);
 			path = "家人动态";
 			sourceTree = "<group>";
@@ -2871,8 +2945,6 @@
 				7C21321420B165B40017AF85 /* FamilyWarningCell.m */,
 				5F1749D120B3B28A00070848 /* DynamicCell.h */,
 				5F1749D220B3B28A00070848 /* DynamicCell.m */,
-				5F1749D720B3C3AB00070848 /* FamilyManageCell.h */,
-				5F1749D820B3C3AB00070848 /* FamilyManageCell.m */,
 				5F1749DD20B3F4BA00070848 /* FamilyAlbumCell.h */,
 				5F1749DE20B3F4BA00070848 /* FamilyAlbumCell.m */,
 				5F02C28A20B4068B006227AC /* AnniversaryCell.h */,
@@ -4497,6 +4569,7 @@
 				819B469E20B0020800B045E3 /* EBMuteDetector.m in Sources */,
 				81E4D80220AFB9A800FC5B5D /* ArrearageDetailVC.m in Sources */,
 				81E4D80120AFB99000FC5B5D /* RechargeDetailVC.m in Sources */,
+				5F06939A20B424A700758A38 /* FamilyManageEditVC.m in Sources */,
 				81E4D7FE20AFB98400FC5B5D /* RecordQueryDataModel.m in Sources */,
 				81E4D7FF20AFB98400FC5B5D /* RecordQueryVC.m in Sources */,
 				81BC5F8A20B2DDD7007F8AB1 /* CommunityClassificationVC.m in Sources */,
@@ -4546,11 +4619,13 @@
 				7C476E5820A58DD5005ECE03 /* ModifyNickNameViewController.m in Sources */,
 				7C3CFC8820A1C7A60084FF2A /* ServiceCell.m in Sources */,
 				7C989A5020AD162E00F223ED /* TopicClassificationCell.m in Sources */,
+				5F06938E20B4177300758A38 /* NSObject+Empty.m in Sources */,
 				5F1749D020B3B03700070848 /* DynamicVC.m in Sources */,
 				7C3CFC2820A172720084FF2A /* ACMediaModel.m in Sources */,
 				7C110D1020A030770012040E /* openssl_wrapper.m in Sources */,
 				7C1109AD209FEEC70012040E /* UINavigationItem+Fixed.m in Sources */,
 				7C110A92209FF0C00012040E /* JFButton.m in Sources */,
+				5F06939120B419B300758A38 /* FamilyEditCheckmarkerCell.m in Sources */,
 				7C110B14209FF1F00012040E /* MJRefreshBackNormalFooter.m in Sources */,
 				7C1109AB209FEEC70012040E /* UINavigationController+JZExtension.m in Sources */,
 				7C1109A1209FEEC70012040E /* NSFileManager+Paths.m in Sources */,
@@ -4561,6 +4636,7 @@
 				7C9B1D7420AECD2F009965CB /* JJLabel.m in Sources */,
 				7C3CFC8B20A1C7A60084FF2A /* ServiceComentView.m in Sources */,
 				7C476E8920A58DD5005ECE03 /* BillingDetailVC.m in Sources */,
+				5F06938B20B4165300758A38 /* FamilyEditPickerCell.m in Sources */,
 				7C110A9F209FF0C00012040E /* IQUIWindow+Hierarchy.m in Sources */,
 				7C110A93209FF0C00012040E /* JFCityCollectionFlowLayout.m in Sources */,
 				7C3CFC4820A19DD70084FF2A /* WaringAlertView.m in Sources */,
@@ -4568,6 +4644,7 @@
 				7C110957209FECFB0012040E /* UIButton+Additions.m in Sources */,
 				7CCF832E20AC08B000D35383 /* CommentTableViewController.m in Sources */,
 				7C110A75209FF0BF0012040E /* JGIsBlankString.m in Sources */,
+				5F06939720B421A800758A38 /* FamilyEditCellFactory.m in Sources */,
 				7C110AA2209FF0C00012040E /* IQTextView.m in Sources */,
 				7C476DAD20A58966005ECE03 /* CallPropertyVC.m in Sources */,
 				7C110B16209FF1F00012040E /* MJRefreshGifHeader.m in Sources */,
@@ -4599,6 +4676,7 @@
 				7C476E7E20A58DD5005ECE03 /* BalanceRechargeViewController.m in Sources */,
 				7C476E8420A58DD5005ECE03 /* voucherListDataModel.m in Sources */,
 				7C110D0F20A030770012040E /* NSDataEx.m in Sources */,
+				5F06939D20B42B2500758A38 /* FamilyManageEditSectionView.m in Sources */,
 				7C476E8220A58DD5005ECE03 /* ModifyPaymentPasswordFirstStepViewController.m in Sources */,
 				7C989A5A20AD228E00F223ED /* CircleCell.m in Sources */,
 				7C476E9D20A58F44005ECE03 /* EmojiForbid.m in Sources */,
@@ -4742,6 +4820,7 @@
 				7C989A6A20AD53E100F223ED /* TopicMessageVC.m in Sources */,
 				7C476DAC20A58966005ECE03 /* PGIndexBannerSubiew.m in Sources */,
 				5F1749DF20B3F4BA00070848 /* FamilyAlbumCell.m in Sources */,
+				5F06938520B40F4000758A38 /* FamilyEditItem.m in Sources */,
 				7C3CFC9220A1C91D0084FF2A /* JSBadgeView.m in Sources */,
 				7C110B18209FF1F00012040E /* MJRefreshStateHeader.m in Sources */,
 				7C76A70120A2E2040029E310 /* YZFlowLayout.m in Sources */,
@@ -4749,6 +4828,7 @@
 				7C76A70420A2E4470029E310 /* AreaHeadlineVC.m in Sources */,
 				7C110ABF209FF0C00012040E /* MJPropertyKey.m in Sources */,
 				7C110B5C209FF5690012040E /* LoginViewController.m in Sources */,
+				5F06938820B410F400758A38 /* FamilyEditTextFieldCell.m in Sources */,
 				7C110B5E209FF5690012040E /* registDataModle.m in Sources */,
 				7C110B1D209FF1F00012040E /* UIScrollView+MJRefresh.m in Sources */,
 				7C476DBA20A589D3005ECE03 /* NewPagedFlowView.m in Sources */,
