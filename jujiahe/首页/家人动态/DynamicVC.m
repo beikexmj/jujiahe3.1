@@ -8,8 +8,11 @@
 
 #import "DynamicVC.h"
 #import "DynamicCell.h"
+#import "FamilyManageVC.h"
+#import "FamilyAlbumVC.h"
+#import "AnniversaryVC.h"
 
-#define ITEM_SIZE CGSizeMake((SCREENWIDTH - 45) / 2, 55)
+#define ITEM_SIZE CGSizeMake((SCREENWIDTH - 50) / 2, 55)
 
 static NSString *const kDynamicCollectionViewCell = @"com.copticomm.jjh.dynamic.collectionview.cell";
 
@@ -32,6 +35,7 @@ static NSString *const kDynamicCollectionViewCell = @"com.copticomm.jjh.dynamic.
     
     [self.contentView addSubview:self.collectionView];
     [self.contentView addSubview:self.coverImageView];
+    [self.contentView addSubview:self.dialogLabel];
     [self setupConstraints];
 }
 
@@ -59,6 +63,11 @@ static NSString *const kDynamicCollectionViewCell = @"com.copticomm.jjh.dynamic.
         make.bottom.left.right.equalTo(self.contentView);
         make.top.equalTo(self.coverImageView.mas_bottom);
     }];
+    [self.dialogLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView).with.offset(15);
+        make.right.equalTo(self.contentView).with.offset(-15);
+        make.centerY.equalTo(self.coverImageView);
+    }];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -75,6 +84,25 @@ static NSString *const kDynamicCollectionViewCell = @"com.copticomm.jjh.dynamic.
     return cell;
 }
 
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.item) {
+        case 0:
+            [self.navigationController pushViewController:[FamilyManageVC new] animated:YES];
+            break;
+        case 1:
+            [self.navigationController pushViewController:[FamilyAlbumVC new] animated:YES];
+            break;
+        case 2:
+            [self.navigationController pushViewController:[AnniversaryVC new] animated:YES];
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark - getter
 
 - (NSString *)title
@@ -89,6 +117,8 @@ static NSString *const kDynamicCollectionViewCell = @"com.copticomm.jjh.dynamic.
         _dialogLabel.font = [UIFont systemFontOfSize:16];
         _dialogLabel.numberOfLines = 0;
         _dialogLabel.textAlignment = NSTextAlignmentCenter;
+        _dialogLabel.text = @"点击右上角，上传属于您的第一张家庭合照";
+        _dialogLabel.textColor = [UIColor whiteColor];
     }
     return _dialogLabel;
 }
@@ -110,6 +140,7 @@ static NSString *const kDynamicCollectionViewCell = @"com.copticomm.jjh.dynamic.
         flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
         flowLayout.itemSize = ITEM_SIZE;
         flowLayout.minimumLineSpacing = 40;
+        flowLayout.minimumInteritemSpacing = 5;
         flowLayout.sectionInset = UIEdgeInsetsMake(25, 22.5, 0, 22.5);
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];

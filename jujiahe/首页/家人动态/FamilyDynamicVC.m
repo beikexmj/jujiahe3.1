@@ -10,6 +10,7 @@
 #import "FamilyWarningVC.h"
 #import "peopleIMView.h"
 #import "XXTextField.h"
+#import "DynamicVC.h"
 
 @interface FamilyDynamicVC ()<BMKMapViewDelegate,BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate,UIGestureRecognizerDelegate>{
     BMKMapView* _mapView;//
@@ -370,7 +371,11 @@
 
 //家人动态 跳转
 -(void)familyWarningBtnClick{
+#if 0
     [self.navigationController pushViewController:[FamilyWarningVC new] animated:YES];
+#else
+    [self.navigationController pushViewController:[DynamicVC new] animated:YES];
+#endif
 }
 
 //-(void)IMBtnClick{

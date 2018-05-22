@@ -11,10 +11,14 @@
 		4B5E09F520B2B58400A2609D /* peopleIMView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5E09F420B2B58300A2609D /* peopleIMView.xib */; };
 		4C1D2FD55A4CB07A5B474B2C /* libPods-jujiahe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C3D5800A776B6B3D676DDB /* libPods-jujiahe.a */; };
 		4CFDE34CAEE1E55DE260175C /* libPods-jujiaheUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 141FCF94328526502FE450C6 /* libPods-jujiaheUITests.a */; };
+		5F02C28920B405E0006227AC /* AnniversaryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F02C28820B405E0006227AC /* AnniversaryVC.m */; };
+		5F02C28C20B4068B006227AC /* AnniversaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F02C28B20B4068B006227AC /* AnniversaryCell.m */; };
 		5F1749D020B3B03700070848 /* DynamicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749CF20B3B03700070848 /* DynamicVC.m */; };
 		5F1749D320B3B28A00070848 /* DynamicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749D220B3B28A00070848 /* DynamicCell.m */; };
 		5F1749D620B3C2D100070848 /* FamilyManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749D520B3C2D100070848 /* FamilyManageVC.m */; };
 		5F1749D920B3C3AB00070848 /* FamilyManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749D820B3C3AB00070848 /* FamilyManageCell.m */; };
+		5F1749DC20B3F3B900070848 /* FamilyAlbumVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749DB20B3F3B900070848 /* FamilyAlbumVC.m */; };
+		5F1749DF20B3F4BA00070848 /* FamilyAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1749DE20B3F4BA00070848 /* FamilyAlbumCell.m */; };
 		7C1108F5209FE4270012040E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1108F4209FE4270012040E /* AppDelegate.m */; };
 		7C1108F8209FE4270012040E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1108F7209FE4270012040E /* ViewController.m */; };
 		7C1108FB209FE4270012040E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C1108F9209FE4270012040E /* Main.storyboard */; };
@@ -530,6 +534,10 @@
 		4B5E09F220B2B57700A2609D /* peopleIMView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = peopleIMView.m; sourceTree = "<group>"; };
 		4B5E09F420B2B58300A2609D /* peopleIMView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = peopleIMView.xib; sourceTree = "<group>"; };
 		5BC74508E707334EDDA9D1A2 /* Pods-jujiaheTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jujiaheTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jujiaheTests/Pods-jujiaheTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5F02C28720B405E0006227AC /* AnniversaryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnniversaryVC.h; sourceTree = "<group>"; };
+		5F02C28820B405E0006227AC /* AnniversaryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnniversaryVC.m; sourceTree = "<group>"; };
+		5F02C28A20B4068B006227AC /* AnniversaryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnniversaryCell.h; sourceTree = "<group>"; };
+		5F02C28B20B4068B006227AC /* AnniversaryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnniversaryCell.m; sourceTree = "<group>"; };
 		5F1749CE20B3B03700070848 /* DynamicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicVC.h; sourceTree = "<group>"; };
 		5F1749CF20B3B03700070848 /* DynamicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicVC.m; sourceTree = "<group>"; };
 		5F1749D120B3B28A00070848 /* DynamicCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicCell.h; sourceTree = "<group>"; };
@@ -538,6 +546,10 @@
 		5F1749D520B3C2D100070848 /* FamilyManageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyManageVC.m; sourceTree = "<group>"; };
 		5F1749D720B3C3AB00070848 /* FamilyManageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyManageCell.h; sourceTree = "<group>"; };
 		5F1749D820B3C3AB00070848 /* FamilyManageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyManageCell.m; sourceTree = "<group>"; };
+		5F1749DA20B3F3B900070848 /* FamilyAlbumVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyAlbumVC.h; sourceTree = "<group>"; };
+		5F1749DB20B3F3B900070848 /* FamilyAlbumVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyAlbumVC.m; sourceTree = "<group>"; };
+		5F1749DD20B3F4BA00070848 /* FamilyAlbumCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyAlbumCell.h; sourceTree = "<group>"; };
+		5F1749DE20B3F4BA00070848 /* FamilyAlbumCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyAlbumCell.m; sourceTree = "<group>"; };
 		7C1108F0209FE4270012040E /* jujiahe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jujiahe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C1108F3209FE4270012040E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7C1108F4209FE4270012040E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -2844,6 +2856,10 @@
 				5F1749CF20B3B03700070848 /* DynamicVC.m */,
 				5F1749D420B3C2D100070848 /* FamilyManageVC.h */,
 				5F1749D520B3C2D100070848 /* FamilyManageVC.m */,
+				5F1749DA20B3F3B900070848 /* FamilyAlbumVC.h */,
+				5F1749DB20B3F3B900070848 /* FamilyAlbumVC.m */,
+				5F02C28720B405E0006227AC /* AnniversaryVC.h */,
+				5F02C28820B405E0006227AC /* AnniversaryVC.m */,
 			);
 			path = "家人动态";
 			sourceTree = "<group>";
@@ -2857,6 +2873,10 @@
 				5F1749D220B3B28A00070848 /* DynamicCell.m */,
 				5F1749D720B3C3AB00070848 /* FamilyManageCell.h */,
 				5F1749D820B3C3AB00070848 /* FamilyManageCell.m */,
+				5F1749DD20B3F4BA00070848 /* FamilyAlbumCell.h */,
+				5F1749DE20B3F4BA00070848 /* FamilyAlbumCell.m */,
+				5F02C28A20B4068B006227AC /* AnniversaryCell.h */,
+				5F02C28B20B4068B006227AC /* AnniversaryCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -4634,6 +4654,7 @@
 				7C110D1120A030770012040E /* RSADataSigner.m in Sources */,
 				7C1109AF209FEEC70012040E /* UITableView+TLChat.m in Sources */,
 				7C110A8A209FF0C00012040E /* YYTextUtilities.m in Sources */,
+				5F02C28920B405E0006227AC /* AnniversaryVC.m in Sources */,
 				7C1109A7209FEEC70012040E /* UIButton+TLChat.m in Sources */,
 				7C476E6D20A58DD5005ECE03 /* MessagePushSetUpVC.m in Sources */,
 				7C476E5F20A58DD5005ECE03 /* DeliveryAddressCell.m in Sources */,
@@ -4675,6 +4696,7 @@
 				7C1109A5209FEEC70012040E /* UIBarButtonItem+Action.m in Sources */,
 				7C110BA620A0232F0012040E /* JKEventHandler.m in Sources */,
 				7C110B42209FF27A0012040E /* LocationUnitDataModel.m in Sources */,
+				5F1749DC20B3F3B900070848 /* FamilyAlbumVC.m in Sources */,
 				7C476DAF20A58966005ECE03 /* MessageCenterVC.m in Sources */,
 				7C110D3820A06C6E0012040E /* FirstStepVerificationOfIdentityVC.m in Sources */,
 				7C3CFCCA20A1CA150084FF2A /* TADotView.m in Sources */,
@@ -4684,6 +4706,7 @@
 				7C3CFCB620A1C9BF0084FF2A /* XLProgressView.m in Sources */,
 				7C110B40209FF27A0012040E /* ChoseUnitViewController.m in Sources */,
 				7C3CFCB020A1C9BF0084FF2A /* FSActionSheetItem.m in Sources */,
+				5F02C28C20B4068B006227AC /* AnniversaryCell.m in Sources */,
 				7C110B43209FF27A0012040E /* NearByUnitCell.m in Sources */,
 				7C3CFC3220A172720084FF2A /* UIViewController+ACMediaExt.m in Sources */,
 				7C110ABA209FF0C00012040E /* UITableView+WFEmpty.m in Sources */,
@@ -4718,6 +4741,7 @@
 				7C6CA6DC20A43A390073DD3F /* ServiceMemberVC.m in Sources */,
 				7C989A6A20AD53E100F223ED /* TopicMessageVC.m in Sources */,
 				7C476DAC20A58966005ECE03 /* PGIndexBannerSubiew.m in Sources */,
+				5F1749DF20B3F4BA00070848 /* FamilyAlbumCell.m in Sources */,
 				7C3CFC9220A1C91D0084FF2A /* JSBadgeView.m in Sources */,
 				7C110B18209FF1F00012040E /* MJRefreshStateHeader.m in Sources */,
 				7C76A70120A2E2040029E310 /* YZFlowLayout.m in Sources */,
