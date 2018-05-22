@@ -314,14 +314,24 @@
         NSMutableDictionary *onceDict = [NSMutableDictionary dictionary];
         for (ChoseUnitDataList *onceList in array) {
             NSDictionary * dict;
-            if (onceList.inputcode) {
-                dict = @{onceList.inputcode:onceList};
+            
+            if (![JGIsBlankString isBlankString:onceList.pinyin]) {
+                NSString *testString = onceList.pinyin;
+                NSInteger alength = [testString length];
+                for (int i = 0; i<alength; i++) {
+                    char commitChar = [testString characterAtIndex:i];
+                     if((commitChar>96)&&(commitChar<123)){
+                       onceList.pinyin = [onceList.pinyin stringByReplacingCharactersInRange:NSMakeRange(i,1) withString:@"-"];
+                    }
+                }
+                onceList.pinyin = [onceList.pinyin stringByReplacingOccurrencesOfString:@"-" withString:@""];
+                dict = @{onceList.pinyin:onceList};
             }else{
-                onceList.inputcode = @"#";
+                onceList.pinyin = @"#";
                 dict = @{@"#":onceList};
             }
             
-          NSString  *str2 = [onceList.inputcode substringToIndex:1].uppercaseString;
+          NSString  *str2 = [onceList.pinyin substringToIndex:1].uppercaseString;
             NSInteger flag = 0;
             for (NSString * str in onceDict.allKeys) {
                 if ([str isEqualToString:str2]) {

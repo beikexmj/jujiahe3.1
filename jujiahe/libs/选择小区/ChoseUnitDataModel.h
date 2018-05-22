@@ -30,7 +30,7 @@
 
 @property (nonatomic, copy) NSString *ids;
 
-@property (nonatomic, copy) NSString *inputcode;
+@property (nonatomic, copy) NSString *pinyin;
 
 @property (nonatomic, copy) NSString *name;
 

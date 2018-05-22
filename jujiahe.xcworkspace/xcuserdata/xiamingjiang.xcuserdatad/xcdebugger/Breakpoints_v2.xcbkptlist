@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "jujiahe/libs/JFCityViewController/JFCityViewController.m"
-            timestampString = "548254812.885003"
+            timestampString = "548665724.718065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "546"
@@ -75,11 +75,15 @@
                   usesParentBreakpointCondition = "Yes"
 <<<<<<< HEAD
                   urlString = "file:///Users/xiamingjiang/Desktop/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
+<<<<<<< HEAD
                   timestampString = "548646223.422117"
 =======
                   urlString = "file:///Users/xiamingjiang/Library/TempleProject/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
                   timestampString = "548575714.982329"
 >>>>>>> dev
+=======
+                  timestampString = "548665724.899057"
+>>>>>>> xiamingjiang
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "546"
@@ -95,11 +99,15 @@
                   usesParentBreakpointCondition = "Yes"
 <<<<<<< HEAD
                   urlString = "file:///Users/xiamingjiang/Desktop/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
+<<<<<<< HEAD
                   timestampString = "548646223.424726"
 =======
                   urlString = "file:///Users/xiamingjiang/Library/TempleProject/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
                   timestampString = "548575714.9848"
 >>>>>>> dev
+=======
+                  timestampString = "548665724.901723"
+>>>>>>> xiamingjiang
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "547"
@@ -116,13 +124,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "jujiahe/libs/JFCityViewController/JFCityViewController.m"
-            timestampString = "548254812.8851629"
+            timestampString = "548665724.71834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "548"
             endingLineNumber = "548"
             landmarkName = "-currentLocation:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

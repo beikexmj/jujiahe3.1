@@ -7,167 +7,76 @@
 //
 
 #import <Foundation/Foundation.h>
-@class HomePageForm,Advertisement_data,Advertisement_dataArr,
-Broadcast_dataArr,Daily_word_data,Menu_dataArr,Template_dataArr,Activity_formArr,NeighborhoodFormArr,NeighborhoodForm;
-@interface HomePageDataModel : NSObject
+@class HomePageData,WeatherResultModel,RecommendedResultModelList,
+TopicModel,TopicModelData;
+@interface HomePageDataModel : RootDataModel
 
-@property (nonatomic, assign) NSInteger rcode;
-
-@property (nonatomic, copy) NSString *msg;
-
-@property (nonatomic, strong) HomePageForm *form;
+@property (nonatomic, strong) HomePageData *data;
 
 @end
-@interface HomePageForm : NSObject
+@interface HomePageData : NSObject
 
-@property (nonatomic, strong) Advertisement_data *advertisement_data;
-@property (nonatomic, strong) NSArray<Broadcast_dataArr *> *broadcast_data;
-@property (nonatomic, strong) Daily_word_data *daily_word_data;
+@property (nonatomic, copy) NSString *messageFlag;
 
-@property (nonatomic, strong) NSArray<Menu_dataArr *> *menu_data;
-
-@property (nonatomic, strong) NSMutableArray<Template_dataArr *> *template_data;
+@property (nonatomic, strong) WeatherResultModel *weatherResultModel;
+@property (nonatomic, strong) NSArray<RecommendedResultModelList *> *recommendedResultModelList;
+@property (nonatomic, strong) TopicModel *topicModel;
 
 @end
 
-@interface Advertisement_data : NSObject
+@interface WeatherResultModel : NSObject
 
-@property (nonatomic, strong) NSArray <Advertisement_dataArr *> *data;
-@property (nonatomic, copy) NSString *roll_time;
-
-@end
-
-@interface Advertisement_dataArr : NSObject
-
-@property (nonatomic, copy) NSString *file_type;
-
-@property (nonatomic, copy) NSString *icon;
-
-@property (nonatomic, copy) NSString *name;
-
-@property (nonatomic, copy) NSString *time;
-
-@property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSString *value_level;
+@property (nonatomic, copy) NSString *condition;
+@property (nonatomic, copy) NSString *temp;
+@property (nonatomic, copy) NSString *tempDay;
+@property (nonatomic, copy) NSString *tempNight;
 
 @end
 
-@interface Broadcast_dataArr : NSObject
-
-@property (nonatomic, copy) NSString *file_type;
-
-@property (nonatomic, copy) NSString *name;
-
-@property (nonatomic, copy) NSString *type_name;
-
-@property (nonatomic, copy) NSString *url;
-
-@end
-@interface Daily_word_data : NSObject
-
-@property (nonatomic, copy) NSString *background_image;
-
-@property (nonatomic, copy) NSString *file_type;
-
-@property (nonatomic, copy) NSString *icon;
-
-@property (nonatomic, copy) NSString *name;
-
-@property (nonatomic, copy) NSString *time;
-
-@property (nonatomic, copy) NSString *url;
+@interface RecommendedResultModelList : NSObject
 
 @property (nonatomic, copy) NSString *ids;
 
+@property (nonatomic, copy) NSString *pictureUrl;
 
-@end
-@interface Menu_dataArr : NSObject
-
-@property (nonatomic, copy) NSString *file_type;
-
-@property (nonatomic, assign) NSInteger hot;
-
-@property (nonatomic, copy) NSString *icon;
-
-@property (nonatomic, copy) NSString *name;
-
-@property (nonatomic, copy) NSString *type;
-
-@property (nonatomic, copy) NSString *url;
-
-@property (nonatomic, copy) NSString *ids;
-
+@property (nonatomic, copy) NSString *linkUrl;
 
 @end
 
-@interface Template_dataArr : NSObject
+@interface TopicModel : NSObject
+
+@property (nonatomic, copy) NSString *pageNum;
+
+@property (nonatomic, copy) NSString *pageSize;
+
+@property (nonatomic, copy) NSString *totalNum;
+
+@property (nonatomic, copy) NSString *totalPage;
+
+@property (nonatomic, strong) NSArray<TopicModelData *> *data;
+
+@end
+@interface TopicModelData : NSObject
 
 @property (nonatomic, copy) NSString *ids;
 
-@property (nonatomic, copy) NSString *name;
-
-@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *updateTime;
 
 @property (nonatomic, copy) NSString *title;
 
-@property (nonatomic, copy) NSString *goodsTypeId;
-
-@end
-
-@interface Activity_form : NSObject
-
-@property (nonatomic, strong) NSArray <Activity_formArr *> *form;
-
-@end
-
-@interface Activity_formArr : NSObject
-
-@property (nonatomic, copy) NSString *activity_price;
-
-@property (nonatomic, copy) NSString *file_type;
-
-@property (nonatomic, copy) NSString *icon;
-
-@property (nonatomic, assign) NSInteger is_main;
-
-@property (nonatomic, copy) NSString *name;
-
-@property (nonatomic, copy) NSString *price;
-
-@property (nonatomic, copy) NSString *title;
-
-@property (nonatomic, copy) NSString *url;
-
-@property (nonatomic, copy) NSString *goodsId;
-
-@property (nonatomic, copy) NSString *type;
-
-@property (nonatomic, copy) NSString *goodsTypeId;
-
-
-@end
-
-@interface NeighborhoodForm :NSObject
-
-@property (nonatomic, strong) NSArray <NeighborhoodFormArr *> *form;
-
-@end
-
-@interface NeighborhoodFormArr :NSObject
-
-@property (nonatomic, copy) NSString *avatar;
+@property (nonatomic, copy) NSString *covers;
 
 @property (nonatomic, copy) NSString *content;
 
-@property (nonatomic, copy) NSString *ids;
+@property (nonatomic, copy) NSString *viewNum;
 
-@property (nonatomic, copy) NSString *tag;
+@property (nonatomic, copy) NSString *typeName;
 
-@property (nonatomic, assign) NSInteger type;
-
-@property (nonatomic, assign) NSInteger userType;
-
-@property (nonatomic, copy) NSString *userId;
-
-@property (nonatomic, assign) NSInteger anon;
+@property (nonatomic, assign) NSInteger attentionFlag;
 
 @end
+
+
+
+
