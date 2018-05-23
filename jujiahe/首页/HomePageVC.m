@@ -41,6 +41,8 @@
     BOOL refreshflag;
     NSInteger pageIndex;
     HomePageCell *followCell;
+    UIView *meaasgeFlagView;
+
 }
 @property (nonatomic,strong)UIButton *locationBtn;
 @property (nonatomic,strong)UIButton *meassgeBtn;
@@ -103,6 +105,7 @@
             _homePageData = data.data;
             if (pageNum == 1) {
                 [_hightDict removeAllObjects];
+                [self messageUnreadBadge];
                 [self rebuildHomeFace];
 //                if (_homePageData.topicModel.data.count == 0) {
 //                    [self.myTableView addEmptyViewWithImageName:@"暂无积分" title:@"暂无信息"];
@@ -248,6 +251,7 @@
     
     _myTableView.tableHeaderView = headerView;
     
+    
 }
 - (void)headerBtnClick:(UIButton *)btn{
     FamilyDynamicVC *vc = [[FamilyDynamicVC alloc] init];
@@ -325,12 +329,22 @@
     _badgeView = [[JSBadgeView alloc] initWithParentView:_meassgeBtn alignment:JSBadgeViewAlignmentTopLeft];
     [self messageUnreadBadge];
     [self.navView addSubview:_meassgeBtn];
+    
+    meaasgeFlagView  = [[UIView alloc]initWithFrame:CGRectMake(15, 12, 7, 7)];
+    meaasgeFlagView.layer.cornerRadius = 7/2.0;
+    meaasgeFlagView.backgroundColor =RGBA(0xfe4b20, 1);
+    meaasgeFlagView.hidden  = YES;
+    [self.meassgeBtn addSubview:meaasgeFlagView];
+    
     [_meassgeBtn addTarget:self action:@selector(meassgeBtnClick) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)messageUnreadBadge{
-    StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
-    NSInteger num = storage.socialUnread.integerValue + storage.systemUnread.integerValue;
-    _badgeView.badgeText = num == 0?@"":[NSString stringWithFormat:@"%ld",num];
+    NSInteger num = _homePageData.messageFlag;
+    if (num) {
+        meaasgeFlagView.hidden = NO;
+    }else{
+        meaasgeFlagView.hidden = YES;
+    }
 }
 
 - (void)locationBtnClick{
