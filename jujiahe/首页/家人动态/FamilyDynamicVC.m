@@ -404,25 +404,29 @@
             //通过判断给相对应的标注添加序号标题
             if(annotation.coordinate.latitude == lat && annotation.coordinate.longitude ==  lng )
             {
-//                newAnnotationView.image = [UIImage imageNamed:imageArr[i]];
-                newAnnotationView.clipsToBounds=NO;
-                newAnnotationView.frame=CGRectMake(0, 0, 50, 50);
-                newAnnotationView.layer.cornerRadius=25;
-                newAnnotationView.layer.shadowOffset = CGSizeMake(0, 0);
-                newAnnotationView.layer.shadowOpacity = 1;
-                newAnnotationView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
-                newAnnotationView.layer.shadowRadius = 3;
+//                newAnnotationView.clipsToBounds=NO;
+//                newAnnotationView.layer.cornerRadius=25;
+//                newAnnotationView.layer.shadowOffset = CGSizeMake(0, 0);
+//                newAnnotationView.layer.shadowOpacity = 1;
+//                newAnnotationView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+//                newAnnotationView.layer.shadowRadius = 3;
+                newAnnotationView.frame=CGRectMake(0, 0, 60, 60);
                 newAnnotationView.image = nil;
   
+                UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+                view.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+                view.layer.masksToBounds=YES;
+                view.layer.cornerRadius=30;
+                [newAnnotationView addSubview:view];
                 
-                UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+                UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+                bgImageView.center=view.center;
                 bgImageView.image = [UIImage imageNamed:imageArr[i]];
-                                [newAnnotationView addSubview:bgImageView];
-                bgImageView.layer.cornerRadius = 25; //设置imageView的圆角
-                bgImageView.layer.masksToBounds = YES;
-
                 [newAnnotationView addSubview:bgImageView];
-            
+                bgImageView.layer.cornerRadius = 20; //设置imageView的圆角
+                bgImageView.layer.masksToBounds = YES;
+                [view addSubview:bgImageView];
+                
                 break;
             }
         }
