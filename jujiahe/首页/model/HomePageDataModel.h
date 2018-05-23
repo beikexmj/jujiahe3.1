@@ -16,7 +16,7 @@ TopicModel,TopicModelData;
 @end
 @interface HomePageData : NSObject
 
-@property (nonatomic, copy) NSString *messageFlag;
+@property (nonatomic, assign) NSInteger messageFlag;
 
 @property (nonatomic, strong) WeatherResultModel *weatherResultModel;
 @property (nonatomic, strong) NSArray<RecommendedResultModelList *> *recommendedResultModelList;
@@ -75,6 +75,7 @@ TopicModel,TopicModelData;
 
 @property (nonatomic, assign) NSInteger attentionFlag;
 
+@property (nonatomic, assign) NSInteger layerType;
 @end
 
 

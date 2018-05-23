@@ -96,11 +96,11 @@ NSString * const ID = @"SDCycleScrollViewCell";
     self.backgroundColor = [UIColor lightGrayColor];
     
 }
-+ (instancetype)cycleScrollViewWithFrame:(CGRect)frame imagesGroup:(NSArray *)imagesGroup advertisement_data:(RecommendedResultModelList *)data
++ (instancetype)cycleScrollViewWithFrame:(CGRect)frame imagesGroup:(NSArray *)imagesGroup advertisement_data:(NSArray<MenuElementsData *> *)dataArr
 {
     SDCycleScrollView *cycleScrollView = [[self alloc] initWithFrame:frame];
     cycleScrollView.imageURLStringsGroup = [NSMutableArray arrayWithArray:imagesGroup];
-    cycleScrollView.advertisement_data = data;
+    cycleScrollView.dataArr = dataArr;
     return cycleScrollView;
 }
 + (instancetype)cycleScrollViewWithFrame:(CGRect)frame imageNamesGroup:(NSArray *)imageNamesGroup
@@ -624,19 +624,12 @@ NSString * const ID = @"SDCycleScrollViewCell";
         cell.clipsToBounds = YES;
         cell.onlyDisplayText = self.onlyDisplayText;
     }
-    if (itemIndex == 0) {
-//        if (_advertisement_data.name) {
-//            cell.dailyWord.text = _advertisement_data.name;
-//            cell.day.text = [StorageUserInfromation dayFromDateString:_advertisement_data.time];
-//            cell.month.text = [StorageUserInfromation monthFromDateString:_advertisement_data.time];
-//            cell.week.text = [StorageUserInfromation weekFromDateString:_advertisement_data.time];
-//        }
-    }else{
-        cell.dailyWord.text = @"";
-        cell.day.text = @"";
-        cell.month.text = @"";
-        cell.week.text = @"";
-    }
+    
+    cell.dailyWord.text = _dataArr[indexPath.row].name;
+    cell.day.text = @"";
+    cell.month.text = @"";
+    cell.week.text = @"";
+    
     return cell;
 }
 

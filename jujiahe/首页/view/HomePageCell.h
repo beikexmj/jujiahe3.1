@@ -32,11 +32,14 @@
 - (IBAction)followBtnOneClick:(id)sender;
 - (IBAction)followBtnTwoClick:(id)sender;
 - (IBAction)followBtnThreeClick:(id)sender;
-@property (nonatomic,strong)void (^followBtnOneBlock)(NSInteger index);
-@property (nonatomic,strong)void (^followBtnTwoBlock)(NSInteger index);
-@property (nonatomic,strong)void (^followBtnThreeBlock)(NSInteger index);
+@property (nonatomic,strong)void (^followBtnOneBlock)(NSInteger index,HomePageCell *cell);
+@property (nonatomic,strong)void (^followBtnTwoBlock)(NSInteger index,HomePageCell *cell);
+@property (nonatomic,strong)void (^followBtnThreeBlock)(NSInteger index,HomePageCell *cell);
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *followBtnThreeWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *followBtnTwoWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *followBtnOneWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *markThreeWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *markTwoWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *markOneWidth;
 
 @end

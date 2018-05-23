@@ -280,8 +280,11 @@
                 <outlet property="imageTwo" destination="txZ-If-Imh" id="ZaJ-VO-kyV"/>
                 <outlet property="imageTwoInViewThree" destination="8wx-iT-SBY" id="yLf-Oq-zd9"/>
                 <outlet property="markOne" destination="Nq5-ef-r1F" id="Ao0-5b-Eew"/>
+                <outlet property="markOneWidth" destination="H4o-O0-3Rq" id="DqP-zR-qft"/>
                 <outlet property="markThree" destination="fmh-re-yQX" id="WuS-zs-FYw"/>
+                <outlet property="markThreeWidth" destination="XeI-mk-h7l" id="8ko-fv-o9M"/>
                 <outlet property="markTwo" destination="0K7-zH-3oD" id="Cas-LD-XTc"/>
+                <outlet property="markTwoWidth" destination="Bf4-tt-Nfk" id="WL3-db-SnJ"/>
                 <outlet property="readNumOne" destination="vKe-Fy-bB2" id="Fwm-r2-Q7l"/>
                 <outlet property="readNumThree" destination="j2K-Ys-aMe" id="mWr-CP-OMC"/>
                 <outlet property="readNumTwo" destination="Mlg-wQ-rrL" id="Wei-3V-iOD"/>

@@ -34,7 +34,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "HomePageDataModel.h"
+#import "PropertyServiceDataModel.h"
 
 typedef enum {
     SDCycleScrollViewPageContolAlimentRight,
@@ -209,8 +209,8 @@ typedef enum {
 /** 清除图片缓存（兼容旧版本方法） */
 - (void)clearCache;
 
-@property (nonatomic, strong) RecommendedResultModelList *advertisement_data;
+@property (nonatomic, strong) NSArray<MenuElementsData *> *dataArr;
 
-+ (instancetype)cycleScrollViewWithFrame:(CGRect)frame imagesGroup:(NSArray *)imagesGroup advertisement_data:(RecommendedResultModelList *)data;
++ (instancetype)cycleScrollViewWithFrame:(CGRect)frame imagesGroup:(NSArray *)imagesGroup advertisement_data:(NSArray<MenuElementsData *> *)dataArr;
 
 @end

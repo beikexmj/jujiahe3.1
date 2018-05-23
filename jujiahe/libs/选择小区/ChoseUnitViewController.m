@@ -307,80 +307,92 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)rebuildData:(NSArray *)array{
-    if (array.count>0) {
-        [_myDict removeAllObjects];
-        NSString *str = @"";
-        NSMutableArray *circleArr = [NSMutableArray array];
-        NSMutableDictionary *onceDict = [NSMutableDictionary dictionary];
-        for (ChoseUnitDataList *onceList in array) {
-            NSDictionary * dict;
-            
-            if (![JGIsBlankString isBlankString:onceList.pinyin]) {
-                NSString *testString = onceList.pinyin;
-                NSInteger alength = [testString length];
-                for (int i = 0; i<alength; i++) {
-                    char commitChar = [testString characterAtIndex:i];
-                     if((commitChar>96)&&(commitChar<123)){
-                       onceList.pinyin = [onceList.pinyin stringByReplacingCharactersInRange:NSMakeRange(i,1) withString:@"-"];
+    dispatch_queue_t  globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(globalQueue, ^{
+        //编写队列任务」
+        if (array.count>0) {
+            [_myDict removeAllObjects];
+            NSString *str = @"";
+            NSMutableArray *circleArr = [NSMutableArray array];
+            NSMutableDictionary *onceDict = [NSMutableDictionary dictionary];
+            for (ChoseUnitDataList *onceList in array) {
+                NSDictionary * dict;
+                
+                if (![JGIsBlankString isBlankString:onceList.pinyin]) {
+                    NSString *testString = onceList.pinyin;
+                    NSInteger alength = [testString length];
+                    for (int i = 0; i<alength; i++) {
+                        char commitChar = [testString characterAtIndex:i];
+                        if((commitChar>96)&&(commitChar<123)){
+                            onceList.pinyin = [onceList.pinyin stringByReplacingCharactersInRange:NSMakeRange(i,1) withString:@"-"];
+                        }
+                    }
+                    onceList.pinyin = [onceList.pinyin stringByReplacingOccurrencesOfString:@"-" withString:@""];
+                    dict = @{onceList.pinyin:onceList};
+                }else{
+                    onceList.pinyin = @"#";
+                    dict = @{@"#":onceList};
+                }
+                
+                NSString  *str2 = [onceList.pinyin substringToIndex:1].uppercaseString;
+                NSInteger flag = 0;
+                for (NSString * str in onceDict.allKeys) {
+                    if ([str isEqualToString:str2]) {
+                        [circleArr addObjectsFromArray:onceDict[str]];
+                        [circleArr addObject:dict];
+                        [onceDict setValue:[ circleArr copy] forKey:str];
+                        [circleArr removeAllObjects];
+                        flag = 1;
+                        break;
                     }
                 }
-                onceList.pinyin = [onceList.pinyin stringByReplacingOccurrencesOfString:@"-" withString:@""];
-                dict = @{onceList.pinyin:onceList};
-            }else{
-                onceList.pinyin = @"#";
-                dict = @{@"#":onceList};
-            }
-            
-          NSString  *str2 = [onceList.pinyin substringToIndex:1].uppercaseString;
-            NSInteger flag = 0;
-            for (NSString * str in onceDict.allKeys) {
-                if ([str isEqualToString:str2]) {
-                    [circleArr addObjectsFromArray:onceDict[str]];
+                str = str2;
+                if (flag == 0) {
                     [circleArr addObject:dict];
-                    [onceDict setValue:[ circleArr copy] forKey:str];
+                    [onceDict setValue:[circleArr copy] forKey:str];
                     [circleArr removeAllObjects];
-                    flag = 1;
-                    break;
                 }
+                
             }
-            str = str2;
-            if (flag == 0) {
-                [circleArr addObject:dict];
-                [onceDict setValue:[circleArr copy] forKey:str];
-                [circleArr removeAllObjects];
-            }
-            
-        }
-        for (NSInteger i = 0; i<[onceDict allKeys].count;i++) {
-          NSArray *myArr = onceDict.allValues[i];
-            NSMutableArray *onceKeyArr = [NSMutableArray array];
-            for (NSDictionary *dict in myArr) {
-                [onceKeyArr addObject:dict.allKeys[0]];
-            }
-            NSArray *keyArr = [onceKeyArr sortedArrayUsingSelector:@selector(compare:)];
-            NSMutableArray *onceArr = [NSMutableArray array];
-            for (int j = 0;j<keyArr.count;j++){
-                NSString * str = keyArr[j];
+            for (NSInteger i = 0; i<[onceDict allKeys].count;i++) {
+                if ([onceDict.allKeys[i] isEqualToString:@"#"]) {
+                    [_myDict setValue:onceDict.allValues[i] forKey:onceDict.allKeys[i]];
+                    continue;
+                }
+                NSArray *myArr = onceDict.allValues[i];
+                NSMutableArray *onceKeyArr = [NSMutableArray array];
                 for (NSDictionary *dict in myArr) {
-                    for (NSString * key in dict.allKeys) {
-                        if ([key isEqualToString:str]) {
-                            [onceArr addObject:dict];
+                    [onceKeyArr addObject:dict.allKeys[0]];
+                }
+                NSArray *keyArr = [onceKeyArr sortedArrayUsingSelector:@selector(compare:)];
+                NSMutableArray *onceArr = [NSMutableArray array];
+                for (int j = 0;j<keyArr.count;j++){
+                    NSString * str = keyArr[j];
+                    for (NSDictionary *dict in myArr) {
+                        for (NSString * key in dict.allKeys) {
+                            if ([key isEqualToString:str]) {
+                                [onceArr addObject:dict];
+                            }
                         }
                     }
                 }
+                [_myDict setValue:onceArr forKey:onceDict.allKeys[i]];
             }
-            [_myDict setValue:onceArr forKey:onceDict.allKeys[i]];
+            
+            
+            [_sectionKeyArry removeAllObjects];
+            [_sectionKeyArry addObjectsFromArray: [[_myDict allKeys] sortedArrayUsingSelector:@selector(compare:)]];
+            
+        }else{
+            [_myDict removeAllObjects];
+            [_sectionKeyArry removeAllObjects];
         }
-        
-        
-        [_sectionKeyArry removeAllObjects];
-        [_sectionKeyArry addObjectsFromArray: [[_myDict allKeys] sortedArrayUsingSelector:@selector(compare:)]];
-        
-    }else{
-        [_myDict removeAllObjects];
-        [_sectionKeyArry removeAllObjects];
-    }
-    [self.myTableView reloadData];
+        dispatch_queue_t mainQueue=dispatch_get_main_queue();
+        dispatch_async(mainQueue, ^{
+            [self.myTableView reloadData];
+        });
+    });
+   
 }
 /*
 #pragma mark - Navigation

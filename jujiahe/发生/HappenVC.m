@@ -12,6 +12,7 @@
 #import "EstablishCircleVC.h"
 #import "CircleVC.h"
 #import "happenCell2.h"
+#import "HappenDataModel.h"
 @interface HappenVC ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 {
     CGFloat indexPathPersition1; // indexpath == {0,0}位置
@@ -24,6 +25,8 @@
 @property (nonatomic,strong) NSArray <AllServiceArr*> *myArr;
 @property (nonatomic,strong)UITableView *myTableView;
 @property (nonatomic,strong)UICollectionView *myCollectionView;
+@property (nonatomic,strong)HappenData *myData;
+@property (nonatomic,strong)NSMutableArray <HappenDataMyCircles *>*myCircleData;
 @end
 
 @implementation HappenVC
@@ -31,18 +34,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isShowNav = YES;
+    _myCircleData = [NSMutableArray array];
     [self headerSwitchView];
-//    [self fetchData];
     [self.view addSubview:self.myTableView];
     [self viewConfig];
-    [self findIndexPathPersition];
+    [self fetchData];
+    self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self fetchData];
+    }];
     // Do any additional setup after loading the view.
 }
 - (void)findIndexPathPersition{
     happenCell2 *cell = [self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     indexPathPersition1 = cell.frame.origin.y;
 //    happenCell2 *cell2 = [self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
-    indexPathPersition2 = indexPathPersition1 + 60 *8 + 45*2;
+    indexPathPersition2 = indexPathPersition1 + 60 *_myData.microdistrictCircles.count + 45*2;
 }
 - (UITableView *)myTableView{
     if (!_myTableView) {
@@ -97,20 +103,23 @@
     [myView addSubview:lineView];
 }
 - (void)fetchData{
-    NSDictionary *dict = @{@"apiv":@"1.0",@"propertyAreaId":@"1c265c5b5a3741cca88ace5dac48a6ef"};
-    [ZTHttpTool postWithUrl:@"jujiahe/v1/serviceMenu/infos" param:dict success:^(id responseObj) {
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSDictionary * onceDict = [DictToJson dictionaryWithJsonString:str];
-        NSLog(@"%@",onceDict);
-        AllServiceDataModel *data = [AllServiceDataModel mj_objectWithKeyValues:str];
-        if (data.rcode == 0) {
-            _myArr = data.form;
-            if (_myArr.count>0) {
-                [self viewConfig];
-            }
+    StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
+
+    NSDictionary *dict = @{@"cityId":storage.areaNumber,@"microdistrictId":storage.choseUnitPropertyId};
+    [XMJHttpTool postWithUrl:@"circle/llist4App" param:dict success:^(id responseObj) {
+        NSString * str = [responseObj mj_JSONObject][@"data"];
+        HappenDataModel *data = [HappenDataModel mj_objectWithKeyValues:str];
+        if (data.success) {
+            _myData = data.data;
+            [self findIndexPathPersition];
+            [_myCircleData removeAllObjects];
+            [_myCircleData addObjectsFromArray:_myData.myCircles];
+            [_myCollectionView reloadData];
+            [_myTableView reloadData];
         }
+        [self.myTableView.mj_header endRefreshing];
     } failure:^(NSError *error) {
-        
+        [self.myTableView.mj_header endRefreshing];
     }];
 }
 - (void)viewConfig{
@@ -155,49 +164,6 @@
     rect.size.height = sectionY;
     headerView.frame = rect;
     [self.view addSubview:headerView];
-//    self.myTableView.tableHeaderView = headerView;
-    
-//    for (int i = 0; i<_myArr.count; i++) {
-//        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, sectionY + 5, 5, 15)];
-//        lineView.backgroundColor = RGBA(0x00a7ff, 1);
-//        [myScrollView addSubview:lineView];
-//
-//        UILabel *typeName = [[UILabel alloc]initWithFrame:CGRectMake(20, sectionY, 150, 25)];
-//        typeName.font = [UIFont systemFontOfSize:16.0];
-//        typeName.textColor = RGBA(0x303030, 1);
-//        typeName.text = _myArr[i].name;
-//        [myScrollView addSubview:typeName];
-//        CGFloat yy = sectionY + 45;
-//        for (int j = 0; j<_myArr[i].data.count/3 +(_myArr[i].data.count%3 ==0?0:1); j++) {
-//            for (int k = 0; k<3; k++) {
-//                if (j*3 + (k+1)>_myArr[i].data.count) {
-//                    continue;
-//                }
-//
-//                UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(10 + k*((SCREENWIDTH - 10*2)/3.0), yy, (SCREENWIDTH - 10*2)/3.0, 130)];
-//
-//                UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 90, (SCREENWIDTH - 10*2)/3.0, 20)];
-//                nameLabel.text = _myArr[i].data[j*3 +k].name;
-//                nameLabel.font = [UIFont systemFontOfSize:13.0];
-//                nameLabel.textColor = RGBA(0x606060, 1);
-//                nameLabel.textAlignment =NSTextAlignmentCenter;
-//                [myView addSubview:nameLabel];
-//
-//                UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(((SCREENWIDTH - 10*2)/3.0 - 80)/2.0, 0, 80, 80)];
-//                [imageView sd_setImageWithURL:[NSURL URLWithString:_myArr[i].data[j*3 + k].icon] placeholderImage:[UIImage imageNamed:@"icon_默认"] options:SDWebImageAllowInvalidSSLCertificates];
-//                [myView addSubview:imageView];
-//
-//                UIButton  *btn = [[UIButton alloc]initWithFrame:CGRectMake( 0 , 0 , (SCREENWIDTH - 10*2)/3.0, 110)];
-//                btn.tag = j*3 + (k+1) + i*100;
-//                [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-//                [myView addSubview:btn];
-//                [myScrollView addSubview:myView];
-//            }
-//            yy = yy + 130;
-//        }
-//        sectionY = sectionY + (_myArr[i].data.count/3 +(_myArr[i].data.count%3 ==0?0:1))*130 + 90;
-//    }
-//    myScrollView.contentSize = CGSizeMake(SCREENWIDTH, sectionY);
 }
 - (void)btnClick:(UIButton *)btn{
     CircleVC *page = [[CircleVC alloc]init];
@@ -207,16 +173,23 @@
 - (void)btnChoseClick:(UIButton *)btn{
     CGFloat gap = (SCREENWIDTH - 55*2)/3.0;
     CGFloat btnWidth = (SCREENWIDTH - gap*2)/2.0;
-    if (btn == _districtAffairsBtn) {
+    if (btn == _perimeterBtn) {
         _lineViewFlag.center = CGPointMake(gap + btnWidth/2.0 + btnWidth, 40-2);
         [_perimeterBtn setTitleColor:RGBA(0x00a7ff, 1) forState:UIControlStateNormal];
         [_districtAffairsBtn setTitleColor:RGBA(0x606060, 1) forState:UIControlStateNormal];
-        [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        if (_myData) {
+            [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            
+        }
+        
     }else{
         _lineViewFlag.center = CGPointMake(gap + btnWidth/2.0, 40-2);
         [_perimeterBtn setTitleColor:RGBA(0x606060, 1) forState:UIControlStateNormal];
         [_districtAffairsBtn setTitleColor:RGBA(0x00a7ff, 1) forState:UIControlStateNormal];
-        [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        if (_myData) {
+            [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+
+        }
 
     }
 }
@@ -230,7 +203,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 8;
+    return _myCircleData.count +1;
 }
 
 
@@ -244,8 +217,8 @@
         cell.img.image = [UIImage imageNamed:@"addPic"];
         cell.name.text = @"创建圈子";
     }else{
-        cell.img.image = [UIImage imageNamed:@"home_btn_menjin"];
-        cell.name.text = @"小区麻友";
+        [cell.img sd_setImageWithURL:[NSURL URLWithString:_myCircleData[indexPath.row-1].path] placeholderImage:[UIImage imageNamed:@"icon_默认"]];
+        cell.name.text = _myCircleData[indexPath.row-1].name;
     }
     return cell;
 }
@@ -285,7 +258,11 @@
         myCell = [[happenCell2 alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier: cell];
     }
     myCell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [myCell setData];
+    if (indexPath.section == 0) {
+        [myCell setData:_myData.microdistrictCircles[indexPath.row]];
+    }else if (indexPath.section == 1){
+        [myCell setData:_myData.cityCircles[indexPath.row]];
+    }
     return myCell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -295,7 +272,10 @@
     return 2;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    if (section == 0){
+        return _myData.microdistrictCircles.count;
+    }
+    return _myData.cityCircles.count;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     CGFloat sectionY = 0;

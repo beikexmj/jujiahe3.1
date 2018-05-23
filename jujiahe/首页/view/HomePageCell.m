@@ -45,20 +45,20 @@
 - (IBAction)followBtnOneClick:(id)sender {
     UIButton *btn = sender;
     if (self.followBtnOneBlock) {
-        self.followBtnOneBlock(btn.tag);
+        self.followBtnOneBlock(btn.tag,self);
     }
 }
 
 - (IBAction)followBtnTwoClick:(id)sender {
     UIButton *btn = sender;
     if (self.followBtnTwoBlock) {
-        self.followBtnTwoBlock(btn.tag);
+        self.followBtnTwoBlock(btn.tag,self);
     }
 }
 - (IBAction)followBtnThreeClick:(id)sender {
     UIButton *btn = sender;
     if (self.followBtnThreeBlock) {
-        self.followBtnThreeBlock(btn.tag);
+        self.followBtnThreeBlock(btn.tag,self);
     }
 }
 @end

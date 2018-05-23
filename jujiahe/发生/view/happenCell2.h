@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HappenDataModel.h"
 @interface happenCell2 : UITableViewCell
-- (void)setData;
+- (void)setData:(HappenDataCirclesThings *)data;
 @end

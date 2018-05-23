@@ -12,4 +12,5 @@
 +(NSString *)jsonStringWithDictionary:(NSDictionary *)dictionary;
 +(NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
 -(NSString *)jsonStringWithArray:(NSArray *)array;
++(NSArray *)arrWithJsonString:(NSString *)jsonString;
 @end
