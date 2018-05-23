@@ -406,12 +406,14 @@
             {
 //                newAnnotationView.image = [UIImage imageNamed:imageArr[i]];
                 newAnnotationView.clipsToBounds=NO;
-                newAnnotationView.frame=CGRectMake(0, 0, 50, 50);
+                newAnnotationView.frame=CGRectMake(0, 0, 70, 70);
                 newAnnotationView.layer.cornerRadius=25;
                 newAnnotationView.layer.shadowOffset = CGSizeMake(0, 0);
                 newAnnotationView.layer.shadowOpacity = 1;
                 newAnnotationView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
                 newAnnotationView.layer.shadowRadius = 3;
+                newAnnotationView.image=nil;
+                
   
                 
                 UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
