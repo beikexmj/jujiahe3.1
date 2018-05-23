@@ -90,7 +90,7 @@
 
 - (void)fetchData:(NSInteger)pageNum{
     StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
-    NSDictionary *dict = @{@"cityOid":storage.areaNumber,@"userId":storage.ids?storage.ids:@"",@"pageNum":[NSString stringWithFormat:@"%ld",pageNum],@"pageSize":@"20"};
+    NSDictionary *dict = @{@"cityOid":storage.areaNumber?storage.areaNumber:@"",@"userId":storage.ids?storage.ids:@"",@"pageNum":[NSString stringWithFormat:@"%ld",pageNum],@"pageSize":@"20"};
     [XMJHttpTool postWithUrl:@"homepage/getHomepage" param:dict success:^(id responseObj) {
         NSString * str = [responseObj mj_JSONObject];
         HomePageDataModel *data = [HomePageDataModel mj_objectWithKeyValues:str];
