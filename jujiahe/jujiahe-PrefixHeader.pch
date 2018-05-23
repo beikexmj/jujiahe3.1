@@ -35,6 +35,7 @@
 #import "ScaleButton.h"
 #import "RootDataModel.h"
 #import "UIView+Frame.h"
+#import "NSObject+Empty.h"
 #import <ReactiveObjC/ReactiveObjC.h>
 #import <RTRootNavigationController/RTRootNavigationController.h>
 #import <RTRootNavigationController/UIViewController+RTRootNavigationController.h>
@@ -51,7 +52,9 @@
 
 
 #define KEY @"1234567812345678"
+
 #define XMJBASE_URL  @"http://172.16.21.224:8205/api" //3.1开发
+
 
 #define BASE_URL  @"https://jujiahe.copticomm.com/appt" //外网测试
 #define BASE_URL2  @"https://jujiahe.copticomm.com" //外网测试

@@ -341,6 +341,9 @@
 
 - (void)cancelButtonClicked {
     [self hide];
+    if (self.cancleBlock) {
+        self.cancleBlock();
+    }
 }
 
 - (void)okButtonClicked {
