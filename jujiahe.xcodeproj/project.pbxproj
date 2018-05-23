@@ -434,6 +434,8 @@
 		7C5DC6A520AAB79000981E95 /* LeftTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5DC6A220AAB79000981E95 /* LeftTableViewController.m */; };
 		7C5DC6A620AAB79000981E95 /* RightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5DC6A420AAB79000981E95 /* RightTableViewController.m */; };
 		7C5DC6A920AAB80000981E95 /* TopicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5DC6A820AAB80000981E95 /* TopicVC.m */; };
+		7C646DB520B4F76B0028120F /* MyPageDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C646DB420B4F76B0028120F /* MyPageDataModel.m */; };
+		7C646DB820B557910028120F /* CommunityDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C646DB720B557910028120F /* CommunityDataModel.m */; };
 		7C6CA6C020A3D71A0073DD3F /* SatisfactionSurveyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6CA6BF20A3D71A0073DD3F /* SatisfactionSurveyVC.m */; };
 		7C6CA6C420A3EB320073DD3F /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6CA6C320A3EB320073DD3F /* AXRatingView.m */; };
 		7C6CA6CA20A42AD20073DD3F /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6CA6C920A42AD20073DD3F /* libxml2.2.tbd */; };
@@ -1403,6 +1405,10 @@
 		7C5DC6A420AAB79000981E95 /* RightTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightTableViewController.m; sourceTree = "<group>"; };
 		7C5DC6A720AAB80000981E95 /* TopicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicVC.h; sourceTree = "<group>"; };
 		7C5DC6A820AAB80000981E95 /* TopicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicVC.m; sourceTree = "<group>"; };
+		7C646DB320B4F76B0028120F /* MyPageDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPageDataModel.h; sourceTree = "<group>"; };
+		7C646DB420B4F76B0028120F /* MyPageDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPageDataModel.m; sourceTree = "<group>"; };
+		7C646DB620B557910028120F /* CommunityDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunityDataModel.h; sourceTree = "<group>"; };
+		7C646DB720B557910028120F /* CommunityDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommunityDataModel.m; sourceTree = "<group>"; };
 		7C6CA6BE20A3D71A0073DD3F /* SatisfactionSurveyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SatisfactionSurveyVC.h; sourceTree = "<group>"; };
 		7C6CA6BF20A3D71A0073DD3F /* SatisfactionSurveyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SatisfactionSurveyVC.m; sourceTree = "<group>"; };
 		7C6CA6C220A3EB320073DD3F /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
@@ -3482,6 +3488,7 @@
 		7C476DC320A58DD4005ECE03 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				7C646DB220B4F7430028120F /* model */,
 				7C40D16320AFF011005F0212 /* 我的话题 */,
 				7C40D15720AFB4EA005F0212 /* 我的圈子 */,
 				7C476DC420A58DD4005ECE03 /* MyPageVC.h */,
@@ -3880,6 +3887,8 @@
 		7C5AD33220A9A2DB00158D38 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				7C646DB620B557910028120F /* CommunityDataModel.h */,
+				7C646DB720B557910028120F /* CommunityDataModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3936,6 +3945,15 @@
 				7C5DC6A820AAB80000981E95 /* TopicVC.m */,
 			);
 			path = "话题";
+			sourceTree = "<group>";
+		};
+		7C646DB220B4F7430028120F /* model */ = {
+			isa = PBXGroup;
+			children = (
+				7C646DB320B4F76B0028120F /* MyPageDataModel.h */,
+				7C646DB420B4F76B0028120F /* MyPageDataModel.m */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		7C6CA6BA20A3D6A70073DD3F /* 满意度调查 */ = {
@@ -4913,6 +4931,7 @@
 				7C476E5620A58DD5005ECE03 /* ModifyPhoneNumViewController.m in Sources */,
 				7C110B6E209FF6350012040E /* YYClassInfo.m in Sources */,
 				7C40D15E20AFB549005F0212 /* MyMomentCell.m in Sources */,
+				7C646DB820B557910028120F /* CommunityDataModel.m in Sources */,
 				7C3CFCAD20A1C9BF0084FF2A /* FSActionSheet.m in Sources */,
 				7C11095A209FECFB0012040E /* UIView+Additions.m in Sources */,
 				7C110AD3209FF17A0012040E /* JGEncrypt.m in Sources */,
@@ -4936,6 +4955,7 @@
 				7C110A94209FF0C00012040E /* JFCityCollectionViewCell.m in Sources */,
 				7C110D2620A032940012040E /* UMWKHybrid.m in Sources */,
 				7C3CFC8D20A1C7A60084FF2A /* ServiceDataModel.m in Sources */,
+				7C646DB520B4F76B0028120F /* MyPageDataModel.m in Sources */,
 				7C3CFC2B20A172720084FF2A /* HJInputView.m in Sources */,
 				7C110B13209FF1F00012040E /* MJRefreshBackGifFooter.m in Sources */,
 				7C3CFC8720A1C7A60084FF2A /* PublishServiceVC.m in Sources */,

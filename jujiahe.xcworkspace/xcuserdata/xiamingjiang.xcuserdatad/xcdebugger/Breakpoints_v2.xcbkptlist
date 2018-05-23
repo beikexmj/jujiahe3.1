@@ -74,7 +74,7 @@
                   moduleName = "jujiahe"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xiamingjiang/Desktop/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
-                  timestampString = "548685674.7675231"
+                  timestampString = "548756928.569093"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "546"
@@ -89,7 +89,7 @@
                   moduleName = "jujiahe"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xiamingjiang/Desktop/jujiahe3.1/jujiahe/libs/JFCityViewController/JFCityViewController.m"
-                  timestampString = "548685674.770174"
+                  timestampString = "548756928.571965"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "547"
@@ -123,6 +123,22 @@
             continueAfterRunningActions = "No"
             scope = "0"
             stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "jujiahe/&#x9996;&#x9875;/HomePageVC.m"
+            timestampString = "548756928.389538"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

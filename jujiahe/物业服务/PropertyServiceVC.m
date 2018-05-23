@@ -38,6 +38,9 @@
     [self.view addSubview:self.myScrollView];
 //    [self rebuildView];
     [self fetchData];
+    self.myScrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self fetchData];
+    }];
     // Do any additional setup after loading the view.
 }
 - (UIScrollView *)myScrollView{
@@ -48,7 +51,7 @@
     return _myScrollView;
 }
 - (void)fetchData{
-    NSDictionary *dict = @{@"propertyId":[StorageUserInfromation storageUserInformation].choseUnitPropertyId};
+    NSDictionary *dict = @{@"districtId":[StorageUserInfromation storageUserInformation].choseUnitPropertyId};
     [XMJHttpTool postWithUrl:@"property/home" param:dict success:^(id responseObj) {
         NSString * str = [responseObj mj_JSONObject];
         PropertyServiceDataModel *data = [PropertyServiceDataModel mj_objectWithKeyValues:str];
@@ -57,12 +60,21 @@
             if (_myArr.count>0) {
                 [self rebuildView];
             }
+        }else{
+            [MBProgressHUD showError:data.message];
         }
+        [self.myScrollView.mj_header endRefreshing];
     } failure:^(NSError *error) {
-        
+        [self.myScrollView.mj_header endRefreshing];
     }];
 }
+- (void)initScrollView{
+    
+}
 - (void)rebuildView{
+    for (UIView *subView in self.myScrollView.subviews) {
+        [subView removeFromSuperview];
+    }
     CGFloat sectionY = 0;
     
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, sectionY + 10, 5, 15)];
@@ -92,20 +104,22 @@
     sectionY += 20 + 15;
     
     CGFloat picHight = (SCREENWIDTH- 30)*(8/15.0);
-    NSArray * myArr = @[@"home_btn_menjin",@"home_btn_menjin",@"home_btn_menjin"];
+    NSArray * myArr = @[@""];
     NSMutableArray * muArr;
+    NSMutableArray <MenuElementsData *> *menuElements = [NSMutableArray array];
     for (PropertyServiceList * data in _myArr) {
         if (data.type == 2) {
+            [menuElements addObjectsFromArray:data.menuElements];
             for (int i = 0; i<data.menuElements.count; i++) {
                 [muArr addObject:data.menuElements[i].link];
-
+                
             }
         }
     }
     if (muArr) {
         myArr = muArr;
     }
-    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(15, sectionY, SCREENWIDTH-30, picHight) imagesGroup:myArr advertisement_data:nil];
+    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(15, sectionY, SCREENWIDTH-30, picHight) imagesGroup:myArr advertisement_data:menuElements];
     cycleScrollView.delegate = self;
     [self.myScrollView addSubview:cycleScrollView];
     sectionY += picHight + 20;

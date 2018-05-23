@@ -39,7 +39,9 @@
     [self.view addSubview:self.myTableView];
     [self viewConfig];
     [self fetchData];
-
+    self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self fetchData];
+    }];
     // Do any additional setup after loading the view.
 }
 - (void)findIndexPathPersition{
@@ -115,8 +117,9 @@
             [_myCollectionView reloadData];
             [_myTableView reloadData];
         }
+        [self.myTableView.mj_header endRefreshing];
     } failure:^(NSError *error) {
-        
+        [self.myTableView.mj_header endRefreshing];
     }];
 }
 - (void)viewConfig{

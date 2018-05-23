@@ -48,7 +48,8 @@
     }else{
         [mutableDict setValue:@"" forKey:@"uToken"];
     }
-    XMJLog(@"=============\n%@\n=============",mutableDict);
+
+    XMJLog(@"=============\n%@/%@\n============= \n\n=============\n%@\n=============",XMJBASE_URL,url,mutableDict);
     
     NSURL *SessionUrl = [NSURL URLWithString:XMJBASE_URL];
     
@@ -68,7 +69,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             if (responseObject) {
-                XMJLog(@"\n =====================      %@\n===================",[responseObject mj_JSONObject]);
+                XMJLog(@"=============\n%@/%@\n=============\n =====================      %@\n===================",XMJBASE_URL,url,[responseObject mj_JSONObject]);
                 success(responseObject);
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

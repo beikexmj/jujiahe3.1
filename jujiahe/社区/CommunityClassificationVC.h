@@ -10,4 +10,5 @@
 
 @interface CommunityClassificationVC : BaseViewController
 @property (nonatomic,copy) NSString *titleStr;
+@property (nonatomic,copy) NSString *communityId;
 @end

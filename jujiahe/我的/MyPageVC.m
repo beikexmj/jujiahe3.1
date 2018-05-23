@@ -27,6 +27,7 @@
 #import "MessageCenterVC.h"
 #import "MyMomentVC.h"
 #import "SubjectConversationVC.h"
+#import "MyPageDataModel.h"
 @interface MyPageVC ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UIAlertViewDelegate>
 {
     NSArray *iconArr;
@@ -55,6 +56,7 @@
 @property (nonatomic,strong)UIButton *QRBtn;
 @property (nonatomic,strong)UIButton *meassgeBtn;
 @property (nonatomic,strong)UIButton *setBtn;
+@property (nonatomic,strong) MyPageData *myData;
 @end
 
 @implementation MyPageVC
@@ -64,152 +66,56 @@
     [self setNav];
     
     [self.view addSubview:self.myTableView];
-    StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
-    _badgeView1.badgeText = [storage.countPaying isEqualToString:@"0"]?@"":storage.countPaying;
-    _badgeView2.badgeText = [storage.countShipping isEqualToString:@"0"]?@"":storage.countShipping;
-    _badgeView3.badgeText = [storage.countShippingSend isEqualToString:@"0"]?@"":storage.countShippingSend;
+    self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        if(![JGIsBlankString isBlankString:[StorageUserInfromation storageUserInformation].ids]){
+            [self fetchData];
+        }else{
+            [self.myTableView.mj_header endRefreshing];
+        }
+        
+    }];
+    _headerIcon.image = [UIImage imageNamed:@"per_head"];
     
+    meaasgeFlagView  = [[UIView alloc]initWithFrame:CGRectMake(15, 12, 7, 7)];
+    meaasgeFlagView.layer.cornerRadius = 7/2.0;
+    meaasgeFlagView.backgroundColor =RGBA(0xfe4b20, 1);
+    meaasgeFlagView.hidden  = YES;
+    [self.meassgeBtn addSubview:meaasgeFlagView];
     
-    _headerIcon.image = [UIImage imageNamed:@"默认头像60x60"];
-    [self reSetHeaderIcon];
     if ([StorageUserInfromation storageUserInformation].sex.integerValue == 0) {
-        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
+        _sexIcon.image = [UIImage imageNamed:@"my_icon_male"];
     }else if ([StorageUserInfromation storageUserInformation].sex.integerValue == 1){
-        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
-        
+        _sexIcon.image = [UIImage imageNamed:@"my_icon_female"];
     }else{
-        //        [_nicknameBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-        
+        _sexIcon.image = [UIImage imageNamed:@"my_icon_female"];
     }
     
-    NSInteger num = storage.socialUnread.integerValue + storage.systemUnread.integerValue;
-    if (num) {
-        meaasgeFlagView.hidden = NO;
-    }else{
-        meaasgeFlagView.hidden = YES;
-    }
-    //    _badgeView4.badgeText = num == 0?@"":[NSString stringWithFormat:@"%ld",num];
-    if(![[StorageUserInfromation storageUserInformation].userId isEqualToString:@""]){
+    [self reSetHeaderIcon];
+   
+    
+    if(![JGIsBlankString isBlankString:[StorageUserInfromation storageUserInformation].ids]){
         [self fetchData];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(replaceHeaderImg) name:@"ReplaceHeaderImg" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(replaceSex) name:@"ReplaceSex" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(modifyNickname) name:@"ModifyNickname" object:nil];
-    _headerIcon.image = [UIImage imageNamed:@"per_head"];
-    _sexIcon.image = [UIImage imageNamed:@"my_icon_female"];
-    _nicknameLabel.text = @"我是大傻瓜";
+    _nicknameLabel.text = [JGIsBlankString isBlankString:[StorageUserInfromation storageUserInformation].nickname]?@"":[StorageUserInfromation storageUserInformation].nickname;
     // Do any additional setup after loading the view.
 }
 - (void)freshInterface{
-    StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
-    _badgeView1.badgeText = [storage.countPaying isEqualToString:@"0"]?@"":storage.countPaying;
-    _badgeView2.badgeText = [storage.countShipping isEqualToString:@"0"]?@"":storage.countShipping;
-    _badgeView3.badgeText = [storage.countShippingSend isEqualToString:@"0"]?@"":storage.countShippingSend;
-    NSInteger num = storage.socialUnread.integerValue + storage.systemUnread.integerValue;
-    //    _badgeView4.badgeText = num == 0?@"":[NSString stringWithFormat:@"%ld",num];
+   
+    _badgeView1.badgeText = (_myData.countPropertyServiceDto.waitNum == 0)?@"":[NSString stringWithFormat:@"%ld",_myData.countPropertyServiceDto.waitNum];
+    _badgeView2.badgeText = (_myData.countPropertyServiceDto.lookedNum == 0)?@"":[NSString stringWithFormat:@"%ld",_myData.countPropertyServiceDto.lookedNum];
+    _badgeView3.badgeText = (_myData.countPropertyServiceDto.completeNum == 0)?@"":[NSString stringWithFormat:@"%ld",_myData.countPropertyServiceDto.completeNum];
+    NSInteger num = _myData.messageFlag;
     if (num) {
         meaasgeFlagView.hidden = NO;
     }else{
         meaasgeFlagView.hidden = YES;
-    }
-    //    [_nicknameBtn setTitle:[NSString stringWithFormat:@" %@",[StorageUserInfromation storageUserInformation].nickname] forState:UIControlStateNormal];
-    if ([StorageUserInfromation storageUserInformation].sex.integerValue == 0) {
-        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
-    }else if ([StorageUserInfromation storageUserInformation].sex.integerValue == 1){
-        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
-        
-    }else{
-        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
-        
     }
     [self reSetHeaderIcon];
-    [self fetchUnreadMessageCount];
-    [self fetchUnreadGoodsMessageCount];
-    
+
 }
-- (void)fetchUnreadMessageCount{
-    NSDictionary *dict = @{@"apiv":@"1.0",@"userId":[StorageUserInfromation storageUserInformation].userId};
-    [ZTHttpTool postWithUrl:@"jujiaheuser/v1/userInfo/unreadMessageCount" param:dict success:^(id responseObj) {
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSDictionary * onceDict = [DictToJson dictionaryWithJsonString:str];
-        NSLog(@"%@",onceDict);
-        if ([onceDict[@"rcode"] integerValue] == 0) {
-            NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];
-            StorageUserInfromation *storage = [StorageUserInfromation storageUserInformation];
-            storage.socialUnread = [NSString stringWithFormat:@"%ld",[onceDict[@"form"][@"socialUnread"] integerValue]];
-            storage.systemUnread = [NSString stringWithFormat:@"%ld",[onceDict[@"form"][@"systemUnread"] integerValue] ];
-            [NSKeyedArchiver archiveRootObject:storage toFile:file];
-            NSInteger num = storage.socialUnread.integerValue + storage.systemUnread.integerValue;
-            //            _badgeView4.badgeText = (num == 0?@"":[NSString stringWithFormat:@"%ld",num]);
-            if (num) {
-                meaasgeFlagView.hidden = NO;
-            }else{
-                meaasgeFlagView.hidden = YES;
-            }
-        }
-        
-    } failure:^(NSError *error) {
-        
-        
-    }];
-    
-}
-- (void)fetchUnreadGoodsMessageCount{
-    NSDictionary *dict = @{@"timestamp":[StorageUserInfromation dateTimeInterval],@"apiv":@"1.0",@"device":@"1"};
-    [ZTHttpTool postWithUrl:@"uaa/v1/user" param:dict success:^(id responseObj) {
-        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
-        NSLog(@"%@",[DictToJson dictionaryWithJsonString:str]);
-        registDataModle *user = [registDataModle mj_objectWithKeyValues:str];
-        StorageUserInfromation * storage = [StorageUserInfromation storageUserInformation];
-        NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"storageUserInformation.data"];
-        //        if (user.rcode == 0) {
-        //            storage.email = user.form.email;
-        //            storage.nickname = user.form.nickname;
-        //            storage.token = @"123456";
-        //            storage.username = user.form.username;
-        //            storage.sessionId = user.form.sessionId;
-        //            storage.accountBalance =  [NSString stringWithFormat:@"%.2f",user.form.accountBalance.floatValue];
-        //            storage.point = user.form.point;
-        //            storage.sex = user.form.sex;
-        //            storage.invitationCode = user.form.invitationCode;
-        //            storage.invitationLink = user.form.invitationLink;
-        //            storage.payPasswordSet = user.form.payPasswordSet;
-        //            storage.socialUnread = user.form.socialUnread;
-        //            storage.systemUnread = user.form.systemUnread;
-        //            storage.countShippingSend = user.form.countShippingSend;
-        //            storage.countShipping = user.form.countShipping;
-        //            storage.countPaying = user.form.countPaying;
-        //            storage.userId = user.form.userId;
-        //            [NSKeyedArchiver archiveRootObject:storage toFile:file];
-        //
-        //            _badgeView1.badgeText = [storage.countPaying isEqualToString:@"0"]?@"":storage.countPaying;
-        //            _badgeView2.badgeText = [storage.countShipping isEqualToString:@"0"]?@"":storage.countShipping;
-        //            _badgeView3.badgeText = [storage.countShippingSend isEqualToString:@"0"]?@"":storage.countShippingSend;
-        //        }
-        
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-        
-    }];
-    
-}
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    StorageUserInfromation * storage = [StorageUserInfromation storageUserInformation];
-    NSInteger num = storage.socialUnread.integerValue + storage.systemUnread.integerValue;
-    //    _badgeView4.badgeText = num == 0?@"":[NSString stringWithFormat:@"%ld",num];
-    if (num) {
-        meaasgeFlagView.hidden = NO;
-    }else{
-        meaasgeFlagView.hidden = YES;
-    }
-    
-}
-//- (void)viewWillDisappear:(BOOL)animated
-//{
-//    [super viewWillDisappear:animated];
-//}
 - (void)reSetHeaderIcon{
     NSString * str = [NSString stringWithFormat:@"%@/%@%@",BASE_URL,@"uaa/v1/getAvatar?userId=",[StorageUserInfromation storageUserInformation].userId];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -229,7 +135,16 @@
     //    }
 }
 - (void)fetchData{
-    [self freshInterface];
+    [XMJHttpTool postWithUrl:@"myPage/getMyPage" param:@{@"usreId":[StorageUserInfromation storageUserInformation].ids} success:^(id responseObj) {
+        NSString * str = [responseObj mj_JSONObject];
+        MyPageDataModel *data = [MyPageDataModel mj_objectWithKeyValues:str];
+        if (data.success) {
+            _myData = data.data;
+            [self freshInterface];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0) {
@@ -623,7 +538,7 @@
         cell.icon.image =  [UIImage imageNamed:@"my_icon_phone"];
         cell.name.text = @"服务热线";
         cell.tips.hidden = NO;
-        cell.tips.text = @"18580465179";
+        cell.tips.text = @"023-86076012";
     }
     return cell;
 }
@@ -683,7 +598,7 @@
         }
     }else if (indexPath.section == 3){
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *callPhone = [NSString stringWithFormat:@"tel://%@",@"18580465179"];
+            NSString *callPhone = [NSString stringWithFormat:@"tel://%@",@"023-86076012"];
             if (@available(iOS 10.0, *)) {
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone] options:@{} completionHandler:nil];
             } else {
@@ -705,17 +620,16 @@
     [self reSetHeaderIcon];
 }
 - (void)modifyNickname{
-    //    [_nicknameBtn setTitle:[NSString stringWithFormat:@" %@",[StorageUserInfromation storageUserInformation].nickname?[StorageUserInfromation storageUserInformation].nickname:@""] forState:UIControlStateNormal];
+    _nicknameLabel.text = [JGIsBlankString isBlankString:[StorageUserInfromation storageUserInformation].nickname]?@"":[StorageUserInfromation storageUserInformation].nickname;
+
 }
 - (void)replaceSex{
     if ([StorageUserInfromation storageUserInformation].sex.integerValue == 0) {
-        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_man"] forState:UIControlStateNormal];
+        _sexIcon.image = [UIImage imageNamed:@"my_icon_male"];
     }else if ([StorageUserInfromation storageUserInformation].sex.integerValue == 1){
-        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
-        
+        _sexIcon.image = [UIImage imageNamed:@"my_icon_female"];
     }else{
-        //        [_nicknameBtn setImage:[UIImage imageNamed:@"com_icon_woman"] forState:UIControlStateNormal];
-        
+        _sexIcon.image = [UIImage imageNamed:@"my_icon_female"];
     }
 }
 

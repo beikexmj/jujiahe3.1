@@ -40,6 +40,7 @@
     JSBadgeView *_badgeView;
     BOOL refreshflag;
     NSInteger pageIndex;
+    HomePageCell *followCell;
 }
 @property (nonatomic,strong)UIButton *locationBtn;
 @property (nonatomic,strong)UIButton *meassgeBtn;
@@ -55,6 +56,7 @@
 
 @property (nonatomic,strong)HomePageData *homePageData;
 @property (nonatomic,strong)NSMutableArray <TopicModelData *> *dataArr;
+@property (nonatomic,strong)NSMutableDictionary * hightDict;
 
 @end
 
@@ -64,6 +66,7 @@
     [super viewDidLoad];
     [self setNav];
     [self.view addSubview:self.myTableView];
+    _hightDict = [NSMutableDictionary dictionary];
     _activity_Dict = [NSMutableDictionary dictionary];
     _dataArr = [NSMutableArray array];
     refreshflag = YES;
@@ -72,7 +75,7 @@
         pageIndex = 1;
         [self fetchData:1];
     }];
-    self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.myTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         pageIndex++;
         [self fetchData:pageIndex];
     }];
@@ -99,25 +102,26 @@
         if (data.success) {
             _homePageData = data.data;
             if (pageNum == 1) {
+                [_hightDict removeAllObjects];
                 [self rebuildHomeFace];
-                if (_homePageData.topicModel.data.count == 0) {
-                    [self.myTableView addEmptyViewWithImageName:@"暂无积分" title:@"暂无信息"];
-                    self.myTableView.emptyView.hidden = NO;
-                }else{
-                    self.myTableView.emptyView.hidden = YES;
-                }
+//                if (_homePageData.topicModel.data.count == 0) {
+//                    [self.myTableView addEmptyViewWithImageName:@"暂无积分" title:@"暂无信息"];
+//                    self.myTableView.emptyView.hidden = NO;
+//                }else{
+//                    self.myTableView.emptyView.hidden = YES;
+//                }
                 [_dataArr removeAllObjects];
                 [_dataArr addObjectsFromArray:_homePageData.topicModel.data];
                 
                 [self.myTableView reloadData];
             }else{
                 [_dataArr addObjectsFromArray:_homePageData.topicModel.data];
-                if (_dataArr.count == 0) {
-                    [self.myTableView addEmptyViewWithImageName:@"暂无积分" title:@"暂无信息"];
-                    [self.myTableView.emptyView setHidden:NO];
-                }else{
-                    [self.myTableView.emptyView setHidden:YES];
-                }
+//                if (_dataArr.count == 0) {
+//                    [self.myTableView addEmptyViewWithImageName:@"暂无积分" title:@"暂无信息"];
+//                    [self.myTableView.emptyView setHidden:NO];
+//                }else{
+//                    [self.myTableView.emptyView setHidden:YES];
+//                }
                 if(_homePageData.topicModel.data == 0){
                     [MBProgressHUD showError:@"没有更多数据"];
                     pageIndex--;
@@ -135,8 +139,8 @@
                 }
             }
         }else{
-            [self.myTableView addEmptyViewWithImageName:@"该时段暂无历史记录" title:@"该时段暂无历史记录"];
-            [self.myTableView.emptyView setHidden:NO];
+//            [self.myTableView addEmptyViewWithImageName:@"该时段暂无历史记录" title:@"该时段暂无历史记录"];
+//            [self.myTableView.emptyView setHidden:NO];
             if(pageNum>1){
                 pageIndex--;
             }
@@ -389,9 +393,7 @@
 }
 - (UITableView *)myTableView{
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREENWIDTH, SCREENHEIGHT-TABBARHEIGHT-NAVHEIGHT)style:UITableViewStyleGrouped];
-        _myTableView.backgroundView = nil;
-        _myTableView.backgroundColor = [UIColor clearColor];
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVHEIGHT, SCREENWIDTH, SCREENHEIGHT-TABBARHEIGHT-NAVHEIGHT)style:UITableViewStylePlain];
         _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
@@ -440,18 +442,23 @@
     mycell.followBtnOne.layer.borderColor = RGBA(0x9c9c9c, 1).CGColor;
     mycell.followBtnTwo.layer.borderColor = RGBA(0x9c9c9c, 1).CGColor;
     mycell.followBtnThree.layer.borderColor = RGBA(0x9c9c9c, 1).CGColor;
+    mycell.followBtnOne.tag = indexPath.row;
+    mycell.followBtnTwo.tag = indexPath.row;
+    mycell.followBtnThree.tag = indexPath.row;
 
     if (_dataArr.count>0) {
         TopicModelData *onceDict = _dataArr[indexPath.row];
         NSMutableArray *coverArr = [NSMutableArray array];
-        if ([JGIsBlankString isBlankString:onceDict.covers ]) {
-           [coverArr addObject:[DictToJson arrWithJsonString:onceDict.covers]];
+        if (![JGIsBlankString isBlankString:onceDict.covers ]) {
+           [coverArr addObjectsFromArray:[DictToJson arrWithJsonString:onceDict.covers]];
         }
         if (onceDict.layerType == 1) {
             mycell.subViewOne.hidden = NO;
             [mycell.imageOne sd_setImageWithURL:[NSURL URLWithString:coverArr.lastObject] placeholderImage:[UIImage imageNamed:@"icon_默认"]];
             mycell.titleOne.text = onceDict.title;
             mycell.markOne.text = onceDict.typeName;
+            mycell.markOneWidth.constant = [mycell.markOne sizeThatFits:CGSizeMake(MAXFLOAT, 15)].width + 10;
+            mycell.readNumOne.text = [NSString stringWithFormat:@"阅读：%@",onceDict.viewNum];
             NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
             paraStyle.lineSpacing = 6; //设置行间距
             paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -463,11 +470,16 @@
                 [mycell.followBtnOne setTitleColor:RGBA(0x00a7ff, 1) forState:UIControlStateNormal];
                 mycell.followBtnOne.layer.borderColor = RGBA(0x00a7ff, 1).CGColor;
             }
+            mycell.followBtnOneBlock = ^(NSInteger index,HomePageCell *cell) {
+                followCell = cell;
+            };
         }else if (onceDict.layerType == 2){
             mycell.subViewTwo.hidden = NO;
             [mycell.imageTwo sd_setImageWithURL:[NSURL URLWithString:coverArr.lastObject] placeholderImage:[UIImage imageNamed:@"icon_默认"]];
             mycell.titleTwo.text = onceDict.title;
             mycell.markTwo.text = onceDict.typeName;
+            mycell.markTwoWidth.constant = [mycell.markTwo sizeThatFits:CGSizeMake(MAXFLOAT, 15)].width + 10;
+            mycell.readNumTwo.text = [NSString stringWithFormat:@"阅读：%@",onceDict.viewNum];
             NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
             paraStyle.lineSpacing = 6; //设置行间距
             paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -479,10 +491,15 @@
                 [mycell.followBtnTwo setTitleColor:RGBA(0x00a7ff, 1) forState:UIControlStateNormal];
                 mycell.followBtnTwo.layer.borderColor = RGBA(0x00a7ff, 1).CGColor;
             }
+            mycell.followBtnTwoBlock = ^(NSInteger index,HomePageCell *cell) {
+                followCell = cell;
+            };
         }else if (onceDict.layerType == 3){
             mycell.subViewThree.hidden = NO;
             mycell.titleThree.text = onceDict.title;
             mycell.markThree.text = onceDict.typeName;
+            mycell.markThreeWidth.constant = [mycell.markThree sizeThatFits:CGSizeMake(MAXFLOAT, 15)].width + 10;
+            mycell.readNumThree.text = [NSString stringWithFormat:@"阅读：%@",onceDict.viewNum];
             NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
             paraStyle.lineSpacing = 6; //设置行间距
             paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -503,6 +520,9 @@
                 [mycell.followBtnThree setTitleColor:RGBA(0x00a7ff, 1) forState:UIControlStateNormal];
                 mycell.followBtnThree.layer.borderColor = RGBA(0x00a7ff, 1).CGColor;
             }
+            mycell.followBtnThreeBlock = ^(NSInteger index,HomePageCell *cell) {
+                followCell = cell;
+            };
         }
     }
     return mycell;
@@ -512,15 +532,32 @@
     return _dataArr.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
-        return 80 + (SCREENWIDTH - 30)*(220/700.0);
-    }else if (indexPath.row == 1){
+    NSNumber* cellHeightNumber = [_hightDict objectForKey:@(indexPath.row)];
+    CGFloat cellHeight;
+    if (cellHeightNumber) {//判断是否缓存了该cell的高度
+        cellHeight = [cellHeightNumber floatValue];
+        return cellHeight;
+    }
+    TopicModelData *onceDict = _dataArr[indexPath.row];
+
+    if (onceDict.layerType == 1) {
+        CGFloat contentHeight = [StorageUserInfromation getStringSizeWith2:[NSString stringWithFormat:@"%@",onceDict.title] withStringFont:16.0 withWidthOrHeight:SCREENWIDTH-30 lineSpacing:8.0].height;
+        if (contentHeight>46) {
+            contentHeight = 46;
+        }
+        [_hightDict setObject:[NSNumber numberWithFloat:80 + (SCREENWIDTH - 30)*(220/700.0) - 15 + contentHeight] forKey:@(indexPath.row)];
+
+        return 80 + (SCREENWIDTH - 30)*(220/700.0) - 15 + contentHeight;
+    }else if (onceDict.layerType == 2){
+        [_hightDict setObject:[NSNumber numberWithFloat:105] forKey:@(indexPath.row)];
+
         return 105;
     }
-    CGFloat contentHeight = [StorageUserInfromation getStringSizeWith2:[NSString stringWithFormat:@"%@",@"暑假将至，十条优质暑期旅游线路，赶紧带孩子上来一次温馨的家庭旅行！"] withStringFont:16.0 withWidthOrHeight:SCREENWIDTH-30 lineSpacing:8.0].height;
+    CGFloat contentHeight = [StorageUserInfromation getStringSizeWith2:[NSString stringWithFormat:@"%@",onceDict.title] withStringFont:16.0 withWidthOrHeight:SCREENWIDTH-30 lineSpacing:8.0].height;
     if (contentHeight>46) {
         contentHeight = 46;
     }
+    [_hightDict setObject:[NSNumber numberWithFloat:110 + (SCREENWIDTH - 40)/3.0 *(150/220.0) - 40 + contentHeight] forKey:@(indexPath.row)];
     return 110 + (SCREENWIDTH - 40)/3.0 *(150/220.0) - 40 + contentHeight;
 }
 
