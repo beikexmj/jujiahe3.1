@@ -12,14 +12,17 @@
 #import "XXTextField.h"
 #import "YYText.h"
 #import "DynamicVC.h"
+#import "FamilyMemberAll.h"
 
 @interface FamilyDynamicVC ()<BMKMapViewDelegate,BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate,UIGestureRecognizerDelegate>{
     BMKMapView* _mapView;//
     BMKLocationService *_locService;//定位类
     BMKPointAnnotation *_pointAnnotation;
     BMKGeoCodeSearch* _geocodesearch;
-    NSArray *imageArr;
-    NSArray *locationArr;
+//    NSArray *imageArr;
+//    NSMutableArray *locationArr;
+    
+    NSMutableArray *familyMemberArr;
     
     CLLocationCoordinate2D userLocationCoordinate;
     
@@ -223,6 +226,7 @@
 //    paraStyle.lineBreakMode = NSLineBreakByTruncatingMiddle;//ab...cd
 
     NSString *ruleStr =[NSString stringWithFormat:@"家人%@离开安全围栏查看详情",name];
+
     
     NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:14]};
     CGSize   sizeC = CGSizeMake(MAXFLOAT ,30);
@@ -232,7 +236,7 @@
                                                      context:nil].size;
     
     attrStrViewWidth=sizeFileName.width+25+34;
-    attrStrViewWidth=attrStrViewWidth>SCREEN_WIDTH?SCREEN_WIDTH:attrStrViewWidth;
+    attrStrViewWidth=attrStrViewWidth>SCREEN_WIDTH+15?SCREEN_WIDTH+15:attrStrViewWidth;
     [attrStrView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(attrStrViewWidth);
         if (attrStrView.hidden) {
@@ -263,10 +267,13 @@
 //- (void)mapViewFitAnnotations:(NSArray<CLLocation *> *)locations
 -(void)mapViewFitAnnotations:(NSArray*)locations
 {
+    FamilyMember *familyMember=[[FamilyMember alloc]init];
+    familyMember=familyMemberArr[0];
+        
     if (locations.count < 2) return;
     
 //    CLLocationCoordinate2D coor = [locations[0] coordinate];
-    CLLocationCoordinate2D coor = (CLLocationCoordinate2D){[locations[0][0] floatValue],[locations[0][1] floatValue]};
+    CLLocationCoordinate2D coor = (CLLocationCoordinate2D){[familyMember.latitude doubleValue],[familyMember.longitude doubleValue]};
    
     BMKMapPoint pt = BMKMapPointForCoordinate(coor);
     
@@ -278,7 +285,8 @@
     for (int i = 1; i < locations.count; i++) {
         
 //        CLLocationCoordinate2D coor = [locations[i] coordinate];
-         CLLocationCoordinate2D coor = (CLLocationCoordinate2D){[locations[i][0] floatValue],[locations[i][1] floatValue]};
+        familyMember=familyMemberArr[i];
+        CLLocationCoordinate2D coor = (CLLocationCoordinate2D){[familyMember.latitude doubleValue],[familyMember.longitude doubleValue]};
         
         
         BMKMapPoint pt = BMKMapPointForCoordinate(coor);
@@ -294,19 +302,12 @@
     rect.size = BMKMapSizeMake(rbX - ltX, rbY - ltY);
     
     [_mapView setVisibleMapRect:rect];
-    _mapView.zoomLevel = _mapView.zoomLevel -1;
-    NSLog(@"-------%f--------",_mapView.zoomLevel);
+    _mapView.zoomLevel = _mapView.zoomLevel -0.3;
 }
 
 
 -(void)position{
     [_locService startUserLocationService];
-    _mapView.zoomLevel = 18; //地图等级，数字越大越清晰
-    
-    _mapView.showsUserLocation = NO;//先关闭显示的定位图层
-    _mapView.userTrackingMode =BMKUserTrackingModeFollow; //设置定位的跟随状态
-    _mapView.showsUserLocation = YES;//显示定位图层
-    
     
     [self performSelector:@selector(refreshMap) withObject:self afterDelay:0.5];
     
@@ -315,18 +316,54 @@
 
 -(void)refreshMap{
     
+//    NSDictionary *dict = @{@"apiv":@"1.0",@"userId":[StorageUserInfromation storageUserInformation].userId};
+//    [ZTHttpTool postWithUrl:@"property/v1/propertyCard/queryRoomCardList" param:dict success:^(id responseObj) {
+//        NSString * str = [JGEncrypt encryptWithContent:[responseObj mj_JSONObject][@"data"] type:kCCDecrypt key:KEY];
+//        NSDictionary * onceDict = [DictToJson dictionaryWithJsonString:str];
+//        NSLog(@"%@",onceDict);
+//        PropertyPaymentHomeDataModel *data = [PropertyPaymentHomeDataModel mj_objectWithKeyValues:str];
+//        if (data.rcode == 0) {
+//            [_myArr addObjectsFromArray:data.form];
+//            if (_myArr.count>0) {
+//                self.myTableView.hidden = NO;
+//                [self.myTableView reloadData];
+//            }else{
+//                self.myTableView.hidden = YES;
+//            }
+//        }
+//    } failure:^(NSError *error) {
+//
+//    }];
+    
+    familyMemberArr=[[NSMutableArray alloc]initWithCapacity:0];
+    NSDictionary *dict = @{@"form":
+  @[@{@"name":@"张三",@"headImage":@"pro_btn_invitation",@"latitude":@"29.611000",@"longitude":@"106.510000"},@{@"name":@"张三",@"headImage":@"pro_btn_news",@"latitude":@"29.616000",@"longitude":@"106.513000"},@{@"name":@"张三",@"headImage":@"my_icon_pro3",@"latitude":@"29.618000",@"longitude":@"106.515000"},@{@"name":@"张三",@"headImage":@"my_icon_pro3",@"latitude":@"29.628000",@"longitude":@"106.565000"},@{@"name":@"张三",@"headImage":@"my_icon_pro3",@"latitude":@"29.558000",@"longitude":@"106.495000"},@{@"name":@"张三",@"headImage":@"my_icon_pro3",@"latitude":[NSString stringWithFormat:@"%.15f",userLocationCoordinate.latitude],@"longitude":[NSString stringWithFormat:@"%.15f",userLocationCoordinate.longitude]}
+]};
+    
+
+    
+    FamilyMemberAll *familyMemberAll = [FamilyMemberAll mj_objectWithKeyValues:dict];
+    familyMemberArr=[[NSMutableArray alloc]initWithArray:familyMemberAll.form];
+   
+
     [_mapView removeAnnotations: _mapView.annotations];
     [_mapView removeOverlays:_mapView.overlays];
     
-    imageArr=@[@"pro_btn_invitation",@"pro_btn_news",@"my_icon_pro3",@"my_icon_pro3"];
- locationArr=@[@[@"29.611000",@"106.510000"],@[@"29.616000",@"106.513000"],@[@"29.618000",@"106.515000"],@[@"29.628000",@"106.565000"]];
-//    [self mapViewFitAnnotations:locationArr];
+// imageArr=@[@"pro_btn_invitation",@"pro_btn_news",@"my_icon_pro3",@"my_icon_pro3",@"my_icon_pro3"];
+// locationArr=[[NSMutableArray alloc]initWithArray:@[@[@"29.611000",@"106.510000"],@[@"29.616000",@"106.513000"],@[@"29.618000",@"106.515000"],@[@"29.628000",@"106.565000"],@[@"29.558000",@"106.495000"]]];
     
-    for (int i=0; i<imageArr.count; i++) {
+    _mapView.showsUserLocation = NO;//先关闭显示的定位图层
+    [self mapViewFitAnnotations:familyMemberArr];
+//    _mapView.userTrackingMode =BMKUserTrackingModeFollow; //设置定位的跟随状态
+//    _mapView.showsUserLocation = YES;//显示定位图层
+    
+    FamilyMember *familyMember=[[FamilyMember alloc]init];
+    for (int i=0; i<familyMemberArr.count; i++) {
+        familyMember=familyMemberArr[i];
         _pointAnnotation = [[BMKPointAnnotation alloc] init];
-        _pointAnnotation.coordinate = (CLLocationCoordinate2D){[locationArr[i][0] floatValue],[locationArr[i][1] floatValue]};
+        _pointAnnotation.coordinate = (CLLocationCoordinate2D){[familyMember.latitude doubleValue],[familyMember.longitude doubleValue]};
         
-//        _pointAnnotation.title = @"我在这个地方";
+        _pointAnnotation.title = @"您在这";
 //        _pointAnnotation.subtitle = @"你在哪呢";
         [_mapView addAnnotation:_pointAnnotation];
 //        [_mapView selectAnnotation:_pointAnnotation animated:YES];
@@ -363,10 +400,11 @@
     //    _mapView.centerCoordinate = userLocation.location.coordinate;
     //    [_mapView setCenterCoordinate:userLocation.location.coordinate animated:YES];
     
-    //   NSLog(@"用户坐标----%f,---%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+//       NSLog(@"用户坐标----%f,---%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     
     userLocationCoordinate = userLocation.location.coordinate;
     [_mapView updateLocationData:userLocation];
+    [_locService stopUserLocationService];
 }
 
 /**
@@ -395,11 +433,13 @@
         BMKPinAnnotationView * newAnnotationView = [[BMKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
         newAnnotationView.canShowCallout=NO;//不显示气泡 设置这个是为了在不设置title的情况下，标注也能接收到点击事件
         
+        FamilyMember *familyMember=[[FamilyMember alloc]init];
         //此处加for循环 去找annotation对应的序号标题
-        for (int i=0; i<imageArr.count; i++) {
+        for (int i=0; i<familyMemberArr.count; i++) {
+            familyMember=familyMemberArr[i];
             
-            CGFloat lat = [locationArr[i][0] floatValue];
-            CGFloat lng =  [locationArr[i][1] floatValue];
+            CGFloat lat = [familyMember.latitude doubleValue];
+            CGFloat lng =  [familyMember.longitude doubleValue];
 
             //通过判断给相对应的标注添加序号标题
             if(annotation.coordinate.latitude == lat && annotation.coordinate.longitude ==  lng )
@@ -411,7 +451,7 @@
 //                newAnnotationView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
 //                newAnnotationView.layer.shadowRadius = 3;
                 newAnnotationView.frame=CGRectMake(0, 0, 60, 60);
-                newAnnotationView.image = nil;
+                newAnnotationView.image = [UIImage imageNamed:@"transparent"];
   
                 UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
                 view.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
@@ -421,11 +461,22 @@
                 
                 UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
                 bgImageView.center=view.center;
-                bgImageView.image = [UIImage imageNamed:imageArr[i]];
+                bgImageView.image = [UIImage imageNamed:familyMember.headImage];
                 [newAnnotationView addSubview:bgImageView];
                 bgImageView.layer.cornerRadius = 20; //设置imageView的圆角
                 bgImageView.layer.masksToBounds = YES;
                 [view addSubview:bgImageView];
+                
+//                NSLog(@"---%f----%f",lat,lng);
+//            NSLog(@"====%f====%f",userLocationCoordinate.latitude,userLocationCoordinate.longitude);
+//                NSString *userlatStr=[NSString stringWithFormat:@"%.15f",userLocationCoordinate.latitude];
+//                NSString *userlngStr=[NSString stringWithFormat:@"%.15f",userLocationCoordinate.longitude];
+
+                if(userLocationCoordinate.latitude == lat && userLocationCoordinate.longitude == lng) {
+                    NSLog(@"-------------------");
+                    newAnnotationView.canShowCallout=YES;
+                    [newAnnotationView setSelected:YES animated:YES];
+                }
                 
                 break;
             }
@@ -440,7 +491,10 @@
 //当选中一个annotation views时，调用此接口
 - (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
 {
-
+    if(userLocationCoordinate.latitude == view.annotation.coordinate.latitude && userLocationCoordinate.longitude == view.annotation.coordinate.longitude) {
+        return;
+    }
+    
     NSLog(@"选中一个annotation:-------%f,--------%f",view.annotation.coordinate.latitude,view.annotation.coordinate.longitude);
     
     peopleIMView *aaView = [[[NSBundle mainBundle] loadNibNamed:@"peopleIMView" owner:self options:nil] lastObject];
@@ -541,13 +595,13 @@
     
 }
 
+
 -(void)currentPositionBtnClick{
     _mapView.centerCoordinate = userLocationCoordinate;
-
 }
 
 -(void)refreshBtnClick{
-    [self refreshMap];
+    [self position];
 }
 
 -(void)chooseClick{

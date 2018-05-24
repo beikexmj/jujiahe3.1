@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B35572920B6694400DAFA22 /* FamilyMemberAll.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B35572820B6694300DAFA22 /* FamilyMemberAll.m */; };
 		4B5E09F320B2B57700A2609D /* peopleIMView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E09F220B2B57700A2609D /* peopleIMView.m */; };
 		4B5E09F520B2B58400A2609D /* peopleIMView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5E09F420B2B58300A2609D /* peopleIMView.xib */; };
 		4C1D2FD55A4CB07A5B474B2C /* libPods-jujiahe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C3D5800A776B6B3D676DDB /* libPods-jujiahe.a */; };
@@ -543,6 +544,8 @@
 
 /* Begin PBXFileReference section */
 		141FCF94328526502FE450C6 /* libPods-jujiaheUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jujiaheUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B35572720B6694300DAFA22 /* FamilyMemberAll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyMemberAll.h; sourceTree = "<group>"; };
+		4B35572820B6694300DAFA22 /* FamilyMemberAll.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyMemberAll.m; sourceTree = "<group>"; };
 		4B5E09F120B2B57700A2609D /* peopleIMView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = peopleIMView.h; sourceTree = "<group>"; };
 		4B5E09F220B2B57700A2609D /* peopleIMView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = peopleIMView.m; sourceTree = "<group>"; };
 		4B5E09F420B2B58300A2609D /* peopleIMView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = peopleIMView.xib; sourceTree = "<group>"; };
@@ -1662,6 +1665,15 @@
 				854A3432A28F103EF50F69CB /* Pods-jujiaheUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		4B35572620B668F500DAFA22 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				4B35572720B6694300DAFA22 /* FamilyMemberAll.h */,
+				4B35572820B6694300DAFA22 /* FamilyMemberAll.m */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		5F06937C20B40BE300758A38 /* 家人管理 */ = {
@@ -2953,6 +2965,7 @@
 				5F06937C20B40BE300758A38 /* 家人管理 */,
 				7C21320C20B161590017AF85 /* Views */,
 				7C21320B20B161530017AF85 /* Cells */,
+				4B35572620B668F500DAFA22 /* model */,
 				7C21320520B1610F0017AF85 /* FamilyDynamicVC.h */,
 				7C21320620B1610F0017AF85 /* FamilyDynamicVC.m */,
 				7C21320820B161320017AF85 /* FamilyWarningVC.h */,
@@ -4894,6 +4907,7 @@
 				7C476EB720A59267005ECE03 /* SGQRCodeAlbumManager.m in Sources */,
 				7C110A85209FF0C00012040E /* NSParagraphStyle+YYText.m in Sources */,
 				7C1109AE209FEEC70012040E /* UIScrollView+Pages.m in Sources */,
+				4B35572920B6694400DAFA22 /* FamilyMemberAll.m in Sources */,
 				7C21321220B164BB0017AF85 /* FamilyWarningTableHeaderView.m in Sources */,
 				7C5DC69F20AAB6D100981E95 /* HMSegmentedControl.m in Sources */,
 				7C110AC1209FF0C00012040E /* NSObject+MJClass.m in Sources */,
